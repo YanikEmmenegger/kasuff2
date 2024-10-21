@@ -1,23 +1,7 @@
 // src/models/Player.ts
 
 import {Schema, model, Document} from 'mongoose';
-import {v4 as uuidv4} from 'uuid';
 
-/**
- * Interface representing a Player document in MongoDB.
- */
-export interface IPlayer extends Document {
-    uuid: string;       // Persistent unique identifier for the player
-    socketId: string;   // Unique identifier for the player's socket connection
-    name: string;       // Player's display name
-    avatar: IAvatar;    // Player's avatar configuration
-    points: number;     // Player's current points
-    roomId: string;     // ID of the room the player is in
-}
-
-/**
- * Interface representing the Avatar structure.
- */
 export interface IAvatar {
     hat: string;
     face: string;
@@ -25,31 +9,33 @@ export interface IAvatar {
     pants: string;
 }
 
-/**
- * Mongoose Schema for the Avatar.
- */
+export interface IPlayer extends Document {
+    uuid: string;
+    name: string;
+    avatar?: IAvatar | null; // Optional and nullable
+    socketId: string;
+    points: number;
+    roomId?: string; // Made optional
+}
+
 const AvatarSchema: Schema = new Schema({
     hat: {type: String, required: true},
     face: {type: String, required: true},
     body: {type: String, required: true},
     pants: {type: String, required: true},
-});
+}, {_id: false}); // Disable _id for embedded documents
 
-/**
- * Mongoose Schema for the Player.
- */
 const PlayerSchema: Schema = new Schema({
-    uuid: {type: String, required: true, unique: true, default: uuidv4},
-    socketId: {type: String, required: true, unique: true},
+    uuid: {type: String, required: true, unique: true},
     name: {type: String, required: true},
-    avatar: {type: AvatarSchema, required: true},
+    avatar: {type: AvatarSchema, default: null}, // Allow avatar to be null
+    socketId: {type: String, default: ''},
     points: {type: Number, default: 0},
-    roomId: {type: String, required: true},
+    roomId: {type: String, ref: 'Room'}, // Made optional
+}, {
+    timestamps: true,
 });
 
-/**
- * Export the Player model.
- */
 const Player = model<IPlayer>('Player', PlayerSchema);
 
 export default Player;

@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import roomRoutes from './routes/rooms';
+import playerRoutes from './routes/players';
 
 dotenv.config();
 
@@ -34,7 +35,10 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // Use Room Routes
-app.use('/rooms', roomRoutes);
+app.use('api/rooms', roomRoutes);
+// user Player Routes
+app.use('api/users', playerRoutes); // Mount User routes under /users
+
 
 // Socket.IO Connection Handler (To be implemented later)
 io.on('connection', (socket) => {
