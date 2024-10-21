@@ -16,12 +16,16 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "mongoose": "^8.7.2",
-    "socket.io": "^4.8.0"
+    "nanoid": "^5.0.7",
+    "socket.io": "^4.8.0",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
+    "@types/nanoid": "^2.1.0",
     "@types/node": "^22.7.7",
     "@types/socket.io": "^3.0.1",
+    "@types/uuid": "^10.0.0",
     "nodemon": "^3.1.7",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
