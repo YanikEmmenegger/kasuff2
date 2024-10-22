@@ -1,0 +1,312 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Kasuff2 API",
+    "description": "API documentation for Kasuff2 Backend"
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/players": {
+      "post": {
+        "summary": "Create a new player",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlayerInput"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Player created successfully"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict - UUID already exists"
+          }
+        }
+      }
+    },
+    "/questions": {
+      "post": {
+        "summary": "Create a new question",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QuestionInput"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Question created successfully"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieve all questions",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "multiple-choice",
+              "who-would-rather",
+              "what-would-you-rather",
+              "ranking"
+            ]
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of questions"
+          }
+        }
+      }
+    },
+    "/questions/{id}": {
+      "get": {
+        "summary": "Retrieve a single question by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Question retrieved successfully"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Question not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a question by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QuestionUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Question updated successfully"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Question not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a question by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Question deleted successfully"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Question not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PlayerInput": {
+      "type": "object",
+      "required": [
+        "uuid",
+        "name"
+      ],
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "avatar": {
+          "$ref": "#/definitions/Avatar"
+        }
+      }
+    },
+    "Avatar": {
+      "type": "object",
+      "required": [
+        "hat",
+        "face",
+        "body",
+        "pants"
+      ],
+      "properties": {
+        "hat": {
+          "type": "string"
+        },
+        "face": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "pants": {
+          "type": "string"
+        }
+      }
+    },
+    "QuestionInput": {
+      "type": "object",
+      "required": [
+        "type",
+        "question",
+        "category"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "multiple-choice",
+            "who-would-rather",
+            "what-would-you-rather",
+            "ranking"
+          ]
+        },
+        "question": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "correctOptionIndex": {
+          "type": "integer"
+        },
+        "option1": {
+          "type": "string"
+        },
+        "option2": {
+          "type": "string"
+        },
+        "goodOrBad": {
+          "type": "string",
+          "enum": [
+            "good",
+            "bad"
+          ]
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "QuestionUpdate": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "multiple-choice",
+            "who-would-rather",
+            "what-would-you-rather",
+            "ranking"
+          ]
+        },
+        "question": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "correctOptionIndex": {
+          "type": "integer"
+        },
+        "option1": {
+          "type": "string"
+        },
+        "option2": {
+          "type": "string"
+        },
+        "goodOrBad": {
+          "type": "string",
+          "enum": [
+            "good",
+            "bad"
+          ]
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

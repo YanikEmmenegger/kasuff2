@@ -1,7 +1,6 @@
 // src/models/Question.ts
 
 import {Schema, model, Document} from 'mongoose';
-import {customAlphabet} from 'nanoid';
 
 /**
  * Base Interface representing a generic Question.
@@ -29,7 +28,7 @@ const BaseQuestionSchema: Schema = new Schema(
 );
 
 /**
- * Export the Base Question model.
+ * Export the Base Question model as the default export.
  */
 const BaseQuestion = model<IBaseQuestion>('Question', BaseQuestionSchema);
 
@@ -42,6 +41,9 @@ export interface IMultipleChoiceQuestion extends IBaseQuestion {
     correctOptionIndex: number; // Index of the correct answer in the options array
 }
 
+/**
+ * Mongoose Schema for Multiple Choice Question.
+ */
 const MultipleChoiceQuestionSchema = new Schema<IMultipleChoiceQuestion>(
     {
         options: {type: [String], required: true},
@@ -50,6 +52,9 @@ const MultipleChoiceQuestionSchema = new Schema<IMultipleChoiceQuestion>(
     {_id: false}
 );
 
+/**
+ * Discriminator for Multiple Choice Question.
+ */
 const MultipleChoiceQuestion = BaseQuestion.discriminator<IMultipleChoiceQuestion>(
     'multiple-choice',
     MultipleChoiceQuestionSchema
@@ -65,6 +70,9 @@ export interface IWhoWouldRatherQuestion extends IBaseQuestion {
     goodOrBad: 'good' | 'bad'; // Determines the type of punishment
 }
 
+/**
+ * Mongoose Schema for Who Would Rather Question.
+ */
 const WhoWouldRatherQuestionSchema = new Schema<IWhoWouldRatherQuestion>(
     {
         option1: {type: String, required: true},
@@ -74,6 +82,9 @@ const WhoWouldRatherQuestionSchema = new Schema<IWhoWouldRatherQuestion>(
     {_id: false}
 );
 
+/**
+ * Discriminator for Who Would Rather Question.
+ */
 const WhoWouldRatherQuestion = BaseQuestion.discriminator<IWhoWouldRatherQuestion>(
     'who-would-rather',
     WhoWouldRatherQuestionSchema
@@ -89,6 +100,9 @@ export interface IWhatWouldYouRatherQuestion extends IBaseQuestion {
     goodOrBad: 'good' | 'bad'; // Determines the type of punishment
 }
 
+/**
+ * Mongoose Schema for What Would You Rather Question.
+ */
 const WhatWouldYouRatherQuestionSchema = new Schema<IWhatWouldYouRatherQuestion>(
     {
         option1: {type: String, required: true},
@@ -98,6 +112,9 @@ const WhatWouldYouRatherQuestionSchema = new Schema<IWhatWouldYouRatherQuestion>
     {_id: false}
 );
 
+/**
+ * Discriminator for What Would You Rather Question.
+ */
 const WhatWouldYouRatherQuestion = BaseQuestion.discriminator<IWhatWouldYouRatherQuestion>(
     'what-would-you-rather',
     WhatWouldYouRatherQuestionSchema
@@ -111,6 +128,9 @@ export interface IRankingQuestion extends IBaseQuestion {
     categories: string[]; // Categories or items to rank
 }
 
+/**
+ * Mongoose Schema for Ranking Question.
+ */
 const RankingQuestionSchema = new Schema<IRankingQuestion>(
     {
         categories: {type: [String], required: true},
@@ -118,6 +138,9 @@ const RankingQuestionSchema = new Schema<IRankingQuestion>(
     {_id: false}
 );
 
+/**
+ * Discriminator for Ranking Question.
+ */
 const RankingQuestion = BaseQuestion.discriminator<IRankingQuestion>(
     'ranking',
     RankingQuestionSchema
@@ -132,3 +155,8 @@ export {
     WhatWouldYouRatherQuestion,
     RankingQuestion,
 };
+
+/**
+ * Export BaseQuestion as the default export.
+ */
+export default BaseQuestion;

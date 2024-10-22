@@ -4,7 +4,7 @@ import {Request, Response} from 'express';
 import Player, {IPlayer, IAvatar} from '../models/Player';
 
 /**
- * Controller to create a new player
+ * Controller to create a new player.
  * Expects `uuid`, `name`, and optionally `avatar` in the request body.
  */
 export const createPlayer = async (req: Request, res: Response): Promise<void> => {
@@ -41,20 +41,20 @@ export const createPlayer = async (req: Request, res: Response): Promise<void> =
             name,
             avatar: validatedAvatar,
             // socketId is empty by default; will be updated upon Socket.IO connection
-            // roomId is undefined by default; will be set when joining a room
+            // gameCode is undefined by default; will be set when joining a game
         });
 
         await newPlayer.save();
 
         // Respond with the new player's details
         res.status(201).json({
-            message: 'User created successfully.',
+            message: 'Player created successfully.',
             player: {
                 uuid: newPlayer.uuid,
                 name: newPlayer.name,
                 avatar: newPlayer.avatar,
                 points: newPlayer.points,
-                roomId: newPlayer.roomId || null,
+                gameCode: newPlayer.gameCode || null,
             },
         });
     } catch (error) {
@@ -66,7 +66,7 @@ export const createPlayer = async (req: Request, res: Response): Promise<void> =
 /**
  * Controller to get player details by UUID.
  */
-export const getPlayerByUUID = async (req: Request, res: Response): Promise<void> => {
+export const getPlayerByUuid = async (req: Request, res: Response): Promise<void> => {
     try {
         const {uuid} = req.params;
 
@@ -78,7 +78,7 @@ export const getPlayerByUUID = async (req: Request, res: Response): Promise<void
         const player: IPlayer | null = await Player.findOne({uuid});
 
         if (!player) {
-            res.status(404).json({message: 'User not found.'});
+            res.status(404).json({message: 'Player not found.'});
             return;
         }
 
@@ -88,7 +88,7 @@ export const getPlayerByUUID = async (req: Request, res: Response): Promise<void
                 name: player.name,
                 avatar: player.avatar,
                 points: player.points,
-                roomId: player.roomId || null,
+                gameCode: player.gameCode || null,
                 socketId: player.socketId || null,
             },
         });

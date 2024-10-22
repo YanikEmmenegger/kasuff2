@@ -1,22 +1,22 @@
-// src/routes/users.ts
+// src/routes/players.ts
 
 import express from 'express';
-import { createPlayer, getPlayerByUUID } from '../../controllers/playerController';
+import { createPlayer, getPlayerByUuid } from '../../controllers/playerController';
 
 const router = express.Router();
 
 /**
- * @route   POST /users
- * @desc    Create a new user
+ * @route   POST /players
+ * @desc    Create a new player
  * @access  Public
  */
 router.post('/', createPlayer);
 
 /**
- * @route   GET /users/:uuid
- * @desc    Get user details by UUID
+ * @route   GET /players/:uuid
+ * @desc    Get player details by UUID
  * @access  Public
  */
-router.get('/:uuid', getPlayerByUUID);
+router.get('/:uuid', getPlayerByUuid);
 
 export default router;
