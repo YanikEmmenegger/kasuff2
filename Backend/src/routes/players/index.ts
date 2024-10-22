@@ -1,7 +1,5 @@
-// src/routes/players.ts
-
 import express from 'express';
-import { createPlayer, getPlayerByUuid } from '../../controllers/playerController';
+import { createPlayer, getPlayerByUuid, updatePlayer } from '../../controllers/playerController';
 
 const router = express.Router();
 
@@ -18,5 +16,12 @@ router.post('/', createPlayer);
  * @access  Public
  */
 router.get('/:uuid', getPlayerByUuid);
+
+/**
+ * @route   PUT /players/:uuid
+ * @desc    Update player details by UUID
+ * @access  Public
+ */
+router.put('/:uuid', updatePlayer);
 
 export default router;
