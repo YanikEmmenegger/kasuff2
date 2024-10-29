@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { usePlayer } from "../../../contexts/playerProvider";
-import { useNavigate } from "react-router";
+import React, {useEffect, useState} from "react";
+import {usePlayer} from "../../../contexts/playerProvider";
+import {useNavigate} from "react-router";
 import toast from "react-hot-toast";
 import JoinedPlayers from "./JoinedPlayers";
 import Button from "../../Button";
@@ -31,7 +31,9 @@ const Lobby: React.FC = () => {
 
     const handleCopyGameCode = () => {
         if (game) {
-            const gameUrl = `${import.meta.env.VITE_BASE_URL}/game?state=join&code=${game.code}`;
+
+            const srv = import.meta.env.DEV ? 'http://localhost:5173' : window.location.host;
+            const gameUrl = `${srv}/game?state=join&code=${game.code}`;
             navigator.clipboard
                 .writeText(gameUrl)
                 .then(() => {
