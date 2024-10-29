@@ -39,7 +39,7 @@ instrument(io, {auth: false, mode: 'development'});
 app.use(express.json()); // Parse JSON bodies
 
 // Define the port (default to 5000 if not in environment)
-const PORT: number = parseInt(process.env.PORT as string, 10) || 5000;
+const PORT: number = parseInt(process.env.PORT as string, 10) || 2608;
 
 app.use(express.json()); // Parse JSON bodies
 
@@ -307,7 +307,7 @@ io.on('connection', (socket) => {
 // Start the server and connect to MongoDB
 const startServer = async () => {
     try {
-        const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/kasuff2';
+        const mongoURI = process.env.MONGODB_URI || 'mongodb://root:example@localhost:27017/kasuff2?authSource=admin';
         await mongoose.connect(mongoURI);
         console.log('Connected to MongoDB');
 

@@ -24,7 +24,7 @@ services:
       - ./Backend/public:/app/public
     command: sh -c "npm ci && npm run build && npm start"
     ports:
-      - "80:5001"
+      - "80:2608"
     depends_on:
       - mongodb
     environment:
