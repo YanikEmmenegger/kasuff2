@@ -1,3 +1,4 @@
+version: '3.8'
 
 services:
   # Temporary Vite builder
@@ -38,6 +39,7 @@ services:
       - 27017:27017
     volumes:
       - ./Database:/data/db
+      - ./Resources/BASE_QUESTIONS.json:/docker-entrypoint-initdb.d/base_questions.json:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -47,7 +49,7 @@ services:
         echo 'Database exists, skipping import...';
       else
         echo 'Importing base questions...';
-        mongorestore --uri mongodb://root:example@localhost:27017 --db mydatabase /Resources/BASE_QUESTIONS.json;
+        mongoimport --uri mongodb://root:example@localhost:27017/mydatabase --collection questions --file /docker-entrypoint-initdb.d/base_questions.json --jsonArray;
       fi;
       mongod --bind_ip_all;
       "
