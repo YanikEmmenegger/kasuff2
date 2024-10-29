@@ -44,16 +44,16 @@ const PORT: number = parseInt(process.env.PORT as string, 10) || 2608;
 app.use(express.json()); // Parse JSON bodies
 
 // Serve static files from the Vite-built frontend
-app.use(express.static(path.join(__dirname, '../../frontend/dist')));
+app.use(express.static(path.join(__dirname, '../public/')));
 
 // Basic route to serve the built frontend
 app.get('/', (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
+    res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 // For all other routes, fallback to the index.html (this is important for client-side routing)
 app.get('*', (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
+    res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 // Handle new socket connections
@@ -307,7 +307,7 @@ io.on('connection', (socket) => {
 // Start the server and connect to MongoDB
 const startServer = async () => {
     try {
-        const mongoURI = process.env.MONGODB_URI || 'mongodb://root:example@localhost:27017/kasuff2?authSource=admin';
+        const mongoURI = process.env.MONGO_URI || 'mongodb://root:example@localhost:27017/kasuff2?authSource=admin';
         await mongoose.connect(mongoURI);
         console.log('Connected to MongoDB');
 

@@ -7,10 +7,27 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./Database:/data/db   # Mounts your db folder for MongoDB data
+      - ./Database:/data/db
+      - ./mongo-init/:/docker-entrypoint-initdb.d
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+      #healthcheck:
+      # test: [ "CMD", "mongo", "admin", "--username", "root", "--password", "example", "--eval", "db.adminCommand('ping').ok" ]
+      #interval: 10s
+      #timeout: 5s
+      #retries: 5
+      #start_period: 40s  # Wait for 40 seconds before starting health checks
 
-volumes:
-  mongodb_data:
+  backend:
+    build:
+      context: .
+      dockerfile: ./Backend/Dockerfile
+    ports:
+      - "8080:2608"
+    depends_on:
+        - mongodb
+      #mongodb:
+      #condition: service_healthy
+    environment:
+      - MONGO_URI=mongodb://root:example@mongodb:27017/kasuff2?authSource=admin
