@@ -1,177 +1,259 @@
-import { Request, Response } from 'express';
-import Player, { IPlayer, IAvatar } from '../models/Player';
+import Player, {IAvatar, IPlayer} from '../models/Player';
+import {OperationResult} from '../types';
+import Game, {IAnswer, IGame} from "../models/Game";
+import {gameTimers, handleResults} from "./gameController";
 
-
-export const getPlayerByUuid = async (req: Request, res: Response): Promise<void> => {
+/**
+ * Fetch a player by their MongoDB _id.
+ */
+export const getPlayerById = async (id: string): Promise<OperationResult<IPlayer>> => {
     try {
-        const { uuid } = req.params;
-
-        if (!uuid) {
-            res.status(400).json({ message: 'UUID is required.' });
-            return;
-        }
-
-        const player: IPlayer | null = await Player.findOne({ uuid });
+        const player = await Player.findById(id);
 
         if (!player) {
-            res.status(404).json({ message: 'Player not found.' });
-            return;
+            return {success: false, error: 'Player not found.'};
         }
 
-        res.status(200).json({
-            player: {
-                uuid: player.uuid,
-                name: player.name,
-                avatar: player.avatar,
-                points: player.points,
-                gameCode: player.gameCode || null,
-                socketId: player.socketId || null,
-            },
-        });
+        return {success: true, data: player};
     } catch (error) {
-        console.error('Error fetching player:', error);
-        res.status(500).json({ message: 'Internal server error.' });
+        console.error('[ERROR] Fetching player by ID:', error);
+        return {success: false, error: 'Internal server error.'};
     }
 };
+
 /**
- * Controller to create a new player.
- * Expects `uuid`, `name`, and optionally `avatar` in the request body.
+ * Create a new player with optional avatar and socketId.
+ * Validates avatar structure before saving.
  */
-export const createPlayer = async (req: Request, res: Response): Promise<void> => {
+export const createPlayer = async (name: string, avatar?: IAvatar, socketId?: string): Promise<OperationResult<IPlayer>> => {
     try {
-        const { uuid, name, avatar } = req.body;
-
-        // Validate required fields
-        if (!uuid || !name) {
-            res.status(400).json({ message: 'UUID and name are required.' });
-            return;
-        }
-
-        // Check if the UUID already exists
-        const existingPlayer: IPlayer | null = await Player.findOne({ uuid });
-        if (existingPlayer) {
-            res.status(409).json({ message: 'UUID already exists. Please use a unique UUID.' });
-            return;
-        }
-
-        // If avatar is provided, validate its structure (ensure variant and color are numbers)
+        // Validate avatar structure if provided
         let validatedAvatar: IAvatar | null = null;
         if (avatar) {
             const { hat, face, body, pants } = avatar;
+
             if (
                 typeof hat?.variant !== 'number' || typeof hat?.color !== 'number' ||
                 typeof face?.variant !== 'number' || typeof face?.color !== 'number' ||
                 typeof body?.variant !== 'number' || typeof body?.color !== 'number' ||
                 typeof pants?.variant !== 'number' || typeof pants?.color !== 'number'
             ) {
-                res.status(400).json({
-                    message: 'All avatar parts (hat, face, body, pants) must contain both a numeric variant and a numeric color.',
-                });
-                return;
+                return {
+                    success: false,
+                    error: 'Invalid avatar format. Each part (hat, face, body, pants) must have a numeric variant and color.',
+                };
             }
+
             validatedAvatar = { hat, face, body, pants };
         }
 
-        // Create a new Player document
-        const newPlayer: IPlayer = new Player({
-            uuid,
+        // Create new player
+        const newPlayer = new Player({
             name,
-            avatar: validatedAvatar,
+            avatar: validatedAvatar || null, // Default to null if no avatar
+            socketId
         });
 
         await newPlayer.save();
 
-        // Respond with the new player's details
-        res.status(201).json({
-            message: 'Player created successfully.',
-            player: {
-                uuid: newPlayer.uuid,
-                name: newPlayer.name,
-                avatar: newPlayer.avatar,
-                points: newPlayer.points,
-                gameCode: newPlayer.gameCode || null,
-            },
-        });
+        console.log(`[PLAYER] New player created: ${newPlayer._id}`);
+        return {success: true, data: newPlayer};
     } catch (error) {
-        console.error('Error creating player:', error);
-        res.status(500).json({ message: 'Internal server error.' });
+        console.error('[ERROR] Creating player:', error);
+        return {success: false, error: 'Internal server error.'};
     }
 };
 
 /**
- * Controller to update player details by UUID.
- * Can update `name`, `avatar`, `gameCode`, `socketId`, and `points` in the request body.
+ * Handle player reconnection and return the game state if the player is in a game.
  */
-export const updatePlayer = async (req: Request, res: Response): Promise<void> => {
+export const handlePlayerReconnect = async (playerId: string, socketId: string): Promise<OperationResult<{
+    player: IPlayer,
+    game?: IGame,
+}>> => {
     try {
-        const { uuid } = req.params;
-        const { name, avatar, gameCode, socketId, points } = req.body;
-
-        // Validate UUID in params
-        if (!uuid) {
-            res.status(400).json({ message: 'UUID is required.' });
-            return;
-        }
-
-        // Find player by UUID
-        const player: IPlayer | null = await Player.findOne({ uuid });
+        console.log(`[RECONNECT] Player ${playerId} is reconnecting.`);
+        const player = await Player.findById(playerId);
 
         if (!player) {
-            res.status(404).json({ message: 'Player not found.' });
-            return;
+            return {success: false, error: 'Player not found.'};
         }
 
-        // Update the fields if provided in the request body
-        if (name) {
-            player.name = name;
+        // Update player's socketId
+        player.socketId = socketId;
+        await player.save();
+
+        if (player.gameCode) {
+            console.log(`[RECONNECT] Player ${playerId} is in game ${player.gameCode}, fetching game state.`);
+            const game = await Game.findOne({code: player.gameCode, isActive: true})
+                .populate('players', 'name avatar points')
+                .populate('questions', 'question category');
+
+            if (!game) {
+                // Player's game is no longer active, clear gameCode
+                player.gameCode = undefined;
+                await player.save();
+                return {success: true, data: {player}};
+            }
+
+            return {success: true, data: {player, game}};
         }
 
-        // If avatar is provided, validate that variant and color are numeric indices
-        if (avatar) {
-            const { hat, face, body, pants } = avatar;
+        return {success: true, data: {player}};
+    } catch (error) {
+        console.error('[ERROR] Handling player reconnection:', error);
+        return {success: false, error: 'Internal server error.'};
+    }
+};
+
+/**
+ * Update player details including name, avatar, gameCode, socketId, and points.
+ */
+export const updatePlayer = async (
+    id: string,
+    updateData: Partial<{ name: string; avatar: IAvatar; gameCode: string; socketId: string; points: number }>
+): Promise<OperationResult<IPlayer>> => {
+    try {
+        const player = await Player.findById(id);
+
+        if (!player) {
+            return {success: false, error: 'Player not found.'};
+        }
+
+        // Update name
+        if (updateData.name) {
+            player.name = updateData.name;
+        }
+
+        // Update avatar if provided and validate its structure
+        if (updateData.avatar) {
+            const {hat, face, body, pants} = updateData.avatar;
+
             if (
                 typeof hat?.variant !== 'number' || typeof hat?.color !== 'number' ||
                 typeof face?.variant !== 'number' || typeof face?.color !== 'number' ||
                 typeof body?.variant !== 'number' || typeof body?.color !== 'number' ||
                 typeof pants?.variant !== 'number' || typeof pants?.color !== 'number'
             ) {
-                res.status(400).json({
-                    message: 'All avatar parts (hat, face, body, pants) must contain both a numeric variant and a numeric color.',
-                });
-                return;
+                return {
+                    success: false,
+                    error: 'Invalid avatar format. Each part must have a numeric variant and color.'
+                };
             }
+
             player.avatar = { hat, face, body, pants };
         }
 
-        if (gameCode) {
-            player.gameCode = gameCode;
+        // Update gameCode
+        if (updateData.gameCode) {
+            player.gameCode = updateData.gameCode;
         }
 
-        if (socketId) {
-            player.socketId = socketId;
+        // Update socketId
+        if (updateData.socketId) {
+            player.socketId = updateData.socketId;
         }
 
-        if (typeof points === 'number') {
-            player.points = points;
+        // Update points if provided
+        if (typeof updateData.points === 'number') {
+            player.points = updateData.points;
         }
 
-        // Save the updated player document
         await player.save();
 
-        // Respond with updated player details
-        res.status(200).json({
-            message: 'Player updated successfully.',
-            player: {
-                uuid: player.uuid,
-                name: player.name,
-                avatar: player.avatar,
-                points: player.points,
-                gameCode: player.gameCode || null,
-                socketId: player.socketId || null,
-            },
-        });
+        console.log(`[PLAYER] Player ${id} updated.`);
+        return {success: true, data: player};
     } catch (error) {
-        console.error('Error updating player:', error);
-        res.status(500).json({ message: 'Internal server error.' });
+        console.error('[ERROR] Updating player:', error);
+        return {success: false, error: 'Internal server error.'};
     }
 };
+
+export const playerAnswered = async (gameCode: string, answer: IAnswer, io: any): Promise<OperationResult<IGame>> => {
+    try {
+        // Find the game by code and ensure it's active
+        const game = await Game.findOne({code: gameCode, isActive: true});
+
+        if (!game) {
+            return {success: false, error: 'Game not found.'};
+        }
+
+        // Check if the player has already answered
+        const playerAnswered = game.playersAnswered.find(playerId => playerId.toString() === answer.playerId.toString());
+        if (playerAnswered) {
+            return {success: false, error: 'Player has already answered.'};
+        }
+
+        // Mark player as having answered
+        game.playersAnswered.push(answer.playerId);
+        answer.answeredAt = new Date();
+
+        // Ensure the answers array for the current question exists
+        if (!game.answers[game.currentQuestionIndex]) {
+            game.answers[game.currentQuestionIndex] = [];
+        }
+
+        // Push the answer to the answers array for the current question
+        game.answers[game.currentQuestionIndex].push(answer);
+
+
+        // Save the updated game state
+        await game.save();
+        // Check if all players have answered
+        if (game.playersAnswered.length === game.players.length) {
+
+            // Clear the active timer if it exists
+            if (gameTimers[gameCode]) {
+                clearTimeout(gameTimers[gameCode]);
+                delete gameTimers[gameCode]; // Remove the timer from storage
+                console.log(`[GAME] Timer for game ${gameCode} cleared because all players answered.`);
+            }
+
+
+            setTimeout(async () => {
+                // Transition logic or other actions can be placed here if needed later
+                console.log('All players have answered.');
+                await handleResults(gameCode, io);
+            }, 1000);
+
+        }
+
+        return {success: true, data: game};
+    } catch (error) {
+        console.error('[ERROR] Updating player:', error);
+        return {success: false, error: 'Internal server error.'};
+    }
+};
+// Define arrays of adjectives and nouns
+const adjectives = [
+    "Silly", "Funky", "Wacky", "Goofy", "Crazy", "Zany", "Cheeky", "Lazy", "Grumpy", "Jolly",
+    "Fat", "Dumb", "Flipping", "Sloppy", "Drunky", "Slurring", "Tipsy", "Wasted", "Sleepy",
+    "Clumsy", "Stupid", "Brainless", "Dopey", "Useless", "Clueless", "Drooling", "Sweaty",
+    "Ludicrous", "Imbecilic", "Moronic", "Buffoonish", "Dim-witted", "Absurd", "Ignorant",
+    "Delirious", "Scatterbrained", "Deranged", "Knuckleheaded", "Obtuse", "Gibbering", "Pathetic",
+    "Miserable", "Foul-mouthed", "Ass-faced", "Piss-drunk", "Booze-soaked", "Shit-talking",
+    "Knob-headed", "Cocky", "Dick-brained", "Bastardized", "Throbbing", "Lusty", "Horny",
+    "Filthy", "Perverted", "Sweaty-palmed", "Randy", "Greasy", "Moaning", "Humping", "Thrusting",
+    "Groping", "Slutty", "Naughty", "Sleazy"
+];
+
+const nouns = [
+    "FuckFace","Banana", "Monkey", "Unicorn", "Nonce", "Wanker", "Ass", "Wanker", "Cunt", "Bastard", "Douche", "Dickhead", "Knobhead", "Shithead",
+    "Pisshead", "Twit", "Prick", "Tosser", "Wanker", "Arsehole", "Scumbag", "Cockwomble", "Bellend",
+    "Fucker", "Dipshit", "Jackass", "Fuckwit", "KnobJockey", "Asswipe", "Twat", "Pisspot", "Dumbass",
+    "Loser", "Idiot", "Douchebag", "FartSniffer", "Butthead", "Shitbag", "Cocksucker", "Slut",
+    "Meathead", "Slag", "Slopbucket", "DickLicker", "CockLover", "AssLover", "TittyGrabber",
+    "CockThrobber", "PussyMuncher", "AssEater", "FannyTickler", "NippleTwister", "BallJuggler",
+    "PantySniffer", "TittySqueezer", "HardOn", "SmallDick", "WetDream", "Perv", "WankStain", "Splooge"
+];
+
+// Helper function to get a random element from an array
+function getRandomElement(array: string[]): string {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
+export const generateRandomUsername = (): string => {
+    const adjective = getRandomElement(adjectives);
+    const noun = getRandomElement(nouns);
+    return `${adjective}${noun}`;
+}

@@ -1,17 +1,8 @@
-// src/types.ts
+// Define a custom return type for game-related operations
+export type OperationResult<T> = {
+    success: boolean;
+    data?: T;
+    error?: string;
+};
 
-import {
-    IMultipleChoiceQuestion,
-    IWhoWouldRatherQuestion,
-    IWhatWouldYouRatherQuestion,
-    IRankingQuestion,
-} from './models/Question';
 
-/**
- * Union type representing any question type.
- */
-export type IQuestion =
-    | IMultipleChoiceQuestion
-    | IWhoWouldRatherQuestion
-    | IWhatWouldYouRatherQuestion
-    | IRankingQuestion;

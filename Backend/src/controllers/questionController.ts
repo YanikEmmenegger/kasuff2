@@ -1,34 +1,36 @@
-// src/controllers/questionController.ts
-
-import {Request, Response} from 'express';
-import Question, {
-    IMultipleChoiceQuestion,
-    IWhoWouldRatherQuestion,
-    IWhatWouldYouRatherQuestion,
-    IRankingQuestion,
-} from '../models/Question';
-import {IQuestion} from '../types';
 import {Types} from 'mongoose';
+import {OperationResult} from "../types";
+import Question, {
+    ICleanMultipleChoiceQuestion,
+    ICleanQuestion,
+    ICleanRankingQuestion,
+    ICleanWhatWouldYouRatherQuestion,
+    ICleanWhoWouldRatherQuestion,
+    IMultipleChoiceQuestion,
+    IQuestion,
+    IRankingQuestion,
+    IWhatWouldYouRatherQuestion,
+    IWhoWouldRatherQuestion
+} from "../models/Question";
+import {shuffleArray} from "../utils/questionUtils";
+import {IPlayer} from "../models/Player";
 
 /**
- * Controller to create a new question.
- * Expects `type`, `question`, `category`, and type-specific fields in the request body.
+ * Create a new question.
  */
-export const createQuestion = async (req: Request, res: Response): Promise<void> => {
+export const createQuestion = async (questionData: any): Promise<OperationResult<IQuestion>> => {
     try {
-        const {type, question, category, ...typeSpecificFields} = req.body;
+        const {type, question, category, ...typeSpecificFields} = questionData;
 
         // Validate required fields
         if (!type || !question || !category) {
-            res.status(400).json({message: 'Type, question, and category are required.'});
-            return;
+            return {success: false, error: 'Type, question, and category are required.'};
         }
 
         // Validate question type
         const validTypes = ['multiple-choice', 'who-would-rather', 'what-would-you-rather', 'ranking'];
         if (!validTypes.includes(type)) {
-            res.status(400).json({message: `Invalid question type. Valid types are: ${validTypes.join(', ')}`});
-            return;
+            return {success: false, error: `Invalid question type. Valid types are: ${validTypes.join(', ')}`};
         }
 
         // Create the base question
@@ -45,8 +47,7 @@ export const createQuestion = async (req: Request, res: Response): Promise<void>
             case 'multiple-choice':
                 const {options, correctOptionIndex} = typeSpecificFields;
                 if (!options || !Array.isArray(options) || options.length < 2) {
-                    res.status(400).json({message: 'Multiple-choice questions require at least two options.'});
-                    return;
+                    return {success: false, error: 'Multiple-choice questions require at least two options.'};
                 }
                 if (
                     correctOptionIndex === undefined ||
@@ -54,8 +55,7 @@ export const createQuestion = async (req: Request, res: Response): Promise<void>
                     correctOptionIndex < 0 ||
                     correctOptionIndex >= options.length
                 ) {
-                    res.status(400).json({message: 'Valid correctOptionIndex is required.'});
-                    return;
+                    return {success: false, error: 'Valid correctOptionIndex is required.'};
                 }
                 const mcQuestion = baseQuestion as IMultipleChoiceQuestion;
                 mcQuestion.options = options;
@@ -64,227 +64,180 @@ export const createQuestion = async (req: Request, res: Response): Promise<void>
                 break;
 
             case 'who-would-rather':
+                const {goodOrBad, quantity} = typeSpecificFields;
+                if (!goodOrBad || !['good', 'bad'].includes(goodOrBad)) {
+                    return {success: false, error: 'goodOrBad must be either "good" or "bad".'};
+                }
+                if (quantity === undefined || typeof quantity !== 'number' || quantity < 2) {
+                    return {success: false, error: 'Quantity must be at least 2.'};
+                }
+                const whoWouldRatherQuestion = baseQuestion as IWhoWouldRatherQuestion;
+                whoWouldRatherQuestion.options = [];
+                whoWouldRatherQuestion.goodOrBad = goodOrBad;
+                whoWouldRatherQuestion.quantity = quantity;
+                savedQuestion = await whoWouldRatherQuestion.save();
+                break;
+
             case 'what-would-you-rather':
-                const {option1, option2, goodOrBad} = typeSpecificFields;
-                if (!option1 || !option2 || !goodOrBad) {
-                    res.status(400).json({message: 'These question types require option1, option2, and goodOrBad fields.'});
-                    return;
+                const {options: wrOptions} = typeSpecificFields;
+                if (!wrOptions || !Array.isArray(wrOptions) || wrOptions.length < 2) {
+                    return {success: false, error: 'What-would-you-rather questions require at least two options.'};
                 }
-                if (!['good', 'bad'].includes(goodOrBad)) {
-                    res.status(400).json({message: 'goodOrBad must be either "good" or "bad".'});
-                    return;
-                }
-                const wrQuestion =
-                    type === 'who-would-rather'
-                        ? (baseQuestion as IWhoWouldRatherQuestion)
-                        : (baseQuestion as IWhatWouldYouRatherQuestion);
-                wrQuestion.option1 = option1;
-                wrQuestion.option2 = option2;
-                wrQuestion.goodOrBad = goodOrBad;
-                savedQuestion = await wrQuestion.save();
+                const whatWouldYouRatherQuestion = baseQuestion as IWhatWouldYouRatherQuestion;
+                whatWouldYouRatherQuestion.options = wrOptions;
+                savedQuestion = await whatWouldYouRatherQuestion.save();
                 break;
 
             case 'ranking':
-                const {categories} = typeSpecificFields;
-                if (!categories || !Array.isArray(categories) || categories.length < 2) {
-                    res.status(400).json({message: 'Ranking questions require at least two categories.'});
-                    return;
+                const {options: rankOptions} = typeSpecificFields;
+                if (!rankOptions || !Array.isArray(rankOptions) || rankOptions.length < 2) {
+                    return {success: false, error: 'Ranking questions require at least two options.'};
                 }
                 const rankingQuestion = baseQuestion as IRankingQuestion;
-                rankingQuestion.categories = categories;
+                rankingQuestion.options = rankOptions;
                 savedQuestion = await rankingQuestion.save();
                 break;
 
             default:
-                res.status(400).json({message: 'Unsupported question type.'});
-                return;
+                return {success: false, error: 'Unsupported question type.'};
         }
 
-        res.status(201).json({
-            message: 'Question created successfully.',
-            question: savedQuestion,
-        });
-
-        // Emit event to notify creation (optional)
-        // io.emit('questionCreated', { questionId: savedQuestion._id, type: savedQuestion.type });
+        return {success: true, data: savedQuestion};
     } catch (error) {
         console.error('Error creating question:', error);
-        res.status(500).json({message: 'Internal server error.'});
+        return {success: false, error: 'Internal server error.'};
     }
 };
 
 /**
- * Controller to retrieve all questions.
- * Can accept query parameters to filter by type or category.
+ * Retrieve all questions with optional filtering by type or category.
  */
-export const getQuestions = async (req: Request, res: Response): Promise<void> => {
+export const getQuestions = async (filters: {
+    types?: string[];
+    categories?: string[];
+    limit?: string;
+}): Promise<OperationResult<IQuestion[]>> => {
     try {
-        const {type, category} = req.query;
+        const {types, categories, limit} = filters;
 
-        // Build the query object based on query parameters
+        // Convert limit to a number and set a default value if not provided
+        const questionLimit = limit ? parseInt(limit, 10) : 10;
+
+        // Build the query object based on provided types and categories
         const query: any = {};
-        if (type) {
-            query.type = type;
+        if (types && types.length > 0) {
+            query.type = {$in: types};
         }
-        if (category) {
-            query.category = category;
+        if (categories && categories.length > 0) {
+            query.category = {$in: categories};
         }
 
-        const questions = await Question.find(query);
+        // Fetch random questions based on the query and limit
+        const questions = await Question.aggregate([
+            {$match: query},
+            {$sample: {size: questionLimit}}, // Randomize the questions
+        ]);
 
-        res.status(200).json({
-            count: questions.length,
-            questions,
-        });
+        return {success: true, data: questions};
     } catch (error) {
         console.error('Error fetching questions:', error);
-        res.status(500).json({message: 'Internal server error.'});
+        return {success: false, error: 'Internal server error.'};
     }
 };
 
 /**
- * Controller to retrieve a single question by its ID.
+ * Retrieve a single question by its ID.
  */
-export const getQuestionById = async (req: Request, res: Response): Promise<void> => {
+export const getQuestionById = async (id: string): Promise<OperationResult<IQuestion>> => {
     try {
-        const {id} = req.params;
-
         if (!Types.ObjectId.isValid(id)) {
-            res.status(400).json({message: 'Invalid question ID.'});
-            return;
+            return {success: false, error: 'Invalid question ID.'};
         }
 
-        const question = await Question.findById(id);
+        // Use `.lean()` to return a plain object instead of a Mongoose document
+        const question = await Question.findById(id).lean<IQuestion>();
 
         if (!question) {
-            res.status(404).json({message: 'Question not found.'});
-            return;
+            return {success: false, error: 'Question not found.'};
         }
 
-        res.status(200).json({question});
+        return {success: true, data: question};
     } catch (error) {
         console.error('Error fetching question:', error);
-        res.status(500).json({message: 'Internal server error.'});
+        return {success: false, error: 'Internal server error.'};
     }
 };
 
-/**
- * Controller to update an existing question by its ID.
- * Allows updating of type-specific fields.
- */
-export const updateQuestion = async (req: Request, res: Response): Promise<void> => {
+export const prepareQuestions = async (
+    question: IQuestion,
+    players: IPlayer[] // Now accepts an array of whole player objects
+): Promise<OperationResult<ICleanQuestion>> => {
+
     try {
-        const {id} = req.params;
-        const updateData = req.body;
-
-        if (!Types.ObjectId.isValid(id)) {
-            res.status(400).json({message: 'Invalid question ID.'});
-            return;
-        }
-
-        const question = await Question.findById(id);
-        if (!question) {
-            res.status(404).json({message: 'Question not found.'});
-            return;
-        }
-
-        // Update base fields
-        if (updateData.question) question.question = updateData.question;
-        if (updateData.category) question.category = updateData.category;
-
-        // Update type-specific fields
         switch (question.type) {
             case 'multiple-choice':
-                const mcUpdate = updateData as Partial<IMultipleChoiceQuestion>;
-                if (mcUpdate.options) {
-                    if (!Array.isArray(mcUpdate.options) || mcUpdate.options.length < 2) {
-                        res.status(400).json({message: 'Multiple-choice questions require at least two options.'});
-                        return;
-                    }
-                    (question as IMultipleChoiceQuestion).options = mcUpdate.options;
+                const multipleChoiceQuestion = question as IMultipleChoiceQuestion;
+
+                // Check if the correctOptionIndex is present in the question
+                if (multipleChoiceQuestion.correctOptionIndex === undefined) {
+                    return {success: false, error: 'Missing correctOptionIndex in multiple-choice question'};
                 }
-                if (mcUpdate.correctOptionIndex !== undefined) {
-                    const mcQuestion = question as IMultipleChoiceQuestion;
-                    if (
-                        typeof mcUpdate.correctOptionIndex !== 'number' ||
-                        mcUpdate.correctOptionIndex < 0 ||
-                        mcUpdate.correctOptionIndex >= mcQuestion.options.length
-                    ) {
-                        res.status(400).json({message: 'Invalid correctOptionIndex.'});
-                        return;
-                    }
-                    mcQuestion.correctOptionIndex = mcUpdate.correctOptionIndex;
-                }
-                break;
+
+                return {
+                    success: true,
+                    data: {
+                        _id: question._id,
+                        type: 'multiple-choice',
+                        question: question.question,
+                        options: multipleChoiceQuestion.options,
+                        // Notice that the correctOptionIndex is included here
+                        correctOptionIndex: 100000 // placeholder value
+                    } as ICleanMultipleChoiceQuestion
+                };
 
             case 'who-would-rather':
+                const randomPlayers = players
+                    .sort(() => 0.5 - Math.random())
+                    .slice(0, 2); // Always select 2 players
+                return {
+                    success: true,
+                    data: {
+                        _id: question._id,
+                        type: 'who-would-rather',
+                        question: question.question,
+                        options: randomPlayers.map(p => p._id.toString()), // Use player names instead of player IDs
+                        goodOrBad: (question as IWhoWouldRatherQuestion).goodOrBad
+                    } as ICleanWhoWouldRatherQuestion
+                };
+
             case 'what-would-you-rather':
-                const wrUpdate =
-                    question.type === 'who-would-rather'
-                        ? (updateData as Partial<IWhoWouldRatherQuestion>)
-                        : (updateData as Partial<IWhatWouldYouRatherQuestion>);
-                if (wrUpdate.option1) (question as IWhoWouldRatherQuestion | IWhatWouldYouRatherQuestion).option1 = wrUpdate.option1;
-                if (wrUpdate.option2) (question as IWhoWouldRatherQuestion | IWhatWouldYouRatherQuestion).option2 = wrUpdate.option2;
-                if (wrUpdate.goodOrBad) {
-                    if (!['good', 'bad'].includes(wrUpdate.goodOrBad)) {
-                        res.status(400).json({message: 'goodOrBad must be either "good" or "bad".'});
-                        return;
-                    }
-                    (question as IWhoWouldRatherQuestion | IWhatWouldYouRatherQuestion).goodOrBad = wrUpdate.goodOrBad;
-                }
-                break;
+                return {
+                    success: true,
+                    data: {
+                        _id: question._id,
+                        type: 'what-would-you-rather',
+                        question: question.question,
+                        options: (question as IWhatWouldYouRatherQuestion).options,
+                        goodOrBad: (question as IWhatWouldYouRatherQuestion).goodOrBad
+                    } as ICleanWhatWouldYouRatherQuestion
+                };
 
             case 'ranking':
-                const rankUpdate = updateData as Partial<IRankingQuestion>;
-                if (rankUpdate.categories) {
-                    if (!Array.isArray(rankUpdate.categories) || rankUpdate.categories.length < 2) {
-                        res.status(400).json({message: 'Ranking questions require at least two categories.'});
-                        return;
-                    }
-                    (question as IRankingQuestion).categories = rankUpdate.categories;
-                }
-                break;
+                const shuffledPlayers = shuffleArray(players.map(p => p.name)); // Shuffle player names instead of IDs
+                return {
+                    success: true,
+                    data: {
+                        _id: question._id,
+                        type: 'ranking',
+                        question: question.question,
+                        options: shuffledPlayers // Player names used for ranking
+                    } as ICleanRankingQuestion
+                };
 
             default:
-                res.status(400).json({message: 'Unsupported question type.'});
-                return;
+                return {success: false, error: 'Invalid question type'};
         }
-
-        await question.save();
-
-        res.status(200).json({
-            message: 'Question updated successfully.',
-            question,
-        });
     } catch (error) {
-        console.error('Error updating question:', error);
-        res.status(500).json({message: 'Internal server error.'});
-    }
-};
-
-/**
- * Controller to delete a question by its ID.
- */
-export const deleteQuestion = async (req: Request, res: Response): Promise<void> => {
-    try {
-        const {id} = req.params;
-
-        if (!Types.ObjectId.isValid(id)) {
-            res.status(400).json({message: 'Invalid question ID.'});
-            return;
-        }
-
-        const question = await Question.findById(id);
-        if (!question) {
-            res.status(404).json({message: 'Question not found.'});
-            return;
-        }
-
-        //await question.remove();
-
-        res.status(200).json({message: 'Question deleted successfully.'});
-    } catch (error) {
-        console.error('Error deleting question:', error);
-        res.status(500).json({message: 'Internal server error.'});
+        return {success: false, error: 'Error preparing question'};
     }
 };

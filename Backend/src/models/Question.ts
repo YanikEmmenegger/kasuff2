@@ -1,14 +1,53 @@
-// src/models/Question.ts
-
-import {Schema, model, Document} from 'mongoose';
+import {Document, model, Schema} from 'mongoose';
 
 /**
  * Base Interface representing a generic Question.
  */
 export interface IBaseQuestion extends Document {
+    _id: Schema.Types.ObjectId;
     type: 'multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking';
     question: string;
     category: string; // e.g., "General", "Sports", etc.
+}
+
+/**
+ * Interface representing a Cleaned Question (safe for frontend).
+ */
+export interface ICleanedQuestion {
+    _id: Schema.Types.ObjectId; // Question ID
+    type: 'multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking'; // Question type
+    question: string; // The actual question text
+}
+
+/**
+ * Interface representing a Cleaned Multiple Choice Question.
+ */
+export interface ICleanMultipleChoiceQuestion extends ICleanedQuestion {
+    options: string[]; // Array of options for multiple-choice
+    correctOptionIndex: number; // Index of the correct answer
+}
+
+/**
+ * Interface representing a Cleaned Who Would Rather Question.
+ */
+export interface ICleanWhoWouldRatherQuestion extends ICleanedQuestion {
+    options: string[]; // Dynamically generated player options
+    goodOrBad: 'good' | 'bad'; // The outcome type
+}
+
+/**
+ * Interface representing a Cleaned What Would You Rather Question.
+ */
+export interface ICleanWhatWouldYouRatherQuestion extends ICleanedQuestion {
+    options: string[]; // Array of choices
+    goodOrBad: 'good' | 'bad'; // The outcome type
+}
+
+/**
+ * Interface representing a Cleaned Ranking Question.
+ */
+export interface ICleanRankingQuestion extends ICleanedQuestion {
+    options: string[]; // Array of player options to rank
 }
 
 /**
@@ -62,12 +101,13 @@ const MultipleChoiceQuestion = BaseQuestion.discriminator<IMultipleChoiceQuestio
 
 /**
  * Interface representing a Who Would Rather Question.
+ * Options will be filled dynamically with players.
  */
 export interface IWhoWouldRatherQuestion extends IBaseQuestion {
     type: 'who-would-rather';
-    option1: string; // First option
-    option2: string; // Second option
+    options: string[]; // Array of players to choose from
     goodOrBad: 'good' | 'bad'; // Determines the type of punishment
+    quantity: number; // Number of players/options to provide (default: 2)
 }
 
 /**
@@ -75,9 +115,9 @@ export interface IWhoWouldRatherQuestion extends IBaseQuestion {
  */
 const WhoWouldRatherQuestionSchema = new Schema<IWhoWouldRatherQuestion>(
     {
-        option1: {type: String, required: true},
-        option2: {type: String, required: true},
+        options: {type: [String], required: true}, // Array of players
         goodOrBad: {type: String, enum: ['good', 'bad'], required: true},
+        quantity: {type: Number, default: 2, required: true}, // Default number of options is 2
     },
     {_id: false}
 );
@@ -95,8 +135,7 @@ const WhoWouldRatherQuestion = BaseQuestion.discriminator<IWhoWouldRatherQuestio
  */
 export interface IWhatWouldYouRatherQuestion extends IBaseQuestion {
     type: 'what-would-you-rather';
-    option1: string; // First option
-    option2: string; // Second option
+    options: string[]; // Array of choices
     goodOrBad: 'good' | 'bad'; // Determines the type of punishment
 }
 
@@ -105,8 +144,7 @@ export interface IWhatWouldYouRatherQuestion extends IBaseQuestion {
  */
 const WhatWouldYouRatherQuestionSchema = new Schema<IWhatWouldYouRatherQuestion>(
     {
-        option1: {type: String, required: true},
-        option2: {type: String, required: true},
+        options: {type: [String], required: true}, // Array of choices
         goodOrBad: {type: String, enum: ['good', 'bad'], required: true},
     },
     {_id: false}
@@ -122,10 +160,11 @@ const WhatWouldYouRatherQuestion = BaseQuestion.discriminator<IWhatWouldYouRathe
 
 /**
  * Interface representing a Ranking Question.
+ * Options will be filled dynamically with players.
  */
 export interface IRankingQuestion extends IBaseQuestion {
     type: 'ranking';
-    categories: string[]; // Categories or items to rank
+    options: string[]; // Array of players to rank
 }
 
 /**
@@ -133,7 +172,7 @@ export interface IRankingQuestion extends IBaseQuestion {
  */
 const RankingQuestionSchema = new Schema<IRankingQuestion>(
     {
-        categories: {type: [String], required: true},
+        options: {type: [String], required: true}, // Array of players
     },
     {_id: false}
 );
@@ -155,6 +194,23 @@ export {
     WhatWouldYouRatherQuestion,
     RankingQuestion,
 };
+/**
+ * Union type representing any question type.
+ */
+export type IQuestion =
+    | IMultipleChoiceQuestion
+    | IWhoWouldRatherQuestion
+    | IWhatWouldYouRatherQuestion
+    | IRankingQuestion;
+
+/**
+ * Union type representing any question type.
+ */
+export type ICleanQuestion =
+    | ICleanMultipleChoiceQuestion
+    | ICleanWhoWouldRatherQuestion
+    | ICleanWhatWouldYouRatherQuestion
+    | ICleanRankingQuestion;
 
 /**
  * Export BaseQuestion as the default export.

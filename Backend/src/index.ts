@@ -1,145 +1,313 @@
-// src/index.ts
-
 import express, {Application, Request, Response} from 'express';
 import http from 'http';
 import {Server as SocketIOServer} from 'socket.io';
-import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from "./swagger.json";
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import cors from 'cors';
-import gamesRouter from './routes/games';
-import playersRouter from './routes/players';
-import questionsRouter from './routes/questions';
-//import {setSocketIO} from './controllers/gameController';
-import Player, {IPlayer} from './models/Player'; // Import Player for Socket.IO
-import rateLimit from 'express-rate-limit';
-import morgan from "morgan";
+import {createGame, joinGame, kickPlayer, leaveGame, loadNextQuestion, startGame} from './controllers/gameController';
+import {
+    createPlayer,
+    generateRandomUsername,
+    handlePlayerReconnect,
+    playerAnswered,
+    updatePlayer
+} from './controllers/playerController';
+import {OperationResult} from './types';
+import {IPlayer} from './models/Player';
+import Game, {IAnswer, IGame, IGameSettings} from './models/Game';
+import {instrument} from "@socket.io/admin-ui";
+import path from "node:path";
 
+// Load environment variables
 dotenv.config();
 
+// Create an Express application
 const app: Application = express();
 const server = http.createServer(app);
 
-// Initialize Socket.IO
+// Initialize Socket.IO with CORS
 const io = new SocketIOServer(server, {
     cors: {
-        origin: '*', // Replace with your frontend URL in production for security
-        methods: ['GET', 'POST', "PUT", "DELETE"],
+        origin: '*',  // Allow any origin (adjust this in production for security)
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
     },
 });
 
-// Apply rate limiting to all requests
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 1000000000000000, // limit each IP to 100 requests per windowMs
-    message: 'Too many requests from this IP, please try again after 15 minutes.',
-});
-app.use(morgan('combined'));
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use(limiter);
+// Socket.IO Admin UI (for monitoring during development)
+instrument(io, {auth: false, mode: 'development'});
 
-// Set Socket.IO instance in controllers
-//setSocketIO(io);
 
-// Define the port
+app.use(express.json()); // Parse JSON bodies
+
+// Define the port (default to 5000 if not in environment)
 const PORT: number = parseInt(process.env.PORT as string, 10) || 5000;
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+app.use(express.json()); // Parse JSON bodies
 
-// Basic Route
+// Serve static files from the Vite-built frontend
+app.use(express.static(path.join(__dirname, '../../frontend/dist')));
+
+// Basic route to serve the built frontend
 app.get('/', (req: Request, res: Response) => {
-    res.send('Welcome to kasuff2 Backend!');
+    res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
 });
 
-// Use Game Routes
-//app.use('/games', gamesRouter);
+// For all other routes, fallback to the index.html (this is important for client-side routing)
+app.get('*', (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
+});
 
-// Use Player Routes
-app.use('/players', playersRouter);
-
-// Use Question Routes
-app.use('/questions', questionsRouter);
-
-// Socket.IO Connection Handler
+// Handle new socket connections
 io.on('connection', (socket) => {
     console.log(`New client connected: ${socket.id}`);
 
-    // Listen for 'register' event to associate socket with player UUID
-    socket.on('register', async (data: { uuid: string }) => {
-        const {uuid} = data;
+    // Log all incoming socket events for debugging
 
-        if (!uuid) {
-            console.error('UUID not provided in register event.');
-            return;
-        }
-
+    // Player reconnect handler
+    socket.on('player:reconnect', async (data: { id: string }, callback: (result: OperationResult<{
+        player: IPlayer,
+        game?: IGame
+    }>) => void) => {
+        const {id} = data;
         try {
-            // Find the player by UUID
-            const player: IPlayer | null = await Player.findOne({uuid});
-
-            if (!player) {
-                console.error(`Player with UUID ${uuid} not found.`);
-                return;
-            }
-
-            // Update the player's socketId
-            player.socketId = socket.id;
-            await player.save();
-
-            console.log(`Socket ID ${socket.id} associated with UUID ${uuid}.`);
-
-            // If the player is in a game, join the Socket.IO room
-            if (player.gameCode) {
-                socket.join(player.gameCode);
-                console.log(`Player ${uuid} joined game ${player.gameCode} via Socket.IO.`);
+            const result = await handlePlayerReconnect(id, socket.id);
+            if (result.success) {
+                console.log(`Player ${id} reconnected with socket ${socket.id}`);
+                callback(result);
+                if (result.data?.game?.code) {
+                    socket.join(result.data.game.code); // Rejoin the game room if applicable
+                    console.log(`Player ${id} rejoined game ${result.data.game.code}`);
+                }
+            } else {
+                console.error(result.error);
+                callback({success: false, error: result.error});
             }
         } catch (error) {
-            console.error('Error associating socket with player:', error);
+            console.error('Error during player reconnect:', error);
+            callback({success: false, error: 'Internal server error.'});
         }
     });
 
-    // Handle disconnection
-    socket.on('disconnect', async () => {
-        console.log(`Client disconnected: ${socket.id}`);
-
+    // Player creation handler
+    socket.on('player:create', async (data: { avatar: any }, callback: (result: OperationResult<IPlayer>) => void) => {
+        const randomName = generateRandomUsername();
+        const {avatar} = data;
         try {
-            // Find the player by socketId
-            const player: IPlayer | null = await Player.findOne({socketId: socket.id});
-
-            if (player) {
-                // Clear the socketId
-                player.socketId = '';
-                await player.save();
-
-                console.log(`Cleared socket ID for UUID ${player.uuid}.`);
+            const result = await createPlayer(randomName, avatar, socket.id);
+            if (result.success) {
+                console.log(`New player created: ${result.data?._id}`);
+                callback(result);
+            } else {
+                console.error(result.error);
+                callback(result);
             }
         } catch (error) {
-            console.error('Error handling disconnection:', error);
+            console.error('Error creating new player:', error);
+            callback({success: false, error: 'Internal server error.'});
         }
     });
 
-    // Additional Socket.IO event handlers can be added here
-});
+    // Player update handler
+    socket.on('player:update', async (data: {
+        id: string,
+        name?: string,
+        avatar?: any,
+        gameCode?: string
+    }, callback: (result: OperationResult<IPlayer>) => void) => {
+        const {id, ...updateData} = data;
+        try {
+            const result = await updatePlayer(id, updateData);
+            if (result.success) {
+                console.log(`Player ${id} updated successfully.`);
+                callback(result);
+                if (result.data?.gameCode) {
+                    socket.join(result.data.gameCode); // Join game room if gameCode exists
+                }
+            } else {
+                console.error(result.error);
+                callback(result);
+            }
+        } catch (error) {
+            console.error('Error updating player:', error);
+            callback({success: false, error: 'Internal server error.'});
+        }
+    });
 
-// Socket.IO Connection Handler (To be implemented later)
-io.on('connection', (socket) => {
-    console.log(`New client connected: ${socket.id}`);
+    // Game creation handler
+    socket.on('game:create', async (data: {
+        creatorId: string,
+        settings: IGameSettings
+    }, callback: (result: OperationResult<IGame>) => void) => {
+        const {creatorId, settings} = data;
+        try {
+            const gameOrError = await createGame(creatorId, settings);
+            if (gameOrError.success) {
+                socket.join(gameOrError.data!.code); // Join the game room
+                console.log(`Player ${creatorId} created game ${gameOrError.data!.code}`);
+                socket.emit('game:joined', gameOrError.data);
+            }
+            callback(gameOrError);
+        } catch (error) {
+            console.error('Error creating game:', error);
+            callback({success: false, error: 'Internal server error.'});
+        }
+    });
+
+    // Player join game handler
+    socket.on('game:join', async (data: {
+        gameCode: string,
+        playerId: string
+    }, callback: (result: OperationResult<IGame>) => void) => {
+        const {gameCode, playerId} = data;
+        try {
+            const result = await joinGame(gameCode, playerId);
+            if (result.success) {
+                socket.join(gameCode); // Join the game room
+                console.log(`Player ${playerId} joined game ${gameCode}`);
+                socket.emit('game:joined', result.data);
+                io.to(gameCode).emit('player:joined', result.data); // Notify other players
+                callback(result);
+            } else {
+                console.error(result.error);
+                callback(result);
+            }
+        } catch (error) {
+            console.error('Error joining game:', error);
+            callback({success: false, error: 'Internal server error.'});
+        }
+    });
+
+    // Player leave game handler
+    socket.on('game:leave', async (data: {
+        gameCode: string,
+        playerId: string
+    }, callback: (result: OperationResult<IPlayer>) => void) => {
+        const {gameCode, playerId} = data;
+        try {
+            const result = await leaveGame(gameCode, playerId);
+            if (result.success) {
+                socket.leave(gameCode); // Leave the game room
+                console.log(`Player ${playerId} left game ${gameCode}`);
+                io.to(gameCode).emit('player:left', {
+                    playerName: result.data!.player.name,
+                    game: result.data!.game,
+                });
+                callback({success: true, data: result.data!.player});
+            } else {
+                console.error(result.error);
+                callback({success: false, error: result.error});
+            }
+        } catch (error) {
+            console.error('Error leaving game:', error);
+            callback({success: false, error: 'Internal server error.'});
+        }
+    });
+
+    // Player kick handler
+    socket.on('game:kick', async (data: {
+        gameCode: string,
+        playerId: string
+    }, callback: (result: OperationResult<IGame>) => void) => {
+        const {gameCode, playerId} = data;
+        try {
+            const result = await kickPlayer(gameCode, playerId);
+            if (result.success) {
+                const player = result.data!.kickedPlayer;
+                const game = result.data!.game;
+                const playerSocket = io.sockets.sockets.get(player.socketId);
+                if (playerSocket) {
+                    playerSocket.leave(gameCode); // Force player to leave room
+                    playerSocket.emit('you:kicked', player);
+                }
+                console.log(`Player ${player._id} was kicked from game ${gameCode}`);
+                socket.to(gameCode).emit('player:kicked', {playerName: player.name, game});
+                callback({success: true, data: game});
+            } else {
+                console.error(result.error);
+                callback({success: false, error: result.error});
+            }
+        } catch (error) {
+            console.error('Error kicking player:', error);
+            callback({success: false, error: 'Internal server error.'});
+        }
+    });
+
+    // Game start handler
+    socket.on('game:start', async (data: { gameCode: string }, callback: (result: OperationResult<IGame>) => void) => {
+        const {gameCode} = data;
+        try {
+            const result = await startGame(gameCode, io);
+            if (result.success) {
+                console.log(`Game ${gameCode} started.`);
+                io.to(gameCode).emit('game:state', {game: result.data}); // Notify all players
+                callback(result);
+            } else {
+                console.error(result.error);
+                callback(result);
+            }
+        } catch (error) {
+            console.error('Error starting game:', error);
+            callback({success: false, error: 'Internal server error.'});
+        }
+    });
+
+    // Game start handler
+    socket.on('game:next', async (data: { gameCode: string }, callback: (result: OperationResult<boolean>) => void) => {
+        const {gameCode} = data;
+        try {
+            //set currentQuestionIndex
+            const game = await Game.findOne({code: gameCode, isActive: true})
+            if (!game) {
+                return {success: false, error: 'Internal server error.'}
+            }
+
+            game.currentQuestionIndex++
+            await game.save()
+
+
+            await loadNextQuestion(gameCode, io);
+            return callback({
+                success: true,
+                data: true
+            });
+        } catch (error) {
+            console.error('Error starting game:', error);
+            callback({success: false, error: 'Internal server error.'});
+        }
+    });
+
+    // Handle player answers (placeholder, implementation to be done)
+    socket.on('player:answer', async (data: {
+        answer: IAnswer,
+        gameCode: string
+    }, callback: (result: OperationResult<IGame>) => void) => {
+        const {gameCode, answer} = data;
+
+        try {
+            const result = await playerAnswered(gameCode, answer, io)
+            if (result.success) {
+                console.log(`Player ${answer.playerId} answered question ${answer.questionId}`);
+                callback(result);
+            } else {
+                console.error(result.error);
+                callback(result);
+            }
+        } catch (error) {
+            console.error('Error submitting answer:', error);
+            callback({success: false, error: 'Internal server error.'});
+        }
+
+    });
 
     // Handle disconnection
     socket.on('disconnect', () => {
         console.log(`Client disconnected: ${socket.id}`);
     });
-
-    // Additional Socket.IO event handlers will go here
 });
 
-// Function to start the server
+// Start the server and connect to MongoDB
 const startServer = async () => {
     try {
-        const mongoURI: string = process.env.MONGODB_URI || 'mongodb://localhost:27017/kasuff2';
+        const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/kasuff2';
         await mongoose.connect(mongoURI);
         console.log('Connected to MongoDB');
 
@@ -148,9 +316,9 @@ const startServer = async () => {
         });
     } catch (error) {
         console.error('Failed to connect to MongoDB', error);
-        process.exit(1); // Exit the process with failure
+        process.exit(1); // Exit the process if DB connection fails
     }
 };
 
 // Start the server
-startServer();
+startServer().catch((error) => console.error('Error starting server:', error));
