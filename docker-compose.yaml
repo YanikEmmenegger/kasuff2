@@ -1,59 +1,16 @@
 version: '3.8'
 
 services:
-  # Temporary Vite builder
-  vite-builder:
-    image: node:18-alpine
-    working_dir: /app
-    container_name: vite-builder
-    volumes:
-      - ./Frontend:/app
-      - ./Backend/public:/backend-public
-    command: sh -c "npm ci && npm run build && rm -rf /backend-public/* && cp -R /app/dist/* /backend-public/"
-    build:
-      context: ./Frontend
-    restart: "no"
-
-  # Node.js backend service
-  backend:
-    image: node:18-alpine
-    container_name: backend
-    working_dir: /app
-    volumes:
-      - ./Backend:/app
-      - ./Backend/public:/app/public
-    command: sh -c "npm ci && npm run build && npm start"
-    ports:
-      - "80:2608"
-    depends_on:
-      - mongodb
-    environment:
-      MONGO_URI: mongodb://root:example@mongodb:27017/mydatabase?authSource=admin
-    restart: always
-
-  # MongoDB service
   mongodb:
-    image: mongo:6.0
-    container_name: kasuff2-mongodb
+    image: mongo:latest
+    container_name: kausuff2_mongo
     ports:
-      - 27017:27017
+      - "27017:27017"
     volumes:
-      - ./Database:/data/db
-      - ./Resources/BASE_QUESTIONS.json:/docker-entrypoint-initdb.d/base_questions.json:ro
+      - ./Database:/data/db   # Mounts your db folder for MongoDB data
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
-    entrypoint: |
-      bash -c "
-      if [ -d /data/db ]; then
-        echo 'Database exists, skipping import...';
-      else
-        echo 'Importing base questions...';
-        mongoimport --uri mongodb://root:example@localhost:27017/mydatabase --collection questions --file /docker-entrypoint-initdb.d/base_questions.json --jsonArray;
-      fi;
-      mongod --bind_ip_all;
-      "
-    restart: always
 
 volumes:
-  mongo-data:
+  mongodb_data:
