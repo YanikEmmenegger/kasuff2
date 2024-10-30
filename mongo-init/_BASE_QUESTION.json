@@ -1,0 +1,137 @@
+[
+  {
+    "_id": {
+      "$oid": "671809b437d822ef30fc9b7c"
+    },
+    "type": "multiple-choice",
+    "question": "Welcher Planet ist der Sonne am nächsten?",
+    "category": "Natur",
+    "options": [
+      "Mars",
+      "Venus",
+      "Merkur",
+      "Jupiter"
+    ],
+    "correctOptionIndex": 2,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "671809b437d822ef30fc9b7d"
+    },
+    "type": "multiple-choice",
+    "question": "Welches ist das größte Land der Welt?",
+    "category": "Geographie",
+    "options": [
+      "Kanada",
+      "Russland",
+      "China",
+      "USA"
+    ],
+    "correctOptionIndex": 1,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "671809b437d822ef30fc9b7e"
+    },
+    "type": "multiple-choice",
+    "question": "Was ist die chemische Formel für Wasser?",
+    "category": "Allgemeinwissen",
+    "options": [
+      "H2O",
+      "CO2",
+      "NaCl",
+      "O2"
+    ],
+    "correctOptionIndex": 0,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "671809b437d822ef30fc9b7f"
+    },
+    "type": "multiple-choice",
+    "question": "Welches Tier ist das schnellste Landtier?",
+    "category": "Natur",
+    "options": [
+      "Gepard",
+      "Löwe",
+      "Leopard",
+      "Tiger"
+    ],
+    "correctOptionIndex": 0,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "671809b437d822ef30fc9b80"
+    },
+    "type": "multiple-choice",
+    "question": "Wer malte die Mona Lisa?",
+    "category": "Geschichte",
+    "options": [
+      "Vincent van Gogh",
+      "Pablo Picasso",
+      "Leonardo da Vinci",
+      "Michelangelo"
+    ],
+    "correctOptionIndex": 2,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "671809b437d822ef30fc9b81"
+    },
+    "type": "multiple-choice",
+    "question": "Welches Land ist bekannt für das Essen von Sushi?",
+    "category": "Essen & Trinken",
+    "options": [
+      "China",
+      "Japan",
+      "Thailand",
+      "Vietnam"
+    ],
+    "correctOptionIndex": 1,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "671809b437d822ef30fc9b82"
+    },
+    "type": "multiple-choice",
+    "question": "Wer hat die Relativitätstheorie entwickelt?",
+    "category": "Technik",
+    "options": [
+      "Isaac Newton",
+      "Albert Einstein",
+      "Galileo Galilei",
+      "Nikola Tesla"
+    ],
+    "correctOptionIndex": 1,
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "671f59823e435a9d0b5f4f98"
+    },
+    "type": "what-would-you-rather",
+    "question": "What would you rather do: go skydiving or scuba diving?",
+    "category": "Adventure",
+    "options": [
+      "Skydiving",
+      "Scuba diving"
+    ],
+    "goodOrBad": "good"
+  },
+  {
+    "_id": {
+      "$oid": "671f5dc23e435a9d0b5f4f9c"
+    },
+    "type": "who-would-rather",
+    "question": "Who would rather win a Nobel Prize?",
+    "category": "Personality",
+    "options": [],
+    "goodOrBad": "bad"
+  }
+]

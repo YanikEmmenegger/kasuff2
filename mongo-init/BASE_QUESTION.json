@@ -1,137 +1,3038 @@
 [
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b7c"
-    },
     "type": "multiple-choice",
-    "question": "Welcher Planet ist der Sonne am nächsten?",
-    "category": "Natur",
+    "question": "Wie hoch ist das Münster in Bern?",
+    "category": "Unbekannt",
     "options": [
-      "Mars",
-      "Venus",
-      "Merkur",
-      "Jupiter"
+      "99 Meter",
+      "101 Meter",
+      "100 Meter",
+      "95 Meter"
     ],
-    "correctOptionIndex": 2,
-    "__v": 0
+    "correctOptionIndex": 2
   },
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b7d"
-    },
     "type": "multiple-choice",
-    "question": "Welches ist das größte Land der Welt?",
-    "category": "Geographie",
+    "question": "Welches dieser Tiere hält keinen Winterschlaf?",
+    "category": "Unbekannt",
     "options": [
-      "Kanada",
-      "Russland",
+      "Eichhörnchen",
+      "Fledermaus",
+      "Igel",
+      "Siebenschläfer"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt die Hauptstadt der Slowakei?",
+    "category": "Unbekannt",
+    "options": [
+      "Sofia",
+      "Prag",
+      "Ljubljan",
+      "Bratislava"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt die Hauptstadt von Schweden?",
+    "category": "Unbekannt",
+    "options": [
+      "Malmö",
+      "London",
+      "Stockholm",
+      "Oslo"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt unser größtes Organ?",
+    "category": "Unbekannt",
+    "options": [
+      "Darm",
+      "Leber",
+      "Herz",
+      "Haut"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Das Schaltjahr ist etwas ganz besonderes. Wie viele Tage hat es?",
+    "category": "Unbekannt",
+    "options": [
+      "365",
+      "364",
+      "366",
+      "367"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt das Märchen in der eine golde Kugel eine wichtige Rolle spielt?",
+    "category": "Unbekannt",
+    "options": [
+      "Der Froschkönig",
+      "Dornröschen",
+      "Hänsel und Gretel",
+      "Schneewittchen"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Zähne hat ein Kleinkind?",
+    "category": "Unbekannt",
+    "options": [
+      "20",
+      "22",
+      "18",
+      "17"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel Prozent Wasser besitzt die Erde?",
+    "category": "Unbekannt",
+    "options": [
+      "10%",
+      "70%",
+      "80%",
+      "60%"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Die Pyramiden wurden von den….",
+    "category": "Unbekannt",
+    "options": [
+      "Römern erbaut",
+      "Ägyptern erbaut",
+      "Griechen erbaut",
+      "Germanen erbaut"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt der längste Fluss Deutschlands?",
+    "category": "Unbekannt",
+    "options": [
+      "Rhein",
+      "Donau",
+      "Spree",
+      "Nekar"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "In welchem Bundesland befindet sich die Stadt Stuttgart?",
+    "category": "Unbekannt",
+    "options": [
+      "Bayern",
+      "Thüringen",
+      "Hessen",
+      "Baden-Württemberg"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Die Eskimos wohnen in…",
+    "category": "Unbekannt",
+    "options": [
+      "einem Iglu",
+      "in einer Jutte",
+      "in einem Zelt",
+      "in einem Erdbau"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann gefriert Wasser?",
+    "category": "Unbekannt",
+    "options": [
+      "bei 0 Grad",
+      "bei -10 Grad",
+      "bei 1 Grad",
+      "bei -1 Grad"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Land hat heute noch eine Königin und einen König?",
+    "category": "Unbekannt",
+    "options": [
+      "Schweden",
+      "Frankreich",
+      "Deutschland",
+      "Italien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann sollen Kartoffeln nicht gegessen werden?",
+    "category": "Unbekannt",
+    "options": [
+      "wenn sie zu klein sind",
+      "wenn sie zu groß sind",
+      "wenn sie bereits stark austreiben",
+      "wenn es Frühkartoffeln sind"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was ist Gala?",
+    "category": "Unbekannt",
+    "options": [
+      "eine Apfelsorte",
+      "eine Gemüsesorte",
+      "ein Käse",
+      "eine Wurstsorte"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lange geht ein Fußballspiel in der Regel?",
+    "category": "Unbekannt",
+    "options": [
+      "120 Minuten",
+      "80 Minuten",
+      "90 Minuten",
+      "30 Minuten"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was bedeutet im Fußball das Wort Foul?",
+    "category": "Unbekannt",
+    "options": [
+      "Es wird eine Pause gemacht",
+      "Es ist ein Regelverstoß passiert",
+      "Der Spieler wird ausgewechselt",
+      "Es heißt Nachspielzeit"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Eine Mannschaft spielt offensiv. Das bedeutet…",
+    "category": "Unbekannt",
+    "options": [
+      "sie spielt auf Angriff",
+      "sie spielt auf Abwehr",
+      "sie spielt langsamer",
+      "sie spielt schneller"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt der deutsche Bundestrainer 2022?",
+    "category": "Unbekannt",
+    "options": [
+      "Hansi Flick",
+      "Thomas Müller",
+      "Mario Götze",
+      "Franz Beckenbauer"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wer hat die EM 2012 gewonnen?",
+    "category": "Unbekannt",
+    "options": [
+      "Italien",
+      "Frankreich",
+      "Deutschland",
+      "Spanien"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wo befindet sich das größte Fußballstadion in Europa?",
+    "category": "Unbekannt",
+    "options": [
+      "Barcelona",
+      "München",
+      "Berlin",
+      "Madrid"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Mannschaften befinden sich in der ersten Bundesliga?",
+    "category": "Unbekannt",
+    "options": [
+      "18",
+      "16",
+      "10",
+      "22"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Bezeichnung wird im Fußball verwendet?",
+    "category": "Unbekannt",
+    "options": [
+      "Bogenlampe",
+      "Nachttischlampe",
+      "Taschenlampe",
+      "Blitzlicht"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann wird ein Platzverweis vergeben?",
+    "category": "Unbekannt",
+    "options": [
+      "bei einer roten Karte",
+      "wenn es eine Pause gibt",
+      "bei einer gelben Karte",
+      "wenn das Spiel vorbei ist"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann wurde die Bundesliga gegründet?",
+    "category": "Unbekannt",
+    "options": [
+      "1877",
+      "1912",
+      "1945",
+      "1963"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "In welchem Land wurde der Fußball erfunden?",
+    "category": "Unbekannt",
+    "options": [
+      "England",
+      "Frankreich",
+      "Katar",
+      "Italien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie nennt man den Begriff, wenn ein Spieler innerhalb einer Halbzeit drei Tore hintereinander schießt?",
+    "category": "Unbekannt",
+    "options": [
+      "Superball",
+      "Schützentrick",
+      "Hattrick",
+      "Balltrickser"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wo befindet sich der Steigbügel?",
+    "category": "Unbekannt",
+    "options": [
+      "im Ohr",
+      "in der Leber",
+      "im Magen",
+      "im Darm"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel Zähne hat ein Milchzahngebiss?",
+    "category": "Unbekannt",
+    "options": [
+      "20 Zähne",
+      "15 Zähne",
+      "10 Zähne",
+      "18 Zähne"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist das größte Organ des Menschen?",
+    "category": "Unbekannt",
+    "options": [
+      "das Herz",
+      "die Leber",
+      "der Darm",
+      "die Haut"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Knochen besitzt ein erwachsener Mensch?",
+    "category": "Unbekannt",
+    "options": [
+      "ca. 214 Knochen",
+      "ca. 112 Knochen",
+      "ca. 80 Knochen",
+      "ca. 180 Knochen"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Organ zählt zu den Verdauungsorganen?",
+    "category": "Unbekannt",
+    "options": [
+      "die Augen",
+      "der Darm",
+      "das Herz",
+      "die Lunge"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lang ist der Darm des Menschen?",
+    "category": "Unbekannt",
+    "options": [
+      "bis 7,5 Meter",
+      "bis 3,2 Meter",
+      "bis 2,2 Meter",
+      "bis 3,9 Meter"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt die Krankheit, bei der man am ganzen Körper kleine, rote Punkte bekommt?",
+    "category": "Unbekannt",
+    "options": [
+      "Windpocken",
+      "Keuchhusten",
+      "Grippe",
+      "Scharlach"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Ab wann lernen die meisten Kinder das Laufen ?",
+    "category": "Unbekannt",
+    "options": [
+      "ab 3 Monate",
+      "ab 6 Monate",
+      "ab 9 Monate",
+      "ab 12 Monate"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Augenfarbe haben alle Babys bei der Geburt?",
+    "category": "Unbekannt",
+    "options": [
+      "Blau",
+      "Grün",
+      "Braun",
+      "Gelb"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Organ ist das schwerste Organ im menschlichen Körper?",
+    "category": "Unbekannt",
+    "options": [
+      "das Gehirn",
+      "die Haut",
+      "der Darm",
+      "die Lunge"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Organ sieht aus wie eine Bohne?",
+    "category": "Unbekannt",
+    "options": [
+      "das Herz",
+      "die Milz",
+      "die Leber",
+      "die Niere"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Aufgabe haben die Nieren?",
+    "category": "Unbekannt",
+    "options": [
+      "sie pumpen Blut zum Herz",
+      "sie verdauen die Nahrung",
+      "sie bilden sauerstoffreiches Blut",
+      "sie befreien den Körper von Giftstoffen"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Vitamin ist für die Augen wichtig?",
+    "category": "Unbekannt",
+    "options": [
+      "Vitamin A",
+      "Vitamin B",
+      "Vitamin C",
+      "Vitamin D"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel Blut besitzt ein ausgewachsener Mensch im Durchschnitt?",
+    "category": "Unbekannt",
+    "options": [
+      "fünf bis sechs Liter Blut",
+      "drei bis vier Liter Blut",
+      "ein bis zwei Liter Blut",
+      "acht bis neun Liter Blut"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was sind Erythrozyten?",
+    "category": "Unbekannt",
+    "options": [
+      "weiße Blutzellen",
+      "rote Blutkörperchen",
+      "Zellen in der Bauchspeicheldrüse",
+      "Gehirnzellen"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut kann aufgrund seines Aussehens mit den giftigen Maiglöckchen verwechselt werden?",
+    "category": "Unbekannt",
+    "options": [
+      "Bärlauch",
+      "Bohnenkraut",
+      "Estragon",
+      "Petersilie"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Woher stammt Basilikum?",
+    "category": "Unbekannt",
+    "options": [
+      "Mexiko",
+      "Brasilien",
+      "Italien",
+      "Indien"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Von wem wurde Bohnenkraut vom Mittelmeerraum über die Alpen gebracht?",
+    "category": "Unbekannt",
+    "options": [
+      "Römer",
+      "Neandertaler",
+      "Benediktinermönche",
+      "Germanen"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut wird oft mit Fenchel verwechselt?",
+    "category": "Unbekannt",
+    "options": [
+      "Dill",
+      "Basilikum",
+      "Oregano",
+      "Bärlauch"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut bezeichnet man auch als “Schlangenkraut”?",
+    "category": "Unbekannt",
+    "options": [
+      "Petersilie",
+      "Estragon",
+      "Majoran",
+      "Dill"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Mit welchem Kraut wurden im Mittelalter Flöhe und Läuse bekämpft?",
+    "category": "Unbekannt",
+    "options": [
+      "Zwiebel",
+      "Knoblauch",
+      "Koriander",
+      "Dill"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie wird Liebstöckel noch genannt?",
+    "category": "Unbekannt",
+    "options": [
+      "Wunderkraut",
+      "Maggikraut",
+      "Rotkraut",
+      "Heilkraut"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut wird auch ” wilder Majoran” genannt?",
+    "category": "Unbekannt",
+    "options": [
+      "Origano",
+      "Dill",
+      "Petersilie",
+      "Knoblauch"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut kann bis zu 2 Meter hoch werden?",
+    "category": "Unbekannt",
+    "options": [
+      "Bärlauch",
+      "Knoblauch",
+      "Rosmarin",
+      "Persilie"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut lässt sich vor allem an Berghängen finden?",
+    "category": "Unbekannt",
+    "options": [
+      "Rosmarien",
+      "Dill",
+      "Bärlauch",
+      "Salbei"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut ist mit dem Zwiebelgewächs verwandt?",
+    "category": "Unbekannt",
+    "options": [
+      "Schnittlauch",
+      "Petersilie",
+      "Dill",
+      "Rosmarin"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut wird sehr gerne für Spaghetti Bolognese verwendet?",
+    "category": "Unbekannt",
+    "options": [
+      "Dill",
+      "Schnittlauch",
+      "Basilikum",
+      "Lemongras"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Bei welchem Kraut lassen sich auch die Blüten mitessen?",
+    "category": "Unbekannt",
+    "options": [
+      "Rosmarien",
+      "Dill",
+      "Majoran",
+      "Kapuzinerkresse"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇭🇰",
+    "category": "Unbekannt",
+    "options": [
       "China",
-      "USA"
+      "Tunesien",
+      "Hong Kong",
+      "Indonesien"
     ],
-    "correctOptionIndex": 1,
-    "__v": 0
+    "correctOptionIndex": 2
   },
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b7e"
-    },
     "type": "multiple-choice",
-    "question": "Was ist die chemische Formel für Wasser?",
-    "category": "Allgemeinwissen",
+    "question": "Zu welchem Land gehört diese Flagge? 🇾🇪",
+    "category": "Unbekannt",
     "options": [
-      "H2O",
-      "CO2",
-      "NaCl",
-      "O2"
+      "Yemen",
+      "Ägypten",
+      "Syrien",
+      "Malawi"
     ],
-    "correctOptionIndex": 0,
-    "__v": 0
+    "correctOptionIndex": 0
   },
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b7f"
-    },
     "type": "multiple-choice",
-    "question": "Welches Tier ist das schnellste Landtier?",
-    "category": "Natur",
+    "question": "Zu welchem Land gehört diese Flagge? 🇧🇬",
+    "category": "Unbekannt",
     "options": [
-      "Gepard",
+      "Bulgarien",
+      "Moldawien",
+      "Ungarn",
+      "Armenien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇹🇳",
+    "category": "Unbekannt",
+    "options": [
+      "Tunesien",
+      "Moldawien",
+      "Türkei",
+      "Indonesien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇸🇮",
+    "category": "Unbekannt",
+    "options": [
+      "Slowenien",
+      "Tschechien",
+      "Slovakei",
+      "Weissrussland"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇱🇺",
+    "category": "Unbekannt",
+    "options": [
+      "Niederlande",
+      "Luxemburg",
+      "Russland",
+      "Frankreich"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇪🇪",
+    "category": "Unbekannt",
+    "options": [
+      "Weissrussland",
+      "Estland",
+      "Litauen",
+      "Lettland"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇻🇪",
+    "category": "Unbekannt",
+    "options": [
+      "Venezuela",
+      "Kolumbien",
+      "Ecuador",
+      "Bolivien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇪🇨",
+    "category": "Unbekannt",
+    "options": [
+      "Venezuela",
+      "Kolumbien",
+      "Ecuador",
+      "Bolivien"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇸🇷",
+    "category": "Unbekannt",
+    "options": [
+      "Papua Neuguinea",
+      "Suriname",
+      "Taiwan",
+      "Somalia"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇫🇯",
+    "category": "Unbekannt",
+    "options": [
+      "Tuvalu",
+      "Montserrat",
+      "Britische Jungerninseln",
+      "Fidschi"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist die grösste Stadt Europas?",
+    "category": "Unbekannt",
+    "options": [
+      "Barcelona",
+      "Paris",
+      "London",
+      "Moskau"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Teile von 'Fluch der Karibik gibt es' gibt es?",
+    "category": "Unbekannt",
+    "options": [
+      "4",
+      "7",
+      "5",
+      "3"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist keine Primzahl?",
+    "category": "Unbekannt",
+    "options": [
+      "4481",
+      "9349",
+      "1627",
+      "3542"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lang ist der Panamakanal?",
+    "category": "Unbekannt",
+    "options": [
+      "82",
+      "75",
+      "53",
+      "89"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann entdeckte Chris Kolumbus Amerika?",
+    "category": "Unbekannt",
+    "options": [
+      "1391",
+      "1499",
+      "1492",
+      "1594"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst die Hauptstadt von Australien?",
+    "category": "Unbekannt",
+    "options": [
+      "Sydney",
+      "Canberra",
+      "Melbourne",
+      "Perth"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst die Hauptstadt von Kanada?",
+    "category": "Unbekannt",
+    "options": [
+      "Toronto",
+      "Vancouver",
+      "Ottawa",
+      "Ontario"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst die Hauptstadt von Indien?",
+    "category": "Unbekannt",
+    "options": [
+      "Mumbai",
+      "Dehli",
+      "Kalkutta",
+      "New Dehli"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst die Hauptstadt von Marokko?",
+    "category": "Unbekannt",
+    "options": [
+      "Rabat",
+      "Casablanca",
+      "Marrakesh",
+      "Tanger"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Stadt hiess frührer Konstantinopel?",
+    "category": "Unbekannt",
+    "options": [
+      "Instanbul",
+      "Budapest",
+      "St. Petersburg",
+      "Athen"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele KM ist der Äquator lang?",
+    "category": "Unbekannt",
+    "options": [
+      "40'000",
+      "44'000",
+      "38'000",
+      "50'000"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann wurde der Euro eingeführt?",
+    "category": "Unbekannt",
+    "options": [
+      "2000",
+      "2001",
+      "2002",
+      "2003"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst J.k Rowling (Harry Potter) mit vollem Namen?",
+    "category": "Unbekannt",
+    "options": [
+      "Joanne Kathleen Rowling",
+      "Jeanine Kate Rowling",
+      "Juliet Kathrin Rowling",
+      "Jeanine Kathrin Rowling"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "In welchem Jahr sank die Titanic?",
+    "category": "Unbekannt",
+    "options": [
+      "1915",
+      "1920",
+      "1908",
+      "1912"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Herzen hat ein Oktopus?",
+    "category": "Unbekannt",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "8"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie hoch hängt ein Basketball-Korb?",
+    "category": "Unbekannt",
+    "options": [
+      "3.5",
+      "3.15",
+      "2.9",
+      "3.05"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus wie vielen Kräutern entsteht Jägermeister?",
+    "category": "Unbekannt",
+    "options": [
+      "45",
+      "56",
+      "65",
+      "32"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Die Freiheitsstatue in New York war ein Geschenk von:",
+    "category": "Unbekannt",
+    "options": [
+      "Spanien",
+      "England",
+      "Italien",
+      "Frankreich"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Nachbarsländer hat Deutschland?",
+    "category": "Unbekannt",
+    "options": [
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Land produziert am meisten Kaffee?",
+    "category": "Unbekannt",
+    "options": [
+      "Brasillien",
+      "Peru",
+      "Kongo",
+      "Bolivien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist der grösste Ozean der Welt?",
+    "category": "Unbekannt",
+    "options": [
+      "Pazifischer Ozean",
+      "Atlantischer Ozean",
+      "Indischer Ozean",
+      "Mittelmeer"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Sternzeichen hat jemand der am 21. August Geburtstag hat",
+    "category": "Unbekannt",
+    "options": [
+      "Jungfrau",
+      "Fisch",
       "Löwe",
-      "Leopard",
-      "Tiger"
+      "Waage"
     ],
-    "correctOptionIndex": 0,
-    "__v": 0
+    "correctOptionIndex": 2
   },
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b80"
-    },
     "type": "multiple-choice",
-    "question": "Wer malte die Mona Lisa?",
-    "category": "Geschichte",
+    "question": "Welcher ist der grösste Planet in unserem Sonnensystem?",
+    "category": "Unbekannt",
     "options": [
-      "Vincent van Gogh",
+      "Saturn",
+      "Sonne",
+      "Jupiter",
+      "Uranus"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Liter sind in einer Gallone?",
+    "category": "Unbekannt",
+    "options": [
+      "4.5",
+      "3.5",
+      "5.5",
+      "6.5"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele KM/H sind 1 Knoten?",
+    "category": "Unbekannt",
+    "options": [
+      "2.435",
+      "1.852",
+      "1.345",
+      "2.132"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Meter sind eine Seemeile?",
+    "category": "Unbekannt",
+    "options": [
+      "1852",
+      "1.85",
+      "1.653",
+      "1653"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Meter sind eine Seemeile?",
+    "category": "Unbekannt",
+    "options": [
+      "1852",
+      "1.85",
+      "1.653",
+      "1653"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört die Stadt Cardiff?",
+    "category": "Unbekannt",
+    "options": [
+      "Wales",
+      "Jamaica",
+      "Domenikanische Rebublik",
+      "Georgien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört die Stadt Kingston?",
+    "category": "Unbekannt",
+    "options": [
+      "USA",
+      "England",
+      "Jamaica",
+      "Kuba"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Gebirge gehört Patagonien?",
+    "category": "Unbekannt",
+    "options": [
+      "Anden",
+      "Rocky Mountains",
+      "Alpen",
+      "Rhodopen"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Einwohner hat Tokio?",
+    "category": "Unbekannt",
+    "options": [
+      "10 Mio",
+      "37 Mio",
+      "24 Mio",
+      "8 Mio"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus welchem Land kommt der Puma Gründer?",
+    "category": "Unbekannt",
+    "options": [
+      "Frankreich",
+      "Italien",
+      "Deutschland",
+      "Belgien"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus welchem Land kommt der Nike Gründer?",
+    "category": "Unbekannt",
+    "options": [
+      "USA",
+      "Italien",
+      "Oesterreich",
+      "Detuschland"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus welchem Land kommt der Nike Gründer?",
+    "category": "Unbekannt",
+    "options": [
+      "Schweiz",
+      "USA",
+      "Deutschland",
+      "Kanada"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie schnell war Usain Bolt bei seinem Weltrekord in km/h?",
+    "category": "Unbekannt",
+    "options": [
+      "44",
+      "37",
+      "40",
+      "49"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie hoch ist der Mt. Everest in Meter?",
+    "category": "Unbekannt",
+    "options": [
+      "5000",
+      "7832",
+      "8848",
+      "8781"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist der höchste Berg der Schweiz?",
+    "category": "Unbekannt",
+    "options": [
+      "Matterhorn",
+      "Eiger",
+      "Mönch",
+      "Dufourspitze"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wenn man alle Gefässe des menschlichen Körpers auslegen würde, wie lange wäre dies?",
+    "category": "Unbekannt",
+    "options": [
+      "50'000km",
+      "1km",
+      "3000km",
+      "30m"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lange ist die Aare in km?",
+    "category": "Unbekannt",
+    "options": [
+      "292",
+      "301",
+      "250",
+      "500"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Land hat die längste Grenze zu Frankreich (territorial Gebiet)",
+    "category": "Unbekannt",
+    "options": [
+      "Mexiko",
+      "Monaco",
+      "Spanien",
+      "Brasilien"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Ca)",
+    "category": "Unbekannt",
+    "options": [
+      "Kalzium",
+      "Kalium",
+      "Kohlenstoff",
+      "Cer"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Au)",
+    "category": "Unbekannt",
+    "options": [
+      "Silber",
+      "Platin",
+      "Gold",
+      "Bronze"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Pb)",
+    "category": "Unbekannt",
+    "options": [
+      "Plutonium",
+      "Blei",
+      "Polonium",
+      "Bismut"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Ag)",
+    "category": "Unbekannt",
+    "options": [
+      "Silber",
+      "Platin",
+      "Gold",
+      "Bronze"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Fe)",
+    "category": "Unbekannt",
+    "options": [
+      "Felilium",
+      "Fluor",
+      "Stickstoff",
+      "Eisen"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (N)",
+    "category": "Unbekannt",
+    "options": [
+      "Natrium",
+      "Kohlenstoff",
+      "Stickstoff",
+      "Titan"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Th)",
+    "category": "Unbekannt",
+    "options": [
+      "Tharium",
+      "Thorin",
+      "Thorium",
+      "Tharin"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Hg)",
+    "category": "Unbekannt",
+    "options": [
+      "Handgranatium",
+      "Hydragium",
+      "Quecksilber",
+      "Polonium"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Es)",
+    "category": "Unbekannt",
+    "options": [
+      "Eisen",
+      "Einsteinium",
+      "Esbium",
+      "Iod"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was verbirgt sich hinter dieser Chemischen Formel (C17H21NO4)",
+    "category": "Unbekannt",
+    "options": [
+      "Zucker",
+      "Traubenzucker",
+      "Glukose",
+      "Kokain"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was verbirgt sich hinter dieser Chemischen Formel (C6H12O6)",
+    "category": "Unbekannt",
+    "options": [
+      "Traubenzucker",
+      "Coca Cola",
+      "Pizza Margherita",
+      "Kokain"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Skyblues?",
+    "category": "Unbekannt",
+    "options": [
+      "Chelsea FC",
+      "Leicester City",
+      "Mancheseter City",
+      "New York City"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Colchoneros?",
+    "category": "Unbekannt",
+    "options": [
+      "River Plate",
+      "Athletico Madrid",
+      "Athletico Bilbao",
+      "Santos FC"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Die Fohlen?",
+    "category": "Unbekannt",
+    "options": [
+      "Schalke 04",
+      "Hoffenheim",
+      "Mönchengladbach",
+      "Leverkusen"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Rossoneri?",
+    "category": "Unbekannt",
+    "options": [
+      "AC Milan",
+      "Inter Mailand",
+      "Napoli",
+      "Juventus Turin"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Nerazzurri?",
+    "category": "Unbekannt",
+    "options": [
+      "AC Milan",
+      "Inter Mailand",
+      "Napoli",
+      "Juventus Turin"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Bianconeri?",
+    "category": "Unbekannt",
+    "options": [
+      "AC Milan",
+      "Real Madrid",
+      "Napoli",
+      "Juventus Turin"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Peixe?",
+    "category": "Unbekannt",
+    "options": [
+      "Palmeiras",
+      "River Plate",
+      "Santos FC",
+      "Athletico Madrid"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Verdão?",
+    "category": "Unbekannt",
+    "options": [
+      "Palmeiras",
+      "Fc Porto",
+      "Benfica Lissabon",
+      "Sao Paolo FC"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Derby steckt hinter 'Derby di Mole'?",
+    "category": "Unbekannt",
+    "options": [
+      "Juventus v. Fc Turin",
+      "AS Roma v. Lazio Rom",
+      "AC Milan v. Inter Mailand",
+      "Chievo v. Hellas Verona"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Derby steckt hinter 'Derby d'Italia'?",
+    "category": "Unbekannt",
+    "options": [
+      "Juventus v. Napoli",
+      "Inter Mailand v. Juventus",
+      "AC Milan v. Napoli",
+      "AC Milan v. Juventus"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Derby steckt hinter 'Derby della Madonnina'?",
+    "category": "Unbekannt",
+    "options": [
+      "Juventus v. Fc Turin",
+      "AS Roma v. Lazio Rom",
+      "AC Milan v. Inter Mailand",
+      "Inter Mailand v. Juventus"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Derby steckt hinter 'Revierderby'?",
+    "category": "Unbekannt",
+    "options": [
+      "Dortmund v. Schalke 04",
+      "Dortmund v. Bayern",
+      "Bayern v. TSV München",
+      "Inter Mailand v. Juventus"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Derby steckt hinter 'Ewiges Derby'?",
+    "category": "Unbekannt",
+    "options": [
+      "Partizan Belgrad v. Roter Stern Belgrad",
+      "PAOK v. Aris Thessaloniki",
+      "Dinamo Zagreb v. Hajduk Split",
+      "River Plate v. Bocca Juniors"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wofür steht USB?",
+    "category": "Unbekannt",
+    "options": [
+      "Ultra speed base",
+      "Universal Stick Bus",
+      "Universal Serial Bus",
+      "United Serial Band"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wofür steht LCD?",
+    "category": "Unbekannt",
+    "options": [
+      "Liquid Crystal Display",
+      "Light Crystal Desktop",
+      "Liquid Ceramic Display",
+      "Ligquid Ceramic Display"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Unternehmen ist am Wertvollsten?",
+    "category": "Unbekannt",
+    "options": [
+      "Amazon",
+      "Alphabet (Google)",
+      "META (Facebook)",
+      "Apple"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist der am besten bewerteste Film (IMDb)",
+    "category": "Unbekannt",
+    "options": [
+      "Die Verurteilten",
+      "The Godfather",
+      "The Dark Knight",
+      "Fight Club"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Video ist das meist geschaute auf Youtube (Stand 2021)",
+    "category": "Unbekannt",
+    "options": [
+      "Despacito",
+      "Shape of you",
+      "See you Again",
+      "Baby Shark Dance"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist die am besten bewerteste Tv-Show (IMDb)",
+    "category": "Unbekannt",
+    "options": [
+      "Breaking Bad",
+      "Planet Earth II",
+      "Game of Thrones",
+      "Planet Earth"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist der teuerste Film in der Produktion (Stand 2021)",
+    "category": "Unbekannt",
+    "options": [
+      "Fluch der Karibik - Fremde Gezeiten",
+      "Avengers: Age of Ultron",
+      "Avatar",
+      "Avengers: Endgame"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "1$ 1900 hat heute einen Wert (Inflation) von:",
+    "category": "Unbekannt",
+    "options": [
+      "0.3$",
+      "3$",
+      "34$",
+      "65$"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört Bali",
+    "category": "Unbekannt",
+    "options": [
+      "Thailand",
+      "Bali",
+      "Indonesien",
+      "Japan"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört Grönland",
+    "category": "Unbekannt",
+    "options": [
+      "Dänemark",
+      "Island",
+      "USA",
+      "Grönland"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört Litauen",
+    "category": "Unbekannt",
+    "options": [
+      "Estland",
+      "Lettland",
+      "Russland",
+      "Litauen"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel grösser ist Frankreich als die Schweiz",
+    "category": "Unbekannt",
+    "options": [
+      "10x",
+      "13x",
+      "19x",
+      "7x"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie hoch ist die Lebenserwartung der Männer in den USA",
+    "category": "Unbekannt",
+    "options": [
+      "75",
+      "82",
+      "71",
+      "76"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie hoch ist die Lebenserwartung der Männer im Kongo",
+    "category": "Unbekannt",
+    "options": [
+      "71",
+      "60",
+      "63",
+      "76"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie hoch ist das Durschnittsalter in der Schweiz?",
+    "category": "Unbekannt",
+    "options": [
+      "43",
+      "35",
+      "52",
+      "25"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann wurde Starbucks gegründet?",
+    "category": "Unbekannt",
+    "options": [
+      "1975",
+      "1999",
+      "1971",
+      "1983"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann wurde McDonalds gegründet?",
+    "category": "Unbekannt",
+    "options": [
+      "1955",
+      "1945",
+      "1950",
+      "1960"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Starbucks Coffeeshops gibt es weltweit (Stand 2021)",
+    "category": "Unbekannt",
+    "options": [
+      "27'000",
+      "52'000",
+      "18'000",
+      "33'000"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele McDonalds gibt es weltweit (Stand 2020)",
+    "category": "Unbekannt",
+    "options": [
+      "39'000",
+      "52'000",
+      "45'000",
+      "33'000"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Meter hoch ist der Burj Khalifa?",
+    "category": "Unbekannt",
+    "options": [
+      "820",
+      "848",
+      "812",
+      "828"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Stockwerke hat der Burj Khalifa?",
+    "category": "Unbekannt",
+    "options": [
+      "100",
+      "152",
+      "163",
+      "141"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Meter hoch ist das Empire State Building?",
+    "category": "Unbekannt",
+    "options": [
+      "318",
+      "381",
+      "345",
+      "354"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Mitarbeiter beschäftigt Nestle (Stand 2019)",
+    "category": "Unbekannt",
+    "options": [
+      "401'000",
+      "291'000",
+      "163'000",
+      "199'000"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Mitarbeiter beschäftigt die Migros-Gruppe (Stand 2020)",
+    "category": "Unbekannt",
+    "options": [
+      "30'000",
+      "5'000",
+      "120'000",
+      "99'000"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "VW hat 200'000 Mitarbeiter, wie viele davon arbeiten in Deutschland?",
+    "category": "Unbekannt",
+    "options": [
+      "200'000",
+      "50'000",
+      "120'000",
+      "100'000"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welcher Familie gehört der Fuchs?",
+    "category": "Unbekannt",
+    "options": [
+      "Katzen",
+      "Bären",
+      "Hunde",
+      "Vogel"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Arten von Delfinen und Walen gibt es?",
+    "category": "Unbekannt",
+    "options": [
+      "90",
+      "20",
+      "200",
+      "150"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was machen Murmeltiere bei Gefahr?",
+    "category": "Unbekannt",
+    "options": [
+      "Tot stellen",
+      "Rennen",
+      "Pfeifen",
+      "Fauchen"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was heisst Orang Utan übersetzt?",
+    "category": "Unbekannt",
+    "options": [
+      "Waldmeister",
+      "Waldbaum",
+      "Waldaffe",
+      "Waldmensch"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lange schläft ein Löwe durschnittlich am Tag?",
+    "category": "Unbekannt",
+    "options": [
+      "10 Stunden",
+      "16 Stunden",
+      "8 Stunden",
+      "20 Stunden"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Reptil ist das Grösste?",
+    "category": "Unbekannt",
+    "options": [
+      "Kaiman",
+      "Alligator",
+      "Krokodil",
+      "Komodowaran"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie schwer wird ein Komodowaran in KG?",
+    "category": "Unbekannt",
+    "options": [
+      "40",
+      "50",
+      "60",
+      "80"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie gross (Länge) kann ein Krokodil werden in Meter?",
+    "category": "Unbekannt",
+    "options": [
+      "2",
+      "7",
+      "4",
+      "5"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie schnell kann eine LEderschildkröte sich fortbewegen?",
+    "category": "Unbekannt",
+    "options": [
+      "5km/h",
+      "7km/h",
+      "15km/h",
+      "35km/h"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie gross wird ein Blauwal?",
+    "category": "Unbekannt",
+    "options": [
+      "13 Meter",
+      "24 Meter",
+      "31 Meter",
+      "35 Meter"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Kilogramm Krill kann ein Blauwal am Tag aufnehmen?",
+    "category": "Unbekannt",
+    "options": [
+      "3.1",
+      "3'600",
+      "10'000",
+      "700"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist der Grösste Fisch?",
+    "category": "Unbekannt",
+    "options": [
+      "Weisser Hai",
+      "Blauwal",
+      "Walhei",
+      "Riesenhai"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Tier hat den Wissenschaftlichen Namen Rhincodon typus?",
+    "category": "Unbekannt",
+    "options": [
+      "Rhinozeros",
+      "Blauwal",
+      "Walhai",
+      "Riesennashorn"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus welcher Stadt kommt das NFL-Team Steelers?",
+    "category": "Unbekannt",
+    "options": [
+      "New York",
+      "Boston",
+      "Pittsburgh",
+      "San Diego"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus welchem Staat kommt das NFL-Team Green Bay Packers?",
+    "category": "Unbekannt",
+    "options": [
+      "North Dakota",
+      "North Carolina",
+      "Minnesota",
+      "Wisconsin"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus welcher Stadt kommt das MLB-Team  Los Angeles Dodgers ursprünglich?",
+    "category": "Unbekannt",
+    "options": [
+      "New York",
+      "Los Angeles",
+      "San Francisco",
+      "Atlanta"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Team ist MLS Rekordmeister?",
+    "category": "Unbekannt",
+    "options": [
+      "New York City FC",
+      "L.A Galaxy",
+      "Chicago Fire",
+      "L.A FC"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann fand die erste Sasion der MLS statt?",
+    "category": "Unbekannt",
+    "options": [
+      "1968",
+      "1974",
+      "1996",
+      "2001"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lange dauerte Juri Gagarins Weltraum Flug (1961, erster Mensch im Weltall)",
+    "category": "Unbekannt",
+    "options": [
+      "4h",
+      "50min",
+      "1h 48min",
+      "2h 10min"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches war das erste Lebewesen, welche einen Flug ins All und wieder zurück überlebt hat?",
+    "category": "Unbekannt",
+    "options": [
+      "Mensch",
+      "Hund",
+      "Katze",
+      "Affe"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie gross ist die Zahl Googol?",
+    "category": "Unbekannt",
+    "options": [
+      "10^50",
+      "10^100",
+      "10^150",
+      "10^75"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was gibt die Rechnung (7!)",
+    "category": "Unbekannt",
+    "options": [
+      "720",
+      "2628",
+      "5040",
+      "5421"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was gibt die Rechnung (3!*2/4)",
+    "category": "Unbekannt",
+    "options": [
+      "24",
+      "3",
+      "12",
+      "6"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wo schneidet die Gerade die Y-Achse, wenn Y=-3x+2?",
+    "category": "Unbekannt",
+    "options": [
+      "3",
+      "2.5",
+      "2",
+      "5"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was gibt die Rechnung (4!/3+2)",
+    "category": "Unbekannt",
+    "options": [
+      "24",
+      "12",
+      "4",
+      "10"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was gibt die Rechnung (40^0*2)",
+    "category": "Unbekannt",
+    "options": [
+      "40",
+      "80",
+      "2",
+      "4"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "wie heisst der erste Mensch auf dem Mond?",
+    "category": "Unbekannt",
+    "options": [
+      "Neil Armstrong",
+      "Lance Armstrong",
+      "Adam Armstrong",
+      "Thomas Armweak"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst die Raum-Misson die zum ersten Mal einen Mensch auf den Mond brachte?",
+    "category": "Unbekannt",
+    "options": [
+      "Apollo 11",
+      "Apollo 12",
+      "Apolon 13",
+      "Apollon 11"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann war der erste Mensch auf dem Mond?",
+    "category": "Unbekannt",
+    "options": [
+      "1970",
+      "1964",
+      "1969",
+      "Noch nie!"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "wie viele Beine haben Insekten?",
+    "category": "Unbekannt",
+    "options": [
+      "6",
+      "8",
+      "04.Jun",
+      "06.Aug"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was ist ein Ampulex Dementor?",
+    "category": "Unbekannt",
+    "options": [
+      "Wächter von Askaban",
+      "Wespe",
+      "Stromgenerator",
+      "Automotor von Audi"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Tier hält die grösste Kälte aus?",
+    "category": "Unbekannt",
+    "options": [
+      "Weddell-Robben",
+      "Eisbär",
+      "Bärtierchen",
+      "Grönladwale"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie schnell kann ein Eisbär laufen?",
+    "category": "Unbekannt",
+    "options": [
+      "15km/h",
+      "25km/h",
+      "30km/h",
+      "40km/h"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Aussage stimmt? Alle Vögel...: ",
+    "category": "Unbekannt",
+    "options": [
+      "bauen Nester",
+      "können fliegen",
+      "haben Federn",
+      "sind Säugetiere"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lange lebt eine Eintagsfliege?",
+    "category": "Unbekannt",
+    "options": [
+      "3 Jahre",
+      "12 Tage",
+      "1 Tag",
+      "<24 Stunden"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Von wem stammt die Aussage 'Survival of the fittest'?",
+    "category": "Unbekannt",
+    "options": [
+      "Charles Darwin",
+      "James Darwin",
+      "Herbert Spencer",
+      "Michael Scott"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Ho)",
+    "category": "Unbekannt",
+    "options": [
+      "Holomium",
+      "Holmium",
+      "Himolium",
+      "Homolium"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele GB ist die Bitcoin-Blockchain gross (Mai 2022)",
+    "category": "Unbekannt",
+    "options": [
+      "20",
+      "1000",
+      "400",
+      "700"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Für was wird die Blockchain verwendet",
+    "category": "Unbekannt",
+    "options": [
+      "Banktransfer",
+      "Kryptowährungen",
+      "Hundeleine",
+      "Post"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was heisst NFT ausgeschrieben",
+    "category": "Unbekannt",
+    "options": [
+      "Non Fungible Token",
+      "Network Finance Token",
+      "Never Forgettable Token",
+      "No Fucking Treasure"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wofür steht BIOS (Informatik)?",
+    "category": "Unbekannt",
+    "options": [
+      "Binary Input Outline System",
+      "Basic inline Output Server",
+      "Basic Input Output System",
+      "Binary Input Output Server"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wo liegt Babylon",
+    "category": "Unbekannt",
+    "options": [
+      "Irak",
+      "Syrien",
+      "Griechenland",
+      "Ist eine fiktive Stadt"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Zahl wird Binär 1100 1100 dargestellt?",
+    "category": "Unbekannt",
+    "options": [
+      "65",
+      "1067",
+      "574",
+      "204"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst ein Mitglied aus dem A-Team",
+    "category": "Unbekannt",
+    "options": [
+      "Mister T",
+      "Mister D",
+      "Mister C",
+      "Mister A"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel grad Celsius sind 0 Kelvin",
+    "category": "Unbekannt",
+    "options": [
+      "0",
+      "273.15",
+      "-273.15",
+      "-237.15"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel Kelvin sind 10° Celsius?",
+    "category": "Unbekannt",
+    "options": [
+      "-273.15",
+      "273.15",
+      "-283.15",
+      "283.15"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel grad Fahrenheit sind 10° Celsius?",
+    "category": "Unbekannt",
+    "options": [
+      "10",
+      "50",
+      "35",
+      "-10"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel grad Celsius sind 100° Fahrenheit",
+    "category": "Unbekannt",
+    "options": [
+      "37.7",
+      "35",
+      "42.9",
+      "60.5"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Anhand von was wurde bestimmt wie warm 100° Fahrenheit sind?",
+    "category": "Unbekannt",
+    "options": [
+      "Körpertemperatur eines Menschen",
+      "Siedepunkt von Wasser",
+      "Höchste gemessene Temperatur in Danzig",
+      "Gefrierpunkt von Wasser"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Anhand von was wurde festgelegt, was 0° Fahrenheit ist?",
+    "category": "Unbekannt",
+    "options": [
+      "Gefrierpunkt von Wasser",
+      "Siedepunkt von Wasser",
+      "Körpertemperatur eines Menschen",
+      "Tiefste gemessene Temperatur in Danzig (1714)"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wer oder was ist POTUS",
+    "category": "Unbekannt",
+    "options": [
+      "Präsident der USA",
+      "Französische Spezialeinheit ",
+      "Verteidigungsministerium Griechenland",
+      "Ein Flugzeug"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Meisten Tore in der PL",
+    "category": "Unbekannt",
+    "options": [
+      "Wayne Rooney",
+      "Sergio Agüero",
+      "Alan Shearer",
+      "Cristiano Ronaldo"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Meisten Tore in der PL",
+    "category": "Unbekannt",
+    "options": [
+      "Wayne Rooney",
+      "Sergio Agüero",
+      "Alan Shearer",
+      "Cristiano Ronaldo"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Pixel hat ein 4K Bildschdirm",
+    "category": "Unbekannt",
+    "options": [
+      "4000",
+      "~8mio",
+      "16‘000",
+      "~4mio"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Pixel hat ein 4K Bildschdirm",
+    "category": "Unbekannt",
+    "options": [
+      "4000",
+      "~8mio",
+      "16‘000",
+      "~16mio"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welcher Tierart gehört der Orca?",
+    "category": "Unbekannt",
+    "options": [
+      "Haifisch",
+      "Delfin",
+      "Waal",
+      "Fisch"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel Strom (Volt) kann ein Zitteraal erzeugen?",
+    "category": "Unbekannt",
+    "options": [
+      "240",
+      "100",
+      "10",
+      "1000"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Von welchem Künstler wurde das Bild (Don Quichotte) gemalen?",
+    "category": "Unbekannt",
+    "options": [
       "Pablo Picasso",
       "Leonardo da Vinci",
-      "Michelangelo"
+      "Paul Klee",
+      "Salvador Dali"
     ],
-    "correctOptionIndex": 2,
-    "__v": 0
+    "correctOptionIndex": 0
   },
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b81"
-    },
     "type": "multiple-choice",
-    "question": "Welches Land ist bekannt für das Essen von Sushi?",
-    "category": "Essen & Trinken",
+    "question": "Von welchem Künstler wurde das Bild (der Schrei) gemalen?",
+    "category": "Unbekannt",
+    "options": [
+      "Edvard Munch",
+      "Leonardo da Vinci",
+      "Vincent van Gogh",
+      "Salvador Dali"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "In welchem Jahr wurde die erste Super League (Schweiz) Saison ausgetragen?",
+    "category": "Unbekannt",
+    "options": [
+      "1915",
+      "1917",
+      "1931",
+      "1945"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Super League Titel hat GC stand 2022?",
+    "category": "Unbekannt",
+    "options": [
+      "25",
+      "19",
+      "27",
+      "31"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Super League Titel hat der FC Basel stand 2022?",
+    "category": "Unbekannt",
+    "options": [
+      "19",
+      "20",
+      "21",
+      "22"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Super League Titel hat der BSC YB stand 2022?",
+    "category": "Unbekannt",
+    "options": [
+      "13",
+      "14",
+      "15",
+      "16"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Bundesliga Titel hat der FC Bayern München stand 2022?",
+    "category": "Unbekannt",
+    "options": [
+      "29",
+      "30",
+      "31",
+      "32"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches grosse Unternehmen stand 1997 kurz vor der Pleite?",
+    "category": "Unbekannt",
+    "options": [
+      "Apple",
+      "Amazon",
+      "Microsoft",
+      "Coca Cola"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie hoch war die Arbeitslosenquote in der Schweiz im Juli 2022 in Prozent?",
+    "category": "Unbekannt",
+    "options": [
+      "2",
+      "2.8",
+      "3",
+      "3.1"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "In welchem Land herrschte der Diktator Pol Pot (Bruder Nummer eins)?",
+    "category": "Unbekannt",
+    "options": [
+      "Vietnam",
+      "Kambodscha",
+      "Somalia",
+      "Sudan"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Der südafrikanische Staat Simbabwe wurde 1980 unabhängig. Wie hieß das Land früher?",
+    "category": "Unbekannt",
+    "options": [
+      "Südafrika",
+      "Botswana",
+      "Rhodesien",
+      "Borneo"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "\"Die Religion ist das Opium des Volkes\". Wer sagte diesen Satz?",
+    "category": "Unbekannt",
+    "options": [
+      "Friedrich Engels",
+      "Reichskanzler Bismark",
+      "Karl Marx",
+      "Pestalozzi"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lange herrschte Ludwig XIV über Frankreich",
+    "category": "Unbekannt",
+    "options": [
+      "42",
+      "52",
+      "62",
+      "72"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "In welchem Jahr des Zweiten Weltkrieges wurde die Dresdener Frauenkirche zerstört?",
+    "category": "Unbekannt",
+    "options": [
+      "1940",
+      "1942",
+      "1944",
+      "1945"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "John F. Kennedy war der vierte US-Präsident, der ermordet wurde. In welcher Stadt wurde er erschossen?",
+    "category": "Unbekannt",
+    "options": [
+      "Dallas",
+      "Austin",
+      "Washington",
+      "New York"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Ernesto Che Guevara kämpfte bei Fidel Castros Revolution an dessen Seite. In welchem Land wurde Guevara geboren?",
+    "category": "Unbekannt",
+    "options": [
+      "Kuba",
+      "Argentinien",
+      "Chile",
+      "Jamaika"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "\"Machu Picchu\" heißt die vergessene Stadt der Inkas in den peruanischen Anden. Wann wurde diese Stadt wieder entdeckt?",
+    "category": "Unbekannt",
+    "options": [
+      "1911",
+      "1931",
+      "1945",
+      "1960"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Otto III., deutscher Kaiser, war 983 zum König gewählt worden. Wie alt war er da?",
+    "category": "Unbekannt",
+    "options": [
+      "3",
+      "13",
+      "23",
+      "45"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Unter welchem Namen ist die Stadt Saigon heutzutage bekannt?",
+    "category": "Unbekannt",
+    "options": [
+      "Ho-Chi-Minh",
+      "Kuala Lumpur",
+      "Phnom Penh",
+      "Bankok"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt der Mann, der 1498 den Seeweg nach dem \"gewürzreichen Indien\" fand?",
+    "category": "Unbekannt",
+    "options": [
+      "Christoph Kolumbus",
+      "Christopher Kolumbus",
+      "Vasco Da Gama",
+      "Fernando Magellan"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches europäische Land führte zuerst das Frauenwahlrecht ein?",
+    "category": "Unbekannt",
+    "options": [
+      "Deutschland",
+      "Finnland",
+      "Schweiz",
+      "Italien"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Von wem kam die Initiative zur Einführung des Internationalen Frauentags?",
+    "category": "Unbekannt",
+    "options": [
+      "Alice Schwarzer",
+      "Rosa Luxemburg",
+      "Lana Rhoades",
+      "Clara Zetkin"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann ist Großbritannien offiziell aus der EU ausgetreten?",
+    "category": "Unbekannt",
+    "options": [
+      "1. Januar 2021",
+      "1. Mai 2021",
+      "31. Januar 2020",
+      "noch nicht"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Die Demokratische und die Republikanische Partei haben jeweils ein Tier als Maskottchen. Welche sind das?",
+    "category": "Unbekannt",
+    "options": [
+      "Falke und Löwe",
+      "Hai und Delfin",
+      "Esel und Elefant",
+      "Maus und Schlage"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was geschieht am Super Tuesday (USA)?",
+    "category": "Unbekannt",
+    "options": [
+      "In allen amerikanischen Fastfood-Ketten gibt es Super-Size-Burger.",
+      "Beim Superbowl führen die beiden Präsidentschaftskandidat/-innen die erste Debatte.",
+      "In vielen Bundesstaaten finden gleichzeitig Vorwahlen statt.",
+      "Es wird verkündet wer Präsident wird"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Ehen resultieren in Scheidungen?",
+    "category": "Unbekannt",
+    "options": [
+      "32%",
+      "43%",
+      "24%",
+      "18%"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇨🇽",
+    "category": "Unbekannt",
+    "options": [
+      "Weinachtsinsel",
+      "Osterinsel",
+      "Neujahrsinsel",
+      "Pfingstinsel"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇨🇼",
+    "category": "Unbekannt",
+    "options": [
+      "Aruba",
+      "Granada",
+      "Curaçao",
+      "Osterinseln"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇭🇹",
+    "category": "Unbekannt",
+    "options": [
+      "Sri Lanka",
+      "Jamaika",
+      "Hawaii",
+      "Haiti"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇯🇪",
+    "category": "Unbekannt",
+    "options": [
+      "York",
+      "Jersey",
+      "Guernsey",
+      "Kap Verde"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇲🇳",
+    "category": "Unbekannt",
+    "options": [
+      "Sibirien",
+      "Mongolei",
+      "China",
+      "Singapur"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu was gehört diese Flagge? 🇳🇵",
+    "category": "Unbekannt",
+    "options": [
+      "UN",
+      "NATO",
+      "Nepal",
+      "Vatikan"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇲🇴",
+    "category": "Unbekannt",
+    "options": [
+      "Curaçao",
+      "Macao",
+      "Aruba",
+      "Tulum"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wo befindet sich Macao?",
+    "category": "Unbekannt",
     "options": [
       "China",
-      "Japan",
-      "Thailand",
-      "Vietnam"
+      "Chile",
+      "Brasilien",
+      "Südafrika"
     ],
-    "correctOptionIndex": 1,
-    "__v": 0
+    "correctOptionIndex": 0
   },
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b82"
-    },
     "type": "multiple-choice",
-    "question": "Wer hat die Relativitätstheorie entwickelt?",
-    "category": "Technik",
+    "question": "Zu welchem Land gehörte Macao bis 1999?",
+    "category": "Unbekannt",
     "options": [
-      "Isaac Newton",
-      "Albert Einstein",
-      "Galileo Galilei",
-      "Nikola Tesla"
+      "China",
+      "Portugal",
+      "Spanien",
+      "Brasilien"
     ],
-    "correctOptionIndex": 1,
-    "__v": 0
+    "correctOptionIndex": 1
   },
   {
-    "_id": {
-      "$oid": "671f59823e435a9d0b5f4f98"
-    },
-    "type": "what-would-you-rather",
-    "question": "What would you rather do: go skydiving or scuba diving?",
-    "category": "Adventure",
+    "type": "multiple-choice",
+    "question": "Was speichert ein Kamel in seinen Höcker?",
+    "category": "Unbekannt",
     "options": [
-      "Skydiving",
-      "Scuba diving"
+      "Fett",
+      "Wasser",
+      "Luft",
+      "Nahrung"
     ],
-    "goodOrBad": "good"
+    "correctOptionIndex": 0
   },
   {
-    "_id": {
-      "$oid": "671f5dc23e435a9d0b5f4f9c"
-    },
-    "type": "who-would-rather",
-    "question": "Who would rather win a Nobel Prize?",
-    "category": "Personality",
-    "options": [],
-    "goodOrBad": "bad"
+    "type": "multiple-choice",
+    "question": "Zu welcher Tierart gehört das Trampeltier?",
+    "category": "Unbekannt",
+    "options": [
+      "Kamel",
+      "Nashorn",
+      "Pferd",
+      "Esel"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welcher Tierart gehört das Trampeltier?",
+    "category": "Unbekannt",
+    "options": [
+      "Kamel",
+      "Nashorn",
+      "Pferd",
+      "Esel"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fussballer spielte für die Nationalmanschaft von Ungarn und Spanien?",
+    "category": "Unbekannt",
+    "options": [
+      "Fernando Hierro",
+      "Ferenc Puskás",
+      "Attila Fiola",
+      "József Zakariás"
+    ],
+    "correctOptionIndex": 1
   }
 ]
