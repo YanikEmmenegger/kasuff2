@@ -1,16 +1,16 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 import {io, Socket} from 'socket.io-client';
-import {Answer, AvatarType, Game, GameSettings, OperationResult, Player, Question} from '../types';
-import {defaultAvatar} from '../components/player/avatar/variants.ts';
+import {Answer, Game, GameSettings, OperationResult, Player, Question} from '../types';
 import {useNavigate} from 'react-router';
 import toast from 'react-hot-toast';
+import {AvatarOptions, defaultAvatarOptions} from "../components/avatar/avatarType.ts";
 
 // Define the shape of the context
 interface PlayerContextType {
     player: Player | null;
     updatePlayer: (updateData: Partial<{
         name: string;
-        avatar: AvatarType;
+        avatar: AvatarOptions;
         gameCode: string;
         socketId: string;
     }>) => Promise<boolean>;
@@ -63,7 +63,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
         if (!socket) return;
 
         const createNewPlayer = () => {
-            socket.emit('player:create', {avatar: defaultAvatar}, (result: OperationResult<Player>) => {
+            socket.emit('player:create', {avatar: defaultAvatarOptions}, (result: OperationResult<Player>) => {
                 if (result.success) {
                     setPlayer(result.data!);
                     localStorage.setItem('player', JSON.stringify(result.data));
@@ -172,7 +172,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
     // Update player data and sync with the server
     const updatePlayer = async (updateData: Partial<{
         name: string;
-        avatar: AvatarType;
+        avatar: AvatarOptions;
         gameCode: string;
         socketId: string
     }>) => {

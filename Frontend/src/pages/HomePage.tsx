@@ -1,8 +1,8 @@
 import {usePlayer} from "../contexts/playerProvider.tsx";
 import {AiFillSetting} from "react-icons/ai";
 import Navigation from "../components/navigation/Navigation.tsx";
-import Avatar from "../components/player/avatar/Avatar.tsx";
 import {motion} from "framer-motion";
+import Avatar from "../components/avatar/Avatar.tsx";
 
 const HomePage = () => {
     const {player} = usePlayer();
@@ -21,10 +21,11 @@ const HomePage = () => {
                 className="md:text-5xl text-2xl font-bold text-white mb-6 text-center">
                 Hi, {player?.name}
             </motion.h1>
-
-            {/* Avatar Section */}
-            <div className="mb-12 hidden">
-                {player && <Avatar avatar={player!.avatar!}/>}
+            <div>
+                {/* Avatar */}
+                {
+                    player?.avatar && <Avatar options={player.avatar}/>
+                }
             </div>
 
             {/* Navigation for Join and Create Game */}

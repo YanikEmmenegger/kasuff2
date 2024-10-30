@@ -1,29 +1,19 @@
 // Represents the result of an operation
+import {AvatarOptions} from "./components/avatar/avatarType.ts";
+
 export type OperationResult<T> = {
     success: boolean;
     data?: T;
     error?: string;
 };
 
-// Represents a player's avatar part (e.g., hat, face, body, pants)
-export interface AvatarPart {
-    variant: number;
-    color: number;
-}
 
-// Represents a player's avatar
-export interface AvatarType {
-    hat: AvatarPart;
-    face: AvatarPart;
-    body: AvatarPart;
-    pants: AvatarPart;
-}
 
 // Represents a player
 export interface Player {
     _id: string; // Player's MongoDB ObjectId as a string
     name: string;
-    avatar?: AvatarType | null; // Avatar is optional and nullable
+    avatar?: AvatarOptions; // Avatar is optional and nullable
     socketId: string;
     points: number;
     gameCode?: string; // Reference to the game code if the player is in a game

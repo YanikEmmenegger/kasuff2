@@ -1,4 +1,4 @@
-import Player, {IAvatar, IPlayer} from '../models/Player';
+import Player, {IPlayer} from '../models/Player';
 import {OperationResult} from '../types';
 import Game, {IAnswer, IGame} from "../models/Game";
 import {gameTimers, handleResults} from "./gameController";
@@ -25,33 +25,13 @@ export const getPlayerById = async (id: string): Promise<OperationResult<IPlayer
  * Create a new player with optional avatar and socketId.
  * Validates avatar structure before saving.
  */
-export const createPlayer = async (name: string, avatar?: IAvatar, socketId?: string): Promise<OperationResult<IPlayer>> => {
+export const createPlayer = async (name: string, avatar?: Record<string, any>, socketId?: string): Promise<OperationResult<IPlayer>> => {
     try {
-        // Validate avatar structure if provided
-        let validatedAvatar: IAvatar | null = null;
-        if (avatar) {
-            const { hat, face, body, pants } = avatar;
-
-            if (
-                typeof hat?.variant !== 'number' || typeof hat?.color !== 'number' ||
-                typeof face?.variant !== 'number' || typeof face?.color !== 'number' ||
-                typeof body?.variant !== 'number' || typeof body?.color !== 'number' ||
-                typeof pants?.variant !== 'number' || typeof pants?.color !== 'number'
-            ) {
-                return {
-                    success: false,
-                    error: 'Invalid avatar format. Each part (hat, face, body, pants) must have a numeric variant and color.',
-                };
-            }
-
-            validatedAvatar = { hat, face, body, pants };
-        }
-
-        // Create new player
+        // Since the avatar structure is now flexible, no validation is required
         const newPlayer = new Player({
             name,
-            avatar: validatedAvatar || null, // Default to null if no avatar
-            socketId
+            avatar: avatar || null, // Assign the avatar if provided, otherwise default to null
+            socketId: socketId || '' // Default to an empty string if no socketId is provided
         });
 
         await newPlayer.save();
@@ -63,7 +43,6 @@ export const createPlayer = async (name: string, avatar?: IAvatar, socketId?: st
         return {success: false, error: 'Internal server error.'};
     }
 };
-
 /**
  * Handle player reconnection and return the game state if the player is in a game.
  */
@@ -111,7 +90,13 @@ export const handlePlayerReconnect = async (playerId: string, socketId: string):
  */
 export const updatePlayer = async (
     id: string,
-    updateData: Partial<{ name: string; avatar: IAvatar; gameCode: string; socketId: string; points: number }>
+    updateData: Partial<{
+        name: string;
+        avatar: Record<string, any>;
+        gameCode: string;
+        socketId: string;
+        points: number
+    }>
 ): Promise<OperationResult<IPlayer>> => {
     try {
         const player = await Player.findById(id);
@@ -120,36 +105,22 @@ export const updatePlayer = async (
             return {success: false, error: 'Player not found.'};
         }
 
-        // Update name
+        // Update name if provided
         if (updateData.name) {
             player.name = updateData.name;
         }
 
-        // Update avatar if provided and validate its structure
+        // Update avatar if provided, no validation is required for specific fields
         if (updateData.avatar) {
-            const {hat, face, body, pants} = updateData.avatar;
-
-            if (
-                typeof hat?.variant !== 'number' || typeof hat?.color !== 'number' ||
-                typeof face?.variant !== 'number' || typeof face?.color !== 'number' ||
-                typeof body?.variant !== 'number' || typeof body?.color !== 'number' ||
-                typeof pants?.variant !== 'number' || typeof pants?.color !== 'number'
-            ) {
-                return {
-                    success: false,
-                    error: 'Invalid avatar format. Each part must have a numeric variant and color.'
-                };
-            }
-
-            player.avatar = { hat, face, body, pants };
+            player.avatar = updateData.avatar;
         }
 
-        // Update gameCode
+        // Update gameCode if provided
         if (updateData.gameCode) {
             player.gameCode = updateData.gameCode;
         }
 
-        // Update socketId
+        // Update socketId if provided
         if (updateData.socketId) {
             player.socketId = updateData.socketId;
         }
@@ -233,7 +204,7 @@ const adjectives = [
     "Delirious", "Scatterbrained", "Deranged", "Knuckleheaded", "Obtuse", "Gibbering", "Pathetic",
     "Miserable", "Foul-mouthed", "Ass-faced", "Piss-drunk", "Booze-soaked", "Shit-talking",
     "Knob-headed", "Cocky", "Dick-brained", "Bastardized", "Throbbing", "Lusty", "Horny",
-    "Filthy", "Perverted", "Sweaty-palmed", "Randy", "Greasy", "Moaning", "Humping", "Thrusting",
+    "Filthy", "Perverted", "Randy", "Greasy", "Moaning", "Humping", "Thrusting",
     "Groping", "Slutty", "Naughty", "Sleazy"
 ];
 
