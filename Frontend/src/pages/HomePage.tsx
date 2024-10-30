@@ -18,14 +18,7 @@ const HomePage = () => {
                 initial={{opacity: 0, y: 20}}
                 animate={{opacity: 1, y: 0}}
                 transition={{duration: 0.6}}
-                className="md:text-6xl text-3xl font-bold text-cyan-50 mb-6 text-center">
-                Kasuff2
-            </motion.h1>
-            <motion.h1
-                initial={{opacity: 0, y: 20}}
-                animate={{opacity: 1, y: 0}}
-                transition={{duration: 0.6}}
-                className="md:text-5xl text-2xl font-semibold text-white mb-6 text-center">
+                className="md:text-5xl text-2xl font-bold text-white mb-6 text-center">
                 Hi, {player?.name}
             </motion.h1>
             <div>
@@ -36,7 +29,7 @@ const HomePage = () => {
             </div>
 
             {/* Navigation for Join and Create Game */}
-            <div className="w-full hidden fl ex justify-center">
+            <div className="w-full flex justify-center">
                 <Navigation/> {/* Navigation component */}
             </div>
 
