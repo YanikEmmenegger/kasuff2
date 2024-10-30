@@ -2,16 +2,25 @@ import {usePlayer} from "../contexts/playerProvider.tsx";
 import {AiFillSetting} from "react-icons/ai";
 import Navigation from "../components/navigation/Navigation.tsx";
 import Avatar from "../components/player/avatar/Avatar.tsx";
+import {motion} from "framer-motion";
 
 const HomePage = () => {
     const {player} = usePlayer();
 
     return (
-        <div className="w-screen min-h-screen h-auto flex flex-col justify-center items-center gap-12">
+        <motion.div
+            initial={{opacity: 0, y: 20}}
+            animate={{opacity: 1, y: 0}}
+            transition={{duration: 0.6}}
+            className="w-screen min-h-screen h-auto flex flex-col justify-center items-center gap-12">
             {/* Title */}
-            <h1 className="md:text-5xl text-2xl font-bold text-white mb-6 text-center">
+            <motion.h1
+                initial={{opacity: 0, y: 20}}
+                animate={{opacity: 1, y: 0}}
+                transition={{duration: 0.6}}
+                className="md:text-5xl text-2xl font-bold text-white mb-6 text-center">
                 Hi, {player?.name}
-            </h1>
+            </motion.h1>
 
             {/* Avatar Section */}
             <div className="mb-12 hidden">
@@ -31,7 +40,7 @@ const HomePage = () => {
                         className="text-white cursor-pointer hover:scale-105 hover:rotate-90 transition-transform duration-300 text-5xl"/>
                 </a>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

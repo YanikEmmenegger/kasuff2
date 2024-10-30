@@ -1,9 +1,9 @@
-import {FC} from "react";
+import  {FC} from "react";
 import {usePlayer} from "../../../contexts/playerProvider";
 import ResultMultipleChoice from "./ResultMultipleChoice";
 import ResultWhoWouldRather from "./ResultWhoWouldRather";
 import ResultWhatWouldYouRather from "./ResultWhatWouldYouRather";
-import PunishmentComponent from "./PunishmentComponent.tsx";
+import PunishmentComponent from "./PunishmentComponent";
 
 const ResultComponent: FC = () => {
     const {game} = usePlayer();
@@ -16,24 +16,24 @@ const ResultComponent: FC = () => {
 
     // Determine which result component to show based on the question type
     const renderResultComponent = () => {
-
         switch (currentQuestion.type) {
-            case 'multiple-choice':
+            case "multiple-choice":
                 return <ResultMultipleChoice/>;
 
-            case 'who-would-rather':
+            case "who-would-rather":
                 return <ResultWhoWouldRather/>;
 
-            case 'what-would-you-rather':
+            case "what-would-you-rather":
                 return <ResultWhatWouldYouRather/>;
 
             default:
                 return <div>Unknown question type.</div>;
         }
-    }
+    };
 
     return (
-        <div className={""}><PunishmentComponent/>
+        <div className="h-auto w-full flex flex-col items-center text-gray-200">
+            <PunishmentComponent/>
             {renderResultComponent()}
         </div>
     );

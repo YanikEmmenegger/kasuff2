@@ -1,6 +1,6 @@
 import {FC, useEffect, useState} from "react";
 import {motion} from "framer-motion";
-import {usePlayer} from "../../../contexts/playerProvider.tsx";
+import {usePlayer} from "../../../contexts/playerProvider";
 import {twMerge} from "tailwind-merge";
 
 const Timer: FC = () => {
@@ -28,33 +28,30 @@ const Timer: FC = () => {
     // Convert timeLeft from milliseconds to seconds
     const seconds = Math.floor((timeLeft / 1000) % 60);
 
-    // Framer Motion animation variants for pop effect
-    const popAnimation = {
-        hidden: {scale: 1},
-        visible: {scale: [1, 1.3, 1]}, // Pop animation
+    // Animation variants
+    const timerVariants = {
+        initial: {opacity: 0},
+        visible: {opacity: 1},
+        warning: {opacity: 1, background: "#F00F00"}, // Tailwind's red-400
     };
 
     // Determine text color based on time remaining
-    const textColor = seconds <= 5 ? "text-red-500" : "text-white";
+    const isWarning = seconds <= 5 && timeLeft > 0;
 
     return (
-        <div
+        <motion.div
             className={twMerge(
-                "fixed w-screen flex items-start justify-center",
+                "fixed top-4 left-1/2 transform -translate-x-1/2 bg-cyan-600 bg-opacity-80 px-4 py-2 rounded-full shadow-md",
                 timeLeft === 0 ? "opacity-0" : "opacity-100"
             )}
+            variants={timerVariants}
+            initial="initial"
+            animate={isWarning ? "warning" : "visible"}
+            transition={{duration: 0.5}}
+            key={seconds} // This will trigger the animation on every second change
         >
-            <motion.div
-                className={`text-lg font-bold ${textColor} bg-opacity-75 px-6 py-3 rounded-lg`}
-                variants={popAnimation}
-                initial="hidden"
-                animate="visible"
-                transition={{duration: 0.5}}
-                key={seconds} // This will trigger the animation on every second change
-            >
-                {seconds < 10 ? `0${seconds}` : seconds}s
-            </motion.div>
-        </div>
+            <span className="text-2xl font-bold">{seconds}s</span>
+        </motion.div>
     );
 };
 

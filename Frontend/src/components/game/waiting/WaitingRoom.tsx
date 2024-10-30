@@ -1,35 +1,63 @@
-import {FC, useState} from "react";
-import {stupidQuotes} from "./stupidQuotes.ts";
+import  {FC} from "react";
+import {motion} from "framer-motion";
+import Quote from "../../Quote";
 
-const WaitingRoom: FC = () => {
+const LoadingDots: FC = () => {
+    const dotStyle = "w-4 h-4 rounded-full";
 
-    const [stupidQuote] = useState(stupidQuotes[Math.floor(Math.random() * stupidQuotes.length)])
+    const commonAnimation = {
+        y: [0, -15, 0],
+    };
+
+    const commonTransition = {
+        repeat: Infinity,
+        repeatType: "loop" as const,
+        duration: 0.6,
+        ease: "easeInOut",
+    };
 
     return (
-        <div className="flex flex-col items-center justify-center text-white space-y-6">
-            <div className="flex flex-col justify-center items-center space-y-4">
-                <p className="text-2xl text-gray-400">Hang on!!!</p>
+        <div className="flex space-x-2 mt-6">
+            <motion.div
+                className={`${dotStyle} bg-cyan-600`}
+                animate={commonAnimation}
+                transition={{...commonTransition, delay: 0}}
+            ></motion.div>
+            <motion.div
+                className={`${dotStyle} bg-cyan-700`}
+                animate={commonAnimation}
+                transition={{...commonTransition, delay: 0.2}}
+            ></motion.div>
+            <motion.div
+                className={`${dotStyle} bg-cyan-800`}
+                animate={commonAnimation}
+                transition={{...commonTransition, delay: 0.4}}
+            ></motion.div>
+        </div>
+    );
+};
+
+const WaitingRoom: FC = () => {
+    return (
+        <div className="flex flex-col items-center justify-center min-h-screen bg-cyan-500 text-gray-200 space-y-8">
+            {/* Header */}
+            <div className="flex flex-col items-center space-y-2">
+                <h1 className="text-4xl font-bold text-cyan-800">Hang on....</h1>
+                <p className="text-xl">relax and have a drink 🍹</p>
             </div>
 
             {/* Animated Dots */}
-            <div className="flex space-x-2 mt-4">
-                <div className="w-3 h-3 bg-blue-500 rounded-full animate-bounce"></div>
-                <div
-                    className="w-3 h-3 bg-green-500 rounded-full animate-bounce"
-                    style={{animationDelay: "0.2s"}}
-                ></div>
-                <div
-                    className="w-3 h-3 bg-amber-500 rounded-full animate-bounce"
-                    style={{animationDelay: "0.4s"}}
-                ></div>
-            </div>
-            <div className={"p-4 flex items-center justify-center w-full fixed bottom-20 left-0"}>
-                <p className={"text-center"}>
-                    "
-                    {stupidQuote}
-                    "
-                </p>
-            </div>
+            <LoadingDots/>
+
+            {/* Quote Section */}
+            <motion.div
+                initial={{opacity: 0, y: 20}}
+                animate={{opacity: 1, y: 0}}
+                transition={{delay: 1}}
+                className="p-4 flex items-center justify-center w-full absolute bottom-10 left-0"
+            >
+                <Quote/>
+            </motion.div>
         </div>
     );
 };

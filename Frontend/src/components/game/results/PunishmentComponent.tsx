@@ -1,7 +1,9 @@
-import {usePlayer} from "../../../contexts/playerProvider.tsx";
-import {Punishment} from "../../../types.ts";
+import React from "react";
+import {usePlayer} from "../../../contexts/playerProvider";
+import {Punishment} from "../../../types";
+import {AnimatePresence, motion} from "framer-motion";
 
-const PunishmentComponent = () => {
+const PunishmentComponent: React.FC = () => {
     const {game, player} = usePlayer();
 
     if (!game || !player) {
@@ -9,25 +11,26 @@ const PunishmentComponent = () => {
     }
 
     const playerId = player._id; // Get the current player's ID
-    const punishments: Punishment[] = game.punishments[game.currentQuestionIndex] || [];
+    const punishments: Punishment[] =
+        game.punishments[game.currentQuestionIndex] || [];
 
     // Helper function to render the reasons
     const renderReasons = (reasons: string[]) => {
         return reasons.map((reason, index) => (
-            <span key={index} className="block text-sm text-gray-500">
-                {reason}
-            </span>
+            <span key={index} className="block text-sm text-gray-200">
+        {reason}
+      </span>
         ));
     };
 
     // Function to format the player's name and highlight the current player
     const formatPlayerName = (punishmentPlayerId: string) => {
-        const punishedPlayer = game.players.find(p => p._id === punishmentPlayerId);
+        const punishedPlayer = game.players.find(
+            (p) => p._id === punishmentPlayerId
+        );
         if (!punishedPlayer) return "Unknown";
 
-        return punishmentPlayerId === playerId
-            ? <span className="text-blue-500 font-bold">YOU</span>
-            : punishedPlayer.name;
+        return punishedPlayer.name
     };
 
     // Function to render each punishment entry
@@ -36,40 +39,59 @@ const PunishmentComponent = () => {
         if (!punishment.give && !punishment.take) {
             return null;
         }
-        if (punishment.give === 0) punishment.give = undefined;
-        if (punishment.take === 0) punishment.take = undefined;
 
         return (
-            <div key={punishment.playerId} className="border rounded-md p-4 shadow-sm mb-4">
-                <div className="text-lg font-semibold">
-                    {formatPlayerName(punishment.playerId)}
+            <motion.div
+                key={punishment.playerId}
+                initial={{opacity: 0, y: 10}}
+                animate={{opacity: 1, y: 0}}
+                exit={{opacity: 0, y: -10}}
+                className={`border border-cyan-700 rounded-md p-4 shadow-md mb-4 ${
+                    punishment.playerId === playerId
+                        ? "bg-cyan-600"
+                        : "bg-cyan-700"
+                }`}
+            >
+                <div className="flex items-center mb-2">
+                    <div className="text-lg font-semibold flex-1 text-gray-200">
+                        {formatPlayerName(punishment.playerId)}
+                    </div>
+                    {punishment.playerId === playerId && (
+                        <span className="text-sm font-medium text-gray-200">
+              (That's you!)
+            </span>
+                    )}
                 </div>
                 {renderReasons(punishment.reasons)}
-                {punishment.take && punishment.take > 0 && (
-                    <div className="text-red-500 font-bold mt-2">
-                        Drinks to take: {punishment.take}
-                    </div>
-                )}
-                {punishment.give && punishment.give > 0 && (
-                    <div className="text-green-500 font-bold mt-2">
-                        Drinks to give: {punishment.give}
-                    </div>
-                )}
-            </div>
+                <div className="mt-2 flex flex-wrap gap-4">
+                    {punishment.take && punishment.take > 0 && (
+                        <div className="flex items-center text-red-300 font-bold">
+                             🫵🏼 Take {punishment.take} drink{punishment.take > 1 ? "s" : ""}
+                        </div>
+                    )}
+                    {punishment.give && punishment.give > 0 && (
+                        <div className="flex items-center text-green-300 font-bold">
+                            🤩 Give {punishment.give} drink{punishment.give > 1 ? "s" : ""}
+                        </div>
+                    )}
+                </div>
+            </motion.div>
         );
     };
 
     return (
-        <div className="px-8 py-2 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-center mb-6">Punishments</h2>
-            {punishments.length > 0 ? (
-                <div>
+        <div className="px-8 py-4 w-full  mx-auto bg-cyan-500 h-auto">
+            <h2 className="text-3xl font-bold text-center mb-6 text-gray-200">
+                Punishments
+            </h2>
+            {punishments.length > 0  && punishments ? (
+                <AnimatePresence>
                     {punishments
-                        .filter(punishment => punishment.give || punishment.take) // Filter to only show punishments with give or take
-                        .map(punishment => renderPunishment(punishment))}
-                </div>
+                        .filter((punishment) => punishment.give || punishment.take)
+                        .map((punishment) => renderPunishment(punishment))}
+                </AnimatePresence>
             ) : (
-                <div className="text-center text-gray-500">
+                <div className="text-center text-gray-200">
                     No punishments this round.
                 </div>
             )}

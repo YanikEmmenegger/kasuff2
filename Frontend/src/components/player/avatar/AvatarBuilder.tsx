@@ -54,7 +54,7 @@ const AvatarBuilder = () => {
                 <select
                     value={avatar.hat.variant}
                     onChange={(e) => updateAvatarPart('hat', 'variant', Number(e.target.value))}
-                    className="ml-2 p-2 border border-gray-300 bg-gray-800 text-white rounded"
+                    className="ml-2 p-2 border border-gray-300 text-white rounded"
                 >
                     {hatVariants.map((_, index) => (
                         <option key={index} value={index}>
@@ -66,7 +66,7 @@ const AvatarBuilder = () => {
                 <select
                     value={avatar.hat.color}
                     onChange={(e) => updateAvatarPart('hat', 'color', Number(e.target.value))}
-                    className="ml-2 p-2 border border-gray-300 bg-gray-800 text-white rounded"
+                    className="ml-2 p-2 border border-gray-300  text-white rounded"
                 >
                     {colorOptions.map((_, index) => (
                         <option key={index} value={index}>
@@ -82,7 +82,7 @@ const AvatarBuilder = () => {
                 <select
                     value={avatar.face.variant}
                     onChange={(e) => updateAvatarPart('face', 'variant', Number(e.target.value))}
-                    className="ml-2 p-2 border border-gray-300 bg-gray-800 text-white rounded"
+                    className="ml-2 p-2 border border-gray-300  text-white rounded"
                 >
                     {faceVariants.map((_, index) => (
                         <option key={index} value={index}>
@@ -94,7 +94,7 @@ const AvatarBuilder = () => {
                 <select
                     value={avatar.face.color}
                     onChange={(e) => updateAvatarPart('face', 'color', Number(e.target.value))}
-                    className="ml-2 p-2 border border-gray-300 bg-gray-800 text-white rounded"
+                    className="ml-2 p-2 border border-gray-300  text-white rounded"
                 >
                     {colorOptions.map((_, index) => (
                         <option key={index} value={index}>
@@ -110,7 +110,7 @@ const AvatarBuilder = () => {
                 <select
                     value={avatar.body.variant}
                     onChange={(e) => updateAvatarPart('body', 'variant', Number(e.target.value))}
-                    className="ml-2 p-2 border border-gray-300 bg-gray-800 text-white rounded"
+                    className="ml-2 p-2 border border-gray-300  text-white rounded"
                 >
                     {bodyVariants.map((_, index) => (
                         <option key={index} value={index}>
@@ -122,7 +122,7 @@ const AvatarBuilder = () => {
                 <select
                     value={avatar.body.color}
                     onChange={(e) => updateAvatarPart('body', 'color', Number(e.target.value))}
-                    className="ml-2 p-2 border border-gray-300 bg-gray-800 text-white rounded"
+                    className="ml-2 p-2 border border-gray-300  text-white rounded"
                 >
                     {colorOptions.map((_, index) => (
                         <option key={index} value={index}>
@@ -138,7 +138,7 @@ const AvatarBuilder = () => {
                 <select
                     value={avatar.pants.variant}
                     onChange={(e) => updateAvatarPart('pants', 'variant', Number(e.target.value))}
-                    className="ml-2 p-2 border border-gray-300 bg-gray-800 text-white rounded"
+                    className="ml-2 p-2 border border-gray-300  text-white rounded"
                 >
                     {pantsVariants.map((_, index) => (
                         <option key={index} value={index}>
@@ -150,7 +150,7 @@ const AvatarBuilder = () => {
                 <select
                     value={avatar.pants.color}
                     onChange={(e) => updateAvatarPart('pants', 'color', Number(e.target.value))}
-                    className="ml-2 p-2 border border-gray-300 bg-gray-800 text-white rounded"
+                    className="ml-2 p-2 border border-gray-300  text-white rounded"
                 >
                     {colorOptions.map((_, index) => (
                         <option key={index} value={index}>

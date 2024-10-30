@@ -5,12 +5,12 @@ import HomePage from "./pages/HomePage.tsx";
 import PlayerSetting from "./pages/PlayerSetting.tsx";
 import ToastProvider from "./components/ToastProvider.tsx";
 import GamePage from "./pages/GamePage.tsx";
+import ColoredBackground from "./components/ColoredBackground.tsx";
 
 const App = () => {
     return (
         <ToastProvider>
-            <div
-                className={"bg-gray-800 w-full min-h-screen h-auto flex items-center justify-center"}>
+            <ColoredBackground>
                 <Router basename={"/"}>
                     <PlayerProvider>
                             <Routes>
@@ -20,7 +20,7 @@ const App = () => {
                             </Routes>
                     </PlayerProvider>
                 </Router>
-            </div>
+            </ColoredBackground>
         </ToastProvider>
     );
 };

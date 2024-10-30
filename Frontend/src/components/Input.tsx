@@ -12,7 +12,7 @@ const Input: FC<InputProps> = ({label, className, ...props}) => {
             {label && <label className="text-white font-semibold">{label}</label>}
             <input
                 className={twMerge(
-                    "px-4 py-2 bg-gray-700 text-white border-2 border-gray-500 rounded focus:outline-none focus:border-blue-500 transition",
+                    "px-4 py-2 text-white bg-cyan-600 border-2 border-cyan-600 rounded focus:outline-none outline-0 transition",
                     className
                 )}
                 {...props}

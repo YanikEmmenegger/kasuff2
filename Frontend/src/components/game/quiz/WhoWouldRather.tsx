@@ -1,19 +1,19 @@
 import {FC, useState} from "react";
-import {WhoWouldRatherQuestion} from "../../../types.ts";
-import QuizButton from "./QuizButton.tsx";
+import {WhoWouldRatherQuestion} from "../../../types";
+import QuizButton from "./QuizButton";
 import {usePlayer} from "../../../contexts/playerProvider";
+import {motion} from "framer-motion";
 
 interface WhoWouldRatherProps {
     question: WhoWouldRatherQuestion;
 }
 
 const WhoWouldRather: FC<WhoWouldRatherProps> = ({question}) => {
-
     const [answered, setAnswered] = useState(false);
     const {game} = usePlayer();
 
     // Colors for each option
-    const colors = ["blue", "green", "yellow", "red", "amber", "indigo"];
+    const colors = ["blue", "green", "red", "amber", "indigo"];
 
     // Function to map player ID to name
     const mapOptionToPlayerName = (playerId: string) => {
@@ -22,14 +22,26 @@ const WhoWouldRather: FC<WhoWouldRatherProps> = ({question}) => {
     };
 
     return (
-        <div className="h-screen w-screen flex flex-col text-white">
-            {/* Question section (1/3 of the height) */}
-            <div className="flex justify-center items-center h-1/3 p-6">
-                <h2 className="md:text-4xl text-xl font-bold text-center">{question.question}</h2>
-            </div>
+        <div className="h-screen w-full flex flex-col text-gray-200 bg-cyan-500">
+            {/* Question section */}
+            <motion.div
+                className="flex justify-center items-center h-1/3 p-6"
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                transition={{duration: 0.6}}
+            >
+                <h2 className="md:text-4xl text-2xl font-bold text-center">
+                    {question.question}
+                </h2>
+            </motion.div>
 
-            {/* Options section (2/3 of the height) */}
-            <div className="h-2/3 p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Options section */}
+            <motion.div
+                className="flex-1 p-6 grid grid-cols-1 md:grid-cols-2 gap-6"
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                transition={{delay: 0.2, duration: 0.6}}
+            >
                 {question.options.map((option, index) => {
                     const playerName = mapOptionToPlayerName(option);
                     return (
@@ -44,7 +56,7 @@ const WhoWouldRather: FC<WhoWouldRatherProps> = ({question}) => {
                         />
                     );
                 })}
-            </div>
+            </motion.div>
         </div>
     );
 };

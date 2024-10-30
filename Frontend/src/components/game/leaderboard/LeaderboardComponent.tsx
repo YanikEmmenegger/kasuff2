@@ -1,141 +1,142 @@
 import {FC, useEffect, useState} from "react";
 import {usePlayer} from "../../../contexts/playerProvider";
-import TopPlayerComponent from "./TopPlayerComponent";
-import OtherPlayerComponent from "./OtherPlayerComponent";
-import {motion} from "framer-motion";
+import PlayerCard from "./PlayerCard";
 import Confetti from "react-confetti";
 
 const LeaderboardComponent: FC = () => {
     const {game, player} = usePlayer();
-    const [showConfetti, setShowConfetti] = useState(false);
-    const [showShitConfetti, setShowShitConfetti] = useState(false);
+    const entryInterval = 1000; // milliseconds, adjust as needed
 
-    if (!game) return <div>No game available.</div>;
-
+    if (!game || !player) {
+        return null;
+    }
     // Sort leaderboard by totalPoints in descending order
     const sortedLeaderboard = [...game.leaderboard].sort(
         (a, b) => b.totalPoints - a.totalPoints
     );
 
-    // Get the top 3 players
-    const topPlayers = sortedLeaderboard.slice(0, 3);
-    // Get the rest of the players
-    const otherPlayers = sortedLeaderboard.slice(3);
+    // Prepare player entries from last to first
+    const reversedLeaderboard = [...sortedLeaderboard].reverse();
 
     // Function to get player details by ID
     const getPlayerDetails = (playerId: string) => {
         return game.players.find((p) => p._id === playerId);
     };
 
-    // Handle confetti effect for winners and losers
+    // Prepare player entries with delay
+    const playerEntries = reversedLeaderboard.map((entry, index) => {
+        const playerDetails = getPlayerDetails(entry.playerId);
+        const position =
+            sortedLeaderboard.findIndex((e) => e.playerId === entry.playerId) + 1;
+        const isLastPlayer = position === sortedLeaderboard.length;
+        const isTopThree = position <= 3;
+        const delay = index * entryInterval;
+
+        return {
+            ...entry,
+            name: playerDetails?.name,
+            isLastPlayer,
+            isTopThree,
+            delay,
+            position,
+        };
+    });
+
+    // State to manage confetti
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [showConfetti, setShowConfetti] = useState(false);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [confettiType, setConfettiType] = useState<"regular" | "shit" | null>(
+        null
+    );
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [windowSize, setWindowSize] = useState({width: 0, height: 0});
+
+    // Update window size for confetti
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
-        if (topPlayers.find((p) => p.playerId === player?._id)) {
-            // Confetti for top 3 players
-            setShowConfetti(true);
-            const confettiInterval = setInterval(() => {
-                setShowConfetti((prev) => !prev);
-            }, 10000);
-            return () => clearInterval(confettiInterval);
-        } else if (otherPlayers.find((p) => p.playerId === player?._id)) {
-            // "Shit" confetti for other players
-            setShowShitConfetti(true);
-            const shitConfettiInterval = setInterval(() => {
-                setShowShitConfetti((prev) => !prev);
-            }, 6000);
-            return () => clearInterval(shitConfettiInterval);
-        }
-    }, [topPlayers, otherPlayers, player]);
+        setWindowSize({width: window.innerWidth, height: window.innerHeight});
+        const handleResize = () => {
+            setWindowSize({width: window.innerWidth, height: window.innerHeight});
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
-    // Custom function to draw shit emoji instead of confetti
+    // Trigger confetti after all players are displayed
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+        const totalDisplayTime =
+            playerEntries.length * entryInterval + 500; // extra 500ms to ensure all animations are done
+
+        const confettiTimeout = setTimeout(() => {
+            // Check if current player is in top 3
+            const isTopThree = playerEntries
+                .filter((p) => p.isTopThree)
+                .some((p) => p.playerId === player?._id);
+
+            const isLastPlayer = playerEntries
+                .filter((p) => p.isLastPlayer)
+                .some((p) => p.playerId === player?._id);
+
+            if (isTopThree) {
+                setConfettiType("regular");
+                setShowConfetti(true);
+                setTimeout(() => {
+                    setShowConfetti(false);
+                }, 20000);
+            } else if (isLastPlayer) {
+                setConfettiType("shit");
+                setShowConfetti(true);
+                setTimeout(() => {
+                    setShowConfetti(false);
+                }, 20000);
+            }
+        }, totalDisplayTime);
+
+        return () => clearTimeout(confettiTimeout);
+    }, [playerEntries, entryInterval, player]);
+
     const drawShitConfetti = (ctx: CanvasRenderingContext2D) => {
-        ctx.font = "30px Arial";
+        ctx.font = "20px Arial";
         ctx.fillText("💩", 0, 0); // Draw the emoji
     };
 
     return (
-        <div className="h-auto w-full p-8 bg-gray-800 text-white space-y-6">
-            {/* Confetti Effect for Winners */}
-            {showConfetti && <Confetti/>}
-
-            {/* "Shit" Confetti Effect for Losers */}
-            {showShitConfetti && (
+        <div className="w-full flex flex-col items-center bg-cyan-500 text-gray-200 p-8">
+            {/* Confetti Effect */}
+            {showConfetti && confettiType === "regular" && (
                 <Confetti
-                    drawShape={drawShitConfetti} // Custom drawShape for "shit" emoji
+                    width={windowSize.width}
+                    height={windowSize.height}
+                    recycle={false}
+                    numberOfPieces={1000}
+                />
+            )}
+            {/* "Shit" Confetti Effect */}
+            {showConfetti && confettiType === "shit" && (
+                <Confetti
+                    width={windowSize.width}
+                    height={windowSize.height}
+                    recycle={false}
+                    numberOfPieces={1000}
+                    drawShape={drawShitConfetti}
                 />
             )}
 
             {/* Leaderboard Heading */}
-            <h2 className="text-4xl font-bold text-center">Leaderboard</h2>
+            <h2 className="text-4xl font-bold text-center mb-8">Leaderboard</h2>
 
-            {/* Podium Layout */}
-            <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center justify-items-center"
-                style={{
-                    gridTemplateAreas: `
-                    "first first"
-                    "second third"
-                    `
-                }}
-                initial={{opacity: 0}}
-                animate={{opacity: 1}}
-                transition={{duration: 0.8}}
-            >
-                {/* First Place */}
-                <div style={{gridArea: "first"}}>
-                    <TopPlayerComponent
-                        position={1}
-                        name={getPlayerDetails(topPlayers[0].playerId)?.name}
-                        points={topPlayers[0].totalPoints}
+            {/* Player Cards */}
+            <div className="w-full flex flex-col-reverse">
+                {playerEntries.map((entry) => (
+                    <PlayerCard
+                        key={entry.playerId}
+                        player={entry}
+                        isCurrentUser={entry.playerId === player?._id}
                     />
-                </div>
-
-                {/* Second Place */}
-                <div style={{gridArea: "second"}}>
-                    <TopPlayerComponent
-                        position={2}
-                        name={getPlayerDetails(topPlayers[1]?.playerId)?.name}
-                        points={topPlayers[1]?.totalPoints}
-                    />
-                </div>
-
-                {/* Third Place */}
-                <div style={{gridArea: "third"}}>
-                    <TopPlayerComponent
-                        position={3}
-                        name={getPlayerDetails(topPlayers[2]?.playerId)?.name}
-                        points={topPlayers[2]?.totalPoints}
-                    />
-                </div>
-            </motion.div>
-
-            {/* Separator Line */}
-            <hr className="border-t-2 border-gray-700 my-6"/>
-
-            {/* Other Players List */}
-            {otherPlayers.length > 0 && (
-                <motion.div
-                    className="mt-6"
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    transition={{duration: 0.8}}
-                >
-                    <h3 className="text-2xl font-semibold text-center mb-4">Other Players</h3>
-                    <ul className="space-y-4">
-                        {otherPlayers.map((entry, index) => {
-                            const player = getPlayerDetails(entry.playerId);
-                            return (
-                                <OtherPlayerComponent
-                                    key={entry.playerId}
-                                    position={index + 4}
-                                    name={player?.name}
-                                    points={entry.totalPoints}
-                                />
-                            );
-                        })}
-                    </ul>
-                </motion.div>
-            )}
+                ))}
+            </div>
         </div>
     );
 };

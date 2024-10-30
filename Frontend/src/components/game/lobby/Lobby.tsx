@@ -2,17 +2,28 @@ import React, {useEffect, useState} from "react";
 import {usePlayer} from "../../../contexts/playerProvider";
 import {useNavigate} from "react-router";
 import toast from "react-hot-toast";
+import {motion} from "framer-motion";
 import JoinedPlayers from "./JoinedPlayers";
 import Button from "../../Button";
+import {FaCopy, FaGamepad} from "react-icons/fa";
+import Quote from "../../Quote.tsx";
 
 const Lobby: React.FC = () => {
     const { game, socket, player, kickPlayer, startGame } = usePlayer();
     const [starting, setStarting] = useState(false);
     const navigate = useNavigate();
 
+
     useEffect(() => {
         if (!game) navigate("/game?state=join");
     }, [game, navigate]);
+
+    useEffect(() => {
+        setInterval(() => {
+
+        }, 15000)
+    }, []);
+
 
     const handleStartGame = async () => {
         if (game && game.players.length < 2) {
@@ -31,8 +42,7 @@ const Lobby: React.FC = () => {
 
     const handleCopyGameCode = () => {
         if (game) {
-
-            const srv = import.meta.env.DEV ? 'http://localhost:5173' : window.location.host;
+            const srv = import.meta.env.DEV ? "http://localhost:5173" : window.location.origin;
             const gameUrl = `${srv}/game?state=join&code=${game.code}`;
             navigator.clipboard
                 .writeText(gameUrl)
@@ -46,19 +56,32 @@ const Lobby: React.FC = () => {
     };
 
     return (
-        <div className="p-8 rounded-lg shadow-md max-w-4xl mx-auto space-y-8 my-10">
+        <div className="h-auto flex-col flex items-start justify-center">
             {game ? (
-                <>
-                    <div className="text-center mb-8">
-                        <h1 className="text-4xl font-bold text-white mb-4">Game Lobby</h1>
-                        <p className="text-xl text-gray-300 mb-4">Game Code: <strong>{game.code}</strong></p>
-                        <Button onClick={handleCopyGameCode} className="bg-blue-500 hover:bg-blue-700 text-lg">
-                            Copy Game Link
-                        </Button>
+                <motion.div
+                    initial={{opacity: 0, y: 20}}
+                    animate={{opacity: 1, y: 0}}
+                    className="p-6 md:p-10 rounded-lg w-full max-w-3xl mx-auto space-y-8 "
+                >
+                    <div className="text-center">
+                        <h1 className="md:text-4xl text-3xl font-bold text-gray-200 mb-4">Game Lobby</h1>
+                        <div
+                            className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                            <div className="bg-gray-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2">
+                                <span className="font-mono text-2xl tracking-widest">{game.code}</span>
+                                <button
+                                    onClick={handleCopyGameCode}
+                                    className="text-cyan-500 hover:text-cyan-400 focus:outline-none"
+                                    title="Copy Game Link"
+                                >
+                                    <FaCopy size={20}/>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="flex justify-center">
-                        <JoinedPlayers onKickPlayer={kickPlayer} />
+                    <div>
+                        <JoinedPlayers onKickPlayer={kickPlayer}/>
                     </div>
 
                     {player?._id === game.creatorId && (
@@ -66,16 +89,25 @@ const Lobby: React.FC = () => {
                             <Button
                                 onClick={handleStartGame}
                                 loading={starting}
-                                className="bg-green-500 hover:bg-green-700 text-xl"
+                                className="bg-green-500 hover:bg-green-600 text-xl flex items-center space-x-2"
                             >
-                                {starting ? "Starting Game..." : "Start Game"}
+                                <FaGamepad size={24}/>
+                                <span>{starting ? "Starting Game..." : "Start Game"}</span>
                             </Button>
                         </div>
                     )}
-                </>
+
+                </motion.div>
+
             ) : (
                 <p className="text-white text-center text-2xl">Waiting for game details...</p>
             )}
+            <motion.div
+                initial={{opacity: 0, y: 20}}
+                animate={{opacity: 1, y: 0}}
+                className={"p-4 flex items-center justify-center w-full bottom-20 left-0"}>
+                <Quote/>
+            </motion.div>
         </div>
     );
 };

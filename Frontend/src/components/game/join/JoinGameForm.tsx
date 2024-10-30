@@ -32,7 +32,7 @@ const JoinGameForm: FC<JoinGameFormProps> = ({_gameCode}) => {
 
     return (
         <div className="w-screen min-h-screen flex justify-center items-center">
-            <div className="p-8 rounded-lg shadow-lg bg-gray-800 max-w-md w-full">
+            <div className="p-8 rounded-lg shadow-lg max-w-md w-full">
                 <h2 className="text-4xl font-bold text-white mb-8 text-center">Join a Game</h2>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                     {/* Input for entering game code */}

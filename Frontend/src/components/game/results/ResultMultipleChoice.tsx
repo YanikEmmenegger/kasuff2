@@ -1,9 +1,10 @@
-import {FC} from "react";
+import React from "react";
 import {usePlayer} from "../../../contexts/playerProvider";
 import AnswerOption from "./AnswerOption";
 import PlayersNotAnswered from "./PlayersNotAnswered";
+import CollapsibleSection from "../../CollapsibleSection.tsx";
 
-const ResultMultipleChoice: FC = () => {
+const ResultMultipleChoice: React.FC = () => {
     const {game} = usePlayer();
     if (!game) return <div>No game available.</div>;
 
@@ -11,9 +12,12 @@ const ResultMultipleChoice: FC = () => {
     const currentQuestion = game.cleanedQuestions?.[currentQuestionIndex];
     const currentAnswers = game.answers?.[currentQuestionIndex];
 
-    if (!currentQuestion || !currentAnswers) return <div>No question or answers available.</div>;
+    if (!currentQuestion || !currentAnswers)
+        return <div>No question or answers available.</div>;
 
-    const sortedLeaderboard = [...game.leaderboard].sort((a, b) => b.totalPoints - a.totalPoints);
+    const sortedLeaderboard = [...game.leaderboard].sort(
+        (a, b) => b.totalPoints - a.totalPoints
+    );
 
     const groupedPlayersByOption = currentQuestion.options.map((option, index) => ({
         option,
@@ -25,7 +29,8 @@ const ResultMultipleChoice: FC = () => {
                 return {
                     name: player?.name,
                     pointsAwarded: answer.pointsAwarded,
-                    position: sortedLeaderboard.findIndex((entry) => entry.playerId === player?._id) + 1,
+                    position:
+                        sortedLeaderboard.findIndex((entry) => entry.playerId === player?._id) + 1,
                     isCorrect: answer.isCorrect,
                 };
             }),
@@ -38,22 +43,24 @@ const ResultMultipleChoice: FC = () => {
             return {
                 name: player?.name,
                 pointsAwarded: answer.pointsAwarded,
-                position: sortedLeaderboard.findIndex((entry) => entry.playerId === player?._id) + 1,
+                position:
+                    sortedLeaderboard.findIndex((entry) => entry.playerId === player?._id) + 1,
             };
         });
 
     return (
-        <div className="h-auto w-screen flex flex-col text-white p-8">
+        <div className="w-full flex flex-col text-gray-200 p-8">
+            <CollapsibleSection title="Show Answers">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {groupedPlayersByOption.map((optionGroup, index) => (
+                        <AnswerOption key={index} {...optionGroup} />
+                    ))}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {groupedPlayersByOption.map((optionGroup, index) => (
-                    <AnswerOption key={index} {...optionGroup} />
-                ))}
-
-                {playersNotAnswered.length > 0 && (
-                    <PlayersNotAnswered players={playersNotAnswered}/>
-                )}
-            </div>
+                    {playersNotAnswered.length > 0 && (
+                        <PlayersNotAnswered players={playersNotAnswered}/>
+                    )}
+                </div>
+            </CollapsibleSection>
         </div>
     );
 };

@@ -1,16 +1,15 @@
-import {FC} from "react";
-import {Question} from "../../../types.ts";
-import MultipleChoice from "./MultipleChoice.tsx";
-import WhoWouldRather from "./WhoWouldRather.tsx";
-import WhatWouldYouRather from "./WhatWouldYouRather.tsx";
-import Timer from "./Timer.tsx";
+import  {FC} from "react";
+import {Question} from "../../../types";
+import MultipleChoice from "./MultipleChoice";
+import WhoWouldRather from "./WhoWouldRather";
+import WhatWouldYouRather from "./WhatWouldYouRather";
+import Timer from "./Timer";
 
 interface QuizProps {
     question: Question;
 }
 
 const QuizComponent: FC<QuizProps> = ({question}) => {
-
     const renderQuestionType = () => {
         switch (question.type) {
             case "multiple-choice":
@@ -26,9 +25,8 @@ const QuizComponent: FC<QuizProps> = ({question}) => {
         }
     };
 
-    // Return the result of the renderQuestionType function directly inside the JSX
     return (
-        <div>
+        <div className="relative">
             <Timer/>
             {renderQuestionType()}
         </div>

@@ -1,28 +1,42 @@
-import { FC } from 'react';
+import  {FC} from 'react';
+import {motion} from 'framer-motion';
+import {FaClock} from 'react-icons/fa'; // Example icon, replace as needed
 
 interface TimerSelectorProps {
     timeLimit: number;
     onChange: (timeLimit: number) => void;
 }
 
-const TimerSelector: FC<TimerSelectorProps> = ({ timeLimit, onChange }) => {
-    const timeOptions = [15, 30, 60, 90]; // Preset times in seconds
+const timeOptions = [
+    {value: 15, label: '15 seconds', icon: <FaClock/>},
+    {value: 30, label: '30 seconds', icon: <FaClock/>},
+    {value: 60, label: '1 minute', icon: <FaClock/>},
+    {value: 90, label: '1.5 minutes', icon: <FaClock/>},
+];
 
+const TimerSelector: FC<TimerSelectorProps> = ({ timeLimit, onChange }) => {
     return (
-        <div className="p-4 rounded-lg border-2 border-gray-700">
-            <p className="text-xl font-semibold text-white mb-2">Time Limit (Seconds)</p>
+        <div className="p-4 w-full rounded-lg border-2 border-cyan-600">
             <div className="mt-2 space-y-2">
-                <select
-                    value={timeLimit}
-                    onChange={(e) => onChange(Number(e.target.value))}
-                    className="w-full p-2 bg-gray-800 text-white rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                    {timeOptions.map((time) => (
-                        <option key={time} value={time}>
-                            {time} seconds
-                        </option>
+                <div className="flex flex-wrap justify-center gap-2">
+                    {timeOptions.map((option) => (
+                        <motion.button
+                            key={option.value}
+                            onClick={() => onChange(option.value)}
+                            whileHover={{scale: 1.05}}
+                            whileTap={{scale: 0.95}}
+                            className={`flex w-full items-center px-4 py-2 rounded-lg cursor-pointer focus:outline-none transition-colors
+                ${
+                                timeLimit === option.value
+                                    ? 'bg-cyan-800 text-white'
+                                    : 'bg-cyan-600 text-gray-800'
+                            }`}
+                        >
+                            {option.icon}
+                            <span className="ml-2">{option.label}</span>
+                        </motion.button>
                     ))}
-                </select>
+                </div>
             </div>
         </div>
     );

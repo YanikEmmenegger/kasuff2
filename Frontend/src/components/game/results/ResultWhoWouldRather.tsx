@@ -1,9 +1,10 @@
-import {FC} from "react";
+import React from "react";
 import {usePlayer} from "../../../contexts/playerProvider";
-import AnswerOption from "./AnswerOption.tsx";
-import PlayersNotAnswered from "./PlayersNotAnswered.tsx";
+import AnswerOption from "./AnswerOption";
+import PlayersNotAnswered from "./PlayersNotAnswered";
+import CollapsibleSection from "../../CollapsibleSection";
 
-const ResultWhoWouldRather: FC = () => {
+const ResultWhoWouldRather: React.FC = () => {
     const {game} = usePlayer();
     if (!game) return <div>No game available.</div>;
 
@@ -11,9 +12,12 @@ const ResultWhoWouldRather: FC = () => {
     const currentQuestion = game.cleanedQuestions?.[currentQuestionIndex];
     const currentAnswers = game.answers?.[currentQuestionIndex];
 
-    if (!currentQuestion || !currentAnswers) return <div>No question or answers available.</div>;
+    if (!currentQuestion || !currentAnswers)
+        return <div>No question or answers available.</div>;
 
-    const sortedLeaderboard = [...game.leaderboard].sort((a, b) => b.totalPoints - a.totalPoints);
+    const sortedLeaderboard = [...game.leaderboard].sort(
+        (a, b) => b.totalPoints - a.totalPoints
+    );
 
     // Map player IDs in options to their names
     const mapOptionToPlayerName = (playerId: string) => {
@@ -29,11 +33,11 @@ const ResultWhoWouldRather: FC = () => {
 
     // Ensure each answer is valid and count votes
     currentAnswers.forEach((answer) => {
-        if (typeof answer.answer === 'string' && answer.answer !== "__NOT_ANSWERED__") {
+        if (typeof answer.answer === "string" && answer.answer !== "__NOT_ANSWERED__") {
             const playerName = mapOptionToPlayerName(answer.answer);
             voteCounts[playerName] = (voteCounts[playerName] || 0) + 1;
         } else {
-            console.error('Invalid answer detected:', answer.answer);
+            console.error("Invalid answer detected:", answer.answer);
         }
     });
 
@@ -41,7 +45,9 @@ const ResultWhoWouldRather: FC = () => {
     const maxVotes = Math.max(...Object.values(voteCounts));
 
     // Determine which options have the most votes
-    const mostVotedOptions = playerOptions.filter((option) => voteCounts[option] === maxVotes);
+    const mostVotedOptions = playerOptions.filter(
+        (option) => voteCounts[option] === maxVotes
+    );
 
     const groupedPlayersByOption = currentQuestion.options.map((optionId) => {
         const playerName = mapOptionToPlayerName(optionId);
@@ -56,7 +62,8 @@ const ResultWhoWouldRather: FC = () => {
                     return {
                         name: player?.name,
                         pointsAwarded: answer.pointsAwarded,
-                        position: sortedLeaderboard.findIndex((entry) => entry.playerId === player?._id) + 1,
+                        position:
+                            sortedLeaderboard.findIndex((entry) => entry.playerId === player?._id) + 1,
                     };
                 }),
         };
@@ -69,21 +76,24 @@ const ResultWhoWouldRather: FC = () => {
             return {
                 name: player?.name,
                 pointsAwarded: answer.pointsAwarded,
-                position: sortedLeaderboard.findIndex((entry) => entry.playerId === player?._id) + 1,
+                position:
+                    sortedLeaderboard.findIndex((entry) => entry.playerId === player?._id) + 1,
             };
         });
 
     return (
-        <div className="h-auto w-screen flex flex-col text-white p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {groupedPlayersByOption.map((optionGroup, index) => (
-                    <AnswerOption key={index} {...optionGroup} />
-                ))}
+        <div className=" w-full flex flex-col text-gray-200 p-8">
+            <CollapsibleSection title="Show Answers">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {groupedPlayersByOption.map((optionGroup, index) => (
+                        <AnswerOption key={index} {...optionGroup} />
+                    ))}
 
-                {playersNotAnswered.length > 0 && (
-                    <PlayersNotAnswered players={playersNotAnswered}/>
-                )}
-            </div>
+                    {playersNotAnswered.length > 0 && (
+                        <PlayersNotAnswered players={playersNotAnswered}/>
+                    )}
+                </div>
+            </CollapsibleSection>
         </div>
     );
 };
