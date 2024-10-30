@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 /*
 * set color schema to dark
 */
+
+
 * {
   color-scheme: dark;
     color: white;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-}
+  font-family: "Playwrite GB S", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;}
