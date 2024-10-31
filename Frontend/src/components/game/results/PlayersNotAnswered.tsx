@@ -4,7 +4,7 @@ import React from 'react';
 
 interface PlayerInfo {
     name: string;
-    pointsAwarded: number;
+    pointsAwarded?: number;
 }
 
 interface PlayersNotAnsweredProps {
@@ -12,6 +12,8 @@ interface PlayersNotAnsweredProps {
 }
 
 const PlayersNotAnswered: React.FC<PlayersNotAnsweredProps> = ({players}) => {
+
+
     return (
         <div className="p-4 rounded-lg border-2 shadow-md bg-red-700 border-red-700">
             <p className="text-xl font-semibold text-gray-200">Players Not Answered</p>
@@ -23,7 +25,7 @@ const PlayersNotAnswered: React.FC<PlayersNotAnsweredProps> = ({players}) => {
                     >
                         <span className="text-sm text-gray-200">{player.name}</span>
                         <span className="text-sm font-bold text-red-300">
-              {player.pointsAwarded > 0 ? '+' : ''}
+              {player.pointsAwarded && player.pointsAwarded > 0 ? '+' : ''}
                             {player.pointsAwarded} Points
             </span>
                     </div>

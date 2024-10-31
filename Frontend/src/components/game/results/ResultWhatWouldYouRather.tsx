@@ -35,15 +35,14 @@ const ResultWhatWouldYouRather: React.FC = () => {
             }),
     }));
 
+    // Players who did not answer
     const playersNotAnswered = currentAnswers
-        .filter((answer) => answer.answer === "__NOT_ANSWERED__")
+        .filter((answer) => answer.answer === '__NOT_ANSWERED__')
         .map((answer) => {
             const player = game.players.find((p) => p._id === answer.playerId);
             return {
-                name: player?.name,
+                name: player?.name || 'Unknown',
                 pointsAwarded: answer.pointsAwarded,
-                position:
-                    sortedLeaderboard.findIndex((entry) => entry.playerId === player?._id) + 1,
             };
         });
 
