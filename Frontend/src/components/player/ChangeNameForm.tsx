@@ -61,7 +61,7 @@ const ChangeNameForm: FC = () => {
                             value={newName}
                             onChange={(e) => setNewName(e.target.value)}
                             placeholder="Enter your new name"
-                            className="w-full bg-cyan-500"
+                            className="w-full bg-cyan-500 placeholder-gray-300"
                         />
                     </motion.div>
 

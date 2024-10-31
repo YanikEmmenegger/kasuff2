@@ -326,7 +326,9 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
                 sendAnswer,
             }}
         >
-            {isSocketConnected ? children : <div>Loading...</div>} {/* Show loading until socket is connected */}
+            {isSocketConnected ? children : <div className={"flex items-center -mt-20 flex-col-reverse justify-center"}>
+                <img src="/_logo.png" alt="Loading..." className={"animate-pulse opacity-60 w-[60%]"}/>
+            </div>} {/* Show loading until socket is connected */}
         </PlayerContext.Provider>
     );
 };
