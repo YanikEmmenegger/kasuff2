@@ -1,137 +1,4120 @@
 [
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b7c"
-    },
     "type": "multiple-choice",
-    "question": "Welcher Planet ist der Sonne am nächsten?",
-    "category": "Natur",
+    "question": "Wie hoch ist das Münster in Bern?",
+    "category": "Geo",
     "options": [
-      "Mars",
-      "Venus",
-      "Merkur",
-      "Jupiter"
+      "99 Meter",
+      "101 Meter",
+      "100 Meter",
+      "95 Meter"
     ],
-    "correctOptionIndex": 2,
-    "__v": 0
+    "correctOptionIndex": 2
   },
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b7d"
-    },
     "type": "multiple-choice",
-    "question": "Welches ist das größte Land der Welt?",
-    "category": "Geographie",
+    "question": "Welches dieser Tiere hält keinen Winterschlaf?",
+    "category": "Animals",
     "options": [
-      "Kanada",
-      "Russland",
+      "Eichhörnchen",
+      "Fledermaus",
+      "Igel",
+      "Siebenschläfer"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt die Hauptstadt der Slowakei?",
+    "category": "Geo",
+    "options": [
+      "Sofia",
+      "Prag",
+      "Ljubljan",
+      "Bratislava"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt die Hauptstadt von Schweden?",
+    "category": "Geo",
+    "options": [
+      "Malmö",
+      "London",
+      "Stockholm",
+      "Oslo"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt unser größtes Organ?",
+    "category": "Science",
+    "options": [
+      "Darm",
+      "Leber",
+      "Herz",
+      "Haut"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Das Schaltjahr ist etwas ganz besonderes. Wie viele Tage hat es?",
+    "category": "Science",
+    "options": [
+      "365",
+      "364",
+      "366",
+      "367"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt das Märchen in der eine golde Kugel eine wichtige Rolle spielt?",
+    "category": "General",
+    "options": [
+      "Der Froschkönig",
+      "Dornröschen",
+      "Hänsel und Gretel",
+      "Schneewittchen"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Zähne hat ein Kleinkind?",
+    "category": "Science",
+    "options": [
+      "20",
+      "22",
+      "18",
+      "17"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel Prozent Wasser besitzt die Erde?",
+    "category": "Geo",
+    "options": [
+      "10%",
+      "70%",
+      "80%",
+      "60%"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Die Pyramiden wurden von den….",
+    "category": "History",
+    "options": [
+      "Römern erbaut",
+      "Ägyptern erbaut",
+      "Griechen erbaut",
+      "Germanen erbaut"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt der längste Fluss Deutschlands?",
+    "category": "Geo",
+    "options": [
+      "Rhein",
+      "Donau",
+      "Spree",
+      "Nekar"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "In welchem Bundesland befindet sich die Stadt Stuttgart?",
+    "category": "Geo",
+    "options": [
+      "Bayern",
+      "Thüringen",
+      "Hessen",
+      "Baden-Württemberg"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Die Eskimos wohnen in…",
+    "category": "Geo",
+    "options": [
+      "einem Iglu",
+      "in einer Jutte",
+      "in einem Zelt",
+      "in einem Erdbau"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann gefriert Wasser?",
+    "category": "Science",
+    "options": [
+      "bei 0 Grad",
+      "bei -10 Grad",
+      "bei 1 Grad",
+      "bei -1 Grad"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Land hat heute noch eine Königin und einen König?",
+    "category": "Politics",
+    "options": [
+      "Schweden",
+      "Frankreich",
+      "Deutschland",
+      "Italien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann sollen Kartoffeln nicht gegessen werden?",
+    "category": "Science",
+    "options": [
+      "wenn sie zu klein sind",
+      "wenn sie zu groß sind",
+      "wenn sie bereits stark austreiben",
+      "wenn es Frühkartoffeln sind"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was ist Gala?",
+    "category": "General",
+    "options": [
+      "eine Apfelsorte",
+      "eine Gemüsesorte",
+      "ein Käse",
+      "eine Wurstsorte"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lange geht ein Fußballspiel in der Regel?",
+    "category": "Sports",
+    "options": [
+      "120 Minuten",
+      "80 Minuten",
+      "90 Minuten",
+      "30 Minuten"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was bedeutet im Fußball das Wort Foul?",
+    "category": "Sports",
+    "options": [
+      "Es wird eine Pause gemacht",
+      "Es ist ein Regelverstoß passiert",
+      "Der Spieler wird ausgewechselt",
+      "Es heißt Nachspielzeit"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Eine Mannschaft spielt offensiv. Das bedeutet…",
+    "category": "Sports",
+    "options": [
+      "sie spielt auf Angriff",
+      "sie spielt auf Abwehr",
+      "sie spielt langsamer",
+      "sie spielt schneller"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt der deutsche Bundestrainer 2022?",
+    "category": "Sports",
+    "options": [
+      "Hansi Flick",
+      "Thomas Müller",
+      "Mario Götze",
+      "Franz Beckenbauer"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wer hat die EM 2012 gewonnen?",
+    "category": "Sports",
+    "options": [
+      "Italien",
+      "Frankreich",
+      "Deutschland",
+      "Spanien"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wo befindet sich das größte Fußballstadion in Europa?",
+    "category": "Sports",
+    "options": [
+      "Barcelona",
+      "München",
+      "Berlin",
+      "Madrid"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Mannschaften befinden sich in der ersten Bundesliga?",
+    "category": "Sports",
+    "options": [
+      "18",
+      "16",
+      "10",
+      "22"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Bezeichnung wird im Fußball verwendet?",
+    "category": "Sports",
+    "options": [
+      "Bogenlampe",
+      "Nachttischlampe",
+      "Taschenlampe",
+      "Blitzlicht"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann wird ein Platzverweis vergeben?",
+    "category": "Sports",
+    "options": [
+      "bei einer roten Karte",
+      "wenn es eine Pause gibt",
+      "bei einer gelben Karte",
+      "wenn das Spiel vorbei ist"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann wurde die Bundesliga gegründet?",
+    "category": "Sports",
+    "options": [
+      "1877",
+      "1912",
+      "1945",
+      "1963"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "In welchem Land wurde der Fußball erfunden?",
+    "category": "Sports",
+    "options": [
+      "England",
+      "Frankreich",
+      "Katar",
+      "Italien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie nennt man den Begriff, wenn ein Spieler innerhalb einer Halbzeit drei Tore hintereinander schießt?",
+    "category": "Sports",
+    "options": [
+      "Superball",
+      "Schützentrick",
+      "Hattrick",
+      "Balltrickser"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wo befindet sich der Steigbügel?",
+    "category": "General",
+    "options": [
+      "im Ohr",
+      "in der Leber",
+      "im Magen",
+      "im Darm"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel Zähne hat ein Milchzahngebiss?",
+    "category": "Science",
+    "options": [
+      "20 Zähne",
+      "15 Zähne",
+      "10 Zähne",
+      "18 Zähne"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist das größte Organ des Menschen?",
+    "category": "Science",
+    "options": [
+      "das Herz",
+      "die Leber",
+      "der Darm",
+      "die Haut"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Knochen besitzt ein erwachsener Mensch?",
+    "category": "Science",
+    "options": [
+      "ca. 214 Knochen",
+      "ca. 112 Knochen",
+      "ca. 80 Knochen",
+      "ca. 180 Knochen"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Organ zählt zu den Verdauungsorganen?",
+    "category": "Science",
+    "options": [
+      "die Augen",
+      "der Darm",
+      "das Herz",
+      "die Lunge"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lang ist der Darm des Menschen?",
+    "category": "Science",
+    "options": [
+      "bis 7,5 Meter",
+      "bis 3,2 Meter",
+      "bis 2,2 Meter",
+      "bis 3,9 Meter"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt die Krankheit, bei der man am ganzen Körper kleine, rote Punkte bekommt?",
+    "category": "Science",
+    "options": [
+      "Windpocken",
+      "Keuchhusten",
+      "Grippe",
+      "Scharlach"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Ab wann lernen die meisten Kinder das Laufen ?",
+    "category": "Science",
+    "options": [
+      "ab 3 Monate",
+      "ab 6 Monate",
+      "ab 9 Monate",
+      "ab 12 Monate"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Augenfarbe haben alle Babys bei der Geburt?",
+    "category": "Science",
+    "options": [
+      "Blau",
+      "Grün",
+      "Braun",
+      "Gelb"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Organ ist das schwerste Organ im menschlichen Körper?",
+    "category": "Science",
+    "options": [
+      "das Gehirn",
+      "die Haut",
+      "der Darm",
+      "die Lunge"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Organ sieht aus wie eine Bohne?",
+    "category": "Science",
+    "options": [
+      "das Herz",
+      "die Milz",
+      "die Leber",
+      "die Niere"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Aufgabe haben die Nieren?",
+    "category": "Science",
+    "options": [
+      "sie pumpen Blut zum Herz",
+      "sie verdauen die Nahrung",
+      "sie bilden sauerstoffreiches Blut",
+      "sie befreien den Körper von Giftstoffen"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Vitamin ist für die Augen wichtig?",
+    "category": "Science",
+    "options": [
+      "Vitamin A",
+      "Vitamin B",
+      "Vitamin C",
+      "Vitamin D"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel Blut besitzt ein ausgewachsener Mensch im Durchschnitt?",
+    "category": "Science",
+    "options": [
+      "fünf bis sechs Liter Blut",
+      "drei bis vier Liter Blut",
+      "ein bis zwei Liter Blut",
+      "acht bis neun Liter Blut"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was sind Erythrozyten?",
+    "category": "Science",
+    "options": [
+      "weiße Blutzellen",
+      "rote Blutkörperchen",
+      "Zellen in der Bauchspeicheldrüse",
+      "Gehirnzellen"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut kann aufgrund seines Aussehens mit den giftigen Maiglöckchen verwechselt werden?",
+    "category": "General",
+    "options": [
+      "Bärlauch",
+      "Bohnenkraut",
+      "Estragon",
+      "Petersilie"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Woher stammt Basilikum?",
+    "category": "Geo",
+    "options": [
+      "Mexiko",
+      "Brasilien",
+      "Italien",
+      "Indien"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Von wem wurde Bohnenkraut vom Mittelmeerraum über die Alpen gebracht?",
+    "category": "History",
+    "options": [
+      "Römer",
+      "Neandertaler",
+      "Benediktinermönche",
+      "Germanen"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut wird oft mit Fenchel verwechselt?",
+    "category": "General",
+    "options": [
+      "Dill",
+      "Basilikum",
+      "Oregano",
+      "Bärlauch"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut bezeichnet man auch als “Schlangenkraut”?",
+    "category": "General",
+    "options": [
+      "Petersilie",
+      "Estragon",
+      "Majoran",
+      "Dill"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Mit welchem Kraut wurden im Mittelalter Flöhe und Läuse bekämpft?",
+    "category": "History",
+    "options": [
+      "Zwiebel",
+      "Knoblauch",
+      "Koriander",
+      "Dill"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie wird Liebstöckel noch genannt?",
+    "category": "General",
+    "options": [
+      "Wunderkraut",
+      "Maggikraut",
+      "Rotkraut",
+      "Heilkraut"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut wird auch ” wilder Majoran” genannt?",
+    "category": "General",
+    "options": [
+      "Origano",
+      "Dill",
+      "Petersilie",
+      "Knoblauch"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut kann bis zu 2 Meter hoch werden?",
+    "category": "General",
+    "options": [
+      "Bärlauch",
+      "Knoblauch",
+      "Rosmarin",
+      "Persilie"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut lässt sich vor allem an Berghängen finden?",
+    "category": "General",
+    "options": [
+      "Rosmarien",
+      "Dill",
+      "Bärlauch",
+      "Salbei"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut ist mit dem Zwiebelgewächs verwandt?",
+    "category": "Science",
+    "options": [
+      "Schnittlauch",
+      "Petersilie",
+      "Dill",
+      "Rosmarin"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Kraut wird sehr gerne für Spaghetti Bolognese verwendet?",
+    "category": "General",
+    "options": [
+      "Dill",
+      "Schnittlauch",
+      "Basilikum",
+      "Lemongras"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Bei welchem Kraut lassen sich auch die Blüten mitessen?",
+    "category": "General",
+    "options": [
+      "Rosmarien",
+      "Dill",
+      "Majoran",
+      "Kapuzinerkresse"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇭🇰",
+    "category": "Geo",
+    "options": [
       "China",
-      "USA"
+      "Tunesien",
+      "Hong Kong",
+      "Indonesien"
     ],
-    "correctOptionIndex": 1,
-    "__v": 0
+    "correctOptionIndex": 2
   },
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b7e"
-    },
     "type": "multiple-choice",
-    "question": "Was ist die chemische Formel für Wasser?",
-    "category": "Allgemeinwissen",
+    "question": "Zu welchem Land gehört diese Flagge? 🇾🇪",
+    "category": "Geo",
     "options": [
-      "H2O",
-      "CO2",
-      "NaCl",
-      "O2"
+      "Yemen",
+      "Ägypten",
+      "Syrien",
+      "Malawi"
     ],
-    "correctOptionIndex": 0,
-    "__v": 0
+    "correctOptionIndex": 0
   },
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b7f"
-    },
     "type": "multiple-choice",
-    "question": "Welches Tier ist das schnellste Landtier?",
-    "category": "Natur",
+    "question": "Zu welchem Land gehört diese Flagge? 🇧🇬",
+    "category": "Geo",
     "options": [
-      "Gepard",
+      "Bulgarien",
+      "Moldawien",
+      "Ungarn",
+      "Armenien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇹🇳",
+    "category": "Geo",
+    "options": [
+      "Tunesien",
+      "Moldawien",
+      "Türkei",
+      "Indonesien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇸🇮",
+    "category": "Geo",
+    "options": [
+      "Slowenien",
+      "Tschechien",
+      "Slovakei",
+      "Weissrussland"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇱🇺",
+    "category": "Geo",
+    "options": [
+      "Niederlande",
+      "Luxemburg",
+      "Russland",
+      "Frankreich"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇪🇪",
+    "category": "Geo",
+    "options": [
+      "Weissrussland",
+      "Estland",
+      "Litauen",
+      "Lettland"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇻🇪",
+    "category": "Geo",
+    "options": [
+      "Venezuela",
+      "Kolumbien",
+      "Ecuador",
+      "Bolivien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇪🇨",
+    "category": "Geo",
+    "options": [
+      "Venezuela",
+      "Kolumbien",
+      "Ecuador",
+      "Bolivien"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇸🇷",
+    "category": "Geo",
+    "options": [
+      "Papua Neuguinea",
+      "Suriname",
+      "Taiwan",
+      "Somalia"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇫🇯",
+    "category": "Geo",
+    "options": [
+      "Tuvalu",
+      "Montserrat",
+      "Britische Jungferninseln",
+      "Fidschi"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist die grösste Stadt Europas?",
+    "category": "Geo",
+    "options": [
+      "Barcelona",
+      "Paris",
+      "London",
+      "Moskau"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Teile von 'Fluch der Karibik gibt es' gibt es?",
+    "category": "General",
+    "options": [
+      "4",
+      "7",
+      "5",
+      "3"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist keine Primzahl?",
+    "category": "Science",
+    "options": [
+      "4481",
+      "9349",
+      "1627",
+      "3542"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lang ist der Panamakanal?",
+    "category": "Geo",
+    "options": [
+      "82",
+      "75",
+      "53",
+      "89"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann entdeckte Chris Kolumbus Amerika?",
+    "category": "History",
+    "options": [
+      "1391",
+      "1499",
+      "1492",
+      "1594"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst die Hauptstadt von Australien?",
+    "category": "Geo",
+    "options": [
+      "Sydney",
+      "Canberra",
+      "Melbourne",
+      "Perth"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst die Hauptstadt von Kanada?",
+    "category": "Geo",
+    "options": [
+      "Toronto",
+      "Vancouver",
+      "Ottawa",
+      "Ontario"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst die Hauptstadt von Indien?",
+    "category": "Geo",
+    "options": [
+      "Mumbai",
+      "Dehli",
+      "Kalkutta",
+      "New Dehli"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst die Hauptstadt von Marokko?",
+    "category": "Geo",
+    "options": [
+      "Rabat",
+      "Casablanca",
+      "Marrakesh",
+      "Tanger"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Stadt hiess früher Konstantinopel?",
+    "category": "History",
+    "options": [
+      "Instanbul",
+      "Budapest",
+      "St. Petersburg",
+      "Athen"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele KM ist der Äquator lang?",
+    "category": "Geo",
+    "options": [
+      "40'000",
+      "44'000",
+      "38'000",
+      "50'000"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann wurde der Euro eingeführt?",
+    "category": "History",
+    "options": [
+      "2000",
+      "2001",
+      "2002",
+      "2003"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst J.k Rowling (Harry Potter) mit vollem Namen?",
+    "category": "General",
+    "options": [
+      "Joanne Kathleen Rowling",
+      "Jeanine Kate Rowling",
+      "Juliet Kathrin Rowling",
+      "Jeanine Kathrin Rowling"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "In welchem Jahr sank die Titanic?",
+    "category": "History",
+    "options": [
+      "1915",
+      "1920",
+      "1908",
+      "1912"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Herzen hat ein Oktopus?",
+    "category": "Science",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "8"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie hoch hängt ein Basketball-Korb?",
+    "category": "Sports",
+    "options": [
+      "3.5",
+      "3.15",
+      "2.9",
+      "3.05"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus wie vielen Kräutern entsteht Jägermeister?",
+    "category": "General",
+    "options": [
+      "45",
+      "56",
+      "65",
+      "32"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Die Freiheitsstatue in New York war ein Geschenk von:",
+    "category": "History",
+    "options": [
+      "Spanien",
+      "England",
+      "Italien",
+      "Frankreich"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Nachbarsländer hat Deutschland?",
+    "category": "Geo",
+    "options": [
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Land produziert am meisten Kaffee?",
+    "category": "Geo",
+    "options": [
+      "Brasilien",
+      "Peru",
+      "Kongo",
+      "Bolivien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist der grösste Ozean der Welt?",
+    "category": "Geo",
+    "options": [
+      "Pazifischer Ozean",
+      "Atlantischer Ozean",
+      "Indischer Ozean",
+      "Mittelmeer"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Sternzeichen hat jemand der am 21. August Geburtstag hat",
+    "category": "General",
+    "options": [
+      "Jungfrau",
+      "Fisch",
       "Löwe",
-      "Leopard",
-      "Tiger"
+      "Waage"
     ],
-    "correctOptionIndex": 0,
-    "__v": 0
+    "correctOptionIndex": 2
   },
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b80"
-    },
     "type": "multiple-choice",
-    "question": "Wer malte die Mona Lisa?",
-    "category": "Geschichte",
+    "question": "Welcher ist der grösste Planet in unserem Sonnensystem?",
+    "category": "Science",
     "options": [
-      "Vincent van Gogh",
+      "Saturn",
+      "Sonne",
+      "Jupiter",
+      "Uranus"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Liter sind in einer Gallone?",
+    "category": "Science",
+    "options": [
+      "4.5",
+      "3.5",
+      "5.5",
+      "6.5"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele KM/H sind 1 Knoten?",
+    "category": "Science",
+    "options": [
+      "2.435",
+      "1.852",
+      "1.345",
+      "2.132"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Meter sind eine Seemeile?",
+    "category": "Science",
+    "options": [
+      "1852",
+      "1.85",
+      "1.653",
+      "1653"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Meter sind eine Seemeile?",
+    "category": "Science",
+    "options": [
+      "1852",
+      "1.85",
+      "1.653",
+      "1653"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört die Stadt Cardiff?",
+    "category": "Geo",
+    "options": [
+      "Wales",
+      "Jamaica",
+      "Domenikanische Republik",
+      "Georgien"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört die Stadt Kingston?",
+    "category": "Geo",
+    "options": [
+      "USA",
+      "England",
+      "Jamaica",
+      "Kuba"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Gebirge gehört Patagonien?",
+    "category": "Geo",
+    "options": [
+      "Anden",
+      "Rocky Mountains",
+      "Alpen",
+      "Rhodopen"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Einwohner hat Tokio?",
+    "category": "Geo",
+    "options": [
+      "10 Mio",
+      "37 Mio",
+      "24 Mio",
+      "8 Mio"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus welchem Land kommt der Puma Gründer?",
+    "category": "General",
+    "options": [
+      "Frankreich",
+      "Italien",
+      "Deutschland",
+      "Belgien"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus welchem Land kommt der Nike Gründer?",
+    "category": "General",
+    "options": [
+      "USA",
+      "Italien",
+      "Österreich",
+      "Deutschland"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus welchem Land kommt der Nike Gründer?",
+    "category": "General",
+    "options": [
+      "Schweiz",
+      "USA",
+      "Deutschland",
+      "Kanada"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie schnell war Usain Bolt bei seinem Weltrekord in km/h?",
+    "category": "Sports",
+    "options": [
+      "44",
+      "37",
+      "40",
+      "49"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie hoch ist der Mt. Everest in Meter?",
+    "category": "Geo",
+    "options": [
+      "5000",
+      "7832",
+      "8848",
+      "8781"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist der höchste Berg der Schweiz?",
+    "category": "Geo",
+    "options": [
+      "Matterhorn",
+      "Eiger",
+      "Mönch",
+      "Dufourspitze"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wenn man alle Gefässe des menschlichen Körpers auslegen würde, wie lange wäre dies?",
+    "category": "Science",
+    "options": [
+      "50'000km",
+      "1km",
+      "3000km",
+      "30m"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lange ist die Aare in km?",
+    "category": "Geo",
+    "options": [
+      "292",
+      "301",
+      "250",
+      "500"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Land hat die längste Grenze zu Frankreich (territorial Gebiet)",
+    "category": "Geo",
+    "options": [
+      "Mexiko",
+      "Monaco",
+      "Spanien",
+      "Brasilien"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Ca)",
+    "category": "Science",
+    "options": [
+      "Kalzium",
+      "Kalium",
+      "Kohlenstoff",
+      "Cer"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Au)",
+    "category": "Science",
+    "options": [
+      "Silber",
+      "Platin",
+      "Gold",
+      "Bronze"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Pb)",
+    "category": "Science",
+    "options": [
+      "Plutonium",
+      "Blei",
+      "Polonium",
+      "Bismut"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Ag)",
+    "category": "Science",
+    "options": [
+      "Silber",
+      "Platin",
+      "Gold",
+      "Bronze"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Fe)",
+    "category": "Science",
+    "options": [
+      "Felilium",
+      "Fluor",
+      "Stickstoff",
+      "Eisen"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (N)",
+    "category": "Science",
+    "options": [
+      "Natrium",
+      "Kohlenstoff",
+      "Stickstoff",
+      "Titan"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Th)",
+    "category": "Science",
+    "options": [
+      "Tharium",
+      "Thorin",
+      "Thorium",
+      "Tharin"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Hg)",
+    "category": "Science",
+    "options": [
+      "Handgranatium",
+      "Hydragium",
+      "Quecksilber",
+      "Polonium"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Es)",
+    "category": "Science",
+    "options": [
+      "Eisen",
+      "Einsteinium",
+      "Esbium",
+      "Iod"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was verbirgt sich hinter dieser Chemischen Formel (C17H21NO4)",
+    "category": "Science",
+    "options": [
+      "Zucker",
+      "Traubenzucker",
+      "Glukose",
+      "Kokain"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was verbirgt sich hinter dieser Chemischen Formel (C6H12O6)",
+    "category": "Science",
+    "options": [
+      "Traubenzucker",
+      "Coca Cola",
+      "Pizza Margherita",
+      "Kokain"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Skyblues?",
+    "category": "Sports",
+    "options": [
+      "Chelsea FC",
+      "Leicester City",
+      "Manchester City",
+      "New York City"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Colchoneros?",
+    "category": "Sports",
+    "options": [
+      "River Plate",
+      "Athletico Madrid",
+      "Athletico Bilbao",
+      "Santos FC"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Die Fohlen?",
+    "category": "Sports",
+    "options": [
+      "Schalke 04",
+      "Hoffenheim",
+      "Mönchengladbach",
+      "Leverkusen"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Rossoneri?",
+    "category": "Sports",
+    "options": [
+      "AC Milan",
+      "Inter Mailand",
+      "Napoli",
+      "Juventus Turin"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Nerazzurri?",
+    "category": "Sports",
+    "options": [
+      "AC Milan",
+      "Inter Mailand",
+      "Napoli",
+      "Juventus Turin"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Bianconeri?",
+    "category": "Sports",
+    "options": [
+      "AC Milan",
+      "Real Madrid",
+      "Napoli",
+      "Juventus Turin"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Peixe?",
+    "category": "Sports",
+    "options": [
+      "Palmeiras",
+      "River Plate",
+      "Santos FC",
+      "Athletico Madrid"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fusballclubs hat den Spitznamen Verdão?",
+    "category": "Sports",
+    "options": [
+      "Palmeiras",
+      "FC Porto",
+      "Benfica Lissabon",
+      "Sao Paolo FC"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Derby steckt hinter 'Derby di Mole'?",
+    "category": "Sports",
+    "options": [
+      "Juventus v. FC Turin",
+      "AS Roma v. Lazio Rom",
+      "AC Milan v. Inter Mailand",
+      "Chievo v. Hellas Verona"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Derby steckt hinter 'Derby d'Italia'?",
+    "category": "Sports",
+    "options": [
+      "Juventus v. Napoli",
+      "Inter Mailand v. Juventus",
+      "AC Milan v. Napoli",
+      "AC Milan v. Juventus"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Derby steckt hinter 'Derby della Madonnina'?",
+    "category": "Sports",
+    "options": [
+      "Juventus v. FC Turin",
+      "AS Roma v. Lazio Rom",
+      "AC Milan v. Inter Mailand",
+      "Inter Mailand v. Juventus"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Derby steckt hinter 'Revierderby'?",
+    "category": "Sports",
+    "options": [
+      "Dortmund v. Schalke 04",
+      "Dortmund v. Bayern",
+      "Bayern v. TSV München",
+      "Inter Mailand v. Juventus"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Derby steckt hinter 'Ewiges Derby'?",
+    "category": "Sports",
+    "options": [
+      "Partizan Belgrad v. Roter Stern Belgrad",
+      "PAOK v. Aris Thessaloniki",
+      "Dinamo Zagreb v. Hajduk Split",
+      "River Plate v. Boca Juniors"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wofür steht USB?",
+    "category": "Tech",
+    "options": [
+      "Ultra speed base",
+      "Universal Stick Bus",
+      "Universal Serial Bus",
+      "United Serial Band"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wofür steht LCD?",
+    "category": "Tech",
+    "options": [
+      "Liquid Crystal Display",
+      "Light Crystal Desktop",
+      "Liquid Ceramic Display",
+      "Ligquid Ceramic Display"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Unternehmen ist am Wertvollsten?",
+    "category": "Tech",
+    "options": [
+      "Amazon",
+      "Alphabet (Google)",
+      "META (Facebook)",
+      "Apple"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist der am besten bewertete Film (IMDb)",
+    "category": "General",
+    "options": [
+      "Die Verurteilten",
+      "The Godfather",
+      "The Dark Knight",
+      "Fight Club"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Video ist das meist geschaute auf Youtube (Stand 2021)",
+    "category": "Tech",
+    "options": [
+      "Despacito",
+      "Shape of you",
+      "See you Again",
+      "Baby Shark Dance"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist die am besten bewertete Tv-Show (IMDb)",
+    "category": "General",
+    "options": [
+      "Breaking Bad",
+      "Planet Earth II",
+      "Game of Thrones",
+      "Planet Earth"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist der teuerste Film in der Produktion (Stand 2021)",
+    "category": "General",
+    "options": [
+      "Fluch der Karibik - Fremde Gezeiten",
+      "Avengers: Age of Ultron",
+      "Avatar",
+      "Avengers: Endgame"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "1$ 1900 hat heute einen Wert (Inflation) von:",
+    "category": "General",
+    "options": [
+      "0.3$",
+      "3$",
+      "34$",
+      "65$"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört Bali",
+    "category": "Geo",
+    "options": [
+      "Thailand",
+      "Bali",
+      "Indonesien",
+      "Japan"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört Grönland",
+    "category": "Geo",
+    "options": [
+      "Dänemark",
+      "Island",
+      "USA",
+      "Grönland"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört Litauen",
+    "category": "Geo",
+    "options": [
+      "Estland",
+      "Lettland",
+      "Russland",
+      "Litauen"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel grösser ist Frankreich als die Schweiz",
+    "category": "Geo",
+    "options": [
+      "10x",
+      "13x",
+      "19x",
+      "7x"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie hoch ist die Lebenserwartung der Männer in den USA",
+    "category": "Science",
+    "options": [
+      "75",
+      "82",
+      "71",
+      "76"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie hoch ist die Lebenserwartung der Männer im Kongo",
+    "category": "Science",
+    "options": [
+      "71",
+      "60",
+      "63",
+      "76"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie hoch ist das Durchschnittsalter in der Schweiz?",
+    "category": "Science",
+    "options": [
+      "43",
+      "35",
+      "52",
+      "25"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann wurde Starbucks gegründet?",
+    "category": "History",
+    "options": [
+      "1975",
+      "1999",
+      "1971",
+      "1983"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann wurde McDonalds gegründet?",
+    "category": "History",
+    "options": [
+      "1955",
+      "1945",
+      "1950",
+      "1960"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Starbucks Coffeeshops gibt es weltweit (Stand 2021)",
+    "category": "General",
+    "options": [
+      "27'000",
+      "52'000",
+      "18'000",
+      "33'000"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele McDonalds gibt es weltweit (Stand 2020)",
+    "category": "General",
+    "options": [
+      "39'000",
+      "52'000",
+      "45'000",
+      "33'000"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Meter hoch ist der Burj Khalifa?",
+    "category": "Geo",
+    "options": [
+      "820",
+      "848",
+      "812",
+      "828"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Stockwerke hat der Burj Khalifa?",
+    "category": "Geo",
+    "options": [
+      "100",
+      "152",
+      "163",
+      "141"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Meter hoch ist das Empire State Building?",
+    "category": "Geo",
+    "options": [
+      "318",
+      "381",
+      "345",
+      "354"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Mitarbeiter beschäftigt Nestle (Stand 2019)",
+    "category": "General",
+    "options": [
+      "401'000",
+      "291'000",
+      "163'000",
+      "199'000"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Mitarbeiter beschäftigt die Migros-Gruppe (Stand 2020)",
+    "category": "General",
+    "options": [
+      "30'000",
+      "5'000",
+      "120'000",
+      "99'000"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "VW hat 200'000 Mitarbeiter, wie viele davon arbeiten in Deutschland?",
+    "category": "General",
+    "options": [
+      "200'000",
+      "50'000",
+      "120'000",
+      "100'000"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welcher Familie gehört der Fuchs?",
+    "category": "Animals",
+    "options": [
+      "Katzen",
+      "Bären",
+      "Hunde",
+      "Vogel"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Arten von Delfinen und Walen gibt es?",
+    "category": "Animals",
+    "options": [
+      "90",
+      "20",
+      "200",
+      "150"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was machen Murmeltiere bei Gefahr?",
+    "category": "Animals",
+    "options": [
+      "Tot stellen",
+      "Rennen",
+      "Pfeifen",
+      "Fauchen"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was heisst Orang Utan übersetzt?",
+    "category": "Animals",
+    "options": [
+      "Waldmeister",
+      "Waldbaum",
+      "Waldaffe",
+      "Waldmensch"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lange schläft ein Löwe durschnittlich am Tag?",
+    "category": "Animals",
+    "options": [
+      "10 Stunden",
+      "16 Stunden",
+      "8 Stunden",
+      "20 Stunden"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Reptil ist das Grösste?",
+    "category": "Animals",
+    "options": [
+      "Kaiman",
+      "Alligator",
+      "Krokodil",
+      "Komodowaran"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie schwer wird ein Komodowaran in KG?",
+    "category": "Animals",
+    "options": [
+      "40",
+      "50",
+      "60",
+      "80"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie gross (Länge) kann ein Krokodil werden in Meter?",
+    "category": "Animals",
+    "options": [
+      "2",
+      "7",
+      "4",
+      "5"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie schnell kann eine LEderschildkröte sich fortbewegen?",
+    "category": "Animals",
+    "options": [
+      "5km/h",
+      "7km/h",
+      "15km/h",
+      "35km/h"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie gross wird ein Blauwal?",
+    "category": "Animals",
+    "options": [
+      "13 Meter",
+      "24 Meter",
+      "31 Meter",
+      "35 Meter"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Kilogramm Krill kann ein Blauwal am Tag aufnehmen?",
+    "category": "Animals",
+    "options": [
+      "3.1",
+      "3'600",
+      "10'000",
+      "700"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist der Grösste Fisch?",
+    "category": "Animals",
+    "options": [
+      "Weisser Hai",
+      "Blauwal",
+      "Walhai",
+      "Riesenhai"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Tier hat den Wissenschaftlichen Namen Rhincodon typus?",
+    "category": "Animals",
+    "options": [
+      "Rhinozeros",
+      "Blauwal",
+      "Walhai",
+      "Riesennashorn"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus welcher Stadt kommt das NFL-Team Steelers?",
+    "category": "Sports",
+    "options": [
+      "New York",
+      "Boston",
+      "Pittsburgh",
+      "San Diego"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus welchem Staat kommt das NFL-Team Green Bay Packers?",
+    "category": "Sports",
+    "options": [
+      "North Dakota",
+      "North Carolina",
+      "Minnesota",
+      "Wisconsin"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Aus welcher Stadt kommt das MLB-Team Los Angeles Dodgers ursprünglich?",
+    "category": "Sports",
+    "options": [
+      "New York",
+      "Los Angeles",
+      "San Francisco",
+      "Atlanta"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Team ist MLS Rekordmeister?",
+    "category": "Sports",
+    "options": [
+      "New York City FC",
+      "L.A Galaxy",
+      "Chicago Fire",
+      "L.A FC"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann fand die erste Saison der MLS statt?",
+    "category": "Sports",
+    "options": [
+      "1968",
+      "1974",
+      "1996",
+      "2001"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lange dauerte Juri Gagarins Weltraum Flug (1961, erster Mensch im Weltall)",
+    "category": "History",
+    "options": [
+      "4h",
+      "50min",
+      "1h 48min",
+      "2h 10min"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches war das erste Lebewesen, welche einen Flug ins All und wieder zurück überlebt hat?",
+    "category": "History",
+    "options": [
+      "Mensch",
+      "Hund",
+      "Katze",
+      "Affe"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie gross ist die Zahl Googol?",
+    "category": "Science",
+    "options": [
+      "10^50",
+      "10^100",
+      "10^150",
+      "10^75"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was gibt die Rechnung (7!)",
+    "category": "Science",
+    "options": [
+      "720",
+      "2628",
+      "5040",
+      "5421"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was gibt die Rechnung (3!*2/4)",
+    "category": "Science",
+    "options": [
+      "24",
+      "3",
+      "12",
+      "6"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wo schneidet die Gerade die Y-Achse, wenn Y=-3x+2?",
+    "category": "Science",
+    "options": [
+      "3",
+      "2.5",
+      "2",
+      "5"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was gibt die Rechnung (4!/3+2)",
+    "category": "Science",
+    "options": [
+      "24",
+      "12",
+      "4",
+      "10"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was gibt die Rechnung (40^0*2)",
+    "category": "Science",
+    "options": [
+      "40",
+      "80",
+      "2",
+      "4"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "wie heisst der erste Mensch auf dem Mond?",
+    "category": "History",
+    "options": [
+      "Neil Armstrong",
+      "Lance Armstrong",
+      "Adam Armstrong",
+      "Thomas Armweak"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst die Raum-Mission die zum ersten Mal einen Mensch auf den Mond brachte?",
+    "category": "History",
+    "options": [
+      "Apollo 11",
+      "Apollo 12",
+      "Apolon 13",
+      "Apollon 11"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann war der erste Mensch auf dem Mond?",
+    "category": "History",
+    "options": [
+      "1970",
+      "1964",
+      "1969",
+      "Noch nie!"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "wie viele Beine haben Insekten?",
+    "category": "Animals",
+    "options": [
+      "6",
+      "8",
+      "04.Jun",
+      "06.Aug"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was ist ein Ampulex Dementor?",
+    "category": "General",
+    "options": [
+      "Wächter von Askaban",
+      "Wespe",
+      "Stromgenerator",
+      "Automotor von Audi"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Tier hält die grösste Kälte aus?",
+    "category": "Animals",
+    "options": [
+      "Weddell-Robben",
+      "Eisbär",
+      "Bärtierchen",
+      "Grönlandwale"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie schnell kann ein Eisbär laufen?",
+    "category": "Animals",
+    "options": [
+      "15km/h",
+      "25km/h",
+      "30km/h",
+      "40km/h"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Aussage stimmt? Alle Vögel...: ",
+    "category": "Animals",
+    "options": [
+      "bauen Nester",
+      "können fliegen",
+      "haben Federn",
+      "sind Säugetiere"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie lange lebt eine Eintagsfliege?",
+    "category": "Animals",
+    "options": [
+      "3 Jahre",
+      "12 Tage",
+      "1 Tag",
+      "<24 Stunden"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Von wem stammt die Aussage 'Survival of the fittest'?",
+    "category": "History",
+    "options": [
+      "Charles Darwin",
+      "James Darwin",
+      "Herbert Spencer",
+      "Michael Scott"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem chemischen Element gehört das Symbol (Ho)",
+    "category": "Science",
+    "options": [
+      "Holomium",
+      "Holmium",
+      "Himolium",
+      "Homolium"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele GB ist die Bitcoin-Blockchain gross (Mai 2022)",
+    "category": "Tech",
+    "options": [
+      "20",
+      "1000",
+      "400",
+      "700"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Für was wird die Blockchain verwendet",
+    "category": "Tech",
+    "options": [
+      "Banktransfer",
+      "Kryptowährungen",
+      "Hundeleine",
+      "Post"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was heisst NFT ausgeschrieben",
+    "category": "Tech",
+    "options": [
+      "Non Fungible Token",
+      "Network Finance Token",
+      "Never Forgettable Token",
+      "No Fucking Treasure"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wofür steht BIOS (Informatik)?",
+    "category": "Tech",
+    "options": [
+      "Binary Input Outline System",
+      "Basic inline Output Server",
+      "Basic Input Output System",
+      "Binary Input Output Server"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wo liegt Babylon",
+    "category": "Geo",
+    "options": [
+      "Irak",
+      "Syrien",
+      "Griechenland",
+      "Ist eine fiktive Stadt"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Zahl wird Binär 1100 1100 dargestellt?",
+    "category": "Science",
+    "options": [
+      "65",
+      "1067",
+      "574",
+      "204"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heisst ein Mitglied aus dem A-Team",
+    "category": "General",
+    "options": [
+      "Mister T",
+      "Mister D",
+      "Mister C",
+      "Mister A"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel grad Celsius sind 0 Kelvin",
+    "category": "Science",
+    "options": [
+      "0",
+      "273.15",
+      "-273.15",
+      "-237.15"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel Kelvin sind 10° Celsius?",
+    "category": "Science",
+    "options": [
+      "-273.15",
+      "273.15",
+      "-283.15",
+      "283.15"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel grad Fahrenheit sind 10° Celsius?",
+    "category": "Science",
+    "options": [
+      "10",
+      "50",
+      "35",
+      "-10"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel grad Celsius sind 100° Fahrenheit",
+    "category": "Science",
+    "options": [
+      "37.7",
+      "35",
+      "42.9",
+      "60.5"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Anhand von was wurde bestimmt wie warm 100° Fahrenheit sind?",
+    "category": "Science",
+    "options": [
+      "Körpertemperatur eines Menschen",
+      "Siedepunkt von Wasser",
+      "Höchste gemessene Temperatur in Danzig",
+      "Gefrierpunkt von Wasser"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Anhand von was wurde festgelegt, was 0° Fahrenheit ist?",
+    "category": "Science",
+    "options": [
+      "Gefrierpunkt von Wasser",
+      "Siedepunkt von Wasser",
+      "Körpertemperatur eines Menschen",
+      "Tiefste gemessene Temperatur in Danzig (1714)"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wer oder was ist POTUS",
+    "category": "Politics",
+    "options": [
+      "Präsident der USA",
+      "Französische Spezialeinheit",
+      "Verteidigungsministerium Griechenland",
+      "Ein Flugzeug"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Meisten Tore in der PL",
+    "category": "Sports",
+    "options": [
+      "Wayne Rooney",
+      "Sergio Agüero",
+      "Alan Shearer",
+      "Cristiano Ronaldo"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Meisten Tore in der PL",
+    "category": "Sports",
+    "options": [
+      "Wayne Rooney",
+      "Sergio Agüero",
+      "Alan Shearer",
+      "Cristiano Ronaldo"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Pixel hat ein 4K Bildschdirm",
+    "category": "Tech",
+    "options": [
+      "4000",
+      "~8mio",
+      "16‘000",
+      "~4mio"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Pixel hat ein 4K Bildschdirm",
+    "category": "Tech",
+    "options": [
+      "4000",
+      "~8mio",
+      "16‘000",
+      "~16mio"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welcher Tierart gehört der Orca?",
+    "category": "Animals",
+    "options": [
+      "Haifisch",
+      "Delfin",
+      "Waal",
+      "Fisch"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viel Strom (Volt) kann ein Zitteraal erzeugen?",
+    "category": "Science",
+    "options": [
+      "240",
+      "100",
+      "10",
+      "1000"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Von welchem Künstler wurde das Bild (Don Quichotte) gemalen?",
+    "category": "General",
+    "options": [
       "Pablo Picasso",
       "Leonardo da Vinci",
-      "Michelangelo"
+      "Paul Klee",
+      "Salvador Dali"
     ],
-    "correctOptionIndex": 2,
-    "__v": 0
+    "correctOptionIndex": 0
   },
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b81"
-    },
     "type": "multiple-choice",
-    "question": "Welches Land ist bekannt für das Essen von Sushi?",
-    "category": "Essen & Trinken",
+    "question": "Von welchem Künstler wurde das Bild (der Schrei) gemalen?",
+    "category": "General",
+    "options": [
+      "Edvard Munch",
+      "Leonardo da Vinci",
+      "Vincent van Gogh",
+      "Salvador Dali"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "In welchem Jahr des Zweiten Weltkrieges wurde die Dresdener Frauenkirche zerstört?",
+    "category": "History",
+    "options": [
+      "1940",
+      "1942",
+      "1944",
+      "1945"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "John F. Kennedy war der vierte US-Präsident, der ermordet wurde. In welcher Stadt wurde er erschossen?",
+    "category": "History",
+    "options": [
+      "Dallas",
+      "Austin",
+      "Washington",
+      "New York"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Ernesto Che Guevara kämpfte bei Fidel Castros Revolution an dessen Seite. In welchem Land wurde Guevara geboren?",
+    "category": "History",
+    "options": [
+      "Kuba",
+      "Argentinien",
+      "Chile",
+      "Jamaika"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "\"Machu Picchu\" heißt die vergessene Stadt der Inkas in den peruanischen Anden. Wann wurde diese Stadt wieder entdeckt?",
+    "category": "History",
+    "options": [
+      "1911",
+      "1931",
+      "1945",
+      "1960"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Otto III., deutscher Kaiser, war 983 zum König gewählt worden. Wie alt war er da?",
+    "category": "History",
+    "options": [
+      "3",
+      "13",
+      "23",
+      "45"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Unter welchem Namen ist die Stadt Saigon heutzutage bekannt?",
+    "category": "Geo",
+    "options": [
+      "Ho-Chi-Minh",
+      "Kuala Lumpur",
+      "Phnom Penh",
+      "Bankok"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie heißt der Mann, der 1498 den Seeweg nach dem \"gewürzreichen Indien\" fand?",
+    "category": "History",
+    "options": [
+      "Christoph Kolumbus",
+      "Christopher Kolumbus",
+      "Vasco Da Gama",
+      "Fernando Magellan"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches europäische Land führte zuerst das Frauenwahlrecht ein?",
+    "category": "History",
+    "options": [
+      "Deutschland",
+      "Finnland",
+      "Schweiz",
+      "Italien"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Von wem kam die Initiative zur Einführung des Internationalen Frauentags?",
+    "category": "History",
+    "options": [
+      "Alice Schwarzer",
+      "Rosa Luxemburg",
+      "Lana Rhoades",
+      "Clara Zetkin"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wann ist Großbritannien offiziell aus der EU ausgetreten?",
+    "category": "Politics",
+    "options": [
+      "1. Januar 2021",
+      "1. Mai 2021",
+      "31. Januar 2020",
+      "noch nicht"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Die Demokratische und die Republikanische Partei haben jeweils ein Tier als Maskottchen. Welche sind das?",
+    "category": "Politics",
+    "options": [
+      "Falke und Löwe",
+      "Hai und Delfin",
+      "Esel und Elefant",
+      "Maus und Schlage"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was geschieht am Super Tuesday (USA)?",
+    "category": "Politics",
+    "options": [
+      "In allen amerikanischen Fastfood-Ketten gibt es Super-Size-Burger.",
+      "Beim Superbowl führen die beiden Präsidentschaftskandidat/-innen die erste Debatte.",
+      "In vielen Bundesstaaten finden gleichzeitig Vorwahlen statt.",
+      "Es wird verkündet wer Präsident wird"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wie viele Ehen resultieren in Scheidungen?",
+    "category": "General",
+    "options": [
+      "32%",
+      "43%",
+      "24%",
+      "18%"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇨🇽",
+    "category": "Geo",
+    "options": [
+      "Weihnachtsinsel",
+      "Osterinsel",
+      "Neujahrsinsel",
+      "Pfingstinsel"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇨🇼",
+    "category": "Geo",
+    "options": [
+      "Aruba",
+      "Granada",
+      "Curaçao",
+      "Osterinseln"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇭🇹",
+    "category": "Geo",
+    "options": [
+      "Sri Lanka",
+      "Jamaika",
+      "Hawaii",
+      "Haiti"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇯🇪",
+    "category": "Geo",
+    "options": [
+      "York",
+      "Jersey",
+      "Guernsey",
+      "Kap Verde"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇲🇳",
+    "category": "Geo",
+    "options": [
+      "Sibirien",
+      "Mongolei",
+      "China",
+      "Singapur"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu was gehört diese Flagge? 🇳🇵",
+    "category": "Geo",
+    "options": [
+      "UN",
+      "NATO",
+      "Nepal",
+      "Vatikan"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welchem Land gehört diese Flagge? 🇲🇴",
+    "category": "Geo",
+    "options": [
+      "Curaçao",
+      "Macao",
+      "Aruba",
+      "Tulum"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wo befindet sich Macao?",
+    "category": "Geo",
     "options": [
       "China",
-      "Japan",
-      "Thailand",
-      "Vietnam"
+      "Chile",
+      "Brasilien",
+      "Südafrika"
     ],
-    "correctOptionIndex": 1,
-    "__v": 0
+    "correctOptionIndex": 0
   },
   {
-    "_id": {
-      "$oid": "671809b437d822ef30fc9b82"
-    },
     "type": "multiple-choice",
-    "question": "Wer hat die Relativitätstheorie entwickelt?",
-    "category": "Technik",
+    "question": "Zu welchem Land gehört Macao bis 1999?",
+    "category": "History",
     "options": [
-      "Isaac Newton",
-      "Albert Einstein",
-      "Galileo Galilei",
-      "Nikola Tesla"
+      "China",
+      "Portugal",
+      "Spanien",
+      "Brasilien"
     ],
-    "correctOptionIndex": 1,
-    "__v": 0
+    "correctOptionIndex": 1
   },
   {
-    "_id": {
-      "$oid": "671f59823e435a9d0b5f4f98"
-    },
-    "type": "what-would-you-rather",
-    "question": "What would you rather do: go skydiving or scuba diving?",
-    "category": "Adventure",
+    "type": "multiple-choice",
+    "question": "Was speichert ein Kamel in seinen Höcker?",
+    "category": "Science",
     "options": [
-      "Skydiving",
-      "Scuba diving"
+      "Fett",
+      "Wasser",
+      "Luft",
+      "Nahrung"
     ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welcher Tierart gehört das Trampeltier?",
+    "category": "Animals",
+    "options": [
+      "Kamel",
+      "Nashorn",
+      "Pferd",
+      "Esel"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Zu welcher Tierart gehört das Trampeltier?",
+    "category": "Animals",
+    "options": [
+      "Kamel",
+      "Nashorn",
+      "Pferd",
+      "Esel"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Fussballer spielte für die Nationalmannschaft von Ungarn und Spanien?",
+    "category": "Sports",
+    "options": [
+      "Fernando Hierro",
+      "Ferenc Puskás",
+      "Attila Fiola",
+      "József Zakariás"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer ist sportlich fitter?",
+    "category": "Sports",
+    "options": [],
     "goodOrBad": "good"
   },
   {
-    "_id": {
-      "$oid": "671f5dc23e435a9d0b5f4f9c"
-    },
     "type": "who-would-rather",
-    "question": "Who would rather win a Nobel Prize?",
-    "category": "Personality",
+    "question": "Wer kocht besser?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer ist eitler?",
+    "category": "General",
     "options": [],
     "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer hättest du lieber als Schwiegersohn/Tochter?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würdest du lieber küssen?",
+    "category": "Sex",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer unpünktlicher?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer ist der grössere Alkoholiker?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher wegen seinem Alter lügen?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher auf einer einsamen Insel klar kommen?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer sammelt mehr Strafzettel?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher mit Mord davon kommen?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer gibt mehr geld für Unnötiges aus?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer fährt besser Auto?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer ist besser im Fussball?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer konsumiert mehr Drogen?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer verbringt mehr Zeit am Handy?",
+    "category": "Tech",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer schaut eher Trash-TV-Shows wie Love Island, Bachelor...?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer ist netter?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würdest du eher als Babysitter einstellen?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer kann besser zeichnen?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer muss eher mal ins Gefängis?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher für einen Partner/in die Freunde vernachlässigen?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer verträgt mehr Alkohol?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer lebt einen gesünderen Lebenstil?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde den Lottogewinn eher teilen?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer ist der grössere Geizhals?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer könnte eher einen Marathon laufen?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher was richtig dummes machen?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer kann mehr Liegestützen?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer ist unhygienischer?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde sich für eine Mutprobe eher von einer Schlange beissen lassen?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher dieselbe Unterhose für eine Woche tragen?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher Wurstwasser für Geld trinken?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher seine/ihre Partner/in betrügen?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer fällt eher auf einen Online-Scammer rein?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer ist der grössere Tollpatsch?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher die Haar Pink färben?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer vergisst eher mal einen Geburtstag?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher gar nichts essen, als zu kochen?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher Veganer werden?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher sein ganzes Geld im Casino verlieren?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher einen schlechten Witz erzählen?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher mit dem Fahrrad zur Arbeit fahren?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde sich eher zuhause alleine betrinken?",
+    "category": "Animal",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher etwas mit der/dem Ex eines Freundes/Freundin anfangen?",
+    "category": "Animal",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher ausversehen ein Naktbild an die falsche Person senden?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer ist dümmer?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer ist klüger?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer hat einen besseren Job?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Bei wem steigst du lieber als Beifahrer ins Auto ?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Mit wem würdest du lieber auf einer einsamen Insel stranden?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher klauen?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wem traust du eher einen Backflip zu?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer von hat (hätte) mehr probleme alleine zu wohnen?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher einen Porno drehen?",
+    "category": "Animal",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher an einer Orgie teilnehmen?",
+    "category": "Animal",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher als Sexsklave dienen?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde sich eher eine Woche lang nicht waschen?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde sich eher besoffen ein Tattoo stechen lassen?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde sich eher eine Glatze rasieren?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher alle Social Media Accounts löschen?",
+    "category": "Animal",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher jemanden schwängern?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher nackt um das Haus laufen?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher das Geld eines Freundes im Casino verprassen?",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "bad"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer würde eher 10% seines Vermögens spenden?",
+    "category": "General",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  {
+    "type": "who-would-rather",
+    "question": "Wer kann mehr Liegestützen am Stück",
+    "category": "Sports",
+    "options": [],
+    "goodOrBad": "good"
+  },
+  [
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber nur flüstern oder nur schreien können?",
+      "category": "General",
+      "options": [
+        "Flüstern",
+        "Schreien"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber der klügste Trottel oder das dümmste Genie sein?",
+      "category": "General",
+      "options": [
+        "Klügster Trottel",
+        "Dümmstes Genie"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber Coca Cola oder Eistee?",
+      "category": "General",
+      "options": [
+        "Coca Cola",
+        "Eistee"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber 1 Woche 100 Jahre in die Zukunft oder 100 Jahre in die Vergangenheit?",
+      "category": "General",
+      "options": [
+        "Zukunft",
+        "Vergangenheit"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber 50000 CHF aufs Bankkonto oder 100000 CHF in 5 Rappen Stücken (können nicht umgetauscht werden) bekommen?",
+      "category": "General",
+      "options": [
+        "50000",
+        "100000"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Ananas auf der Pizza erlaubt oder nicht?",
+      "category": "General",
+      "options": [
+        "Ja",
+        "Nein"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "The Hobbit oder Fluch der Karibik?",
+      "category": "General",
+      "options": [
+        "The Hobbit",
+        "Fluch der Karibik"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "FC Barcelona oder Real Madrid?",
+      "category": "Sports",
+      "options": [
+        "FC Barcelona",
+        "Real Madrid"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Inter Mailand oder AC Milan?",
+      "category": "Sports",
+      "options": [
+        "Inter Mailand",
+        "AC Milan"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Spotify oder Apple Music?",
+      "category": "Tech",
+      "options": [
+        "Spotify",
+        "Apple Music"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Android oder Apple?",
+      "category": "Tech",
+      "options": [
+        "Android",
+        "Apple"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lamborghini oder Ferrari?",
+      "category": "General",
+      "options": [
+        "Lamborghini",
+        "Ferrari"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Cristiano Ronaldo oder Lionel Messi?",
+      "category": "Sports",
+      "options": [
+        "Cristiano Ronaldo",
+        "Lionel Messi"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "The Big Bang Theory oder How I Met Your Mother?",
+      "category": "General",
+      "options": [
+        "TBBT",
+        "HIMYM"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber immer erkennen wenn jemand lügt oder der beste Lügner sein?",
+      "category": "General",
+      "options": [
+        "Lügen Erkennen",
+        "Bester Lügner"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Nike oder Adidas?",
+      "category": "General",
+      "options": [
+        "Nike",
+        "Adidas"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Kaffee mit Milch oder Kaffee ohne Milch?",
+      "category": "General",
+      "options": [
+        "Mit Milch",
+        "Ohne Milch"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Kaffee mit Zucker oder Kaffee ohne Zucker?",
+      "category": "General",
+      "options": [
+        "Mit Zucker",
+        "Ohne Zucker"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Kaffee mit Milch oder Kaffee ohne Milch?",
+      "category": "General",
+      "options": [
+        "Mit Milch",
+        "Ohne Milch"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber Thor oder Captain America sein?",
+      "category": "General",
+      "options": [
+        "Thor",
+        "Captain America"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber jeden Tag Gras rauchen oder jeden Tag Alkohol trinken?",
+      "category": "General",
+      "options": [
+        "Gras rauchen",
+        "Alkohol trinken"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber fliessend Spanisch oder Chinesisch reden können?",
+      "category": "General",
+      "options": [
+        "Spanisch",
+        "Chinesisch"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Nie mehr eie heisse Dusche nehmen oder nie wieder heisses Essen essen können?",
+      "category": "General",
+      "options": [
+        "Dusche",
+        "Essen"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber wahre Liebe finden oder 5 Millionen gewinnen?",
+      "category": "General",
+      "options": [
+        "Liebe",
+        "Geld"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber deine ganze Browser-History oder die letzten 20 Bilder auf deinem Handy veröffentlichen?",
+      "category": "General",
+      "options": [
+        "History",
+        "Bilder"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber einsam auf einer tropischen Insel oder mit freunden in der Antarktis leben?",
+      "category": "General",
+      "options": [
+        "Insel",
+        "Antarktis"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber die Champions League oder die Weltmeisterschaft gewinnen?",
+      "category": "Sports",
+      "options": [
+        "Champions League",
+        "WM"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber ohne Kissen oder ohne Decke schlafen müssen?",
+      "category": "General",
+      "options": [
+        "Kissen",
+        "Decke"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber 100 Liegestützen machen oder 2KM Joggen müssen?",
+      "category": "Sports",
+      "options": [
+        "Liegestützen",
+        "Joggen"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber eine TV-Serie oder einen Film schauen?",
+      "category": "General",
+      "options": [
+        "Tv-Serie",
+        "Film"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber gegen einen Löwen oder einen Hai kämpfen?",
+      "category": "Animals",
+      "options": [
+        "Löwe",
+        "Hai"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber Iron Mans Anzug oder sein Geld haben?",
+      "category": "General",
+      "options": [
+        "Anzug ",
+        "Geld"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Brandi Love oder Lana Rhoades?",
+      "category": "Sex",
+      "options": [
+        "Brandi Love ",
+        "Lana Rhoades"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Liber als Fussball Talent bei Ajax oder bei Dortmund spielen?",
+      "category": "Sports",
+      "options": [
+        "Ajax",
+        "Dortmund"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber Startelf und Publikumsliebling bei Dortmund oder seltener Rotationsspieler bei Real Madrid sein",
+      "category": "Sports",
+      "options": [
+        "Startelf & Publikumsliebling",
+        "seltener Rotationsspieler"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber Football oder Basketball Profi sein?",
+      "category": "Sports",
+      "options": [
+        "Football",
+        "Basketball"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber nie wieder Hosen tragen oder nie wieder ein Oberteil tragen können?",
+      "category": "General",
+      "options": [
+        "Hose",
+        "Oberteil"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber nur noch lange Kleidung tragen & es ist immer Sommer oder nur noch kurze Kleidung tragen & es ist immer Winter?",
+      "category": "General",
+      "options": [
+        "Lang & Sommer",
+        "Kurz & Winter"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Würdest du für 1000 CHF einen Monat auf dein Telefon verzichten?",
+      "category": "Tech",
+      "options": [
+        "Ja",
+        "Nein"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber mit einer Person verheiratet sein, die du nicht liebst, sie aber doch oder die dich nicht liebt, du sie aber schon",
+      "category": "General",
+      "options": [
+        "Ich nicht liebe",
+        "Sie mich nicht liebt"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber nur noch Klassiche Musik oder nur noch Drum & Bass hören können?",
+      "category": "General",
+      "options": [
+        "Klassiche Musik",
+        "Drum & Bass"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber Sex mit einem Tier haben aber niemand weiss es oder kein Sex mit einem Tier haben aber jeder denkt du hattest?",
+      "category": "Sex",
+      "options": [
+        "Haben",
+        "Nicht haben"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber für immer arm, aber glücklich oder für immer reich, aber unglücklich sein?",
+      "category": "General",
+      "options": [
+        "Arm & Glücklich",
+        "Reich & Unglücklich"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber Gedankenlesen oder Zeitreisen können?",
+      "category": "General",
+      "options": [
+        "Gedankenlesen",
+        "Zeitreisen"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber bis zum Ende deines Lebens im Gefängnis sitzen oder sofort hingerichtet werden?",
+      "category": "General",
+      "options": [
+        "Lebenslang",
+        "Hinrichtung"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber nie wieder sprechen oder nie wieder sehen können?",
+      "category": "General",
+      "options": [
+        "Sprechen",
+        "Sehen"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber für immer auf den Winter oder für immer auf den Sommer verzichten?",
+      "category": "General",
+      "options": [
+        "Kein Winter",
+        "Kein Sommer"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber unter Wasser atmen oder fliegen können?",
+      "category": "General",
+      "options": [
+        "Unter Wasser atmen",
+        "Fliegen"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber für immer auf Süßes oder für immer auf Fast Food verzichten?",
+      "category": "General",
+      "options": [
+        "Süsses",
+        "Fast Food"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber eine Kardashian/Jenner sein oder dein Leben lang jeden Tag eine Folge ihrer Show sehen?",
+      "category": "General",
+      "options": [
+        "Eine sein",
+        "1 Folge/Tag"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber eine tödliche Krankheit heilen oder für Weltfrieden sorgen?",
+      "category": "Politics",
+      "options": [
+        "Krankheit heilen",
+        "Weltfrieden"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber eine riesige Nase oder riesige Ohren haben?",
+      "category": "General",
+      "options": [
+        "Nase",
+        "Ohren"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber reinplatzen, wenn deine Eltern Sex haben oder deine Eltern reinplatzen lassen, wenn du Sex hast?",
+      "category": "Sex",
+      "options": [
+        "Reiplatzen",
+        "Eltern platzen rein"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber nie wieder ernst sein oder nie wieder lachen können?",
+      "category": "General",
+      "options": [
+        "Ernst",
+        "Lachen"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber lebenslang auf Pizza oder auf Nudeln verzichten??",
+      "category": "General",
+      "options": [
+        "Pizza",
+        "Nudeln"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber für immer die Wahrheit sagen müssen oder für immer lügen??",
+      "category": "General",
+      "options": [
+        "Wahrheit",
+        "Lügen"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "lieber lebenslang Kleidung tragen, die zwei Nummern zu groß oder zwei Nummern zu klein ist??",
+      "category": "General",
+      "options": [
+        "zu Gross",
+        "zu Klein"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber nie mehr Salz benutzen oder alles zu stark gesalzen essen müssen??",
+      "category": "General",
+      "options": [
+        "nie mehr Salz",
+        "zu viel Salz"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber dein Leben lang hungrig oder dein Leben lang müde sein?",
+      "category": "General",
+      "options": [
+        "Hungrig",
+        "Müde"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber nie wieder schwitzen oder nie wieder frieren?",
+      "category": "General",
+      "options": [
+        "Schwitzen",
+        "Frieren"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber deine Google-Suchhistorie allen zeigen, oder deine Chatverläufe?",
+      "category": "General",
+      "options": [
+        "Suchverlauf",
+        "Chatverlauf"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber dein Handy zerstören, oder deinen Freund schlagen?",
+      "category": "General",
+      "options": [
+        "Handy",
+        "Freund"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber einen Fuß verlieren oder eine Hand verlieren?",
+      "category": "General",
+      "options": [
+        "Fuss",
+        "Hand"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber nie wieder Putzen (ganze Wohnung) oder Kochen müssen",
+      "category": "General",
+      "options": [
+        "Putzen",
+        "Kochen"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber nur noch weisse oder nur noch schwarze Kleidung tragen dürfen?",
+      "category": "General",
+      "options": [
+        "Weisse",
+        "Schwarze"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber jede nacht nur 4 Stunden oder jede Nacht 15 Stunden schlafen können?",
+      "category": "General",
+      "options": [
+        "4",
+        "15"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber die Hälfte der Haare oder die Hälfte des Hörens verlieren?",
+      "category": "General",
+      "options": [
+        "Haare",
+        "Hören"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber ein Bauchpiercing oder ein Gesichtstattoo machen müssen?",
+      "category": "General",
+      "options": [
+        "Piercing",
+        "Tattoo"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber erfrieren oder verbrennen?",
+      "category": "General",
+      "options": [
+        "Erfrieren",
+        "Verbrennen"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber Dumm und schön sein oder sehr intelligent und hässlich sein?",
+      "category": "General",
+      "options": [
+        "Dumm & Schön",
+        "Intelligent & Hässlich"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber 1 Meter größer oder 1 Meter kleiner sein?",
+      "category": "General",
+      "options": [
+        "Größer",
+        "Kleiner"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber dem Friseur sagen, dass er nicht gut geschnitten hat oder das Essen im Restaurant zurück geben, weils ungenießbar ist?",
+      "category": "General",
+      "options": [
+        "Friseur",
+        "Restaurant"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Darf man beim UNO-Spiel mit einer Wunsch Karte aufhören?",
+      "category": "General",
+      "options": [
+        "NEIN",
+        "JA"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Dumme Frage",
+      "category": "General",
+      "options": [
+        "Antwort1",
+        "Antwort2"
+      ],
+      "goodOrBad": "good"
+    },
+    {
+      "type": "what-would-you-rather",
+      "question": "Lieber Wasser mit oder ohne Kohlensäure?",
+      "category": "General",
+      "options": [
+        "Mit",
+        "Ohne"
+      ],
+      "goodOrBad": "good"
   }
+]
 ]

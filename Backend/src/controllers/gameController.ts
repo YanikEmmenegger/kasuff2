@@ -491,7 +491,7 @@ const handleRanking = (
     // Handle players who didn’t answer
     answers.forEach(answer => {
         if (!answer.answer || answer.answer === "__NOT_ANSWERED__") {
-            answer.pointsAwarded = -100;
+            answer.pointsAwarded = -300;
             noAnswerPlayers.push({
                 playerId: answer.playerId,
                 reasons: [`Didn't answer – drink ${2 * multiplier} sips`],
@@ -661,7 +661,7 @@ const handleMultipleChoice = (
         if (!answer.answer || answer.answer === "__NOT_ANSWERED__") {
             // Player didn't answer
             noAnswerCount++;
-            answer.pointsAwarded = -100; // Deduct points for not answering
+            answer.pointsAwarded = -300; // Deduct points for not answering
             noAnswerPlayers.push({
                 playerId: answer.playerId,
                 reasons: [`Didn't answer – drink ${2 * multiplier} sips`],
@@ -775,7 +775,7 @@ const handleWhatWouldYouRather = (
         if (!answer.answer || answer.answer === "__NOT_ANSWERED__") {
             // Player didn't answer
             noAnswerCount++;
-            answer.pointsAwarded = -100; // Deduct points for not answering
+            answer.pointsAwarded = -300; // Deduct points for not answering
             noAnswerPlayers.push({
                 playerId: answer.playerId,
                 reasons: [`Didn't answer 🤦🏻‍♂️ ${2 * multiplier}`],
@@ -908,7 +908,7 @@ const handleWhoWouldRather = (
             });
         } else {
             noAnswerCount++;
-            answer.pointsAwarded = -100
+            answer.pointsAwarded = -300
             noAnswerPlayers.push({
                 playerId: answer.playerId,
                 reasons: [`Didn't answer – drink ${2 * multiplier} sips`],
