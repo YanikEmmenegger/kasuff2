@@ -11420,6 +11420,1518 @@
     "question": "Ordnet nach, wer ist am wahrscheinlichsten, beim Spielen eines Gesellschaftsspiels zu betrügen?",
     "category": "Asozial",
     "goodOrBad": "bad"
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher deutsche Philosoph ist bekannt für sein Werk 'Sein und Zeit'?",
+    "category": "Philosophie",
+    "options": [
+      "Immanuel Kant",
+      "Friedrich Nietzsche",
+      "Martin Heidegger",
+      "G.W.F. Hegel"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche chemische Verbindung ist die Hauptkomponente von Titanoxid in der Anstrichindustrie?",
+    "category": "Chemie",
+    "options": [
+      "TiO",
+      "TiO2",
+      "Ti2O3",
+      "Ti3O5"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Jahr markiert das Ende des Dreißigjährigen Krieges?",
+    "category": "Geschichte",
+    "options": [
+      "1648",
+      "1628",
+      "1655",
+      "1618"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wer entwickelte die Theorie der Superfluidität in Helium-4?",
+    "category": "Wissenschaft",
+    "options": [
+      "Albert Einstein",
+      "Lev Landau",
+      "Richard Feynman",
+      "Wolfgang Pauli"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Mathematik-Konstante ist das Verhältnis des Umfangs eines Kreises zu seinem Durchmesser?",
+    "category": "Mathematik",
+    "options": [
+      "Euler'sche Zahl (e)",
+      "Goldener Schnitt (φ)",
+      "Pi (π)",
+      "Imaginary Einheit (i)"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "In welchem Jahr wurde die Allgemeine Relativitätstheorie von Albert Einstein veröffentlicht?",
+    "category": "Physik",
+    "options": [
+      "1905",
+      "1915",
+      "1925",
+      "1935"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Maler ist bekannt für das Gemälde 'Guernica'?",
+    "category": "Kunst",
+    "options": [
+      "Pablo Picasso",
+      "Salvador Dalí",
+      "Francisco Goya",
+      "Diego Velázquez"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was ist die Hauptstadt der Baskenregion?",
+    "category": "Geografie",
+    "options": [
+      "Bilbao",
+      "San Sebastián",
+      "Vitoria-Gasteiz",
+      "Pamplona"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche physikalische Größe wird in der Einheit 'Tesla' gemessen?",
+    "category": "Physik",
+    "options": [
+      "Elektrische Feldstärke",
+      "Magnetische Flussdichte",
+      "Elektrischer Widerstand",
+      "Lichtstärke"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher antike Philosoph war Lehrer von Alexander dem Großen?",
+    "category": "Geschichte",
+    "options": [
+      "Platon",
+      "Aristoteles",
+      "Sokrates",
+      "Pythagoras"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Sprache hat die meisten Lehnwörter aus dem Arabischen?",
+    "category": "Sprache",
+    "options": [
+      "Spanisch",
+      "Französisch",
+      "Deutsch",
+      "Englisch"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wer entdeckte die Doppelhelixstruktur der DNA zusammen mit James Watson?",
+    "category": "Biologie",
+    "options": [
+      "Francis Crick",
+      "Rosalind Franklin",
+      "Maurice Wilkins",
+      "Linus Pauling"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Begriff beschreibt die Fähigkeit von Materialien, bei Temperaturänderungen ihre Form zu ändern?",
+    "category": "Materialwissenschaft",
+    "options": [
+      "Elastizität",
+      "Duktilität",
+      "Thermochromie",
+      "Piezoresistivität"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Stadt war die erste Hauptstadt des modernen Griechenlands?",
+    "category": "Geografie",
+    "options": [
+      "Athen",
+      "Thessaloniki",
+      "Patras",
+      "Argos"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Was ist die kleinste Einheit der Materie, die noch die Eigenschaften eines Elements besitzt?",
+    "category": "Chemie",
+    "options": [
+      "Molekül",
+      "Atom",
+      "Ion",
+      "Isotop"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher deutsche Dichter schrieb das Werk 'Faust'?",
+    "category": "Literatur",
+    "options": [
+      "Friedrich Schiller",
+      "Johann Wolfgang von Goethe",
+      "Heinrich Heine",
+      "Rainer Maria Rilke"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche der folgenden Partikelphysik-Teilchen ist kein Fermion?",
+    "category": "Physik",
+    "options": [
+      "Elektron",
+      "Proton",
+      "Neutron",
+      "Photon"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche römische Gottheit ist dem Krieg gewidmet?",
+    "category": "Mythologie",
+    "options": [
+      "Jupiter",
+      "Mars",
+      "Neptun",
+      "Apollo"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Begriff beschreibt die Anzahl der Protonen in einem Atomkern?",
+    "category": "Chemie",
+    "options": [
+      "Neutronenzahl",
+      "Massenzahl",
+      "Ordnungszahl",
+      "Elektronenzahl"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche der folgenden Schriften wurde im antiken Ägypten verwendet?",
+    "category": "Geschichte",
+    "options": [
+      "Hieroglyphen",
+      "Cuneiform",
+      "Latein",
+      "Griechisch"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Wissenschaft befasst sich mit der Klassifizierung von Lebewesen?",
+    "category": "Biologie",
+    "options": [
+      "Anatomie",
+      "Ökologie",
+      "Taxonomie",
+      "Genetik"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Planet hat die längste Rotationsperiode in unserem Sonnensystem?",
+    "category": "Astronomie",
+    "options": [
+      "Venus",
+      "Jupiter",
+      "Saturn",
+      "Neptun"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wer entwickelte die Differentialgleichungen, die die Bewegung von Himmelskörpern beschreiben?",
+    "category": "Mathematik",
+    "options": [
+      "Isaac Newton",
+      "Johannes Kepler",
+      "Leonhard Euler",
+      "Pierre-Simon Laplace"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche der folgenden Substanzen ist ein Katalysator im Haber-Bosch-Verfahren?",
+    "category": "Chemie",
+    "options": [
+      "Eisen",
+      "Kupfer",
+      "Platin",
+      "Nickel"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche literarische Epoche folgt direkt auf die Romantik in Deutschland?",
+    "category": "Literatur",
+    "options": [
+      "Realismus",
+      "Expressionismus",
+      "Barock",
+      "Aufklärung"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche Enzyme sind für die DNA-Replikation verantwortlich?",
+    "category": "Biologie",
+    "options": [
+      "Helikase und DNA-Polymerase",
+      "Lipase und Protease",
+      "Amylase und Glykogenase",
+      "Katalase und Oxidase"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien ist eine Erweiterung der Quantentheorie?",
+    "category": "Physik",
+    "options": [
+      "Relativitätstheorie",
+      "Stringtheorie",
+      "Klassische Mechanik",
+      "Thermodynamik"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche der folgenden Gasformen ist ein Edelgas?",
+    "category": "Chemie",
+    "options": [
+      "Stickstoff",
+      "Sauerstoff",
+      "Argon",
+      "Kohlendioxid"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche mathematische Methode wird zur Lösung von Differentialgleichungen verwendet?",
+    "category": "Mathematik",
+    "options": [
+      "Fourier-Transformation",
+      "Laplace-Transformation",
+      "Zahlentheorie",
+      "Kombinatorik"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche antike Stadt war das Zentrum der Minotaurus-Mythologie?",
+    "category": "Mythologie",
+    "options": [
+      "Athen",
+      "Kreta",
+      "Sparta",
+      "Theben"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches ist das leichteste Element im Periodensystem?",
+    "category": "Chemie",
+    "options": [
+      "Helium",
+      "Wasserstoff",
+      "Lithium",
+      "Beryllium"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche der folgenden Theorien erklärt die Struktur der Atomkerne?",
+    "category": "Physik",
+    "options": [
+      "Quantenmechanik",
+      "Kernspaltungstheorie",
+      "Brückenkonzept",
+      "Atomorbitaltheorie"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Regionen ist geologisch am aktivsten in Bezug auf Vulkanismus?",
+    "category": "Geologie",
+    "options": [
+      "Der Atlantische Mittelozeanische Rücken",
+      "Der Pazifische Feuerring",
+      "Der Mittelmeerraum",
+      "Die Sahara"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche der folgenden Gesetze beschreibt das Verhältnis von Druck und Volumen eines Gases bei konstanter Temperatur?",
+    "category": "Physik",
+    "options": [
+      "Boyle'sches Gesetz",
+      "Gesetz von Charles",
+      "Gesetz von Avogadro",
+      "Gesetz von Idealität"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Wer ist der Autor des philosophischen Werks 'Kritik der reinen Vernunft'?",
+    "category": "Philosophie",
+    "options": [
+      "Georg Wilhelm Friedrich Hegel",
+      "Friedrich Nietzsche",
+      "Immanuel Kant",
+      "Arthur Schopenhauer"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser chemischen Bindungen ist die stärkste?",
+    "category": "Chemie",
+    "options": [
+      "Van-der-Waals-Bindung",
+      "Ionische Bindung",
+      "Kovalente Bindung",
+      "Metallische Bindung"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche der folgenden Städte war nie eine Hauptstadt eines europäischen Königreichs?",
+    "category": "Geografie",
+    "options": [
+      "Wien",
+      "Prag",
+      "Budapest",
+      "Zagreb"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschäftigt sich mit der Beschreibung von Materie und Energie auf kleinster Skala?",
+    "category": "Physik",
+    "options": [
+      "Klassische Mechanik",
+      "Relativitätstheorie",
+      "Quantenfeldtheorie",
+      "Thermodynamik"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Organismus ist bekannt für seine Fähigkeit zur Biolumineszenz?",
+    "category": "Biologie",
+    "options": [
+      "Mensch",
+      "Tintenfisch",
+      "Elefant",
+      "Giraffe"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche mathematische Struktur beschreibt die Symmetrie von Molekülen?",
+    "category": "Mathematik",
+    "options": [
+      "Gruppentheorie",
+      "Graphentheorie",
+      "Kombinatorik",
+      "Topologie"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Substanzen ist ein organisches Lösungsmittel?",
+    "category": "Chemie",
+    "options": [
+      "Wasser",
+      "Ethanol",
+      "Salzsäure",
+      "Ammoniak"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Kulturen ist für die Entwicklung der Seidenstraße verantwortlich?",
+    "category": "Geschichte",
+    "options": [
+      "Römisches Reich",
+      "Mongolisches Reich",
+      "Chinesisches Kaiserreich",
+      "Persisches Reich"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Wellenlängen gehören zum infraroten Spektrum?",
+    "category": "Physik",
+    "options": [
+      "400-700 nm",
+      "700-1 mm",
+      "10-400 nm",
+      "1 mm - 1 m"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welches Organ im menschlichen Körper ist am meisten von Blut durchströmt?",
+    "category": "Biologie",
+    "options": [
+      "Leber",
+      "Gehirn",
+      "Herz",
+      "Niere"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien erklärt die Bewegung von Galaxien im Universum?",
+    "category": "Astronomie",
+    "options": [
+      "Steady-State-Theorie",
+      "Urknalltheorie",
+      "Stringtheorie",
+      "M-Theorie"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Technologien basiert auf der Quantenverschränkung?",
+    "category": "Technologie",
+    "options": [
+      "Klassische Kryptographie",
+      "Quantenkryptographie",
+      "Public-Key-Verschlüsselung",
+      "Symmetrische Verschlüsselung"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Reaktionen ist ein Beispiel für eine Redoxreaktion?",
+    "category": "Chemie",
+    "options": [
+      "Verbrennung von Methan",
+      "Säure-Base-Neutralisation",
+      "Bildung von Ester",
+      "Hydrolyse von Proteinen"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschäftigt sich mit der Dynamik von Galaxien?",
+    "category": "Astronomie",
+    "options": [
+      "Kalte Dunkle Materie",
+      "Hot Dark Matter",
+      "Monopole-Theorie",
+      "Kosmische Inflation"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Substanzen ist ein Transistor-Material?",
+    "category": "Technologie",
+    "options": [
+      "Silizium",
+      "Kupfer",
+      "Eisen",
+      "Gold"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher Planet hat die größte Anzahl an Monden in unserem Sonnensystem (Stand 2024)?",
+    "category": "Astronomie",
+    "options": [
+      "Jupiter",
+      "Saturn",
+      "Neptun",
+      "Uranus"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Eigenschaften ist typisch für eine endotherme Reaktion?",
+    "category": "Chemie",
+    "options": [
+      "Freisetzung von Wärme",
+      "Aufnahme von Wärme",
+      "Bildung von Gas",
+      "Bildung eines Feststoffs"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Organisationen ist für die Standardisierung von elektrischen Steckdosen verantwortlich?",
+    "category": "Technologie",
+    "options": [
+      "IEEE",
+      "IEC",
+      "ISO",
+      "ANSI"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Schichten ist die äußerste Schicht der Erde?",
+    "category": "Geologie",
+    "options": [
+      "Mantel",
+      "Äußerer Kern",
+      "Innerer Kern",
+      "Erdkruste"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien erklärt die Struktur der Atomkerne durch die Wechselwirkung von Nukleonen?",
+    "category": "Physik",
+    "options": [
+      "Masse-Zahl-Theorie",
+      "Nukleonmodell",
+      "Quark-Modell",
+      "Bohr-Modell"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Reaktionen ist eine Säure-Base-Reaktion nach der Brønsted-Lowry-Theorie?",
+    "category": "Chemie",
+    "options": [
+      "HCl + NaOH → NaCl + H₂O",
+      "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O",
+      "2H₂ + O₂ → 2H₂O",
+      "NaCl → Na⁺ + Cl⁻"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschreibt die Wechselwirkung zwischen Licht und Materie auf quantenmechanischer Ebene?",
+    "category": "Physik",
+    "options": [
+      "Klassische Elektrodynamik",
+      "Quantenoptik",
+      "Relativistische Mechanik",
+      "Thermodynamik"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Städte war die Hauptstadt des Byzantinischen Reiches?",
+    "category": "Geschichte",
+    "options": [
+      "Rom",
+      "Konstantinopel",
+      "Athen",
+      "Alexandria"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser chemischen Reaktionen ist eine Polymerisationsreaktion?",
+    "category": "Chemie",
+    "options": [
+      "Verbrennung von Ethanol",
+      "Bildung von Polyethylen aus Ethylen",
+      "Säure-Base-Neutralisation",
+      "Oxidation von Aluminium"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Zellen sind für die Immunabwehr im menschlichen Körper verantwortlich?",
+    "category": "Biologie",
+    "options": [
+      "Erythrozyten",
+      "Neutrophile",
+      "Thrombozyten",
+      "Hepatozyten"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschreibt die Expansion des Universums?",
+    "category": "Astronomie",
+    "options": [
+      "Steady-State-Theorie",
+      "Big Crunch-Theorie",
+      "Urknalltheorie",
+      "Ekpyrotische Theorie"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Formen ist ein komplexes Polygon mit mindestens acht Seiten?",
+    "category": "Mathematik",
+    "options": [
+      "Hexagon",
+      "Heptagon",
+      "Oktagon",
+      "Nonagon"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher dieser Prozesse ist ein Teil des Calvin-Zyklus in der Photosynthese?",
+    "category": "Biologie",
+    "options": [
+      "Photolyse von Wasser",
+      "Fixierung von CO₂",
+      "Spaltung von ATP",
+      "Reduktion von NADP⁺"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien erklärt die Existenz von Dunkler Materie?",
+    "category": "Physik",
+    "options": [
+      "Quantenchromodynamik",
+      "General Relativity",
+      "Galaxienrotationen",
+      "Stringtheorie"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien ist eine Erweiterung der Evolutionsbiologie?",
+    "category": "Biologie",
+    "options": [
+      "Neo-Darwinismus",
+      "Lamarckismus",
+      "Intelligent Design",
+      "Creationismus"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Schichten der Atmosphäre enthält die Ozonschicht?",
+    "category": "Geowissenschaften",
+    "options": [
+      "Troposphäre",
+      "Stratosphäre",
+      "Mesosphäre",
+      "Thermosphäre"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser chemischen Reaktionen ist eine Redoxreaktion?",
+    "category": "Chemie",
+    "options": [
+      "Bildung von Wasser aus Wasserstoff und Sauerstoff",
+      "Neutralisation von Salzsäure mit Natronlauge",
+      "Bildung von Salz aus Natrium und Chlor",
+      "Hydrolyse von Estern"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Energieformen wird durch den Zerfall von Atomkernen freigesetzt?",
+    "category": "Physik",
+    "options": [
+      "Chemische Energie",
+      "Kinetische Energie",
+      "Kernenergie",
+      "Potentielle Energie"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welcher dieser Prozesse ist Teil des Calvin-Zyklus?",
+    "category": "Biologie",
+    "options": [
+      "Glykolyse",
+      "Krebszyklus",
+      "Fixierung von Kohlendioxid",
+      "Elektronentransportkette"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschreibt die Struktur von Protonen und Neutronen?",
+    "category": "Physik",
+    "options": [
+      "Quark-Modell",
+      "Atomorbitaltheorie",
+      "Bohr-Modell",
+      "Thermodynamik"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Funktionen wird von Ribosomen im Zellstoffwechsel übernommen?",
+    "category": "Biologie",
+    "options": [
+      "DNA-Replikation",
+      "Proteinbiosynthese",
+      "Zellatmung",
+      "Photosynthese"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Währungen ist die älteste noch verwendete Währung der Welt?",
+    "category": "Wirtschaft",
+    "options": [
+      "Britisches Pfund",
+      "US-Dollar",
+      "Euro",
+      "Japanischer Yen"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Technologien nutzt die Wechselwirkung von Licht und Materie zur Datenübertragung?",
+    "category": "Technologie",
+    "options": [
+      "Glasfaser",
+      "Kupferkabel",
+      "Drahtlose Netzwerke",
+      "Satellitenkommunikation"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Erkrankungen ist eine Autoimmunerkrankung?",
+    "category": "Medizin",
+    "options": [
+      "Grippe",
+      "Diabetes Typ 1",
+      "Tuberkulose",
+      "Masern"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschreibt die Gravitation auf quantenmechanischer Ebene?",
+    "category": "Physik",
+    "options": [
+      "Allgemeine Relativitätstheorie",
+      "Quantengravitation",
+      "Klassische Mechanik",
+      "Thermodynamik"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Strukturen ist kein Bestandteil einer typischen Eukaryoten-Zelle?",
+    "category": "Biologie",
+    "options": [
+      "Zellkern",
+      "Mitochondrien",
+      "Ribosomen",
+      "Prokaryotischer Membranring"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Kunstbewegungen entstand als Reaktion auf die industrielle Revolution und betonte Emotionen und Natur?",
+    "category": "Kunst",
+    "options": [
+      "Impressionismus",
+      "Romantik",
+      "Kubismus",
+      "Surrealismus"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Gleichungen stellt die Energie-Masse-Äquivalenz dar?",
+    "category": "Physik",
+    "options": [
+      "F = ma",
+      "E = mc²",
+      "V = IR",
+      "a² + b² = c²"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Tiergruppen gehören zu den Wirbellosen?",
+    "category": "Biologie",
+    "options": [
+      "Insekten",
+      "Fische",
+      "Vögel",
+      "Säugetiere"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschäftigt sich mit der Erklärung der Dunklen Energie?",
+    "category": "Physik",
+    "options": [
+      "Quantengravitation",
+      "Stringtheorie",
+      "Kosmologische Konstante",
+      "Kalte Dunkle Materie"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser organischen Verbindungen enthält eine Aminogruppe (-NH₂)?",
+    "category": "Chemie",
+    "options": [
+      "Alkohol",
+      "Aldehyd",
+      "Amine",
+      "Ketone"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Sprachen gehört zur indogermanischen Sprachfamilie?",
+    "category": "Sprache",
+    "options": [
+      "Finnisch",
+      "Türkisch",
+      "Hindi",
+      "Chinesisch"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien wurde von Carl Sagan populär gemacht?",
+    "category": "Astronomie",
+    "options": [
+      "Panspermie",
+      "Heliozentrisches Modell",
+      "Geozentrisches Modell",
+      "Big Crunch-Theorie"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Prozesse findet in den Chloroplasten statt?",
+    "category": "Biologie",
+    "options": [
+      "Zellatmung",
+      "Photosynthese",
+      "Proteinbiosynthese",
+      "DNA-Replikation"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschreibt die Struktur von Materie auf subatomarer Ebene?",
+    "category": "Physik",
+    "options": [
+      "Bohr-Modell",
+      "Quantenfeldtheorie",
+      "Klassische Mechanik",
+      "Thermodynamik"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Pflanzen gehört nicht zur Familie der Nachtschattengewächse?",
+    "category": "Biologie",
+    "options": [
+      "Tomate",
+      "Kartoffel",
+      "Karotte",
+      "Paprika"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Substanzen ist ein Alkan?",
+    "category": "Chemie",
+    "options": [
+      "Ethen",
+      "Propan",
+      "Ethanol",
+      "Methansäure"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien erklärt die Polarisation von Licht?",
+    "category": "Physik",
+    "options": [
+      "Wellentheorie",
+      "Teilchentheorie",
+      "Relativitätstheorie",
+      "Stringtheorie"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Strukturen ist in einer Prokaryoten-Zelle nicht vorhanden?",
+    "category": "Biologie",
+    "options": [
+      "Zellmembran",
+      "Zellkern",
+      "Ribosomen",
+      "Zellwand"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Formen ist eine Konvexe Polyederform?",
+    "category": "Mathematik",
+    "options": [
+      "Dodekaeder",
+      "Hohlwürfel",
+      "Pyramide",
+      "Torus"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Reaktionen ist eine Säure-Base-Reaktion nach der Lewis-Theorie?",
+    "category": "Chemie",
+    "options": [
+      "HCl + H₂O → H₃O⁺ + Cl⁻",
+      "BF₃ + NH₃ → F₃B-NH₃",
+      "NaOH → Na⁺ + OH⁻",
+      "CH₄ + Cl₂ → CH₃Cl + HCl"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Entdeckungen wurde von Marie Curie gemacht?",
+    "category": "Wissenschaft",
+    "options": [
+      "Radioaktivität",
+      "Kernspaltung",
+      "Doppelhelixstruktur der DNA",
+      "Elektron"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschreibt die Expansion und Abkühlung des Universums?",
+    "category": "Astronomie",
+    "options": [
+      "Big Bang-Theorie",
+      "Steady-State-Theorie",
+      "Urknall-Konstanz",
+      "Quantenfluktuationstheorie"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Verbindungen ist ein Keton?",
+    "category": "Chemie",
+    "options": [
+      "Aceton",
+      "Methanol",
+      "Ethanol",
+      "Propionsäure"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien erklärt die Entstehung von Galaxienhaufen?",
+    "category": "Astronomie",
+    "options": [
+      "Big Bang-Theorie",
+      "Hierarchical Structure Formation",
+      "Steady-State-Theorie",
+      "Modified Newtonian Dynamics"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Zellen sind Teil des Immunsystems und produzieren Antikörper?",
+    "category": "Biologie",
+    "options": [
+      "T-Lymphozyten",
+      "B-Lymphozyten",
+      "Makrophagen",
+      "Neutrophile"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschreibt die Wechselwirkung zwischen Elektronen und Phononen in Metallen?",
+    "category": "Physik",
+    "options": [
+      "BCS-Theorie",
+      "Fermi-Gas-Theorie",
+      "Drude-Modell",
+      "Quantenmechanische Wellengleichung"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Substanzen ist ein Polymer?",
+    "category": "Chemie",
+    "options": [
+      "Polyethylen",
+      "Ethanol",
+      "Methan",
+      "Propylenglykol"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschreibt die Wechselwirkung von Licht und Elektronen in Halbleitern?",
+    "category": "Physik",
+    "options": [
+      "Drude-Modell",
+      "Bandstrukturtheorie",
+      "Bohr-Modell",
+      "Quantenfeldtheorie"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Kulturen ist für die Errichtung der Machu Picchu verantwortlich?",
+    "category": "Geschichte",
+    "options": [
+      "Azteken",
+      "Inka",
+      "Maya",
+      "Olmeken"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Technologien basiert auf der Nutzung von Quanteneffekten zur Datenverarbeitung?",
+    "category": "Technologie",
+    "options": [
+      "Klassische Computer",
+      "Quantencomputer",
+      "Analogcomputer",
+      "Optische Computer"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien erklärt die Ursache der kosmischen Hintergrundstrahlung?",
+    "category": "Astronomie",
+    "options": [
+      "Steady-State-Theorie",
+      "Big Bang-Theorie",
+      "Inflationstheorie",
+      "Urknall-Konstanz"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Reaktionen ist eine Photosynthese-Reaktion?",
+    "category": "Biologie",
+    "options": [
+      "6CO₂ + 6H₂O + Lichtenergie → C₆H₁₂O₆ + 6O₂",
+      "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + Energie",
+      "2H₂ + O₂ → 2H₂O",
+      "N₂ + 3H₂ → 2NH₃"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Funktionen wird von Lysosomen in eukaryotischen Zellen übernommen?",
+    "category": "Biologie",
+    "options": [
+      "Proteinbiosynthese",
+      "Zellatmung",
+      "Abbau von Makromolekülen",
+      "DNA-Replikation"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien erklärt die Gravitation in der Allgemeinen Relativitätstheorie?",
+    "category": "Physik",
+    "options": [
+      "Als Kraft zwischen Massen",
+      "Als Krümmung der Raumzeit",
+      "Als Austausch von Gravitonen",
+      "Als Wirkung von Dunkler Materie"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Schichten des Erdkörpers ist flüssig?",
+    "category": "Geologie",
+    "options": [
+      "Erdkruste",
+      "Mantel",
+      "Äußerer Kern",
+      "Innerer Kern"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Reaktionen ist eine elektrochemische Reaktion?",
+    "category": "Chemie",
+    "options": [
+      "Verbrennung von Methan",
+      "Galvanische Zelle",
+      "Säure-Base-Neutralisation",
+      "Hydrolyse von Estern"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschreibt die Stabilität von Atomkernen?",
+    "category": "Physik",
+    "options": [
+      "Kernbindungskraft-Theorie",
+      "Quantenmechanische Theorie",
+      "Thermodynamik",
+      "Relativitätstheorie"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Krankheiten ist eine genetisch bedingte Stoffwechselerkrankung?",
+    "category": "Medizin",
+    "options": [
+      "Diabetes Typ 2",
+      "Phenylketonurie",
+      "Influenza",
+      "Bronchitis"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien erklärt die Existenz von Exoplaneten um andere Sterne?",
+    "category": "Astronomie",
+    "options": [
+      "Panspermie-Theorie",
+      "Planetenkollisionstheorie",
+      "Planetesimal-Theorie",
+      "Wurmloch-Theorie"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Reaktionen ist eine Polykondensationsreaktion?",
+    "category": "Chemie",
+    "options": [
+      "Bildung von Polyester",
+      "Bildung von Ammoniak",
+      "Säure-Base-Neutralisation",
+      "Oxidation von Alkohol"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschreibt die Quantennatur der Gravitation?",
+    "category": "Physik",
+    "options": [
+      "Allgemeine Relativitätstheorie",
+      "Stringtheorie",
+      "Klassische Mechanik",
+      "Thermodynamik"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Schichten der Erdatmosphäre enthält die meisten Wasserdampfmoleküle?",
+    "category": "Geowissenschaften",
+    "options": [
+      "Stratosphäre",
+      "Troposphäre",
+      "Mesosphäre",
+      "Thermosphäre"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Reaktionen ist eine Nukleophile Substitution?",
+    "category": "Chemie",
+    "options": [
+      "Alkylierung von Benzol",
+      "Bildung von Estern",
+      "Esterhydrolyse",
+      "SN2-Reaktion"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien erklärt die Wechselwirkung zwischen Elektronen in Festkörpern?",
+    "category": "Physik",
+    "options": [
+      "Quantenmechanische Theorie",
+      "Bohr-Modell",
+      "Bandstrukturtheorie",
+      "Thermodynamik"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Reaktionen ist eine Isomerisierungsreaktion?",
+    "category": "Chemie",
+    "options": [
+      "Hydrierung von Alkenen",
+      "Umwandlung von cis- in trans-Isomere",
+      "Verbrennung von Alkoholen",
+      "Säure-Base-Neutralisation"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschreibt die Dynamik von Galaxienhaufen durch die Wechselwirkung von Dunkler Materie?",
+    "category": "Astronomie",
+    "options": [
+      "Hot Dark Matter-Theorie",
+      "Cold Dark Matter-Theorie",
+      "Warm Dark Matter-Theorie",
+      "M-Theorie"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Substanzen ist ein Alkohol?",
+    "category": "Chemie",
+    "options": [
+      "Methanol",
+      "Aceton",
+      "Buttersäure",
+      "Benzaldehyd"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien erklärt die Entstehung von Sternen und Planetensystemen?",
+    "category": "Astronomie",
+    "options": [
+      "Planetesimal-Theorie",
+      "Panspermie-Theorie",
+      "Große Kollisionstheorie",
+      "Quantenfeldtheorie"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Substanzen ist ein Proteinbaustein?",
+    "category": "Biologie",
+    "options": [
+      "Glukose",
+      "Aminosäuren",
+      "Lipide",
+      "Nukleotide"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Reaktionen ist eine Kondensationsreaktion?",
+    "category": "Chemie",
+    "options": [
+      "Hydrolyse von Estern",
+      "Bildung von Ammoniak",
+      "Bildung von Polymeren",
+      "Oxidation von Alkoholen"
+    ],
+    "correctOptionIndex": 2
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien beschreibt die Struktur von Wasserstoffmolekülen?",
+    "category": "Physik",
+    "options": [
+      "VSEPR-Theorie",
+      "Elektronenpaarabstoßungstheorie",
+      "Orbitaltheorie",
+      "Alle genannten"
+    ],
+    "correctOptionIndex": 3
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Substanzen ist ein Katalysator in der Haber-Bosch-Synthese?",
+    "category": "Chemie",
+    "options": [
+      "Eisen",
+      "Kupfer",
+      "Nickel",
+      "Platin"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien erklärt die Existenz von Quantenfluktuationen im frühen Universum?",
+    "category": "Astronomie",
+    "options": [
+      "Inflationstheorie",
+      "Steady-State-Theorie",
+      "Urknalltheorie",
+      "Panspermie-Theorie"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Zellorganellen ist für die Energieproduktion in der Zelle verantwortlich?",
+    "category": "Biologie",
+    "options": [
+      "Ribosomen",
+      "Mitochondrien",
+      "Golgi-Apparat",
+      "Endoplasmatisches Retikulum"
+    ],
+    "correctOptionIndex": 1
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Reaktionen ist eine Elektrolyse?",
+    "category": "Chemie",
+    "options": [
+      "Zersetzung von Wasser in Wasserstoff und Sauerstoff",
+      "Bildung von Salz aus Natrium und Chlor",
+      "Verbrennung von Methan",
+      "Säure-Base-Neutralisation"
+    ],
+    "correctOptionIndex": 0
+  },
+  {
+    "type": "multiple-choice",
+    "question": "Welche dieser Theorien erklärt die Existenz von Supernova-Remnants?",
+    "category": "Astronomie",
+    "options": [
+      "Planetenkollisionstheorie",
+      "Sternentstehungstheorie",
+      "Explosion sterblicher Sterne",
+      "Gravitationskollaps-Theorie"
+    ],
+    "correctOptionIndex": 2
   }
 ]
 
