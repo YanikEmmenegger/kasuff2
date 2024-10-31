@@ -39,7 +39,7 @@ const AvatarBuilder: React.FC = () => {
         <div className="min-h-screen flex flex-col items-center bg-cyan-500 text-gray-200 p-6">
             <h2 className="text-3xl font-bold mb-6 text-center">Customize Your Avatar</h2>
 
-            <Avatar options={options}/>
+            <Avatar size={200} options={options}/>
 
             {/* Controls */}
             <div className="w-full max-w-2xl mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">

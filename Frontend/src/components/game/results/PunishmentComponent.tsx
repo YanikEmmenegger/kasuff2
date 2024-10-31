@@ -2,6 +2,8 @@ import React from "react";
 import {usePlayer} from "../../../contexts/playerProvider";
 import {Punishment} from "../../../types";
 import {AnimatePresence, motion} from "framer-motion";
+import Avatar from "../../avatar/Avatar.tsx";
+import {defaultAvatarOptions} from "../../avatar/avatarType.ts";
 
 const PunishmentComponent: React.FC = () => {
     const {game, player} = usePlayer();
@@ -32,12 +34,27 @@ const PunishmentComponent: React.FC = () => {
 
         return punishedPlayer.name
     };
+    //get Avatar
+    const getAvatar = (playerId: string) => {
+        const player = game.players.find((p) => p._id === playerId);
+        if (player) {
+            return player.avatar;
+        }
+        return defaultAvatarOptions;
+    };
 
     // Function to render each punishment entry
     const renderPunishment = (punishment: Punishment) => {
         // Only display punishments with either 'give' or 'take'
         if (!punishment.give && !punishment.take) {
             return null;
+        }
+
+        if (punishment.give === 0) {
+            punishment.give = undefined;
+        }
+        if (punishment.take === 0) {
+            punishment.take = undefined;
         }
 
         return (
@@ -52,7 +69,8 @@ const PunishmentComponent: React.FC = () => {
                         : "bg-cyan-700"
                 }`}
             >
-                <div className="flex items-center mb-2">
+                <div className="flex gap-2 items-center mb-2">
+                    <Avatar size={50} options={getAvatar(punishment.playerId)!}/>
                     <div className="text-lg font-semibold flex-1 text-gray-200">
                         {formatPlayerName(punishment.playerId)}
                     </div>

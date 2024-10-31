@@ -1,5 +1,8 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
+import Avatar from "../../avatar/Avatar.tsx";
+import {defaultAvatarOptions} from "../../avatar/avatarType.ts";
+import {usePlayer} from "../../../contexts/playerProvider.tsx";
 
 interface PlayerEntry {
     playerId: string;
@@ -17,6 +20,9 @@ interface PlayerCardProps {
 }
 
 const PlayerCard: FC<PlayerCardProps> = ({player, isCurrentUser}) => {
+    const {game} = usePlayer();
+
+
     const cardVariants = {
         hidden: {opacity: 0, y: 20},
         visible: {opacity: 1, y: 0},
@@ -52,6 +58,17 @@ const PlayerCard: FC<PlayerCardProps> = ({player, isCurrentUser}) => {
             ? "💩"
             : "";
 
+    const getAvatar = (playerId: string) => {
+        if (!game) {
+            return defaultAvatarOptions;
+        }
+        const player = game.players.find((p) => p._id === playerId);
+        if (player) {
+            return player.avatar;
+        }
+        return defaultAvatarOptions;
+    };
+
     return (
         <motion.div
             className={`p-4 rounded-lg border-2 flex justify-between items-center mb-4 bg-cyan-600 ${borderColor}`}
@@ -60,10 +77,11 @@ const PlayerCard: FC<PlayerCardProps> = ({player, isCurrentUser}) => {
             animate="visible"
             transition={{duration: 0.8, delay: player.delay / 1000}}
         >
-            <div className="flex items-center">
+            <div className="flex flex-1 items-center">
                 {medalIcon && <span className="text-2xl mr-2">{medalIcon}</span>}
-                <span className={`text-lg font-medium ${textColor}`}>
-          #{player.position} {player.name}
+                <span className={`text-lg flex items-center font-medium ${textColor}`}>
+                    <Avatar size={50} options={getAvatar(player.playerId)!}/>
+                    #{player.position} {player.name}
                     {isCurrentUser && " (You)"}
         </span>
             </div>

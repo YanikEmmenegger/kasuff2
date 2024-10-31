@@ -12,6 +12,7 @@ const WhoWouldRather: FC<WhoWouldRatherProps> = ({question}) => {
     const [answered, setAnswered] = useState(false);
     const {game} = usePlayer();
 
+
     // Colors for each option
     const colors = ["blue", "green", "red", "amber", "indigo"];
 
@@ -22,7 +23,7 @@ const WhoWouldRather: FC<WhoWouldRatherProps> = ({question}) => {
     };
 
     return (
-        <div className="h-screen w-full flex flex-col text-gray-200 bg-cyan-500">
+        <div className="min-h-[90%] h-auto w-full flex flex-col text-gray-200 bg-cyan-500">
             {/* Question section */}
             <motion.div
                 className="flex justify-center items-center h-1/3 p-6"
@@ -37,7 +38,7 @@ const WhoWouldRather: FC<WhoWouldRatherProps> = ({question}) => {
 
             {/* Options section */}
             <motion.div
-                className="flex-1 p-6 grid grid-cols-1 md:grid-cols-2 gap-6"
+                className="flex-1 p-6 grid grid-cols-1 mb-10 md:grid-cols-2 gap-6"
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
                 transition={{delay: 0.2, duration: 0.6}}
@@ -49,6 +50,7 @@ const WhoWouldRather: FC<WhoWouldRatherProps> = ({question}) => {
                             disabled={answered}
                             onAnswer={() => setAnswered(true)}
                             key={index}
+                            isPlayer={true}
                             option={option}
                             text={playerName}
                             color={colors[index % colors.length]} // Cycle through colors

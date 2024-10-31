@@ -14,7 +14,7 @@ const WhatWouldYouRather: FC<WhatWouldYouRatherProps> = ({question}) => {
     const colors = ["blue", "green", "red", "amber", "indigo"];
 
     return (
-        <div className="h-screen w-full flex flex-col text-gray-200 bg-cyan-500">
+        <div className="h-auto min-h-[90%] w-full flex flex-col text-gray-200 bg-cyan-500">
             {/* Question section */}
             <motion.div
                 className="flex justify-center items-center h-1/3 p-6"

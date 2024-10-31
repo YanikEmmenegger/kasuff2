@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import {AnimatePresence, motion} from "framer-motion";
 import {usePlayer} from "../../../contexts/playerProvider";
 import Button from "../../Button";
-import {FaCrown, FaTimesCircle, FaUserCircle} from "react-icons/fa";
+import { FaTimesCircle} from "react-icons/fa";
+import Avatar from "../../avatar/Avatar.tsx";
 
 interface JoinedPlayersProps {
     onKickPlayer: (playerId: string) => void;
@@ -12,7 +13,7 @@ const JoinedPlayers: React.FC<JoinedPlayersProps> = ({onKickPlayer}) => {
     const {game, player} = usePlayer();
     const [playerToKick, setPlayerToKick] = useState<string | null>(null);
 
-    if (!game) {
+    if (!game || !player) {
         return <p className="text-white text-center">No players joined yet.</p>;
     }
 
@@ -45,11 +46,8 @@ const JoinedPlayers: React.FC<JoinedPlayersProps> = ({onKickPlayer}) => {
                                 className="flex items-center py-4 px-6 rounded-lg shadow-lg bg-cyan-600 min-w-[250px]"
                             >
                                 {/* Avatar */}
-                                <div className="relative">
-                                    <FaUserCircle className="text-4xl text-cyan-600"/>
-                                    {isHost && (
-                                        <FaCrown className="absolute -top-2 -right-2"/>
-                                    )}
+                                <div className="relative flex">
+                                    {<Avatar size={50} options={p!.avatar!}/>}
                                 </div>
                                 {/* Player Info */}
                                 <div className="flex flex-col ml-4">

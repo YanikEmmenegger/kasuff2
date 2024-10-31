@@ -41,7 +41,7 @@ const Timer: FC = () => {
     return (
         <motion.div
             className={twMerge(
-                "fixed top-4 left-1/2 transform -translate-x-1/2 bg-cyan-600 bg-opacity-80 px-4 py-2 rounded-full shadow-md",
+                "relative top-4 left-1/2 transform text-center -translate-x-1/2 bg-cyan-600 bg-opacity-20 px-4 py-2 rounded-full",
                 timeLeft === 0 ? "opacity-0" : "opacity-100"
             )}
             variants={timerVariants}

@@ -12,11 +12,12 @@ import {AvatarOptions} from "./avatarType.ts";
 
 interface AvatarProps {
     options: AvatarOptions;
+    size: number;
 }
 
-const Avatar: React.FC<AvatarProps> = ({options}) => {
+const Avatar: React.FC<AvatarProps> = ({options, size}) => {
     return (
-        <svg width="200" height="200" viewBox="0 0 200 200">
+        <svg width={size} height={size} viewBox={"0 0 200 200"}>
             {/* Face Shape */}
             <FaceShape color={options.faceColor} shape={options.faceShape}/>
 

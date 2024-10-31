@@ -16,7 +16,7 @@ const MultipleChoice: FC<MultipleChoiceProps> = ({question}) => {
     question.options.sort(() => Math.random() - 0.5);
 
     return (
-        <div className="h-screen w-full flex flex-col text-gray-200 bg-cyan-500">
+        <div className="min-h-[90%] h-auto w-full flex flex-col text-gray-200 bg-cyan-500">
             {/* Question section */}
             <motion.div
                 className="flex justify-center items-center h-1/3 p-6"

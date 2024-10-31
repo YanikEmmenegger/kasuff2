@@ -24,12 +24,12 @@ const HomePage = () => {
             <div>
                 {/* Avatar */}
                 {
-                    player?.avatar && <Avatar options={player.avatar}/>
+                    player?.avatar && <Avatar size={200} options={player.avatar}/>
                 }
             </div>
 
             {/* Navigation for Join and Create Game */}
-            <div className="w-full flex justify-center">
+            <div className="w-full flex mb-20 justify-center">
                 <Navigation/> {/* Navigation component */}
             </div>
 

@@ -2,6 +2,8 @@ import {FC} from "react";
 import {motion} from "framer-motion";
 import toast from "react-hot-toast";
 import {usePlayer} from "../../../contexts/playerProvider";
+import {defaultAvatarOptions} from "../../avatar/avatarType.ts";
+import Avatar from "../../avatar/Avatar.tsx";
 
 interface QuizButtonProps {
     text: string;
@@ -10,6 +12,7 @@ interface QuizButtonProps {
     index: number;
     disabled?: boolean;
     onAnswer: () => void;
+    isPlayer?: boolean;
 }
 
 const QuizButton: FC<QuizButtonProps> = ({
@@ -18,8 +21,9 @@ const QuizButton: FC<QuizButtonProps> = ({
                                              disabled,
                                              onAnswer,
                                              option,
+                                             isPlayer,
                                          }) => {
-    const {sendAnswer} = usePlayer();
+    const {sendAnswer, game} = usePlayer();
 
     // Handle the click event when an option is selected
     const handleOptionClick = async (option: string) => {
@@ -40,6 +44,17 @@ const QuizButton: FC<QuizButtonProps> = ({
         }
     };
 
+    const getAvatar = (playerId: string) => {
+        if (!game) {
+            return defaultAvatarOptions;
+        }
+        const player = game.players.find((p) => p._id === playerId);
+        if (player) {
+            return player.avatar;
+        }
+        return defaultAvatarOptions;
+    };
+
     // Animation variants
     const buttonVariants = {
         initial: {scale: 1},
@@ -55,10 +70,11 @@ const QuizButton: FC<QuizButtonProps> = ({
             whileHover="hover"
             whileTap="tap"
             disabled={disabled}
-            className={`bg-${color}-500 text-white py-4 px-4 rounded-lg transition text-center text-xl font-semibold ${
+            className={`bg-${color}-500 text-white py-4 px-4 rounded-lg flex flex-col justify-center items-center transition text-center text-xl font-semibold ${
                 disabled ? "opacity-50 cursor-not-allowed" : "hover:opacity-90"
             }`}
         >
+            {isPlayer && <Avatar size={60} options={getAvatar(option)!} />}
             {text}
         </motion.button>
     );
