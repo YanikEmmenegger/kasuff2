@@ -143,7 +143,7 @@ const GameSettingsSchema: Schema = new Schema({
 const AnswerSchema: Schema = new Schema({
     playerId: {type: Schema.Types.ObjectId, required: true, ref: 'Player'}, // Reference to the Player model
     questionId: {type: Schema.Types.ObjectId, required: true, ref: 'Question'}, // Reference to the Question model
-    answer: {type: String, required: true},
+    answer: {type: Schema.Types.Mixed, required: true}, // Allows both string and array of strings
     isCorrect: {type: Boolean},
     pointsAwarded: {type: Number},
     answeredAt: {type: Date, default: Date.now}, // Automatically add answeredAt when the answer is created
@@ -207,6 +207,7 @@ const GameSchema: Schema = new Schema(
                     options: [String],
                     goodOrBad: String,
                     correctOptionIndex: {type: Number}, // Only for multiple-choice questions
+                    finalRanking: [String], // Only for ranking questions
                 }, {_id: false}),
             },
         ], // Prepared questions ready for the frontend

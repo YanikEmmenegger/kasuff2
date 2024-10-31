@@ -1,9 +1,10 @@
-import  {FC} from "react";
+import {FC} from "react";
 import {Question} from "../../../types";
 import MultipleChoice from "./MultipleChoice";
 import WhoWouldRather from "./WhoWouldRather";
 import WhatWouldYouRather from "./WhatWouldYouRather";
 import Timer from "./Timer";
+import Ranking from "./Ranking.tsx";
 
 interface QuizProps {
     question: Question;
@@ -19,7 +20,7 @@ const QuizComponent: FC<QuizProps> = ({question}) => {
             case "what-would-you-rather":
                 return <WhatWouldYouRather question={question}/>;
             case "ranking":
-                return <>Ranking</>;
+                return <Ranking question={question}></Ranking>;
             default:
                 return <>Unknown question type</>;
         }

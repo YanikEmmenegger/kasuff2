@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {FaCheckCircle, FaListAlt, FaQuestionCircle} from "react-icons/fa";
+import {FaCheckCircle, FaListAlt, FaQuestionCircle, FaSortNumericDown} from "react-icons/fa";
 
 interface QuestionTypeSelectorProps {
     selectedTypes: (
@@ -36,11 +36,11 @@ const questionTypes = [
         icon: <FaQuestionCircle/>,
     },
     // Uncomment if you want to include "ranking"
-    // {
-    //   type: "ranking" as const,
-    //   label: "Ranking",
-    //   icon: <FaSortNumericDown />,
-    // },
+    {
+        type: "ranking" as const,
+        label: "Ranking",
+        icon: <FaSortNumericDown/>,
+    },
 ];
 
 const QuestionTypeSelector: FC<QuestionTypeSelectorProps> = ({

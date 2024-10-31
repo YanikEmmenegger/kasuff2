@@ -4,8 +4,10 @@ import {OperationResult} from "../types";
 import {getQuestionById, getQuestions, prepareQuestions} from "./questionController";
 import {
     ICleanMultipleChoiceQuestion,
+    ICleanRankingQuestion,
     ICleanWhoWouldRatherQuestion,
     IMultipleChoiceQuestion,
+    IRankingQuestion,
     IWhatWouldYouRatherQuestion
 } from "../models/Question";
 
@@ -361,6 +363,7 @@ export const handleResults = async (gameCode: string, io: any) => {
     io.to(game.code).emit('game:state', {game: updatedGame});
 };
 
+
 /**
  * Calculate points based on answers to the current question.
  */
@@ -387,6 +390,8 @@ const calculatePoints = async (gameCode: string): Promise<OperationResult<{
 
             const currentCleanedQuestion = game.cleanedQuestions[game.currentQuestionIndex] as ICleanMultipleChoiceQuestion;
             currentCleanedQuestion.correctOptionIndex = currentQuestion.correctOptionIndex;
+            game.cleanedQuestions[game.currentQuestionIndex] = currentCleanedQuestion;
+            await game.save();
         }
 
         const answers: IAnswer[] = game.answers[game.currentQuestionIndex] || [];
@@ -431,8 +436,28 @@ const calculatePoints = async (gameCode: string): Promise<OperationResult<{
                     punishments
                 } = handleWhoWouldRather(whoWouldRatherQuestion!, answers, multiplier));
                 break
+            case 'ranking':
+                const {
+                    _answers,
+                    _punishments,
+                    finalRanking
+                } = handleRanking(currentQuestion, answers, multiplier);
+
+                const currentCleanedQuestion = game.cleanedQuestions[game.currentQuestionIndex] as ICleanRankingQuestion;
+                currentCleanedQuestion.finalRanking = finalRanking;
+                // Explicitly mark the modified path
+                game.cleanedQuestions[game.currentQuestionIndex] = currentCleanedQuestion;
+                game.markModified(`cleanedQuestions.${game.currentQuestionIndex}.finalRanking`);
+                game.markModified('cleanedQuestions');
+
+                await game.save();
+
+                updatedAnswers = _answers;
+                punishments = _punishments;
+                break;
 
             default:
+
                 return {success: false, error: 'Invalid question type'};
         }
 
@@ -448,6 +473,162 @@ const calculatePoints = async (gameCode: string): Promise<OperationResult<{
         console.error('Error calculating points:', error);
         return {success: false, error: 'Internal server error'};
     }
+};
+
+
+/**
+ * Handle ranking question by combining individual rankings into a final ranking,
+ * calculating points, and applying punishments based on "goodOrBad" attribute.
+ */
+const handleRanking = (
+    question: IRankingQuestion,
+    answers: IAnswer[],
+    multiplier: number
+): { _answers: IAnswer[], _punishments: IPunishment[], finalRanking: string[] } => {
+    const noAnswerPlayers: IPunishment[] = [];
+    const rankingMap: Map<string, number> = new Map(); // Map to store cumulative rank points for each player
+
+    // Handle players who didn’t answer
+    answers.forEach(answer => {
+        if (!answer.answer || answer.answer === "__NOT_ANSWERED__") {
+            answer.pointsAwarded = -100;
+            noAnswerPlayers.push({
+                playerId: answer.playerId,
+                reasons: [`Didn't answer – drink ${2 * multiplier} sips`],
+                take: 2 * multiplier
+            });
+        } else {
+            // Sum rankings for each player who answered
+            const rankedPlayers = Array.isArray(answer.answer) ? answer.answer : [answer.answer];
+            rankedPlayers.forEach((playerId, rankIndex) => {
+                const currentRank = rankingMap.get(playerId) || 0;
+                rankingMap.set(playerId, currentRank + rankIndex + 1); // +1 to make ranks 1-based
+            });
+        }
+    });
+
+    // Aggregate rankings and sort players by rank points (lowest = best rank)
+    const finalRanking = Array.from(rankingMap.entries())
+        .map(([playerId, rankPoints]) => ({playerId, rankPoints}))
+        .sort((a, b) => a.rankPoints - b.rankPoints);
+
+    // Calculate max possible deviation for normalization
+    const maxDeviation = finalRanking.length * (finalRanking.length - 1) / 2;
+
+    const punishments: IPunishment[] = [];
+    answers.forEach(answer => {
+        if (answer.answer && answer.answer !== "__NOT_ANSWERED__") {
+            const playerRanking = Array.isArray(answer.answer) ? answer.answer : [answer.answer];
+
+            // Calculate deviation from final ranking
+            let deviation = 0;
+            playerRanking.forEach((playerId, index) => {
+                const finalRank = finalRanking.findIndex(r => r.playerId === playerId);
+                deviation += Math.abs(index - finalRank);
+            });
+
+            // Calculate normalized score out of 500 points
+            const score = Math.max(0, 500 - Math.floor((deviation / maxDeviation) * 500));
+            answer.pointsAwarded = score;
+
+            // Apply base punishments based on the score
+            let punishment: IPunishment | null;
+            if (score === 500) {
+                punishment = {
+                    playerId: answer.playerId,
+                    give: 2 * multiplier,
+                    reasons: [`Perfection 🤩 – give ${2 * multiplier} sips!`]
+                };
+            } else if (score >= 400) {
+                punishment = {
+                    playerId: answer.playerId,
+                    give: multiplier,
+                    reasons: [`Close to Perfection ☺️ – give ${multiplier} sips!`]
+                };
+            } else if (score >= 200) {
+                punishment = {
+                    playerId: answer.playerId,
+                    take: multiplier,
+                    reasons: [`Not so good 🤨 – take ${multiplier} sips!`]
+                };
+            } else if (score >= 1) {
+                punishment = {
+                    playerId: answer.playerId,
+                    take: 2 * multiplier,
+                    reasons: [`Bad Ranking ☹️ – take ${2 * multiplier} sips!`]
+                };
+            } else {
+                punishment = {
+                    playerId: answer.playerId,
+                    take: 3 * multiplier,
+                    reasons: [`FOR REAL 😂 – take ${3 * multiplier} sips!`]
+                };
+            }
+
+            if (punishment) {
+                punishments.push(punishment);
+            }
+        }
+    });
+
+    // Additional points adjustments and updated punishments based on `goodOrBad`
+    const adjustmentFactor = 100; // Base adjustment factor for points
+    const sortedFinalRanking = finalRanking.sort((a, b) => a.rankPoints - b.rankPoints); // Sort by best rank
+
+    sortedFinalRanking.forEach((rank, index) => {
+        const player = answers.find(answer => answer.playerId.toString() === rank.playerId);
+        if (!player) return;
+
+        const adjustment = adjustmentFactor * (sortedFinalRanking.length - index - 1);
+
+        if (question.goodOrBad === 'good') {
+            // Reward players in top positions
+            player.pointsAwarded! += adjustment;
+
+            // Update existing punishment to add rewards based on ranking
+            const playerPunishment = punishments.find(p => p.playerId.toString() === rank.playerId);
+            if (playerPunishment) {
+                if (index === 0) {
+                    playerPunishment.give = 3 * multiplier;
+                    playerPunishment.reasons.push(`You've been ranked #1 😇 – give ${3 * multiplier} sips!`);
+                } else if (index === 1) {
+                    playerPunishment.give = 2 * multiplier;
+                    playerPunishment.reasons.push(`>ou've been ranked #2 ☺️ – give ${2 * multiplier} sips!`);
+                } else if (index === 2) {
+                    playerPunishment.give = multiplier;
+                    playerPunishment.reasons.push(`You've been ranked #3 👏🏼 – give ${multiplier} sips!`);
+                }
+            }
+        } else if (question.goodOrBad === 'bad') {
+            // Penalize players in top positions
+            player.pointsAwarded! -= adjustment;
+
+            // Update existing punishment to add penalties based on ranking
+            const playerPunishment = punishments.find(p => p.playerId.toString() === rank.playerId);
+            if (playerPunishment) {
+                if (index === 0) {
+                    playerPunishment.take = 3 * multiplier;
+                    playerPunishment.reasons.push(`You've been ranked #1 🫣🫵 – give ${3 * multiplier} sips!`);
+                } else if (index === 1) {
+                    playerPunishment.take = 2 * multiplier;
+                    playerPunishment.reasons.push(`You've been ranked #2 🤨🫵 – give ${2 * multiplier} sips!`);
+                } else if (index === 2) {
+                    playerPunishment.take = multiplier;
+                    playerPunishment.reasons.push(`You've been ranked #3 🫠🫵 – give ${multiplier} sips!`);
+                }
+            }
+        }
+    });
+
+    const finalRankingArray = sortedFinalRanking.map((rank) => {
+        return rank.playerId
+    })
+
+    return {
+        _answers: answers,
+        _punishments: [...punishments, ...noAnswerPlayers],
+        finalRanking: finalRankingArray
+    };
 };
 
 /**

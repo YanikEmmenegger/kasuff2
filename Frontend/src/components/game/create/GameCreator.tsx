@@ -20,6 +20,7 @@ const GameCreator: FC = () => {
             "multiple-choice",
             "what-would-you-rather",
             "who-would-rather",
+            "ranking",
         ],
         timeLimit: 30,
         punishmentMultiplier: 1,

@@ -48,6 +48,8 @@ export interface ICleanWhatWouldYouRatherQuestion extends ICleanedQuestion {
  */
 export interface ICleanRankingQuestion extends ICleanedQuestion {
     options: string[]; // Array of player options to rank
+    goodOrBad: 'good' | 'bad'; // Outcome type for ranking questions
+    finalRanking: string[]; // Final ranking of players
 }
 
 /**
@@ -165,6 +167,7 @@ const WhatWouldYouRatherQuestion = BaseQuestion.discriminator<IWhatWouldYouRathe
 export interface IRankingQuestion extends IBaseQuestion {
     type: 'ranking';
     options: string[]; // Array of players to rank
+    goodOrBad: 'good' | 'bad'; // Determines type of outcome for ranking questions
 }
 
 /**
@@ -173,6 +176,7 @@ export interface IRankingQuestion extends IBaseQuestion {
 const RankingQuestionSchema = new Schema<IRankingQuestion>(
     {
         options: {type: [String], required: true}, // Array of players
+        goodOrBad: {type: String, enum: ['good', 'bad'], required: true}, // Outcome type for ranking questions
     },
     {_id: false}
 );
@@ -194,6 +198,7 @@ export {
     WhatWouldYouRatherQuestion,
     RankingQuestion,
 };
+
 /**
  * Union type representing any question type.
  */
@@ -204,7 +209,7 @@ export type IQuestion =
     | IRankingQuestion;
 
 /**
- * Union type representing any question type.
+ * Union type representing any cleaned question type.
  */
 export type ICleanQuestion =
     | ICleanMultipleChoiceQuestion

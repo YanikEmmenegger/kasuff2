@@ -114,4 +114,17 @@ export interface WhatWouldYouRatherQuestion extends BaseQuestion {
 export interface RankingQuestion extends BaseQuestion {
     type: 'ranking';
     options: string[]; // Array of categories or items to rank
+    goodOrBad: 'good' | 'bad'; // Outcome type for ranking questions
+    finalRanking: string[]; // Final ranking of players
+}
+
+export interface AnswerBase {
+    playerId: string;
+    questionId: string;
+    pointsAwarded: number;
+    answeredAt: string;
+}
+
+export interface RankingAnswer extends AnswerBase {
+    answer: string[] | "__NOT_ANSWERED__"; // Array of player names or not answered
 }

@@ -163,10 +163,8 @@ export const playerAnswered = async (gameCode: string, answer: IAnswer, io: any)
         if (!game.answers[game.currentQuestionIndex]) {
             game.answers[game.currentQuestionIndex] = [];
         }
-
         // Push the answer to the answers array for the current question
         game.answers[game.currentQuestionIndex].push(answer);
-
 
         // Save the updated game state
         await game.save();

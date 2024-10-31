@@ -172,13 +172,11 @@ export const prepareQuestions = async (
     question: IQuestion,
     players: IPlayer[] // Now accepts an array of whole player objects
 ): Promise<OperationResult<ICleanQuestion>> => {
-
     try {
         switch (question.type) {
             case 'multiple-choice':
                 const multipleChoiceQuestion = question as IMultipleChoiceQuestion;
 
-                // Check if the correctOptionIndex is present in the question
                 if (multipleChoiceQuestion.correctOptionIndex === undefined) {
                     return {success: false, error: 'Missing correctOptionIndex in multiple-choice question'};
                 }
@@ -190,7 +188,6 @@ export const prepareQuestions = async (
                         type: 'multiple-choice',
                         question: question.question,
                         options: multipleChoiceQuestion.options,
-                        // Notice that the correctOptionIndex is included here
                         correctOptionIndex: 100000 // placeholder value
                     } as ICleanMultipleChoiceQuestion
                 };
@@ -199,13 +196,14 @@ export const prepareQuestions = async (
                 const randomPlayers = players
                     .sort(() => 0.5 - Math.random())
                     .slice(0, 2); // Always select 2 players
+
                 return {
                     success: true,
                     data: {
                         _id: question._id,
                         type: 'who-would-rather',
                         question: question.question,
-                        options: randomPlayers.map(p => p._id.toString()), // Use player names instead of player IDs
+                        options: randomPlayers.map(p => p._id.toString()),
                         goodOrBad: (question as IWhoWouldRatherQuestion).goodOrBad
                     } as ICleanWhoWouldRatherQuestion
                 };
@@ -223,14 +221,17 @@ export const prepareQuestions = async (
                 };
 
             case 'ranking':
-                const shuffledPlayers = shuffleArray(players.map(p => p.name)); // Shuffle player names instead of IDs
+                const shuffledPlayers = shuffleArray(players.map(p => p.id));
+
                 return {
                     success: true,
                     data: {
                         _id: question._id,
                         type: 'ranking',
                         question: question.question,
-                        options: shuffledPlayers // Player names used for ranking
+                        options: shuffledPlayers,
+                        goodOrBad: (question as IRankingQuestion).goodOrBad,
+                        finalRanking: [] // Placeholder or default value for final ranking
                     } as ICleanRankingQuestion
                 };
 

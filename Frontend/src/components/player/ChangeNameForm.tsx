@@ -94,9 +94,9 @@ const ChangeNameForm: FC = () => {
                         >
                             <Button
                                 onClick={handleGoBack}
-                                className="w-full bg-gray-600 hover:bg-gray-700 text-gray-200 px-4 py-2 rounded-lg font-semibold"
+                                className="w-full flex items-center justify-center gap-5 bg-gray-600 hover:bg-gray-700 text-gray-200 px-4 py-2 rounded-lg font-semibold"
                             >
-                                Return to Main Page
+                                Back
                             </Button>
                         </motion.div>
                     </div>

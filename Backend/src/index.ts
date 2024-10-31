@@ -282,6 +282,7 @@ io.on('connection', (socket) => {
     }, callback: (result: OperationResult<IGame>) => void) => {
         const {gameCode, answer} = data;
 
+
         try {
             const result = await playerAnswered(gameCode, answer, io)
             if (result.success) {

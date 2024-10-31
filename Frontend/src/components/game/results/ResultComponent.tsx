@@ -1,9 +1,10 @@
-import  {FC} from "react";
+import {FC} from "react";
 import {usePlayer} from "../../../contexts/playerProvider";
 import ResultMultipleChoice from "./ResultMultipleChoice";
 import ResultWhoWouldRather from "./ResultWhoWouldRather";
 import ResultWhatWouldYouRather from "./ResultWhatWouldYouRather";
 import PunishmentComponent from "./PunishmentComponent";
+import ResultRanking from "./ResultRanking.tsx";
 
 const ResultComponent: FC = () => {
     const {game} = usePlayer();
@@ -25,6 +26,9 @@ const ResultComponent: FC = () => {
 
             case "what-would-you-rather":
                 return <ResultWhatWouldYouRather/>;
+
+            case "ranking":
+                return <ResultRanking/>;
 
             default:
                 return <div>Unknown question type.</div>;
