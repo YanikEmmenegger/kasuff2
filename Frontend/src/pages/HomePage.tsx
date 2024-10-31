@@ -3,9 +3,11 @@ import {AiFillSetting} from "react-icons/ai";
 import Navigation from "../components/navigation/Navigation.tsx";
 import {motion} from "framer-motion";
 import Avatar from "../components/avatar/Avatar.tsx";
+import {useNavigate} from "react-router";
 
 const HomePage = () => {
     const {player} = usePlayer();
+    const navigate = useNavigate()
 
     return (
         <motion.div
@@ -36,7 +38,7 @@ const HomePage = () => {
             {/* Settings Icon */}
             <div className="fixed flex gap-3 justify-center items-center right-5 bottom-5">
                 <p>change name</p>
-                <a href="/profile">
+                <a onClick={() => navigate('/profile')}>
                     <AiFillSetting
                         className="text-white cursor-pointer hover:scale-105 hover:rotate-90 transition-transform duration-300 text-5xl"/>
                 </a>
