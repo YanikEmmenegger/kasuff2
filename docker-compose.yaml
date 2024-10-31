@@ -22,7 +22,7 @@ services:
       context: .
       dockerfile: ./Backend/Dockerfile
     ports:
-      - "8080:2608"
+      - "2608:2608"
     depends_on:
         - mongodb
       #mongodb:
