@@ -62,8 +62,9 @@ const questionTypes = [
     },
     {
         type: "memory" as const,
-        label: "Memory",
+        label: "Memory (coming soon)",
         icon: <FaMemory/>,
+        disabled: true,
     },
 ];
 

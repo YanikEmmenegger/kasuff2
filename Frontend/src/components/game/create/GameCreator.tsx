@@ -8,6 +8,7 @@ import {GameSettings} from "../../../types";
 import {usePlayer} from "../../../contexts/playerProvider";
 import Button from "../../Button";
 import LabelWithValue from "../../LabelWithValue";
+import CollapsibleSection from "../../CollapsibleSection.tsx";
 
 const GameCreator: FC = () => {
     const {createGame} = usePlayer(); // Use socket context for game creation
@@ -77,7 +78,7 @@ const GameCreator: FC = () => {
             case 1:
                 return "🥱";
             case 2:
-                return "😏";
+                return "😬";
             case 3:
                 return "😅";
             case 4:
@@ -85,12 +86,12 @@ const GameCreator: FC = () => {
             case 5:
                 return "💀";
             default:
-                return "??";
+                return "";
         }
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center bg-cyan-500 text-gray-200 p-6">
+        <div className="min-h-screen flex flex-col items-center bg-cyan-500 text-gray-200 p-6 w-full">
             <h2 className="md:text-4xl text-2xl font-bold mb-6 text-center">
                 Create a New Game
             </h2>
@@ -104,6 +105,7 @@ const GameCreator: FC = () => {
             >
                 {/* Sliders & Selectors */}
                 <div className="flex flex-col space-y-6 md:space-y-0 md:grid md:grid-cols-2 md:gap-6">
+
                     <motion.div
                         className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg shadow-md"
                         initial={{opacity: 0, y: 20}}
@@ -143,37 +145,63 @@ const GameCreator: FC = () => {
                         />
                     </motion.div>
                 </div>
-
                 <motion.div
-                    className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg shadow-md"
-                    initial={{opacity: 0, y: 20}}
-                    animate={{opacity: 1, y: 0}}
-                    transition={{delay: 0.6}}
-                >
-                    <LabelWithValue
-                        text="Time Limit (Seconds)"
-                        value={`${gameSettings.timeLimit}s`}
-                    />
-                    <TimerSelector
-                        timeLimit={gameSettings.timeLimit}
-                        onChange={handleTimeLimitChange}
-                    />
-                </motion.div>
-
-                {/* Question Type Selector */}
-                <motion.div
-                    className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg shadow-md"
                     initial={{opacity: 0, y: 20}}
                     animate={{opacity: 1, y: 0}}
                     transition={{delay: 0.8}}
                 >
-                    <LabelWithValue text="Select Question Types"/>
-                    <QuestionTypeSelector
-                        selectedTypes={gameSettings.questionTypes}
-                        onChange={handleQuestionTypesChange}
-                    />
-                </motion.div>
+                    <CollapsibleSection title={"Time Limit (Seconds) " + `${gameSettings.timeLimit}s`}>
+                        <motion.div
+                            className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg "
+                            initial={{opacity: 0, y: 20}}
+                            animate={{opacity: 1, y: 0}}
+                            transition={{delay: 0.6}}
+                        >
 
+                            <TimerSelector
+                                timeLimit={gameSettings.timeLimit}
+                                onChange={handleTimeLimitChange}
+                            />
+                        </motion.div>
+                    </CollapsibleSection>
+                </motion.div>
+                <motion.div
+                    initial={{opacity: 0, y: 20}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{delay: 0.8}}
+                >
+                    <CollapsibleSection title={"Select Game Types"}>
+
+                        {/* Question Type Selector */}
+                        <motion.div
+                            className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg "
+                            initial={{opacity: 0, y: 20}}
+                            animate={{opacity: 1, y: 0}}
+                            transition={{delay: 0.2}}
+                        >
+                            <QuestionTypeSelector
+                                selectedTypes={gameSettings.questionTypes}
+                                onChange={handleQuestionTypesChange}
+                            />
+                        </motion.div>
+                    </CollapsibleSection>
+                </motion.div>
+                {/*<motion.div*/}
+                {/*    initial={{opacity: 0, y: 20}}*/}
+                {/*    animate={{opacity: 1, y: 0}}*/}
+                {/*    transition={{delay: 1}}*/}
+                {/*>*/}
+                {/*    <CollapsibleSection title={"Type Specific settings (coming soon)"}>*/}
+                {/*        <motion.div*/}
+                {/*            className="flex h-32 justify-center mt-8"*/}
+                {/*            initial={{opacity: 0, y: 20}}*/}
+                {/*            animate={{opacity: 1, y: 0}}*/}
+                {/*            transition={{delay: 0.2}}*/}
+                {/*        >*/}
+                {/*            to be added*/}
+                {/*        </motion.div>*/}
+                {/*    </CollapsibleSection>*/}
+                {/*</motion.div>*/}
                 {/* Submit Button */}
                 <motion.div
                     className="flex justify-center mt-8"
