@@ -18,15 +18,28 @@ const HomePage: FC = () => {
         navigate('/profile');
     };
 
-
     return (
-        <div className="w-screen min-h-screen flex items-center justify-center bg-cyan-500 p-4">
+        <div className="w-screen min-h-screen flex flex-col items-center justify-center bg-cyan-500 p-4">
+            {/* Main Content Container */}
             <motion.div
-                className="max-w-md w-full bg-cyan-600 p-8 rounded-lg shadow-lg flex flex-col items-center gap-6"
+                className="max-w-md w-full bg-cyan-600 p-8 rounded-lg shadow-lg flex flex-col items-center gap-6 relative" // Added 'relative' for positioning
                 initial={{opacity: 0, scale: 0.95}}
                 animate={{opacity: 1, scale: 1}}
                 transition={{duration: 0.6}}
             >
+                {/* [BETA] Label */}
+                <motion.div
+                    className="absolute -right-6 -top-1"
+                    initial={{opacity: 0, y: 0}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 0.6, delay: 0.8}}
+                >
+                    <div
+                        className="bg-red-600 shadow-lg text-xs md:text-sm font-bold text-white p-2 rounded-lg transform rotate-45">
+                        [ BETA ]
+                    </div>
+                </motion.div>
+
                 {/* Greeting Title */}
                 <motion.h1
                     className="text-3xl md:text-4xl font-bold text-white text-center"
