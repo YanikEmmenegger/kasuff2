@@ -18,7 +18,10 @@ const GameCreator: FC = () => {
     const [gameSettings, setGameSettings] = useState<GameSettings>({
         numberOfQuestions: 10,
         gameModes: [
-            "hide-and-seek",
+            "multiple-choice",
+            "what-would-you-rather",
+            "who-would-rather",
+            "ranking",
         ],
         timeLimit: 30,
         punishmentMultiplier: 1,

@@ -28,7 +28,7 @@ export type GameState = 'lobby' | 'quiz' | 'waiting' | 'results' | 'leaderboard'
 // Interface representing the game settings in the frontend
 export interface GameSettings {
     numberOfQuestions: number;
-    gameModes: ('multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking' | 'hide-and-seek' | 'sequence' | 'memory')[];
+    gameModes: ('multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking' | 'hide-and-seek' | 'spy' | 'memory')[];
     timeLimit: number; // in seconds
     punishmentMultiplier: number; // e.g., 1 for normal, 2 for double
 }

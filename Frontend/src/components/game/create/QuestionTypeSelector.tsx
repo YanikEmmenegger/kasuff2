@@ -11,7 +11,7 @@ interface QuestionTypeSelectorProps {
         | "what-would-you-rather"
         | "ranking"
         | "hide-and-seek"
-        | "sequence"
+        | "spy"
         | "memory" // Ensure this matches GameSettings["questionTypes"]
         )[];
     onChange: (
@@ -21,7 +21,7 @@ interface QuestionTypeSelectorProps {
             | "what-would-you-rather"
             | "ranking"
             | "hide-and-seek"
-            | "sequence"
+            | "spy"
             | "memory" // Ensure this matches GameSettings["questionTypes"]
             )[]
     ) => void;
@@ -52,11 +52,12 @@ const questionTypes = [
         type: "hide-and-seek" as const,
         label: "Hide and Seek (coming soon)",
         icon: <FaSearch/>,
+        disabled: true,
     },
     {
-        type: "sequence" as const,
-        label: "Remember the pattern (coming soon)",
-        icon: <FaMemory/>,
+        type: "spy" as const,
+        label: "Spy (coming soon)",
+        icon: <FaSearch/>,
         disabled: true,
     },
     {

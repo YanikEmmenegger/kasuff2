@@ -46,8 +46,7 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
 
         //check if gameModes include hide-and-seek, spy, memory
         if (gameSettings.gameModes.includes('hide-and-seek') /*|| gameSettings.gameModes.includes('spy') || gameSettings.gameModes.includes('memory'*/) {
-
-
+            console.log('Will be implemented later on')
         }
 
 
