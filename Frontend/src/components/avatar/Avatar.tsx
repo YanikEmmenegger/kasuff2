@@ -31,7 +31,6 @@ const Avatar: React.FC<AvatarProps> = ({options, size}) => {
             <FaceShape faceColor={options.faceColor} faceShape={options.faceShape}/>
 
             {/* Beard */}
-            <Beard beardType={options.beardType} beardColor={options.beardColor}/>
 
             {/* Eyes */}
             <Eyes eyeType={options.eyeType} eyeColor={options.eyeColor}/>
@@ -44,6 +43,8 @@ const Avatar: React.FC<AvatarProps> = ({options, size}) => {
 
             {/* Hair */}
             <Hair hairType={options.hairType} hairColor={options.hairColor}/>
+            <Beard beardType={options.beardType} beardColor={options.beardColor}/>
+
 
             {/* Add other parts here */}
         </svg>
