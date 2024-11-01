@@ -11,7 +11,7 @@ export type GameState = 'lobby' | 'quiz' | 'waiting' | 'perks' | 'results' | 'pu
  */
 export interface IGameSettings {
     numberOfQuestions: number;
-    questionTypes: ('multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking' | 'hide-and-seek')[];
+    gameModes: ('multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking' | 'hide-and-seek')[];
     timeLimit: number; // in seconds
     punishmentMultiplier: number; // e.g., 1 for normal, 2 for double
 }
@@ -122,7 +122,7 @@ export const generateUniqueGameCode = async (): Promise<string> => {
  */
 const GameSettingsSchema: Schema = new Schema({
     numberOfQuestions: {type: Number, required: true, default: 10},
-    questionTypes: {
+    gameModes: {
         type: [
             {
                 type: String,
@@ -131,7 +131,7 @@ const GameSettingsSchema: Schema = new Schema({
             },
         ],
         required: true,
-        default: ['multiple-choice'],
+        //default: ['multiple-choice'],
     },
     timeLimit: {type: Number, required: true, default: 30}, // default 30 seconds
     punishmentMultiplier: {type: Number, required: true, default: 1}, // default no multiplier

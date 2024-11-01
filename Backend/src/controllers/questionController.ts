@@ -115,13 +115,13 @@ export const createQuestion = async (questionData: any): Promise<OperationResult
 export const getQuestions = async (filters: {
     types?: string[];
     categories?: string[];
-    limit?: string;
+    limit?: number;
 }): Promise<OperationResult<IQuestion[]>> => {
     try {
         const {types, categories, limit} = filters;
 
         // Convert limit to a number and set a default value if not provided
-        const questionLimit = limit ? parseInt(limit, 10) : 10;
+        const questionLimit = limit ? limit : 10;
 
         // Build the query object based on provided types and categories
         const query: any = {};

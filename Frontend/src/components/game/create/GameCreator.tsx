@@ -17,11 +17,8 @@ const GameCreator: FC = () => {
     // State for game settings
     const [gameSettings, setGameSettings] = useState<GameSettings>({
         numberOfQuestions: 10,
-        questionTypes: [
-            "multiple-choice",
-            "what-would-you-rather",
-            "who-would-rather",
-            "ranking",
+        gameModes: [
+            "hide-and-seek",
         ],
         timeLimit: 30,
         punishmentMultiplier: 1,
@@ -43,11 +40,11 @@ const GameCreator: FC = () => {
     };
 
     const handleQuestionTypesChange = (
-        selectedTypes: GameSettings["questionTypes"]
+        selectedTypes: GameSettings["gameModes"]
     ) => {
         setGameSettings((prevSettings) => ({
             ...prevSettings,
-            questionTypes: selectedTypes,
+            gameModes: selectedTypes,
         }));
     };
 
@@ -56,7 +53,7 @@ const GameCreator: FC = () => {
     };
 
     const handleSubmit = async () => {
-        if (gameSettings.questionTypes.length === 0) {
+        if (gameSettings.gameModes.length === 0) {
             toast.error("Please select at least one question type.");
             return; // Prevent submission if no question types are selected
         }
@@ -180,7 +177,7 @@ const GameCreator: FC = () => {
                             transition={{delay: 0.2}}
                         >
                             <QuestionTypeSelector
-                                selectedTypes={gameSettings.questionTypes}
+                                selectedTypes={gameSettings.gameModes}
                                 onChange={handleQuestionTypesChange}
                             />
                         </motion.div>

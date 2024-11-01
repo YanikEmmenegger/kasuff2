@@ -1,4 +1,11 @@
-import Game, {generateUniqueGameCode, IAnswer, IGame, ILeaderboardEntry, IPunishment} from '../models/Game';
+import Game, {
+    generateUniqueGameCode,
+    IAnswer,
+    IGame,
+    IGameSettings,
+    ILeaderboardEntry,
+    IPunishment
+} from '../models/Game';
 import Player, {IPlayer} from '../models/Player';
 import {OperationResult} from "../types";
 import {getQuestionById, getQuestions, prepareQuestions} from "./questionController";
@@ -29,15 +36,24 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
         // Set default settings if none are provided
         const defaultSettings = {
             numberOfQuestions: 10,
-            questionTypes: ['multiple-choice', 'who-would-rather', 'what-would-you-rather', 'ranking'],
+            gameModes: ['multiple-choice', 'who-would-rather', 'what-would-you-rather', 'ranking'], // Corrected
             timeLimit: 30,
             punishmentMultiplier: 1,
         };
-        const gameSettings = settings || defaultSettings;
+        const gameSettings: IGameSettings = settings || defaultSettings;
+        console.log(`GameSettings from Frontend`);
+        console.log(gameSettings);
+
+        //check if gameModes include hide-and-seek, spy, memory
+        if (gameSettings.gameModes.includes('hide-and-seek') /*|| gameSettings.gameModes.includes('spy') || gameSettings.gameModes.includes('memory'*/) {
+
+
+        }
+
 
         // Fetch questions based on game settings
         const filters = {
-            types: gameSettings.questionTypes,
+            types: gameSettings.gameModes, // Corrected
             limit: gameSettings.numberOfQuestions,
         };
         const fetchedQuestions = await getQuestions(filters);
@@ -49,7 +65,6 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
 
         // Initialize leaderboard with the creator
         const leaderboard: ILeaderboardEntry[] = [{playerId: creator._id, totalPoints: 0}];
-
         // Create a new game object
         const newGame = new Game({
             code: await generateUniqueGameCode(), // Generate unique game code
@@ -62,6 +77,9 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
             currentQuestionIndex: 0,
             state: 'lobby', // Game starts in the lobby state
         });
+
+        console.log(`Game that is being created `);
+        console.log(newGame);
 
         await newGame.save();
 

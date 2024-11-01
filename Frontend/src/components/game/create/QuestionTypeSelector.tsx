@@ -52,7 +52,6 @@ const questionTypes = [
         type: "hide-and-seek" as const,
         label: "Hide and Seek (coming soon)",
         icon: <FaSearch/>,
-        disabled: true,
     },
     {
         type: "sequence" as const,
