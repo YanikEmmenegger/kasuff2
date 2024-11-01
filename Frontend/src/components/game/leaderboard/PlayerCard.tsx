@@ -1,8 +1,8 @@
 import {FC} from "react";
 import {motion} from "framer-motion";
 import Avatar from "../../avatar/Avatar.tsx";
-import {defaultAvatarOptions} from "../../avatar/avatarType.ts";
 import {usePlayer} from "../../../contexts/playerProvider.tsx";
+import {defaultAvatarOptions} from "../../avatar/types/avatarType.ts";
 
 interface PlayerEntry {
     playerId: string;

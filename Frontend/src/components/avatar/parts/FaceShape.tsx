@@ -1,20 +1,19 @@
 // /src/components/avatar/parts/FaceShape/FaceShape.tsx
 
 import React from 'react';
+import FaceRound from "./face/FaceRound.tsx";
+import FaceOval from "./face/FaceOval.tsx";
+import {AvatarOptions} from "../types/avatarType.ts";
 
-interface FaceShapeProps {
-    color: string;
-    shape: 'round' | 'square' | 'oval';
-}
+type FaceShapeProps = Pick<AvatarOptions, 'faceColor' | 'faceShape'>
 
-const FaceShape: React.FC<FaceShapeProps> = ({color, shape}) => {
-    switch (shape) {
+
+const FaceShape: React.FC<FaceShapeProps> = ({faceColor, faceShape}) => {
+    switch (faceShape) {
         case 'round':
-            return <circle cx="100" cy="100" r="80" fill={color}/>;
-        case 'square':
-            return <rect x="50" y="50" width="100" height="100" fill={color}/>;
+            return <FaceRound color={faceColor}/>
         case 'oval':
-            return <ellipse cx="100" cy="100" rx="80" ry="100" fill={color}/>;
+            return <FaceOval color={faceColor}/>
         default:
             return null;
     }

@@ -2,8 +2,8 @@ import {FC} from "react";
 import {motion} from "framer-motion";
 import toast from "react-hot-toast";
 import {usePlayer} from "../../../contexts/playerProvider";
-import {defaultAvatarOptions} from "../../avatar/avatarType.ts";
 import Avatar from "../../avatar/Avatar.tsx";
+import {defaultAvatarOptions} from "../../avatar/types/avatarType.ts";
 
 interface QuizButtonProps {
     text: string;

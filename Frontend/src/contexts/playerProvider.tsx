@@ -3,7 +3,8 @@ import {io, Socket} from 'socket.io-client';
 import {Answer, Game, GameSettings, OperationResult, Player, Question} from '../types';
 import {useNavigate} from 'react-router';
 import toast from 'react-hot-toast';
-import {AvatarOptions, defaultAvatarOptions} from "../components/avatar/avatarType.ts";
+import {AvatarOptions} from "../components/avatar/types/avatarType.ts";
+import {getRandomAvatarOptions} from "../components/avatar/avatarFunctions.ts";
 
 // Define the shape of the context
 interface PlayerContextType {
@@ -63,7 +64,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
         if (!socket) return;
 
         const createNewPlayer = () => {
-            socket.emit('player:create', {avatar: defaultAvatarOptions}, (result: OperationResult<Player>) => {
+            socket.emit('player:create', {avatar: getRandomAvatarOptions()}, (result: OperationResult<Player>) => {
                 if (result.success) {
                     setPlayer(result.data!);
                     localStorage.setItem('player', JSON.stringify(result.data));

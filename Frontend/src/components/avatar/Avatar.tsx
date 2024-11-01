@@ -1,13 +1,13 @@
-// /src/components/avatar/Avatar.tsx
+// src/components/avatar/Avatar.tsx
 
 import React from 'react';
-import FaceShape from './parts/FaceShape';
-import Eyes from './parts/Eyes';
-import Hair from './parts/Hair';
-import Beard from './parts/Beard';
-import Mouth from './parts/Mouth';
-import Nose from './parts/Nose';
-import {AvatarOptions} from "./avatarType.ts";
+import FaceShape from "./parts/FaceShape.tsx";
+import Beard from "./parts/Beard.tsx";
+import Eyes from "./parts/Eyes.tsx";
+import Nose from "./parts/Nose.tsx";
+import Mouth from "./parts/Mouth.tsx";
+import Hair from "./parts/Hair.tsx";
+import {AvatarOptions} from "./types/avatarType.ts";
 
 
 interface AvatarProps {
@@ -17,24 +17,33 @@ interface AvatarProps {
 
 const Avatar: React.FC<AvatarProps> = ({options, size}) => {
     return (
-        <svg width={size} height={size} viewBox={"0 0 200 200"}>
-            {/* Face Shape */}
-            <FaceShape color={options.faceColor} shape={options.faceShape}/>
+        <svg
+            width={size}
+            height={size}
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-labelledby="avatarTitle"
+            role="img"
+        >
+            <title id="avatarTitle">User Avatar</title>
 
-            {/* Hair */}
-            <Hair type={options.hairType} color={options.hairColor}/>
+            {/* Face Shape */}
+            <FaceShape faceColor={options.faceColor} faceShape={options.faceShape}/>
 
             {/* Beard */}
-            <Beard type={options.beardType} color={options.beardColor}/>
+            <Beard beardType={options.beardType} beardColor={options.beardColor}/>
 
             {/* Eyes */}
-            <Eyes type={options.eyeType} color={options.eyeColor}/>
+            <Eyes eyeType={options.eyeType} eyeColor={options.eyeColor}/>
 
             {/* Nose */}
-            <Nose type={options.noseType} color={options.noseColor}/>
+            <Nose noseType={options.noseType} noseColor={options.noseColor}/>
 
             {/* Mouth */}
-            <Mouth type={options.mouthType} color={options.mouthColor}/>
+            <Mouth mouthType={options.mouthType} mouthColor={options.mouthColor}/>
+
+            {/* Hair */}
+            <Hair hairType={options.hairType} hairColor={options.hairColor}/>
 
             {/* Add other parts here */}
         </svg>

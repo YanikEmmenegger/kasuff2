@@ -8,7 +8,7 @@ interface ToasterProviderProps {
 const ToasterProvider: FC<ToasterProviderProps> = ({children}) => {
     return (
         <>
-            <Toaster position="top-right"
+            <Toaster position="top-center"
             />
             {children}
         </>

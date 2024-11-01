@@ -1,29 +1,30 @@
 // /src/components/avatar/parts/Hair/Hair.tsx
 
 import React from 'react';
+import MiddleLongHair from "./hair/MiddleLongHair.tsx";
+import LongHair from "./hair/LongHair.tsx";
+import ShortHair from "./hair/ShortHair.tsx";
+import CurlyHair from "./hair/CurlyHair.tsx";
+import {AvatarOptions} from "../types/avatarType.ts";
 
-interface HairProps {
-    type: 'short' | 'long' | 'bald';
-    color: string;
-}
+type HairProps = Pick<AvatarOptions, 'hairType' | 'hairColor'>
 
-const Hair: React.FC<HairProps> = ({type, color}) => {
-    switch (type) {
+
+const Hair: React.FC<HairProps> = ({hairColor, hairType}) => {
+    switch (hairType) {
         case 'short':
             return (
-                <path
-                    d="M50,50 C60,30 140,30 150,50 L150,70 C140,50 60,50 50,70 Z"
-                    fill={color}
-                />
+                <ShortHair color={hairColor}/>
             );
         case 'long':
+            return <LongHair color={hairColor}/>
+        case 'middle':
             return (
-                <path
-                    d="M50,50 C60,30 140,30 150,50 L150,120 C140,100 60,100 50,120 Z"
-                    fill={color}
-                />
+                <MiddleLongHair color={hairColor}/>
             );
-        case 'bald':
+        case 'the shed':
+            return <CurlyHair color={hairColor}/>
+        case 'the dan':
             return null; // No hair drawn
         default:
             return null;

@@ -3,7 +3,7 @@ import {usePlayer} from "../../../contexts/playerProvider";
 import {Punishment} from "../../../types";
 import {AnimatePresence, motion} from "framer-motion";
 import Avatar from "../../avatar/Avatar.tsx";
-import {defaultAvatarOptions} from "../../avatar/avatarType.ts";
+import {defaultAvatarOptions} from "../../avatar/types/avatarType.ts";
 
 const PunishmentComponent: React.FC = () => {
     const {game, player} = usePlayer();

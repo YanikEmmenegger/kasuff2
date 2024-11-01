@@ -41,9 +41,9 @@ const ChangeNameForm: FC = () => {
     };
 
     return (
-        <div className=" flex items-center justify-center bg-cyan-500 text-gray-200 p-6">
+        <div className=" flex items-center w-full justify-center bg-cyan-500 text-gray-200">
             <motion.div
-                className="max-w-md w-full bg-cyan-600 p-8 rounded-lg shadow-lg"
+                className="md:max-w-md max-w-[90vw] w-full bg-cyan-600 p-8 rounded-lg shadow-lg"
                 initial={{opacity: 0, y: 20}}
                 animate={{opacity: 1, y: 0}}
                 transition={{duration: 0.6}}

@@ -1,0 +1,38 @@
+/* src/index.css or a relevant CSS file */
+
+/* Customize Previous Button */
+.swiper-button-prev {
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Position adjustments if needed */
+}
+
+/* Customize Next Button */
+.swiper-button-next {
+    background-color: #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Position adjustments if needed */
+}
+
+/* Customize Arrow Icons */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    color: #000000; /* Arrow color */
+    font-size: 20px; /* Arrow size */
+}
+
+/* Hover Effects */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background-color: #e0e0e0;
+}
