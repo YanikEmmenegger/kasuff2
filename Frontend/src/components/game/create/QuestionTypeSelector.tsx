@@ -11,8 +11,8 @@ interface QuestionTypeSelectorProps {
         | "what-would-you-rather"
         | "ranking"
         | "hide-and-seek"
-        | "remember"
-        | "memory"
+        | "sequence"
+        | "memory" // Ensure this matches GameSettings["questionTypes"]
         )[];
     onChange: (
         selectedTypes: (
@@ -21,8 +21,8 @@ interface QuestionTypeSelectorProps {
             | "what-would-you-rather"
             | "ranking"
             | "hide-and-seek"
-            | "remember"
-            | "memory"
+            | "sequence"
+            | "memory" // Ensure this matches GameSettings["questionTypes"]
             )[]
     ) => void;
 }
@@ -55,7 +55,7 @@ const questionTypes = [
         disabled: true,
     },
     {
-        type: "remember" as const,
+        type: "sequence" as const,
         label: "Remember the pattern (coming soon)",
         icon: <FaMemory/>,
         disabled: true,
