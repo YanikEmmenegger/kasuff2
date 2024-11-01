@@ -1,5 +1,6 @@
 // Represents the result of an operation
-import {AvatarOptions} from "./components/avatar/avatarType.ts";
+
+import {AvatarOptions} from "./components/avatar/types/avatarType.ts";
 
 export type OperationResult<T> = {
     success: boolean;
