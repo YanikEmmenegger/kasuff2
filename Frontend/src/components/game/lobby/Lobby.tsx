@@ -49,52 +49,37 @@ const Lobby: React.FC = () => {
         const srv = import.meta.env.DEV ? "http://localhost:5173" : window.location.origin;
         const gameUrl = `${srv}/game?state=join&code=${game.code}`;
 
-        // Check if Clipboard API is supported
-        if (!navigator.clipboard) {
-            console.warn('Clipboard API not supported. Using fallback method.');
-            // Fallback method to copy text
-            const textarea = document.createElement('textarea');
+        try {
+            // Use the Clipboard API if available, but skip permissions check for Safari compatibility
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(gameUrl);
+                toast.success("Game link copied to clipboard!");
+            } else {
+                toast.error("Failed to copy the game link.");
+            }
+        } catch (error) {
+            console.warn("Clipboard API not supported or failed, using fallback method.", error);
+
+            // Fallback method for Safari and unsupported browsers
+            const textarea = document.createElement("textarea");
             textarea.value = gameUrl;
-            textarea.style.position = 'fixed';  // Prevent scrolling to bottom of page in MS Edge.
-            textarea.style.opacity = '0';
+            textarea.style.position = "fixed"; // Avoid scrolling issues
+            textarea.style.opacity = "0";
             document.body.appendChild(textarea);
             textarea.focus();
             textarea.select();
 
             try {
-                const successful = document.execCommand('copy');
-                if (successful) {
-                    toast.success("Game link copied to clipboard!");
-                } else {
-                    toast.error("Failed to copy the game link.");
-                }
+                document.execCommand("copy");
+                toast.success("Game link copied to clipboard!");
             } catch (err) {
-                console.error('Fallback: Oops, unable to copy', err);
+                console.error("Fallback copy failed:", err);
                 toast.error("Failed to copy the game link.");
             }
 
             document.body.removeChild(textarea);
-            return;
-        }
-
-        try {
-            // Check clipboard-write permission status
-            const permissionStatus = await navigator.permissions.query({name: 'clipboard-write' as PermissionName});
-
-            if (permissionStatus.state === 'granted' || permissionStatus.state === 'prompt') {
-                // Attempt to write to clipboard
-                await navigator.clipboard.writeText(gameUrl);
-                toast.success("Game link copied to clipboard!");
-            } else if (permissionStatus.state === 'denied') {
-                // Permission denied
-                toast.error("Clipboard access denied. Please allow clipboard permissions and try again.");
-            }
-        } catch (error) {
-            console.error('Error checking clipboard permissions or writing to clipboard:', error);
-            toast.error("Failed to copy the game link.");
         }
     };
-
     return (
         <div className="h-auto flex-col flex items-start justify-center">
             {game ? (

@@ -11,7 +11,7 @@ export type GameState = 'lobby' | 'quiz' | 'waiting' | 'perks' | 'results' | 'pu
  */
 export interface IGameSettings {
     numberOfQuestions: number;
-    questionTypes: ('multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking')[];
+    questionTypes: ('multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking' | 'hide-and-seek')[];
     timeLimit: number; // in seconds
     punishmentMultiplier: number; // e.g., 1 for normal, 2 for double
 }
@@ -109,8 +109,8 @@ export const generateUniqueGameCode = async (): Promise<string> => {
             codeLength = 6; // Switch to 6-character codes
             attempts = 0; // Reset attempts
         } else if (attempts === 10 && codeLength === 6) {
-            codeLength = 10; // Switch to 10-character codes
-            attempts = 0; // Reset attempts, but stay with 10-char codes indefinitely
+            codeLength = 10; // Switch to 10-character codes indefinitely
+            attempts = 0; // Reset attempts
         }
     }
 
@@ -126,7 +126,7 @@ const GameSettingsSchema: Schema = new Schema({
         type: [
             {
                 type: String,
-                enum: ['multiple-choice', 'who-would-rather', 'what-would-you-rather', 'ranking'],
+                enum: ['multiple-choice', 'who-would-rather', 'what-would-you-rather', 'ranking', 'hide-and-seek'],
                 required: true,
             },
         ],
@@ -141,30 +141,30 @@ const GameSettingsSchema: Schema = new Schema({
  * Mongoose Schema for Answer.
  */
 const AnswerSchema: Schema = new Schema({
-    playerId: {type: Schema.Types.ObjectId, required: true, ref: 'Player'}, // Reference to the Player model
-    questionId: {type: Schema.Types.ObjectId, required: true, ref: 'Question'}, // Reference to the Question model
+    playerId: {type: Schema.Types.ObjectId, required: true, ref: 'Player'},
+    questionId: {type: Schema.Types.ObjectId, required: true, ref: 'Question'},
     answer: {type: Schema.Types.Mixed, required: true}, // Allows both string and array of strings
     isCorrect: {type: Boolean},
     pointsAwarded: {type: Number},
-    answeredAt: {type: Date, default: Date.now}, // Automatically add answeredAt when the answer is created
+    answeredAt: {type: Date, default: Date.now},
 }, {_id: false});
 
 /**
  * Mongoose Schema for Leaderboard.
  */
 const LeaderboardSchema: Schema = new Schema({
-    playerId: {type: Schema.Types.ObjectId, required: true, ref: 'Player'}, // Reference to the Player model
-    totalPoints: {type: Number, required: true}, // Total points accumulated by the player
+    playerId: {type: Schema.Types.ObjectId, required: true, ref: 'Player'},
+    totalPoints: {type: Number, required: true},
 }, {_id: false});
 
 /**
  * Mongoose Schema for Punishment.
  */
 const PunishmentSchema: Schema = new Schema({
-    playerId: {type: Schema.Types.ObjectId, required: true, ref: 'Player'}, // Reference to the Player model
-    reasons: {type: [String], required: true}, // Array of reasons for the punishment
-    give: {type: Number}, // Number of drinks the player can give to others
-    take: {type: Number}, // Number of drinks the player has to take
+    playerId: {type: Schema.Types.ObjectId, required: true, ref: 'Player'},
+    reasons: {type: [String], required: true},
+    give: {type: Number},
+    take: {type: Number},
 }, {_id: false});
 
 /**
@@ -180,7 +180,7 @@ const GameSchema: Schema = new Schema(
         creatorId: {
             type: Schema.Types.ObjectId,
             required: true,
-            ref: 'Player', // References the Player model by ObjectId
+            ref: 'Player',
         },
         settings: {
             type: GameSettingsSchema,
@@ -189,13 +189,13 @@ const GameSchema: Schema = new Schema(
         players: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Player', // References the Player model by ObjectId
+                ref: 'Player',
             },
         ],
         questions: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Question', // References the Question model by ObjectId
+                ref: 'Question',
             },
         ],
         cleanedQuestions: [
@@ -206,31 +206,31 @@ const GameSchema: Schema = new Schema(
                     question: String,
                     options: [String],
                     goodOrBad: String,
-                    correctOptionIndex: {type: Number}, // Only for multiple-choice questions
-                    finalRanking: [String], // Only for ranking questions
+                    correctOptionIndex: {type: Number},
+                    finalRanking: [String],
                 }, {_id: false}),
             },
-        ], // Prepared questions ready for the frontend
+        ],
         answers: [
-            [AnswerSchema] // Array of arrays, where each array contains answers for a particular question
-        ], // Nested Answer documents by question
-        leaderboard: [LeaderboardSchema], // Array of leaderboard entries
+            [AnswerSchema],
+        ],
+        leaderboard: [LeaderboardSchema],
         currentQuestionIndex: {type: Number, default: 0},
-        timeRemaining: {type: Date, default: ''}, // Time remaining for the current question (defaults to time limit)
+        timeRemaining: {type: Date, default: ''},
         state: {
             type: String,
             enum: ['lobby', 'quiz', 'waiting', 'results', 'leaderboard', 'aborted'],
             default: 'lobby',
         },
         playersAnswered: [
-            {type: Schema.Types.ObjectId, ref: 'Player'}, // Array of players who answered
+            {type: Schema.Types.ObjectId, ref: 'Player'},
         ],
         isActive: {type: Boolean, default: true},
-        result: {type: String, default: ''}, // Result of the game
-        punishments: [[PunishmentSchema]], // Punishments applied to players during the game
+        result: {type: String, default: ''},
+        punishments: [[PunishmentSchema]],
     },
     {
-        timestamps: true, // Automatically adds createdAt and updatedAt fields
+        timestamps: true,
     }
 );
 

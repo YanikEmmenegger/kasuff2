@@ -22,7 +22,7 @@ interface PlayerContextType {
     leaveGame: () => Promise<boolean>;
     kickPlayer: (playerId: string) => Promise<boolean>;
     startGame: () => Promise<boolean>;
-    sendAnswer: (answer: string | string[]) => Promise<boolean>;
+    sendAnswer: (answer: string | string[] | number) => Promise<boolean>;
     nextQuestion: () => Promise<boolean>;
 }
 
@@ -270,7 +270,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
     };
 
     // Send answer
-    const sendAnswer = (option: string | string[]) => {
+    const sendAnswer = (option: string | string[] | number) => {
         return new Promise<boolean>((resolve, reject) => {
             if (!player || !socket || !game) return reject(new Error('Player, socket, or game not available'));
 

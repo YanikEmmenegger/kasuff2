@@ -28,7 +28,7 @@ export type GameState = 'lobby' | 'quiz' | 'waiting' | 'results' | 'leaderboard'
 // Interface representing the game settings in the frontend
 export interface GameSettings {
     numberOfQuestions: number;
-    questionTypes: ('multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking')[];
+    questionTypes: ('multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking' | 'hide-and-seek' | 'remember')[];
     timeLimit: number; // in seconds
     punishmentMultiplier: number; // e.g., 1 for normal, 2 for double
 }
@@ -37,7 +37,7 @@ export interface GameSettings {
 export interface Answer {
     playerId: string; // References Player._id
     questionId: string; // References Question._id
-    answer: string | string[]; // User's answer
+    answer: string | string[] | number; // User's answer
     answeredAt?: Date; // Timestamp of the answer
     isCorrect?: boolean; // Determined based on the question type
     pointsAwarded?: number; // Points awarded for the answer
