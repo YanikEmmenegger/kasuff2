@@ -16,6 +16,9 @@ import {IPlayer} from './models/Player';
 import Game, {IAnswer, IGame, IGameSettings} from './models/Game';
 import {instrument} from "@socket.io/admin-ui";
 import path from "node:path";
+import {logVisitor} from "./middleware/logVisitors";
+import visitorRoutes from "./routes/visitorRoutes";
+import cookieParser from "cookie-parser";
 
 // Load environment variables
 dotenv.config();
@@ -35,8 +38,11 @@ const io = new SocketIOServer(server, {
 // Socket.IO Admin UI (for monitoring during development)
 instrument(io, {auth: false, mode: 'development'});
 
+app.use(cookieParser()); // Use cookie-parser middleware
 
-app.use(express.json()); // Parse JSON bodies
+app.use(logVisitor);
+
+app.use('/api', visitorRoutes);
 
 // Define the port (default to 5000 if not in environment)
 const PORT: number = parseInt(process.env.PORT as string, 10) || 2608;
@@ -55,6 +61,7 @@ app.get('/', (req: Request, res: Response) => {
 app.get('*', (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../public/index.html'));
 });
+
 
 // Handle new socket connections
 io.on('connection', (socket) => {
