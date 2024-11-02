@@ -1,6 +1,15 @@
 // src/utils/colorUtils.ts
 
-import {AvatarOptions} from "./types/avatarType.ts";
+import {
+    AvatarOptions,
+    BEARD_TYPE_OPTIONS,
+    EYE_TYPE_OPTIONS,
+    EYEBROW_TYPE_OPTIONS,
+    FACE_SHAPE_OPTIONS,
+    HAIR_TYPE_OPTIONS,
+    MOUTH_TYPE_OPTIONS,
+    NOSE_TYPE_OPTIONS
+} from "./types/avatarType.ts";
 
 /**
  * Converts a HEX color to HSL.
@@ -26,6 +35,7 @@ export const hexToHSL = (hex: string): { h: number; s: number; l: number } => {
 
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
+    // eslint-disable-next-line prefer-const
     let h = 0, s = 0, l = (max + min) / 2;
 
     if (max !== min) {
@@ -153,19 +163,38 @@ function getRandomColor(): string {
 export function getRandomAvatarOptions(): AvatarOptions {
     return {
         faceColor: getRandomColor(),
-        faceShape: getRandomElement(['round', 'oval']),
-        eyeType: getRandomElement(['male', 'female']),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        faceShape: getRandomElement(FACE_SHAPE_OPTIONS),
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        eyeType: getRandomElement(EYE_TYPE_OPTIONS),
         eyeColor: getRandomColor(),
-        hairType: getRandomElement(['short', 'long', 'the shed', 'middle', 'the dan']),
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        hairType: getRandomElement(HAIR_TYPE_OPTIONS),
         hairColor: getRandomColor(),
-        beardType: getRandomElement(['none', 'mustache', 'goatee', 'full']),
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        beardType: getRandomElement(BEARD_TYPE_OPTIONS),
         beardColor: getRandomColor(),
-        mouthType: getRandomElement(['male', 'female']),
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        mouthType: getRandomElement(MOUTH_TYPE_OPTIONS),
         mouthColor: getRandomColor(),
-        noseType: getRandomElement(['small', 'medium', 'large']),
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        noseType: getRandomElement(NOSE_TYPE_OPTIONS),
         noseColor: getRandomColor(),
-        eyebrowType: getRandomElement(['arched', 'straight', 'curved']),
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        eyebrowType: getRandomElement(EYEBROW_TYPE_OPTIONS),
         eyebrowColor: getRandomColor(),
-        // Add other properties with random selections as needed
     };
 }

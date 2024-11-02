@@ -1,30 +1,33 @@
 // /src/components/avatar/parts/Hair/Hair.tsx
 
 import React from 'react';
-import MiddleLongHair from "./hair/MiddleLongHair.tsx";
+import LongHair2 from "./hair/LongHair2.tsx";
 import LongHair from "./hair/LongHair.tsx";
-import ShortHair from "./hair/ShortHair.tsx";
+import TheSwoosh from "./hair/TheSwoosh.tsx";
 import CurlyHair from "./hair/CurlyHair.tsx";
 import {AvatarOptions} from "../types/avatarType.ts";
+import BabyBieber from "./hair/BabyBieber.tsx";
 
 type HairProps = Pick<AvatarOptions, 'hairType' | 'hairColor'>
 
 
 const Hair: React.FC<HairProps> = ({hairColor, hairType}) => {
     switch (hairType) {
-        case 'short':
+        case 'the-swoosh':
             return (
-                <ShortHair color={hairColor}/>
+                <TheSwoosh color={hairColor}/>
             );
-        case 'long':
+        case 'long-1':
             return <LongHair color={hairColor}/>
-        case 'middle':
+        case 'long-2':
             return (
-                <MiddleLongHair color={hairColor}/>
+                <LongHair2 color={hairColor}/>
             );
-        case 'the shed':
+        case 'the-shed':
             return <CurlyHair color={hairColor}/>
-        case 'the dan':
+        case 'the-jb':
+            return <BabyBieber color={hairColor}/>
+        case 'the-dan':
             return null; // No hair drawn
         default:
             return null;

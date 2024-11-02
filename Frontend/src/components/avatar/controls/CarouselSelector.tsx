@@ -64,6 +64,13 @@ const CarouselSelector: React.FC<CarouselSelectorProps> = ({label, value, option
         }
     }, [activeIndex]);
 
+    function formatOption(option: string) {
+        return option
+            .split('-') // Split the option by hyphens
+            .map((part: string) => part.charAt(0).toUpperCase() + part.slice(1)) // Capitalize each part
+            .join(' '); // Join the parts with spaces
+    }
+
     return (
         <div className="flex flex-col w-full relative">
 
@@ -95,7 +102,7 @@ const CarouselSelector: React.FC<CarouselSelectorProps> = ({label, value, option
                             onClick={() => handleOptionClick(option)}
                             aria-pressed={option === value}
                         >
-                            {option.charAt(0).toUpperCase() + option.slice(1)}
+                            {formatOption(option)}
                         </button>
                     </SwiperSlide>
                 ))}
