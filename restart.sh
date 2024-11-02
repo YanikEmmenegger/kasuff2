@@ -1,7 +1,7 @@
 # script to restart the server -> docker compsoe down, git pull, docker-compose up --build -d
 
 # stop the server
-docker-compose down
+docker compose down
 
 # pull the latest changes
 git pull
@@ -9,7 +9,7 @@ git pull
 1
 
 # start the server
-docker-compose up --build -d
+docker compose up --build -d
 
 #check the status
-docker-compose ps
+docker compose ps
