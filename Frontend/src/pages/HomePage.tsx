@@ -9,6 +9,7 @@ import {useNavigate} from "react-router";
 import Button from "../components/Button.tsx";
 import {GiJoin} from "react-icons/gi";
 import {IoCreate} from "react-icons/io5";
+import SupportButton from "../components/SupportButton.tsx";
 
 const HomePage: FC = () => {
     const {player} = usePlayer();
@@ -20,6 +21,7 @@ const HomePage: FC = () => {
 
     return (
         <div className="w-screen min-h-screen flex flex-col items-center justify-center bg-cyan-500 p-4">
+
             {/* Main Content Container */}
             <motion.div
                 className="max-w-md w-full bg-cyan-600 p-8 rounded-lg shadow-lg flex flex-col items-center gap-6 relative" // Added 'relative' for positioning
@@ -88,6 +90,7 @@ const HomePage: FC = () => {
                     >
                         Create Game <IoCreate/>
                     </Button>
+                    <SupportButton/>
                 </motion.div>
 
                 {/* Settings Icon */}

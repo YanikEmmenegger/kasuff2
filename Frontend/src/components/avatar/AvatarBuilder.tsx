@@ -55,6 +55,13 @@ const AvatarBuilder: FC = () => {
         navigate("/");
     };
 
+    function formatOption(option: string) {
+        return option
+            .split('-') // Split the option by hyphens
+            .map((part: string) => part.charAt(0).toUpperCase() + part.slice(1)) // Capitalize each part
+            .join(' '); // Join the parts with spaces
+    }
+
     return (
         <div className="flex items-center justify-center h-auto bg-cyan-500 text-gray-200 p-6">
             <motion.div className="max-w-[90vw] w-full bg-cyan-600 p-8 rounded-lg shadow-lg"
@@ -92,7 +99,7 @@ const AvatarBuilder: FC = () => {
                                             className={twMerge("bg-cyan-500 transition-colors", currentStyle === option ? "scale-110 shadow-lg bg-cyan-700" : "border-transparent")}
                                             value={option}
                                             onClick={() => handleOptionChange(style.name as keyof AvatarOptions, option)}>
-                                            {option}
+                                            {formatOption(option)}
                                         </Button>
                                     })}
                                 </div>

@@ -2,6 +2,7 @@ import {FC, useEffect, useState} from "react";
 import {usePlayer} from "../../../contexts/playerProvider";
 import PlayerCard from "./PlayerCard";
 import Confetti from "react-confetti";
+import SupportButton from "../../SupportButton.tsx";
 
 const LeaderboardComponent: FC = () => {
     const {game, player} = usePlayer();
@@ -125,7 +126,12 @@ const LeaderboardComponent: FC = () => {
             )}
 
             {/* Leaderboard Heading */}
-            <h2 className="text-4xl font-bold text-center mb-8">Leaderboard</h2>
+            <h2 className="text-4xl font-bold text-center ">Leaderboard</h2>
+            <div className={"my-8"}>
+                <SupportButton>
+                    Click to upgrade your luck 😉
+                </SupportButton>
+            </div>
 
             {/* Player Cards */}
             <div className="w-full flex flex-col-reverse">
@@ -136,6 +142,7 @@ const LeaderboardComponent: FC = () => {
                         isCurrentUser={entry.playerId === player?._id}
                     />
                 ))}
+
             </div>
         </div>
     );
