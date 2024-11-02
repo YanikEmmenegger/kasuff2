@@ -1,3 +1,4 @@
+// src/components/avatar/AvatarBuilder.tsx
 import {FC, useEffect, useState} from 'react';
 import Avatar from './Avatar';
 import ColorPicker from "./controls/ColorPicker";
@@ -9,8 +10,8 @@ import {motion} from "framer-motion";
 import {FaSpinner} from "react-icons/fa";
 import {getRandomAvatarOptions} from "./avatarFunctions";
 import {avatarPartsConfig} from "./types/avatarConfig";
+import CarouselSelector from "./controls/CarouselSelector.tsx";
 import {AvatarOptions, defaultAvatarOptions} from "./types/avatarType.ts";
-import {twMerge} from "tailwind-merge";
 
 const AvatarBuilder: FC = () => {
     const {player, updatePlayer} = usePlayer();
@@ -61,8 +62,7 @@ const AvatarBuilder: FC = () => {
                         initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.6}}>
                 <h2 className="text-3xl font-bold mb-6 text-center">Customize Your Avatar</h2>
 
-                {/* Sticky Avatar Display */}
-                <div className="sticky bg-cyan-600 z-50 top-0 flex justify-center shadow-lg">
+                <div className="flex justify-center mb-8">
                     <Avatar size={200} options={options}/>
                 </div>
 
@@ -85,20 +85,9 @@ const AvatarBuilder: FC = () => {
                                     <ColorPicker value={currentColor}
                                                  onChange={(value) => handleOptionChange(color.name as keyof AvatarOptions, value)}/>
                                 </div>
-
-                                <div className={"flex items-center gap-2 flex-wrap justify-center"}>
-                                    {style.options.map((option) => {
-                                        return <Button key={option}
-                                            className={twMerge("bg-cyan-500 transition-colors", currentStyle === option ? "scale-110 shadow-lg bg-cyan-700" : "border-transparent")}
-                                            value={option}
-                                            onClick={() => handleOptionChange(style.name as keyof AvatarOptions, option)}>
-                                            {option}
-                                        </Button>
-                                    })}
-                                </div>
-                                {/*<CarouselSelector label={style.label} value={currentStyle}*/}
-                                {/*                  options={style.options as string[]}*/}
-                                {/*                  onChange={(value) => handleOptionChange(style.name as keyof AvatarOptions, value)}/>*/}
+                                <CarouselSelector label={style.label} value={currentStyle}
+                                                  options={style.options as string[]}
+                                                  onChange={(value) => handleOptionChange(style.name as keyof AvatarOptions, value)}/>
                             </motion.div>
                         );
                     })}

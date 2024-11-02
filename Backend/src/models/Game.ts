@@ -2,241 +2,176 @@ import {Document, model, Schema} from 'mongoose';
 import {ICleanQuestion} from './Question';
 
 /**
- * Enum for Game State
+ * Centralized Constants for Enums
  */
-export type GameState = 'lobby' | 'quiz' | 'waiting' | 'perks' | 'results' | 'punishment' | 'leaderboard' | 'aborted';
+export const QUESTION_TYPES = [
+    'multiple-choice',
+    'who-would-rather',
+    'what-would-you-rather',
+    'ranking',
+    'hide-and-seek',
+] as const;
+
+export const GAME_STATES = [
+    'lobby',
+    'quiz',
+    'waiting',
+    'perks',
+    'results',
+    'punishment',
+    'leaderboard',
+    'aborted',
+] as const;
+
+export type QuestionType = (typeof QUESTION_TYPES)[number];
+export type GameState = (typeof GAME_STATES)[number];
 
 /**
- * Interface representing the game settings.
+ * Interface for Game Settings.
  */
 export interface IGameSettings {
     numberOfQuestions: number;
-    gameModes: ('multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking' | 'hide-and-seek')[];
-    timeLimit: number; // in seconds
-    punishmentMultiplier: number; // e.g., 1 for normal, 2 for double
+    gameModes: QuestionType[];
+    timeLimit: number;
+    punishmentMultiplier: number;
 }
 
 /**
- * Interface representing a punishment for a player.
+ * Interface for a player's punishment.
  */
 export interface IPunishment {
-    playerId: Schema.Types.ObjectId; // References Player._id
-    reasons: string[]; // Reasons for the punishment (e.g., "Didn't answer", "Answered wrong")
-    give?: number; // Drinks the player can give to others
-    take?: number; // Drinks the player has to take
+    playerId: Schema.Types.ObjectId;
+    reasons: string[];
+    give?: number;
+    take?: number;
 }
 
 /**
- * Interface representing an answer to a question within a game.
+ * Interface for an answer in a game.
  */
 export interface IAnswer {
-    playerId: Schema.Types.ObjectId; // References Player._id
-    questionId: Schema.Types.ObjectId; // References Question._id
-    answer: string | string[]; // User's answer
-    answeredAt?: Date; // Timestamp of the answer
-    isCorrect?: boolean; // Determined based on the question type
-    pointsAwarded?: number; // Points awarded for the answer
+    playerId: Schema.Types.ObjectId;
+    questionId: Schema.Types.ObjectId;
+    answer: string | string[];
+    answeredAt?: Date;
+    isCorrect?: boolean;
+    pointsAwarded?: number;
 }
 
 /**
- * Interface representing a leaderboard entry.
+ * Interface for a leaderboard entry.
  */
 export interface ILeaderboardEntry {
-    playerId: Schema.Types.ObjectId; // References Player._id
-    totalPoints: number; // Total points accumulated by the player
+    playerId: Schema.Types.ObjectId;
+    totalPoints: number;
 }
 
 /**
- * Interface representing a Game document in MongoDB.
+ * Interface for Game document in MongoDB.
  */
 export interface IGame extends Document {
-    _id: Schema.Types.ObjectId; // Explicitly define the _id field as ObjectId
-    code: string; // 6-character unique game code
-    creatorId: Schema.Types.ObjectId; // References the Player model by ObjectId
-    settings: IGameSettings; // Game settings
-    players: Schema.Types.ObjectId[]; // Array of Player ObjectIds
-    questions: Schema.Types.ObjectId[]; // Array of Question ObjectIds
-    cleanedQuestions: ICleanQuestion[]; // Cleaned questions (prepared when the game starts)
-    answers: IAnswer[][]; // Array of arrays, where each array contains answers for a particular question
-    result: string; // The result of the game
-    leaderboard: ILeaderboardEntry[]; // Array of leaderboard entries
-    currentQuestionIndex: number; // Index of the current question
-    state: GameState; // Current state of the game
-    timeRemaining: Date; // Time remaining for the current question
-    playersAnswered: Schema.Types.ObjectId[];  // Array of players who have answered the current question
-    isActive: boolean; // Indicates if the game is ongoing
-    punishments: IPunishment[][]; // Punishments applied to players during the game
-    createdAt: Date; // Timestamp of game creation
-    updatedAt: Date; // Timestamp of last update
+    code: string;
+    creatorId: Schema.Types.ObjectId;
+    settings: IGameSettings;
+    players: Schema.Types.ObjectId[];
+    questions: Schema.Types.ObjectId[];
+    cleanedQuestions: ICleanQuestion[];
+    answers: IAnswer[][];
+    leaderboard: ILeaderboardEntry[];
+    currentQuestionIndex: number;
+    state: GameState;
+    timeRemaining: Date;
+    playersAnswered: Schema.Types.ObjectId[];
+    isActive: boolean;
+    punishments: IPunishment[][];
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 /**
- * Function to generate a random game code of a given length.
- * Tries 4-char codes for 10 attempts, then 6-char codes for 10 attempts,
- * and falls back to 10-char codes indefinitely until a unique one is found.
+ * Helper function to generate a unique game code.
  */
 export const generateUniqueGameCode = async (): Promise<string> => {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-
-    // Helper function to generate a random code of a specific length
-    const generateCode = (length: number): string => {
-        let result = '';
-        for (let i = 0; i < length; i++) {
-            const randomIndex = Math.floor(Math.random() * characters.length);
-            result += characters[randomIndex];
-        }
-        return result;
-    };
+    const generateCode = (length: number): string =>
+        Array.from({length}, () => characters[Math.floor(Math.random() * characters.length)]).join('');
 
     let attempts = 0;
-    let gameCode = '';
-    let codeLength = 4; // Start with a 4-character code
+    let codeLength = 4;
 
-    // Loop to find a unique code
     while (true) {
-        gameCode = generateCode(codeLength);
-        const existingGame = await Game.findOne({code: gameCode});
-
-        // If no existing game is found with the generated code, it is unique
-        if (!existingGame) {
-            break;
-        }
+        const gameCode = generateCode(codeLength);
+        if (!(await Game.findOne({code: gameCode}))) return gameCode;
 
         attempts++;
-
-        // After 10 failed attempts with the current length, switch to the next length
-        if (attempts === 10 && codeLength === 4) {
-            codeLength = 6; // Switch to 6-character codes
-            attempts = 0; // Reset attempts
-        } else if (attempts === 10 && codeLength === 6) {
-            codeLength = 10; // Switch to 10-character codes indefinitely
-            attempts = 0; // Reset attempts
+        if (attempts === 10) {
+            codeLength = codeLength === 4 ? 6 : 10;
+            attempts = 0;
         }
     }
-
-    return gameCode;
 };
 
 /**
- * Mongoose Schema for Game Settings.
+ * Mongoose Schemas for subdocuments.
  */
-const GameSettingsSchema: Schema = new Schema({
+const GameSettingsSchema = new Schema({
     numberOfQuestions: {type: Number, required: true, default: 10},
     gameModes: {
-        type: [
-            {
-                type: String,
-                enum: ['multiple-choice', 'who-would-rather', 'what-would-you-rather', 'ranking', 'hide-and-seek'],
-                required: true,
-            },
-        ],
+        type: [String],
+        enum: QUESTION_TYPES,
         required: true,
-        //default: ['multiple-choice'],
     },
-    timeLimit: {type: Number, required: true, default: 30}, // default 30 seconds
-    punishmentMultiplier: {type: Number, required: true, default: 1}, // default no multiplier
+    timeLimit: {type: Number, required: true, default: 30},
+    punishmentMultiplier: {type: Number, required: true, default: 1},
 });
 
-/**
- * Mongoose Schema for Answer.
- */
-const AnswerSchema: Schema = new Schema({
+const AnswerSchema = new Schema({
     playerId: {type: Schema.Types.ObjectId, required: true, ref: 'Player'},
     questionId: {type: Schema.Types.ObjectId, required: true, ref: 'Question'},
-    answer: {type: Schema.Types.Mixed, required: true}, // Allows both string and array of strings
-    isCorrect: {type: Boolean},
-    pointsAwarded: {type: Number},
+    answer: {type: Schema.Types.Mixed, required: true},
+    isCorrect: Boolean,
+    pointsAwarded: Number,
     answeredAt: {type: Date, default: Date.now},
 }, {_id: false});
 
-/**
- * Mongoose Schema for Leaderboard.
- */
-const LeaderboardSchema: Schema = new Schema({
+const LeaderboardSchema = new Schema({
     playerId: {type: Schema.Types.ObjectId, required: true, ref: 'Player'},
     totalPoints: {type: Number, required: true},
 }, {_id: false});
 
-/**
- * Mongoose Schema for Punishment.
- */
-const PunishmentSchema: Schema = new Schema({
+const PunishmentSchema = new Schema({
     playerId: {type: Schema.Types.ObjectId, required: true, ref: 'Player'},
     reasons: {type: [String], required: true},
-    give: {type: Number},
-    take: {type: Number},
+    give: Number,
+    take: Number,
 }, {_id: false});
 
 /**
- * Mongoose Schema for the Game.
+ * Main Game Schema.
  */
-const GameSchema: Schema = new Schema(
-    {
-        code: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-        creatorId: {
-            type: Schema.Types.ObjectId,
-            required: true,
-            ref: 'Player',
-        },
-        settings: {
-            type: GameSettingsSchema,
-            required: true,
-        },
-        players: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Player',
-            },
-        ],
-        questions: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Question',
-            },
-        ],
-        cleanedQuestions: [
-            {
-                type: new Schema({
-                    _id: String,
-                    type: String,
-                    question: String,
-                    options: [String],
-                    goodOrBad: String,
-                    correctOptionIndex: {type: Number},
-                    finalRanking: [String],
-                }, {_id: false}),
-            },
-        ],
-        answers: [
-            [AnswerSchema],
-        ],
-        leaderboard: [LeaderboardSchema],
-        currentQuestionIndex: {type: Number, default: 0},
-        timeRemaining: {type: Date, default: ''},
-        state: {
-            type: String,
-            enum: ['lobby', 'quiz', 'waiting', 'results', 'leaderboard', 'aborted'],
-            default: 'lobby',
-        },
-        playersAnswered: [
-            {type: Schema.Types.ObjectId, ref: 'Player'},
-        ],
-        isActive: {type: Boolean, default: true},
-        result: {type: String, default: ''},
-        punishments: [[PunishmentSchema]],
+const GameSchema = new Schema({
+    code: {type: String, required: true, unique: true},
+    creatorId: {type: Schema.Types.ObjectId, required: true, ref: 'Player'},
+    settings: {type: GameSettingsSchema, required: true},
+    players: [{type: Schema.Types.ObjectId, ref: 'Player'}],
+    questions: [{type: Schema.Types.ObjectId, ref: 'Question'}],
+    cleanedQuestions: [{type: Schema.Types.Mixed}],
+    answers: [[AnswerSchema]],
+    leaderboard: [LeaderboardSchema],
+    currentQuestionIndex: {type: Number, default: 0},
+    timeRemaining: {type: Date},
+    state: {
+        type: String,
+        enum: GAME_STATES,
+        default: 'lobby',
     },
-    {
-        timestamps: true,
-    }
-);
+    playersAnswered: [{type: Schema.Types.ObjectId, ref: 'Player'}],
+    isActive: {type: Boolean, default: true},
+    punishments: [[PunishmentSchema]],
+}, {timestamps: true});
 
 /**
  * Export the Game model.
  */
 const Game = model<IGame>('Game', GameSchema);
-
 export default Game;

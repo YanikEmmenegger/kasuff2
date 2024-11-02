@@ -11,7 +11,7 @@ type BeardProps = Pick<AvatarOptions, 'beardType' | 'beardColor'>
 
 const Beard: React.FC<BeardProps> = ({beardColor, beardType}) => {
     switch (beardType) {
-        case 'mustache':
+        case 'pringles':
             return (
                 <Mustache color={beardColor}/>
             );

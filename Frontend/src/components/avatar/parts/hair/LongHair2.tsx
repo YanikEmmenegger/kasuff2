@@ -1,10 +1,10 @@
-// src/components/avatar/parts/FaceShape/MiddleLongHair.tsx
+// src/components/avatar/parts/FaceShape/LongHair2.tsx
 
 import {FC, useEffect, useMemo, useState} from "react";
 import {PartProps} from "../partProps";
 import {calculateColor} from "../../avatarFunctions";
 
-const MiddleLongHair: FC<PartProps> = ({color}) => {
+const LongHair2: FC<PartProps> = ({color}) => {
     // Define the base colors and calculate the color variations
     const colorVars = useMemo(() => {
         return ["#923927", "#c57251", "#b1684b"];
@@ -59,4 +59,4 @@ const MiddleLongHair: FC<PartProps> = ({color}) => {
     );
 }
 
-export default MiddleLongHair;
+export default LongHair2;

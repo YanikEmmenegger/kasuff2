@@ -1,21 +1,28 @@
 // src/components/avatar/types/avatarTypes.ts
 
+export const FACE_SHAPE_OPTIONS = ['round', 'oval'] as const;
+export const EYE_TYPE_OPTIONS = ['male', 'female'] as const;
+export const HAIR_TYPE_OPTIONS = ['the-swoosh', 'long-1', 'the-shed', 'long-2', 'the-dan', 'the-jb'] as const;
+export const BEARD_TYPE_OPTIONS = ['none', 'pringles', 'goatee', 'full'] as const;
+export const MOUTH_TYPE_OPTIONS = ['male', 'female'] as const;
+export const NOSE_TYPE_OPTIONS = ['small', 'medium', 'large'] as const;
+export const EYEBROW_TYPE_OPTIONS = ['arched', 'straight', 'curved'] as const;
+
 export interface AvatarOptions {
     faceColor: string;
-    faceShape: 'round' | 'oval';
-    eyeType: 'male' | 'female';
+    faceShape: typeof FACE_SHAPE_OPTIONS[number];
+    eyeType: typeof EYE_TYPE_OPTIONS[number];
     eyeColor: string;
-    hairType: 'short' | 'long' | 'the shed' | 'middle' | 'the dan';
+    hairType: typeof HAIR_TYPE_OPTIONS[number];
     hairColor: string;
-    beardType: 'none' | 'mustache' | 'goatee' | 'full';
+    beardType: typeof BEARD_TYPE_OPTIONS[number];
     beardColor: string;
-    mouthType: 'male' | 'female';
+    mouthType: typeof MOUTH_TYPE_OPTIONS[number];
     mouthColor: string;
-    noseType: 'small' | 'medium' | 'large';
+    noseType: typeof NOSE_TYPE_OPTIONS[number];
     noseColor: string;
-    eyebrowType: 'arched' | 'straight' | 'curved';
+    eyebrowType: typeof EYEBROW_TYPE_OPTIONS[number];
     eyebrowColor: string;
-    // Add other properties as needed
 }
 
 export const defaultAvatarOptions: AvatarOptions = {
@@ -23,7 +30,7 @@ export const defaultAvatarOptions: AvatarOptions = {
     faceShape: 'round',
     eyeType: 'male',
     eyeColor: '#000000',
-    hairType: 'short',
+    hairType: 'the-swoosh',
     hairColor: '#000000',
     beardType: 'none',
     beardColor: '#000000',
@@ -33,5 +40,4 @@ export const defaultAvatarOptions: AvatarOptions = {
     noseColor: '#000000',
     eyebrowType: 'arched',
     eyebrowColor: '#000000',
-    // Initialize other options
 };
