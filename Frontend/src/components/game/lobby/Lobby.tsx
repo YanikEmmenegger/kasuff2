@@ -7,11 +7,14 @@ import Button from "../../Button";
 import {FaCopy, FaGamepad} from "react-icons/fa";
 import Quote from "../../Quote.tsx";
 import toast from "react-hot-toast";
+import Input from "../../Input.tsx";
+import {BiSend} from "react-icons/bi";
 
 const Lobby: React.FC = () => {
-    const { game, socket, player, kickPlayer, startGame } = usePlayer();
+    const {game, socket, player, kickPlayer, startGame, sendMessage} = usePlayer();
     const [starting, setStarting] = useState(false);
     const navigate = useNavigate();
+    const [message, setMessage] = useState("");
 
 
     useEffect(() => {
@@ -80,6 +83,19 @@ const Lobby: React.FC = () => {
             document.body.removeChild(textarea);
         }
     };
+
+
+    const handleSendMessage = (message: string) => {
+        return async (e: React.FormEvent) => {
+            e.preventDefault();
+            if (!message) {
+                return;
+            }
+            sendMessage(message);
+            setMessage("");
+        }
+    }
+
     return (
         <div className="h-auto flex-col flex items-start justify-center">
             {game ? (
@@ -132,6 +148,20 @@ const Lobby: React.FC = () => {
                 animate={{opacity: 1, y: 0}}
                 className={"p-4 flex items-center justify-center w-full bottom-20 left-0"}>
                 <Quote/>
+
+
+            </motion.div>
+            <motion.div
+                initial={{opacity: 0, y: 20}}
+                animate={{opacity: 1, y: 0}}
+                className={"p-4 flex items-center justify-center w-full bottom-20 left-0"}>
+                <form onSubmit={handleSendMessage(message)} className={"flex items-center justify-center"}>
+                    <Input maxLength={35} value={message}
+                           onChange={(e) => setMessage(e.target.value)} type={'text'} className={"bg-cyan-600"}
+                           placeholder={"message"}/>
+                    <Button><BiSend/></Button>
+                </form>
+
             </motion.div>
         </div>
     );

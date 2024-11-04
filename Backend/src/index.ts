@@ -38,6 +38,8 @@ const io = new SocketIOServer(server, {
 // Socket.IO Admin UI (for monitoring during development)
 instrument(io, {auth: false, mode: 'development'});
 
+
+
 app.use(cookieParser()); // Use cookie-parser middleware
 
 app.use(logVisitor);
@@ -92,6 +94,11 @@ io.on('connection', (socket) => {
             console.error('Error during player reconnect:', error);
             callback({success: false, error: 'Internal server error.'});
         }
+    });
+    // Player reconnect handler
+    socket.on('player:message', async (data: { gameCode: string, message:string, playerName: string }) => {
+        const {gameCode, message, playerName} = data;
+        io.to(gameCode).emit('player:message', {message, playerName});
     });
 
     // Player creation handler

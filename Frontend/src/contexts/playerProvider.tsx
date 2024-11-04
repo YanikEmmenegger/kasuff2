@@ -24,6 +24,7 @@ interface PlayerContextType {
     startGame: () => Promise<boolean>;
     sendAnswer: (answer: string | string[] | number) => Promise<boolean>;
     nextQuestion: () => Promise<boolean>;
+    sendMessage: (message: string) => Promise<boolean>;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -123,6 +124,11 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
         socket.on('game:joined', (game: Game) => {
             setGame(game);
             navigate(`/game?state=lobby&code=${game.code}`);
+        });
+
+        socket.on('player:message', (message) => {
+            console.log(message)
+            toast(`${message.playerName}: ${message.message}`, {icon: '📧', position: 'bottom-right'});
         });
 
         socket.on('player:joined', (game: Game) => {
@@ -310,6 +316,24 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
         });
     };
 
+    const sendMessage = (message: string) => {
+        return new Promise<boolean>((resolve, reject) => {
+            if (!player || !socket || !game) return reject(new Error('Player, socket, or game not available'));
+
+            socket.emit('player:message', {
+                gameCode: game.code,
+                message: message,
+                playerName: player.name
+            }, (result: OperationResult<Game>) => {
+                if (result.success) {
+                    resolve(true);
+                } else {
+                    reject(new Error(result.error || 'Failed to send message.'));
+                }
+            });
+        });
+    }
+
     // Render children only when socket is connected
     return (
         <PlayerContext.Provider
@@ -325,6 +349,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
                 startGame,
                 nextQuestion,
                 sendAnswer,
+                sendMessage
             }}
         >
             {isSocketConnected ? children : <div className={"flex items-center -mt-20 flex-col-reverse justify-center"}>
