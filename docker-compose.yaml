@@ -5,6 +5,8 @@ services:
     image: mongo:latest
     container_name: kausuff2_mongo
     # No ports exposed
+    ports:
+      - "27017:27017"
     volumes:
       - ./Database:/data/db
       - ./mongo-init/:/docker-entrypoint-initdb.d
