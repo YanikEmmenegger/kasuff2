@@ -300,7 +300,7 @@ io.on('connection', (socket) => {
         try {
             const result = await playerAnswered(gameCode, answer, io)
             if (result.success) {
-                console.log(`Player ${answer.playerId} answered question ${answer.questionId}`);
+                console.log(`Player ${answer.playerId} answered question ${answer.answer}`);
                 callback(result);
             } else {
                 console.error(result.error);

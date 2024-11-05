@@ -42,6 +42,7 @@ const questionTypes: {
         type: "hide-and-seek",
         label: "Hide and Seek (coming soon)",
         icon: <FaSearch/>,
+        disabled: true,
     },
     {
         type: "memory",
