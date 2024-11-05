@@ -3,13 +3,14 @@ import {usePlayer} from "../../../contexts/playerProvider";
 import AnswerOption from "./AnswerOption";
 import PlayersNotAnswered from "./PlayersNotAnswered";
 import CollapsibleSection from "../../CollapsibleSection.tsx";
+import {MultipleChoiceQuestion} from "../../../types.ts";
 
 const ResultMultipleChoice: React.FC = () => {
     const {game} = usePlayer();
     if (!game) return <div>No game available.</div>;
 
-    const currentQuestionIndex = game.currentQuestionIndex;
-    const currentQuestion = game.cleanedQuestions?.[currentQuestionIndex];
+    const currentQuestionIndex = game.currentRoundIndex;
+    const currentQuestion = game.rounds?.[currentQuestionIndex].data as MultipleChoiceQuestion;
     const currentAnswers = game.answers?.[currentQuestionIndex];
 
     if (!currentQuestion || !currentAnswers)

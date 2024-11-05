@@ -1,10 +1,12 @@
+// GameCreator.tsx
+
 import {FC, useState} from "react";
 import {motion} from "framer-motion";
 import QuestionTypeSelector from "./QuestionTypeSelector";
 import TimerSelector from "./TimerSelector";
 import Slider from "./Slider";
 import toast from "react-hot-toast";
-import {GameSettings} from "../../../types";
+import {GameModeType, GameSettings} from "../../../types"; // Ensure GameModeType is imported
 import {usePlayer} from "../../../contexts/playerProvider";
 import Button from "../../Button";
 import LabelWithValue from "../../LabelWithValue";
@@ -16,13 +18,14 @@ const GameCreator: FC = () => {
 
     // State for game settings
     const [gameSettings, setGameSettings] = useState<GameSettings>({
-        numberOfQuestions: 10,
+        numberOfRounds: 10,
         gameModes: [
             "multiple-choice",
             "what-would-you-rather",
             "who-would-rather",
             "ranking",
-        ],
+            "hide-and-seek",
+        ] as GameModeType[],
         timeLimit: 30,
         punishmentMultiplier: 1,
     });
@@ -31,7 +34,7 @@ const GameCreator: FC = () => {
     const handleQuestionsChange = (value: number) => {
         setGameSettings((prevSettings) => ({
             ...prevSettings,
-            numberOfQuestions: value,
+            numberOfRounds: value,
         }));
     };
 
@@ -42,9 +45,7 @@ const GameCreator: FC = () => {
         }));
     };
 
-    const handleQuestionTypesChange = (
-        selectedTypes: GameSettings["gameModes"]
-    ) => {
+    const handleGameModesChange = (selectedTypes: GameModeType[]) => {
         setGameSettings((prevSettings) => ({
             ...prevSettings,
             gameModes: selectedTypes,
@@ -57,8 +58,8 @@ const GameCreator: FC = () => {
 
     const handleSubmit = async () => {
         if (gameSettings.gameModes.length === 0) {
-            toast.error("Please select at least one question type.");
-            return; // Prevent submission if no question types are selected
+            toast.error("Please select at least one game mode.");
+            return; // Prevent submission if no game modes are selected
         }
 
         setCreating(true); // Show loading state
@@ -67,6 +68,7 @@ const GameCreator: FC = () => {
         if (result.success) {
             toast.success("Game created successfully!");
             console.log("Game created:", result.data); // Transition to the lobby or show the game code
+            // Optionally, redirect to the game lobby or another page
         } else {
             toast.error(result.error || "Failed to create game.");
             setCreating(false); // Remove loading state
@@ -105,7 +107,6 @@ const GameCreator: FC = () => {
             >
                 {/* Sliders & Selectors */}
                 <div className="flex flex-col space-y-6 md:space-y-0 md:grid md:grid-cols-2 md:gap-6">
-
                     <motion.div
                         className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg shadow-md"
                         initial={{opacity: 0, y: 20}}
@@ -113,14 +114,14 @@ const GameCreator: FC = () => {
                         transition={{delay: 0.2}}
                     >
                         <LabelWithValue
-                            text="Number of Questions"
-                            value={gameSettings.numberOfQuestions}
+                            text="Number of Rounds"
+                            value={gameSettings.numberOfRounds}
                         />
                         <Slider
                             min={1}
                             max={50}
                             step={1}
-                            value={gameSettings.numberOfQuestions}
+                            value={gameSettings.numberOfRounds}
                             onChange={handleQuestionsChange}
                         />
                     </motion.div>
@@ -145,19 +146,19 @@ const GameCreator: FC = () => {
                         />
                     </motion.div>
                 </div>
+
                 <motion.div
                     initial={{opacity: 0, y: 20}}
                     animate={{opacity: 1, y: 0}}
                     transition={{delay: 0.8}}
                 >
-                    <CollapsibleSection title={"Time Limit (Seconds) " + `${gameSettings.timeLimit}s`}>
+                    <CollapsibleSection title={`Time Limit: ${gameSettings.timeLimit}s`}>
                         <motion.div
-                            className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg "
+                            className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg"
                             initial={{opacity: 0, y: 20}}
                             animate={{opacity: 1, y: 0}}
                             transition={{delay: 0.6}}
                         >
-
                             <TimerSelector
                                 timeLimit={gameSettings.timeLimit}
                                 onChange={handleTimeLimitChange}
@@ -165,43 +166,28 @@ const GameCreator: FC = () => {
                         </motion.div>
                     </CollapsibleSection>
                 </motion.div>
+
                 <motion.div
                     initial={{opacity: 0, y: 20}}
                     animate={{opacity: 1, y: 0}}
                     transition={{delay: 0.8}}
                 >
-                    <CollapsibleSection title={"Select Game Types"}>
-
-                        {/* Question Type Selector */}
+                    <CollapsibleSection title="Select Game Modes">
+                        {/* Game Mode Selector */}
                         <motion.div
-                            className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg "
+                            className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg"
                             initial={{opacity: 0, y: 20}}
                             animate={{opacity: 1, y: 0}}
                             transition={{delay: 0.2}}
                         >
                             <QuestionTypeSelector
                                 selectedTypes={gameSettings.gameModes}
-                                onChange={handleQuestionTypesChange}
+                                onChange={handleGameModesChange}
                             />
                         </motion.div>
                     </CollapsibleSection>
                 </motion.div>
-                {/*<motion.div*/}
-                {/*    initial={{opacity: 0, y: 20}}*/}
-                {/*    animate={{opacity: 1, y: 0}}*/}
-                {/*    transition={{delay: 1}}*/}
-                {/*>*/}
-                {/*    <CollapsibleSection title={"Type Specific settings (coming soon)"}>*/}
-                {/*        <motion.div*/}
-                {/*            className="flex h-32 justify-center mt-8"*/}
-                {/*            initial={{opacity: 0, y: 20}}*/}
-                {/*            animate={{opacity: 1, y: 0}}*/}
-                {/*            transition={{delay: 0.2}}*/}
-                {/*        >*/}
-                {/*            to be added*/}
-                {/*        </motion.div>*/}
-                {/*    </CollapsibleSection>*/}
-                {/*</motion.div>*/}
+
                 {/* Submit Button */}
                 <motion.div
                     className="flex justify-center mt-8"
@@ -212,6 +198,7 @@ const GameCreator: FC = () => {
                     <Button
                         onClick={handleSubmit}
                         className="bg-cyan-700 hover:bg-cyan-800 text-gray-200 px-6 py-3 rounded-lg font-semibold"
+                        disabled={creating}
                     >
                         {creating ? "Creating Game..." : "Create Game"}
                     </Button>

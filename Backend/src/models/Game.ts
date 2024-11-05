@@ -9,12 +9,16 @@ export const QUESTION_TYPES = [
     'who-would-rather',
     'what-would-you-rather',
     'ranking',
+] as const;
+
+export const MINI_GAME_TYPES = [
     'hide-and-seek',
+    'memory'
 ] as const;
 
 export const GAME_STATES = [
     'lobby',
-    'quiz',
+    'round',
     'waiting',
     'perks',
     'results',
@@ -24,16 +28,34 @@ export const GAME_STATES = [
 ] as const;
 
 export type QuestionType = (typeof QUESTION_TYPES)[number];
+export type MiniGameType = (typeof MINI_GAME_TYPES)[number];
 export type GameState = (typeof GAME_STATES)[number];
+export type GameModeType = QuestionType | MiniGameType;
 
 /**
  * Interface for Game Settings.
  */
 export interface IGameSettings {
-    numberOfQuestions: number;
-    gameModes: QuestionType[];
+    numberOfRounds: number;
+    gameModes: GameModeType[]; // Updated to include both types
     timeLimit: number;
     punishmentMultiplier: number;
+}
+
+/**
+ * Interface for Mini Game.
+ */
+export interface IMiniGame {
+    type: MiniGameType;
+    infos?: any;
+}
+
+/**
+ * Interface for Rounds that can either be a question or a mini game.
+ */
+export interface IRound {
+    type: 'mini-game' | 'question';
+    data?: IMiniGame | ICleanQuestion;
 }
 
 /**
@@ -51,8 +73,8 @@ export interface IPunishment {
  */
 export interface IAnswer {
     playerId: Schema.Types.ObjectId;
-    questionId: Schema.Types.ObjectId;
-    answer: string | string[];
+    questionId?: Schema.Types.ObjectId;
+    answer: string | string[] | number;
     answeredAt?: Date;
     isCorrect?: boolean;
     pointsAwarded?: number;
@@ -75,10 +97,10 @@ export interface IGame extends Document {
     settings: IGameSettings;
     players: Schema.Types.ObjectId[];
     questions: Schema.Types.ObjectId[];
-    cleanedQuestions: ICleanQuestion[];
+    rounds: IRound[];
     answers: IAnswer[][];
     leaderboard: ILeaderboardEntry[];
-    currentQuestionIndex: number;
+    currentRoundIndex: number;
     state: GameState;
     timeRemaining: Date;
     playersAnswered: Schema.Types.ObjectId[];
@@ -115,10 +137,10 @@ export const generateUniqueGameCode = async (): Promise<string> => {
  * Mongoose Schemas for subdocuments.
  */
 const GameSettingsSchema = new Schema({
-    numberOfQuestions: {type: Number, required: true, default: 10},
+    numberOfRounds: {type: Number, required: true, default: 10},
     gameModes: {
         type: [String],
-        enum: QUESTION_TYPES,
+        enum: [...QUESTION_TYPES, ...MINI_GAME_TYPES], // Updated to include both enums
         required: true,
     },
     timeLimit: {type: Number, required: true, default: 30},
@@ -127,7 +149,7 @@ const GameSettingsSchema = new Schema({
 
 const AnswerSchema = new Schema({
     playerId: {type: Schema.Types.ObjectId, required: true, ref: 'Player'},
-    questionId: {type: Schema.Types.ObjectId, required: true, ref: 'Question'},
+    questionId: {type: Schema.Types.ObjectId, ref: 'Question'},
     answer: {type: Schema.Types.Mixed, required: true},
     isCorrect: Boolean,
     pointsAwarded: Number,
@@ -147,6 +169,20 @@ const PunishmentSchema = new Schema({
 }, {_id: false});
 
 /**
+ * Schema for a single Round.
+ */
+const RoundSchema = new Schema({
+    type: {
+        type: String,
+        enum: ["mini-game", "question"], // Updated to include both enums
+        required: true,
+    },
+    data: {
+        type: Schema.Types.Mixed, // Can be IMiniGame or ICleanQuestion
+    },
+}, {_id: false});
+
+/**
  * Main Game Schema.
  */
 const GameSchema = new Schema({
@@ -155,10 +191,10 @@ const GameSchema = new Schema({
     settings: {type: GameSettingsSchema, required: true},
     players: [{type: Schema.Types.ObjectId, ref: 'Player'}],
     questions: [{type: Schema.Types.ObjectId, ref: 'Question'}],
-    cleanedQuestions: [{type: Schema.Types.Mixed}],
+    rounds: [RoundSchema], // Added RoundSchema here
     answers: [[AnswerSchema]],
     leaderboard: [LeaderboardSchema],
-    currentQuestionIndex: {type: Number, default: 0},
+    currentRoundIndex: {type: Number, default: 0},
     timeRemaining: {type: Date},
     state: {
         type: String,

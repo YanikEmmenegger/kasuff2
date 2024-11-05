@@ -29,19 +29,18 @@ const AnswerOption: FC<AnswerOptionProps> = ({option, isCorrect, players}) => {
                     return (
                         <div
                             key={index}
-                            className="flex justify-between items-center bg-cyan-600 p-2 rounded"
-                        >
-              <span className="text-sm text-gray-200">
-                #{player.position} {player.name}
-              </span>
+                            className="flex justify-between items-center bg-cyan-600 p-2 rounded">
+                          <span className="text-sm text-gray-200">
+                            #{player.position} {player.name}
+                          </span>
                             <span
                                 className={`text-sm font-bold ${
                                     player.pointsAwarded! > 0 ? "text-green-300" : "text-red-300"
                                 }`}
                             >
-                {player.pointsAwarded! > 0 ? "+" : ""}
+                                {player.pointsAwarded! > 0 ? "+" : ""}
                                 {player.pointsAwarded} Points
-              </span>
+                        </span>
                         </div>
                     );
                 })}

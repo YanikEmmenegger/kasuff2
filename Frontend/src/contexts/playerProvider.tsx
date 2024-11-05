@@ -89,7 +89,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
 
                     if (game) {
                         // Check if user already answered if state is quiz
-                        if (game.state === 'quiz' && game.playersAnswered.includes(player!._id)) {
+                        if (game.state === 'round' && game.playersAnswered.includes(player!._id)) {
                             // set game from response but manipulate state into 'waiting'
                             setGame(
                                 {
@@ -141,7 +141,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
 
         socket.on('player:left', (response: { playerName: string; game: Game }) => {
             toast(`${response.playerName} left the game`, {icon: '👋'});
-            if (game?.state !== 'quiz') setGame(response.game); // Only update game state if not in a quiz
+            if (game?.state !== 'round') setGame(response.game); // Only update game state if not in a quiz
         });
 
         socket.on('player:kicked', (response: { playerName: string; game: Game }) => {
@@ -161,7 +161,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
             console.log('Game state:', response);
 
             // Check if user already answered if state is quiz
-            if (response.game.state === 'quiz' && response.game.playersAnswered.includes(player!._id)) {
+            if (response.game.state === 'round' && response.game.playersAnswered.includes(player!._id)) {
                 // set game from response but manipulate state into 'waiting'
                 setGame(
                     {
@@ -282,7 +282,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
 
             const answer: Answer = {
                 playerId: player._id,
-                questionId: game!.cleanedQuestions[game!.currentQuestionIndex]._id,
+                questionId: game!.rounds[game!.currentRoundIndex].data ? (game!.rounds[game!.currentRoundIndex].data as Question)._id : undefined,
                 answer: option,
             };
 

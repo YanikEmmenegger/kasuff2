@@ -77,7 +77,7 @@ const AvatarItem: FC<AvatarItemProps> = ({id, options, isPlayer, onClick}) => {
                 onClick(isPlayer)
             }}
         >
-            <Avatar size={50} options={options}/>
+            <Avatar size={70} options={options}/>
         </motion.div>
     );
 };
