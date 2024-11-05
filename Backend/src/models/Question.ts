@@ -1,11 +1,12 @@
 import {Document, model, Schema} from 'mongoose';
+import {QuestionType} from "./Game";
 
 /**
  * Base Interface representing a generic Question.
  */
 export interface IBaseQuestion extends Document {
     _id: Schema.Types.ObjectId;
-    type: 'multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking';
+    type: QuestionType;
     question: string;
     category: string; // e.g., "General", "Sports", etc.
 }
@@ -15,7 +16,7 @@ export interface IBaseQuestion extends Document {
  */
 export interface ICleanedQuestion {
     _id: Schema.Types.ObjectId; // Question ID
-    type: 'multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking'; // Question type
+    type: QuestionType; // Question type
     question: string; // The actual question text
 }
 

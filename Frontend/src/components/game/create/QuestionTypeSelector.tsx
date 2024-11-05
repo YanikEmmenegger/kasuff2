@@ -1,67 +1,50 @@
+// QuestionTypeSelector.tsx
+
 import {FC} from "react";
 import {motion} from "framer-motion";
-import {FaCheckCircle, FaListAlt, FaQuestionCircle, FaSearch, FaSortNumericDown} from "react-icons/fa";
-import {FaMemory} from "react-icons/fa6";
-import Button from "../../Button.tsx";
+import {FaCheckCircle, FaListAlt, FaQuestionCircle, FaSearch, FaSortNumericDown,} from "react-icons/fa";
+import {FaMemory} from "react-icons/fa6"; // Ensure correct import path
+import Button from "../../Button";
+import {GameModeType} from "../../../types"; // Import GameModeType
 
 interface QuestionTypeSelectorProps {
-    selectedTypes: (
-        | "multiple-choice"
-        | "who-would-rather"
-        | "what-would-you-rather"
-        | "ranking"
-        | "hide-and-seek"
-        | "spy"
-        | "memory" // Ensure this matches GameSettings["questionTypes"]
-        )[];
-    onChange: (
-        selectedTypes: (
-            | "multiple-choice"
-            | "who-would-rather"
-            | "what-would-you-rather"
-            | "ranking"
-            | "hide-and-seek"
-            | "spy"
-            | "memory" // Ensure this matches GameSettings["questionTypes"]
-            )[]
-    ) => void;
+    selectedTypes: GameModeType[];
+    onChange: (selectedTypes: GameModeType[]) => void;
 }
 
-const questionTypes = [
+const questionTypes: {
+    type: GameModeType;
+    label: string;
+    icon: JSX.Element;
+    disabled?: boolean;
+}[] = [
     {
-        type: "multiple-choice" as const,
+        type: "multiple-choice",
         label: "Multiple Choice",
         icon: <FaListAlt/>,
     },
     {
-        type: "who-would-rather" as const,
+        type: "who-would-rather",
         label: "Who Would Rather",
         icon: <FaQuestionCircle/>,
     },
     {
-        type: "what-would-you-rather" as const,
+        type: "what-would-you-rather",
         label: "What Would You Rather",
         icon: <FaQuestionCircle/>,
     },
     {
-        type: "ranking" as const,
+        type: "ranking",
         label: "Ranking",
         icon: <FaSortNumericDown/>,
     },
     {
-        type: "hide-and-seek" as const,
+        type: "hide-and-seek",
         label: "Hide and Seek (coming soon)",
         icon: <FaSearch/>,
-        disabled: true,
     },
     {
-        type: "spy" as const,
-        label: "Spy (coming soon)",
-        icon: <FaSearch/>,
-        disabled: true,
-    },
-    {
-        type: "memory" as const,
+        type: "memory",
         label: "Memory (coming soon)",
         icon: <FaMemory/>,
         disabled: true,
@@ -69,7 +52,7 @@ const questionTypes = [
 ];
 
 const QuestionTypeSelector: FC<QuestionTypeSelectorProps> = ({selectedTypes, onChange}) => {
-    const handleToggle = (type: (typeof questionTypes)[number]["type"]) => {
+    const handleToggle = (type: GameModeType) => {
         if (selectedTypes.includes(type)) {
             onChange(selectedTypes.filter((t) => t !== type));
         } else {
@@ -78,7 +61,9 @@ const QuestionTypeSelector: FC<QuestionTypeSelectorProps> = ({selectedTypes, onC
     };
 
     const handleSelectAll = () => {
-        const enabledTypes = questionTypes.filter(({disabled}) => !disabled).map(({type}) => type);
+        const enabledTypes = questionTypes
+            .filter(({disabled}) => !disabled)
+            .map(({type}) => type);
         onChange(enabledTypes);
     };
 
@@ -112,9 +97,11 @@ const QuestionTypeSelector: FC<QuestionTypeSelectorProps> = ({selectedTypes, onC
                             onClick={() => handleToggle(type)}
                             whileHover={{scale: 1.05}}
                             whileTap={{scale: 0.95}}
-                            className={`flex w-full items-center px-4 py-2 rounded-lg cursor-pointer focus:outline-none transition-colors ${
-                                isSelected ? "bg-cyan-800 text-white" : "bg-cyan-600 text-gray-800"
-                            }`}
+                            className={`flex items-center px-4 py-2 rounded-lg cursor-pointer focus:outline-none transition-colors w-full ${
+                                isSelected
+                                    ? "bg-cyan-800 text-white"
+                                    : "bg-cyan-600 text-gray-800"
+                            } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
                         >
                             <span className={`flex items-center ${isSelected ? "" : "opacity-50"}`}>
                                 {icon}

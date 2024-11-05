@@ -160,11 +160,11 @@ export const playerAnswered = async (gameCode: string, answer: IAnswer, io: any)
         answer.answeredAt = new Date();
 
         // Ensure the answers array for the current question exists
-        if (!game.answers[game.currentQuestionIndex]) {
-            game.answers[game.currentQuestionIndex] = [];
+        if (!game.answers[game.currentRoundIndex]) {
+            game.answers[game.currentRoundIndex] = [];
         }
         // Push the answer to the answers array for the current question
-        game.answers[game.currentQuestionIndex].push(answer);
+        game.answers[game.currentRoundIndex].push(answer);
 
         // Save the updated game state
         await game.save();

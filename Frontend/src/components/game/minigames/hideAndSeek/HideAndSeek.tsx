@@ -44,10 +44,10 @@ const HideAndSeek = () => {
     const handleAvatarClick = useCallback(async (isPlayer: boolean) => {
         if (isPlayer) {
             //T ODO SEND ANSWER TO SERVER
-            alert('Correct!');
+            //alert('Correct!');
             try {
                 // Await the sendAnswer function to properly resolve or reject
-                await toast.promise(sendAnswer(wrongClicks), {
+                await toast.promise(sendAnswer(wrongClicks + 1), {
                     loading: "Submitting answer...",
                     success: "Answer submitted!",
                     error: "Error submitting answer.",
@@ -68,8 +68,11 @@ const HideAndSeek = () => {
 
     return (
         <div
-            className={twMerge("w-screen h-screen bg-red-600 relative overflow-hidden", wasWrong ? "bg-opacity-100" : "bg-opacity-0")}>
-
+            className={twMerge("w-screen gap-1 flex-col h-screen flex items-center justify-center bg-red-600 relative overflow-hidden", wasWrong ? "bg-opacity-100" : "bg-opacity-0")}>
+            <div className={"text-xl font-bold"}>
+                Find your avatar! and click on it
+            </div>
+            <div>Caution ‼️ dont touch any other avatars ⛔️</div>
             {/* Avatars */}
             {avatars.map((avatar, index) => (
                 <AvatarItem

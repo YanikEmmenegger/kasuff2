@@ -5,11 +5,13 @@ import JoinGameForm from "../components/game/join/JoinGameForm.tsx";
 import LeaveButton from "../components/game/LeaveButton.tsx";
 import WaitingRoom from "../components/game/waiting/WaitingRoom.tsx";
 import {usePlayer} from "../contexts/playerProvider.tsx";
-import QuizComponent from "../components/game/quiz/QuizComponent.tsx";
+import QuizComponent from "../components/game/round/QuizComponent.tsx";
 import ResultComponent from "../components/game/results/ResultComponent.tsx";
 import LeaderboardComponent from "../components/game/leaderboard/LeaderboardComponent.tsx";
 import {useEffect} from "react";
 import NextQuestionButton from "../components/game/results/NextQuestionButton.tsx";
+import {MiniGame, Question} from "../types.ts";
+import MiniGameComponent from "../components/game/minigames/MiniGameComponent.tsx";
 
 // Helper function to parse query parameters
 function useQuery() {
@@ -40,8 +42,17 @@ const GamePage = () => {
                 return <JoinGameForm _gameCode={code}/>;
             case "leaderboard":
                 return <LeaderboardComponent/>;
-            case "quiz":
-                return game ? <QuizComponent question={game.cleanedQuestions[game.currentQuestionIndex]}/> : <></>;
+            case "round":
+
+                if (game) {
+                    return game.rounds[game.currentRoundIndex].type === 'mini-game' ?
+                        <MiniGameComponent
+                            miniGame={game.rounds[game.currentRoundIndex].data! as MiniGame}/> :
+                        <QuizComponent
+                            question={game.rounds[game.currentRoundIndex].data! as Question}/>
+                }
+                return <></>
+
             case "results":
                 return game ? <ResultComponent/> : <></>;
             case "waiting":

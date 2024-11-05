@@ -3,13 +3,14 @@ import {usePlayer} from "../../../contexts/playerProvider";
 import AnswerOption from "./AnswerOption";
 import PlayersNotAnswered from "./PlayersNotAnswered";
 import CollapsibleSection from "../../CollapsibleSection";
+import {WhoWouldRatherQuestion} from "../../../types.ts";
 
 const ResultWhoWouldRather: React.FC = () => {
     const {game} = usePlayer();
     if (!game) return <div>No game available.</div>;
 
-    const currentQuestionIndex = game.currentQuestionIndex;
-    const currentQuestion = game.cleanedQuestions?.[currentQuestionIndex];
+    const currentQuestionIndex = game.currentRoundIndex;
+    const currentQuestion = game.rounds?.[currentQuestionIndex].data as WhoWouldRatherQuestion;
     const currentAnswers = game.answers?.[currentQuestionIndex];
 
     if (!currentQuestion || !currentAnswers)

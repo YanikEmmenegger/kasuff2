@@ -11,8 +11,8 @@ const ResultRanking: React.FC = () => {
     const {game} = usePlayer();
     if (!game) return <div>No game available.</div>;
 
-    const currentQuestionIndex = game.currentQuestionIndex;
-    const currentQuestion = game.cleanedQuestions?.[currentQuestionIndex] as RankingQuestion;
+    const currentQuestionIndex = game.currentRoundIndex;
+    const currentQuestion = game.rounds?.[currentQuestionIndex].data as RankingQuestion;
     const currentAnswers = game.answers?.[currentQuestionIndex] as unknown as RankingAnswer[];
 
     if (!currentQuestion || !currentAnswers)

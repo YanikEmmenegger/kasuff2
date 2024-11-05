@@ -14,7 +14,7 @@ const PunishmentComponent: React.FC = () => {
 
     const playerId = player._id; // Get the current player's ID
     const punishments: Punishment[] =
-        game.punishments[game.currentQuestionIndex] || [];
+        game.punishments[game.currentRoundIndex] || [];
 
     // Helper function to render the reasons
     const renderReasons = (reasons: string[]) => {

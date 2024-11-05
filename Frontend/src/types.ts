@@ -1,14 +1,36 @@
 // Represents the result of an operation
-
 import {AvatarOptions} from "./components/avatar/types/avatarType.ts";
 
+// Represents different types of questions and mini-games
+export type QuestionType =
+    | 'multiple-choice'
+    | 'who-would-rather'
+    | 'what-would-you-rather'
+    | 'ranking';
+
+export type MiniGameType =
+    | 'hide-and-seek'
+    | 'memory';
+
+export type GameModeType = QuestionType | MiniGameType;
+
+// Enum for Game State in the frontend (updated to include 'perks' and 'punishment')
+export type GameState =
+    | 'lobby'
+    | 'round'
+    | 'waiting'
+    | 'perks'
+    | 'punishment'
+    | 'results'
+    | 'leaderboard'
+    | 'aborted';
+
+// Represents the result of an operation
 export type OperationResult<T> = {
     success: boolean;
     data?: T;
     error?: string;
 };
-
-
 
 // Represents a player
 export interface Player {
@@ -22,13 +44,10 @@ export interface Player {
     updatedAt: string; // Date as a string
 }
 
-// Enum for Game State in the frontend
-export type GameState = 'lobby' | 'quiz' | 'waiting' | 'results' | 'leaderboard' | 'aborted';
-
 // Interface representing the game settings in the frontend
 export interface GameSettings {
-    numberOfQuestions: number;
-    gameModes: ('multiple-choice' | 'who-would-rather' | 'what-would-you-rather' | 'ranking' | 'hide-and-seek' | 'spy' | 'memory')[];
+    numberOfRounds: number;
+    gameModes: GameModeType[]; // Updated to include both QuestionType and MiniGameType
     timeLimit: number; // in seconds
     punishmentMultiplier: number; // e.g., 1 for normal, 2 for double
 }
@@ -36,9 +55,9 @@ export interface GameSettings {
 // Interface representing an answer to a question within a game in the frontend
 export interface Answer {
     playerId: string; // References Player._id
-    questionId: string; // References Question._id
+    questionId?: string; // References Question._id
     answer: string | string[] | number; // User's answer
-    answeredAt?: Date; // Timestamp of the answer
+    answeredAt?: string; // Timestamp of the answer as a string
     isCorrect?: boolean; // Determined based on the question type
     pointsAwarded?: number; // Points awarded for the answer
 }
@@ -49,32 +68,12 @@ export interface LeaderboardEntry {
     totalPoints: number; // Total points accumulated by the player
 }
 
+// Interface representing a player's punishment
 export interface Punishment {
     playerId: string; // References Player._id
     reasons: string[]; // Reasons for the punishment (e.g., "Didn't answer", "Answered wrong")
     give?: number; // Drinks the player can give to others
     take?: number; // Drinks the player has to take
-}
-
-// Interface representing the Game document in the frontend
-export interface Game {
-    _id: string; // Explicitly define the _id field as string (from ObjectId)
-    code: string; // 6-character unique game code
-    creatorId: string; // Creator's Player ID as a string
-    settings: GameSettings; // Game settings
-    players: Player[]; // Array of Player objects
-    questions: string[]; // Array of Question IDs as strings
-    answers: Answer[][]; // Array of arrays of Answer objects (grouped by question)
-    leaderboard: LeaderboardEntry[]; // Array of leaderboard entries
-    currentQuestionIndex: number; // Index of the current question
-    cleanedQuestions: Question[]; // Cleaned questions (prepared when the game starts)
-    state: GameState; // Current state of the game
-    timeRemaining: Date; // Time remaining for the current question
-    playersAnswered: string[]; // Array of Player IDs who have answered the current question
-    isActive: boolean; // Indicates if the game is ongoing
-    punishments: Punishment[][]; // Punishments applied to players during the game
-    createdAt: string; // Timestamp of game creation as a string
-    updatedAt: string; // Timestamp of the last update as a string
 }
 
 // Represents the different types of questions
@@ -87,7 +86,7 @@ export type Question =
 // Represents a base question
 export interface BaseQuestion {
     _id: string; // Question ID
-    type: string; // Question type ('multiple-choice', 'who-would-rather', etc.)
+    type: QuestionType; // Question type ('multiple-choice', 'who-would-rather', etc.)
     question: string; // The actual question text
     correctOptionIndex?: number; // Index of the correct answer in the options array (for multiple-choice)
 }
@@ -119,13 +118,52 @@ export interface RankingQuestion extends BaseQuestion {
     finalRanking: string[]; // Final ranking of players
 }
 
+// Represents a base answer structure
 export interface AnswerBase {
     playerId: string;
     questionId: string;
     pointsAwarded: number;
-    answeredAt: string;
+    answeredAt: string; // Timestamp as a string
 }
 
+// Represents an answer for ranking questions
 export interface RankingAnswer extends AnswerBase {
     answer: string[] | "__NOT_ANSWERED__"; // Array of player names or not answered
+}
+
+// Represents a round in the game, which can be a question or a mini-game
+export interface Round {
+    type: 'question' | 'mini-game';
+    data?: MiniGame | CleanQuestion; // CleanQuestion should mirror ICleanQuestion from backend
+}
+
+// Represents a mini-game within a round
+export interface MiniGame {
+    type: MiniGameType;
+    infos?: never; // Define more specific type based on your mini-game data structure
+}
+
+// Represents a cleaned question (mirrors ICleanQuestion from backend)
+export type CleanQuestion = Question
+
+// Interface representing the Game document in the frontend
+export interface Game {
+    _id: string; // Explicitly define the _id field as string (from ObjectId)
+    code: string; // 6-character unique game code
+    creatorId: string; // Creator's Player ID as a string
+    settings: GameSettings; // Game settings
+    players: Player[]; // Array of Player objects
+    // Removed 'questions' as it's replaced by 'rounds'
+    rounds: Round[]; // Array of Round objects
+    answers: Answer[][]; // Array of arrays of Answer objects (grouped by question)
+    leaderboard: LeaderboardEntry[]; // Array of leaderboard entries
+    currentRoundIndex: number; // Index of the current round
+    //cleanedQuestions: CleanQuestion[]; // Cleaned questions (prepared when the game starts)
+    state: GameState; // Current state of the game
+    timeRemaining: string; // Time remaining for the current round as a string
+    playersAnswered: string[]; // Array of Player IDs who have answered the current round
+    isActive: boolean; // Indicates if the game is ongoing
+    punishments: Punishment[][]; // Punishments applied to players during the game
+    createdAt: string; // Timestamp of game creation as a string
+    updatedAt: string; // Timestamp of the last update as a string
 }

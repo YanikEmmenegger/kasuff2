@@ -4,13 +4,15 @@ import Game, {
     IGame,
     IGameSettings,
     ILeaderboardEntry,
-    IPunishment
+    IMiniGame,
+    IPunishment,
+    IRound
 } from '../models/Game';
 import Player, {IPlayer} from '../models/Player';
 import {OperationResult} from "../types";
 import {getQuestionById, getQuestions, prepareQuestions} from "./questionController";
 import {
-    ICleanMultipleChoiceQuestion,
+    ICleanedQuestion,
     ICleanRankingQuestion,
     ICleanWhoWouldRatherQuestion,
     IMultipleChoiceQuestion,
@@ -41,20 +43,34 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
             punishmentMultiplier: 1,
         };
         const gameSettings: IGameSettings = settings || defaultSettings;
-        console.log(`GameSettings from Frontend`);
-        console.log(gameSettings);
 
-        //check if gameModes include hide-and-seek, spy, memory
-        if (gameSettings.gameModes.includes('hide-and-seek') /*|| gameSettings.gameModes.includes('spy') || gameSettings.gameModes.includes('memory'*/) {
-            console.log('Will be implemented later on')
+        const rounds: IRound[] = [];
+
+
+        if (gameSettings.gameModes.includes('hide-and-seek')) {
+            //for every 10 rounds, add a hide and seek round (gameSettings.numberOfRounds/10)
+            for (let i = 0; i < gameSettings.numberOfRounds / 10; i++) {
+                rounds.push({
+                    type: 'mini-game',
+                    data: {
+                        type: 'hide-and-seek',
+                    },
+                });
+            }
         }
+        if (gameSettings.gameModes.includes('memory')) {
+            //TODO ADD MEMORY LOGIC
+        }
+        //....follow schema for other mini games
 
+        console.log(rounds);
 
         // Fetch questions based on game settings
         const filters = {
             types: gameSettings.gameModes, // Corrected
-            limit: gameSettings.numberOfQuestions,
+            limit: gameSettings.numberOfRounds - rounds.length,
         };
+
         const fetchedQuestions = await getQuestions(filters);
 
         if (!fetchedQuestions.success) {
@@ -71,14 +87,13 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
             questions: fetchedQuestions.data!.map(q => q._id), // Store question IDs
             settings: gameSettings,
             players: [creator._id],
-            leaderboard,
+            leaderboard: leaderboard,
+            rounds: rounds,
             isActive: true,
             currentQuestionIndex: 0,
             state: 'lobby', // Game starts in the lobby state
         });
 
-        console.log(`Game that is being created `);
-        console.log(newGame);
 
         await newGame.save();
 
@@ -261,8 +276,17 @@ export const startGame = async (gameCode: string, io: any): Promise<OperationRes
                 return {success: false, error: 'Error preparing question'};
             }
 
-            game.cleanedQuestions.push(preparedQuestionResult.data!); // Add the cleaned question to the game
+            const question = preparedQuestionResult.data!;
+
+            game.rounds.push({
+                type: 'question',
+                data: question,
+            })
+
         }
+
+        //shuffle the rounds
+        //game.rounds = game.rounds.sort(() => Math.random() - 0.5);
 
         // Set the game state to "waiting"
         game.state = 'waiting';
@@ -291,7 +315,7 @@ export const loadNextQuestion = async (gameCode: string, io: any) => {
 
     if (!game) return;
 
-    if (game.currentQuestionIndex >= game.questions.length) {
+    if (game.currentRoundIndex >= game.rounds.length) {
         // All questions answered, move to leaderboard
         game.state = 'leaderboard';
         game.isActive = false;
@@ -301,7 +325,7 @@ export const loadNextQuestion = async (gameCode: string, io: any) => {
     }
 
     // Set game state to "quiz" and emit the question to players
-    game.state = 'quiz';
+    game.state = 'round';
 
     // Set question time limit +1 extra second for better timing
     game.timeRemaining = new Date(Date.now() + (game.settings.timeLimit + 1) * 1000);
@@ -343,7 +367,7 @@ const startQuestionTimer = (game: IGame, io: any) => {
  */
 export const handleResults = async (gameCode: string, io: any) => {
     const game = await Game.findOne({code: gameCode, isActive: true}).populate('players', 'name avatar points');
-    if (!game || game.state !== 'quiz') return;
+    if (!game || game.state !== 'round') return;
     clearTimeout(gameTimers[game.code]);
     delete gameTimers[gameCode]
 
@@ -363,8 +387,8 @@ export const handleResults = async (gameCode: string, io: any) => {
 
     const updatedGame = await Game.findOne({code: game.code, isActive: true})
         .populate('players', 'name avatar points');
-    updatedGame!.punishments[updatedGame!.currentQuestionIndex] = punishments; // Save punishment string
-    updatedGame!.answers[updatedGame!.currentQuestionIndex] = answers; // Save calculated answers
+    updatedGame!.punishments[updatedGame!.currentRoundIndex] = punishments; // Save punishment string
+    updatedGame!.answers[updatedGame!.currentRoundIndex] = answers; // Save calculated answers
 
     answers.forEach(answer => {
         const leaderboardEntry = updatedGame!.leaderboard.find(entry => entry.playerId.toString() === answer.playerId.toString());
@@ -394,7 +418,38 @@ const calculatePoints = async (gameCode: string): Promise<OperationResult<{
             return {success: false, error: 'Game not found'};
         }
 
-        const currentQuestionId = game.questions[game.currentQuestionIndex];
+        const currentRound: IRound = game.rounds[game.currentRoundIndex];
+
+        //check if round is mini game or question round (is type MiniGameType or QuestionType)
+        if (currentRound.type === 'mini-game') {
+            return calculatePointsForMiniGames(gameCode);
+
+        } else {
+            // Calculate points for the current question
+            return calculatePointsForQuestion(gameCode);
+
+        }
+
+    } catch (error) {
+        console.error('Error calculating points:', error);
+        return {success: false, error: 'Internal server error'};
+    }
+};
+
+/**
+ * Calculate ponts for Questions
+ */
+const calculatePointsForQuestion = async (gameCode: string): Promise<OperationResult<{
+    answers: IAnswer[],
+    punishments: IPunishment[]
+}>> => {
+    try {
+
+        const game = await Game.findOne({code: gameCode, isActive: true});
+        if (!game) {
+            return {success: false, error: 'Game not found'};
+        }
+        const currentQuestionId = (game.rounds[game.currentRoundIndex].data as ICleanedQuestion)._id;
         const result = await getQuestionById(currentQuestionId.toString());
         if (!result.success) {
             console.error('Error fetching current question:', result.error);
@@ -405,14 +460,19 @@ const calculatePoints = async (gameCode: string): Promise<OperationResult<{
         if (currentQuestion.type === 'multiple-choice') {
             console.log('Correct Option Index:', currentQuestion.correctOptionIndex);
 
-            const currentCleanedQuestion = game.cleanedQuestions[game.currentQuestionIndex] as ICleanMultipleChoiceQuestion;
-            currentCleanedQuestion.correctOptionIndex = currentQuestion.correctOptionIndex;
-            game.cleanedQuestions[game.currentQuestionIndex] = currentCleanedQuestion;
+            const currentMPCQuestion = game.rounds[game.currentRoundIndex].data as IMultipleChoiceQuestion;
+            currentMPCQuestion.correctOptionIndex = currentQuestion.correctOptionIndex;
+            game.rounds[game.currentRoundIndex].data = currentMPCQuestion;
+
+            console.log(game.rounds[game.currentRoundIndex].data)
+
+
+
             await game.save();
         }
 
-        const answers: IAnswer[] = game.answers[game.currentQuestionIndex] || [];
-        let whoWouldRatherQuestion = currentQuestion.type === 'who-would-rather' ? game.cleanedQuestions[game.currentQuestionIndex] as ICleanWhoWouldRatherQuestion : null;
+        const answers: IAnswer[] = game.answers[game.currentRoundIndex] || [];
+        let whoWouldRatherQuestion = currentQuestion.type === 'who-would-rather' ? game.rounds[game.currentRoundIndex].data! as ICleanWhoWouldRatherQuestion : null;
 
         // Players who didn't answer
         const playersNotAnswered = game.players
@@ -460,12 +520,10 @@ const calculatePoints = async (gameCode: string): Promise<OperationResult<{
                     finalRanking
                 } = handleRanking(currentQuestion, answers, multiplier);
 
-                const currentCleanedQuestion = game.cleanedQuestions[game.currentQuestionIndex] as ICleanRankingQuestion;
-                currentCleanedQuestion.finalRanking = finalRanking;
-                // Explicitly mark the modified path
-                game.cleanedQuestions[game.currentQuestionIndex] = currentCleanedQuestion;
-                game.markModified(`cleanedQuestions.${game.currentQuestionIndex}.finalRanking`);
-                game.markModified('cleanedQuestions');
+                const currentRankingQuestion = game.rounds[game.currentRoundIndex].data! as ICleanRankingQuestion;
+                currentRankingQuestion.finalRanking = finalRanking;
+                game.rounds[game.currentRoundIndex].data = currentRankingQuestion;
+                game.markModified('rounds');
 
                 await game.save();
 
@@ -474,8 +532,7 @@ const calculatePoints = async (gameCode: string): Promise<OperationResult<{
                 break;
 
             default:
-
-                return {success: false, error: 'Invalid question type'};
+                return {success: false, error: 'Unknown Question Type'};
         }
 
         return {
@@ -485,13 +542,156 @@ const calculatePoints = async (gameCode: string): Promise<OperationResult<{
                 punishments: punishments,
             },
         };
-
-    } catch (error) {
-        console.error('Error calculating points:', error);
-        return {success: false, error: 'Internal server error'};
+    } catch (e) {
+        return {success: false, error: 'Invalid question type @calculatePointsForQuestion'};
     }
-};
+}
 
+/**
+ * Calculate ponts for MiniGames
+ */
+const calculatePointsForMiniGames = async (gameCode: string): Promise<OperationResult<{
+    answers: IAnswer[],
+    punishments: IPunishment[]
+}>> => {
+    try {
+
+        const game = await Game.findOne({code: gameCode, isActive: true});
+        if (!game) {
+            return {success: false, error: 'Game not found'};
+        }
+
+        const answers: IAnswer[] = game.answers[game.currentRoundIndex] || [];
+
+        // Players who didn't answer
+        const playersNotAnswered = game.players
+            .filter(p => !game.playersAnswered.includes(p))
+            .map(p => ({
+                playerId: p,
+                answer: '__NOT_ANSWERED__',
+                answeredAt: new Date(),
+                isCorrect: false,
+                pointsAwarded: 0,
+            }));
+
+        answers.push(...playersNotAnswered);
+        const multiplier = game.settings.punishmentMultiplier;
+
+        let updatedAnswers: IAnswer[] = [];
+        let punishments: IPunishment[] = [];
+
+        const currentMiniGame = game.rounds[game.currentRoundIndex].data as IMiniGame;
+
+
+        switch (currentMiniGame.type) {
+            case "hide-and-seek":
+                ({
+                    answers: updatedAnswers,
+                    punishments
+                } = handleHideAndSeek(answers, multiplier));
+                break;
+
+            default:
+                return {success: false, error: 'Unknown Question Type'};
+        }
+        return {
+            success: true,
+            data: {
+                answers: updatedAnswers,
+                punishments: punishments,
+            },
+        };
+
+    } catch (e) {
+        return {success: false, error: 'Invalid mini game type @calculatePointsForMiniGames'};
+    }
+}
+
+/**
+ * Handle Hide-and-Seek mini game punishment and points calculation
+ */
+const handleHideAndSeek = (
+    answers: IAnswer[],
+    multiplier: number,
+): { answers: IAnswer[], punishments: IPunishment[] } => {
+
+    const noAnswerPlayers: IPunishment[] = [];
+    let punishments: IPunishment[] = [];
+
+    // Separate answers into those who answered and those who didn't
+    const answeredAnswers = answers.filter(answer => typeof answer.answer === 'number') as Array<IAnswer & {
+        answer: number
+    }>;
+    const notAnswered = answers.filter(answer => answer.answer === '__NOT_ANSWERED__');
+
+    // Sort answered answers by answeredAt ascending (earlier answers first)
+    const sortedAnswers = answeredAnswers.sort((a, b) => {
+        return new Date(a.answeredAt!).getTime() - new Date(b.answeredAt!).getTime();
+    });
+
+    // Total number of players (assuming all players have answered or not)
+    const totalPlayers = answers.length;
+
+    // Assign points based on answer and bonus for early answers
+    sortedAnswers.forEach((answer, index) => {
+        // Base points
+        let points = 100;
+
+        // Additional points for being early
+        const bonusPoints = (totalPlayers - index) * 10; // Example: first = 50, second = 40, etc.
+        points += bonusPoints;
+
+        // Additional points or penalties based on answer value
+        if (answer.answer === 0) {
+            points += 50;
+            punishments.push({
+                playerId: answer.playerId,
+                reasons: [`First Try - give ${2 * multiplier} sips`],
+                give: 2 * multiplier
+            });
+        }
+        if (answer.answer > 15) {
+            points -= 50;
+            punishments.push({
+                playerId: answer.playerId,
+                reasons: [`Too many tries - take ${2 * multiplier} sips`],
+                take: 2 * multiplier
+            });
+        }
+        if (answer.answer > 5) {
+            points -= 10;
+        }
+
+        // Assign calculated points
+        answer.pointsAwarded = points;
+    });
+
+    // Handle players who did not answer
+    notAnswered.forEach(answer => {
+        answer.pointsAwarded = -300;
+        noAnswerPlayers.push({
+            playerId: answer.playerId,
+            reasons: [`Didn't answer (or too late) – drink ${2 * multiplier} sips`],
+            take: 2 * multiplier
+        });
+    });
+
+
+    if (noAnswerPlayers.length === 1) {
+        noAnswerPlayers[0].take = 3 * multiplier;
+        noAnswerPlayers[0].reasons.push(`Only you didn't finish 🫠 - take ${3 * multiplier} sips`);
+    }
+    if (noAnswerPlayers.length === 0) {
+        // add take to last in punishment array
+        punishments[punishments.length - 1].take = multiplier;
+        punishments[punishments.length - 1].reasons.push(`Last to finish 🐢 - take ${multiplier} sips`);
+    }
+
+    // Combine punishments
+    punishments = [...punishments, ...noAnswerPlayers];
+
+    return {answers, punishments};
+}
 
 /**
  * Handle ranking question by combining individual rankings into a final ranking,
@@ -516,11 +716,13 @@ const handleRanking = (
             });
         } else {
             // Sum rankings for each player who answered
-            const rankedPlayers = Array.isArray(answer.answer) ? answer.answer : [answer.answer];
-            rankedPlayers.forEach((playerId, rankIndex) => {
-                const currentRank = rankingMap.get(playerId) || 0;
-                rankingMap.set(playerId, currentRank + rankIndex + 1); // +1 to make ranks 1-based
-            });
+            if (typeof answer.answer !== "number") {
+                const rankedPlayers = Array.isArray(answer.answer) ? answer.answer : [answer.answer];
+                rankedPlayers.forEach((playerId, rankIndex) => {
+                    const currentRank = rankingMap.get(playerId) || 0;
+                    rankingMap.set(playerId, currentRank + rankIndex + 1); // +1 to make ranks 1-based
+                });
+            }
         }
     });
 

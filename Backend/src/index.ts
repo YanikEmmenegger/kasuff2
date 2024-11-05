@@ -47,7 +47,7 @@ app.use(logVisitor);
 app.use('/api', visitorRoutes);
 
 // Define the port (default to 5000 if not in environment)
-const PORT: number = parseInt(process.env.PORT as string, 10) || 2608;
+const PORT: number =  2608;
 
 app.use(express.json()); // Parse JSON bodies
 
@@ -274,7 +274,7 @@ io.on('connection', (socket) => {
                 return {success: false, error: 'Internal server error.'}
             }
 
-            game.currentQuestionIndex++
+            game.currentRoundIndex++
             await game.save()
 
 

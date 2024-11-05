@@ -5,19 +5,20 @@ import ResultWhoWouldRather from "./ResultWhoWouldRather";
 import ResultWhatWouldYouRather from "./ResultWhatWouldYouRather";
 import PunishmentComponent from "./PunishmentComponent";
 import ResultRanking from "./ResultRanking.tsx";
+import ResultHideAndSeek from "./ResultHideAndSeek.tsx";
 
 const ResultComponent: FC = () => {
     const {game} = usePlayer();
     if (!game) return <div>No game available.</div>;
 
-    const currentQuestionIndex = game.currentQuestionIndex;
-    const currentQuestion = game.cleanedQuestions[currentQuestionIndex];
+    const currentRoundIndex = game.currentRoundIndex;
+    const currentRound = game.rounds[currentRoundIndex];
 
-    if (!currentQuestion) return <div>No question available.</div>;
+    if (!currentRound) return <div>No question available.</div>;
 
     // Determine which result component to show based on the question type
     const renderResultComponent = () => {
-        switch (currentQuestion.type) {
+        switch (currentRound.data?.type) {
             case "multiple-choice":
                 return <ResultMultipleChoice/>;
 
@@ -28,7 +29,9 @@ const ResultComponent: FC = () => {
                 return <ResultWhatWouldYouRather/>;
 
             case "ranking":
-                return <ResultRanking/>;
+                return <ResultRanking/>
+            case "hide-and-seek":
+                return <ResultHideAndSeek/>;
 
             default:
                 return <div>Unknown question type.</div>;
