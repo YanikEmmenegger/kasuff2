@@ -46,9 +46,8 @@ const questionTypes: {
     },
     {
         type: "memory",
-        label: "Memory (coming soon)",
+        label: "Memory",
         icon: <FaMemory/>,
-        disabled: true,
     },
     {
         type: "spy",

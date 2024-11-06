@@ -5,22 +5,12 @@ import Game, {
     IGameSettings,
     ILeaderboardEntry,
     IMemoryGame,
-    IMiniGame,
     IPunishment,
     IRound
 } from '../models/Game';
 import Player, {IPlayer} from '../models/Player';
 import {OperationResult} from "../types";
 import {getQuestionById, getQuestions, prepareQuestions} from "./questionController";
-import {
-    ICleanedQuestion,
-    ICleanRankingQuestion,
-    ICleanWhoWouldRatherQuestion,
-    IMultipleChoiceQuestion,
-    IRankingQuestion,
-    IWhatWouldYouRatherQuestion
-} from "../models/Question";
-import {Schema} from "mongoose";
 import {getEmojis} from "../utils/emojis";
 import {calculatePointsForMiniGames, calculatePointsForQuestion} from "./calculatePoints";
 
@@ -53,20 +43,24 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
 
         if (gameSettings.gameModes.includes('hide-and-seek')) {
             //for every 10 rounds, add a hide and seek round (gameSettings.numberOfRounds/10)
-            for (let i = 0; i < gameSettings.numberOfRounds / 10; i++) {
-                rounds.push({
-                    type: 'mini-game',
-                    data: {
-                        type: 'hide-and-seek',
-                    },
-                });
+            for (let i = 0; i < gameSettings.numberOfRounds / 5; i++) {
+
+                //make 50/50 if the round is added or not
+                if (Math.random() > 0.5) {
+                    rounds.push({
+                        type: 'mini-game',
+                        data: {
+                            type: 'hide-and-seek',
+                        },
+                    });
+                }
             }
         }
         if (gameSettings.gameModes.includes('memory')) {
 
             let pairs: string[] = [];
 
-            for (let i = 0; i < gameSettings.numberOfRounds / 10; i++) {
+            for (let i = 0; i < gameSettings.numberOfRounds / 5; i++) {
                 switch (gameSettings.timeLimit) {
                     case 15:
                         pairs = getEmojis(4)
@@ -89,10 +83,14 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
                     type: 'memory',
                     pairs: pairs
                 }
-                rounds.push({
-                    type: 'mini-game',
-                    data: memory
-                });
+                //make 50/50 if the round is added or not
+                if (Math.random() > 0.5) {
+
+                    rounds.push({
+                        type: 'mini-game',
+                        data: memory
+                    });
+                }
             }
         }
         //....follow schema for other mini games
