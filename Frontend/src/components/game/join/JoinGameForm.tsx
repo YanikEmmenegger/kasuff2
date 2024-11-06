@@ -11,9 +11,11 @@ interface JoinGameFormProps {
 }
 
 const JoinGameForm: FC<JoinGameFormProps> = ({_gameCode}) => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const {joinGame} = usePlayer(); // Use socket context
-    const [gameCode, setGameCode] = useState<string>(_gameCode || "");
+
+    // Initialize gameCode as uppercase if _gameCode is provided
+    const [gameCode, setGameCode] = useState<string>(_gameCode ? _gameCode.toUpperCase() : "");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -24,7 +26,7 @@ const JoinGameForm: FC<JoinGameFormProps> = ({_gameCode}) => {
         }
 
         await toast.promise(
-            joinGame(gameCode), // Correct key is "name" instead of "newName"
+            joinGame(gameCode),
             {
                 loading: 'Joining game...',
                 success: 'Successfully joined game!',
@@ -33,8 +35,13 @@ const JoinGameForm: FC<JoinGameFormProps> = ({_gameCode}) => {
         );
     };
 
+    // Handler to ensure input is always uppercase
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setGameCode(e.target.value.toUpperCase());
+    };
+
     return (
-        <div className=" flex items-center justify-center bg-cyan-500 text-gray-200 p-6">
+        <div className="flex items-center justify-center bg-cyan-500 text-gray-200 p-6">
             <motion.div
                 className="max-w-md w-full bg-cyan-600 p-8 rounded-lg shadow-lg"
                 initial={{opacity: 0, y: 20}}
@@ -58,22 +65,22 @@ const JoinGameForm: FC<JoinGameFormProps> = ({_gameCode}) => {
                     >
                         <Input
                             maxLength={10}
-                            className={"bg-cyan-500 text-white placeholder-gray-300"}
+                            className="bg-cyan-500 text-white placeholder-gray-300 uppercase" // Added 'uppercase' class
                             type="text"
                             id="gameCode"
                             value={gameCode}
-                            onChange={(e) => setGameCode(e.target.value)}
+                            onChange={handleChange} // Updated handler to enforce uppercase
                             placeholder="Enter game code"
                         />
                     </motion.div>
                     <motion.div
-                        className={"w-full"}
+                        className="w-full"
                         initial={{opacity: 0, y: 10}}
                         animate={{opacity: 1, y: 0}}
                         transition={{delay: 0.6}}
                     >
                         {/* Submit button */}
-                        <Button className={"w-full bg-green-500 hover:bg-green-700"} type="submit">
+                        <Button className="w-full bg-green-500 hover:bg-green-700" type="submit">
                             Join Game
                         </Button>
                     </motion.div>
@@ -83,15 +90,16 @@ const JoinGameForm: FC<JoinGameFormProps> = ({_gameCode}) => {
                     animate={{opacity: 1, y: 0}}
                     transition={{delay: 0.8}}
                 >
-                    <Button className={"mt-3 w-full bg-gray-600 hover:bg-gray-700 text-gray-200"}
-                            onClick={() => navigate('/')}>
+                    <Button
+                        className="mt-3 w-full bg-gray-600 hover:bg-gray-700 text-gray-200"
+                        onClick={() => navigate('/')}
+                    >
                         Back
                     </Button>
                 </motion.div>
             </motion.div>
         </div>
-    )
-        ;
+    );
 };
 
 export default JoinGameForm;

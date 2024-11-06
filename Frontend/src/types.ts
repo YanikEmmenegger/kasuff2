@@ -144,6 +144,14 @@ export interface MiniGame {
     infos?: never; // Define more specific type based on your mini-game data structure
 }
 
+
+
+export interface MemoryGame extends MiniGame {
+    type: 'memory';
+    pairs: string[];
+}
+
+
 // Represents a cleaned question (mirrors ICleanQuestion from backend)
 export type CleanQuestion = Question
 

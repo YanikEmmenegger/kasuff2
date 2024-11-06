@@ -41,7 +41,7 @@ const questionTypes: {
     },
     {
         type: "hide-and-seek",
-        label: "Hide and Seek (coming soon)",
+        label: "Hide and Seek",
         icon: <FaSearch/>,
     },
     {

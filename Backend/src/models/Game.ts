@@ -47,8 +47,14 @@ export interface IGameSettings {
  */
 export interface IMiniGame {
     type: MiniGameType;
-    infos?: any;
 }
+
+export interface IMemoryGame extends IMiniGame {
+    type: 'memory';
+    pairs: String[];
+}
+
+export type MiniGame = IMemoryGame;
 
 /**
  * Interface for Rounds that can either be a question or a mini game.

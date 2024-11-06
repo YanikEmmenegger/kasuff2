@@ -4,6 +4,7 @@ import Game, {
     IGame,
     IGameSettings,
     ILeaderboardEntry,
+    IMemoryGame,
     IMiniGame,
     IPunishment,
     IRound
@@ -20,6 +21,7 @@ import {
     IWhatWouldYouRatherQuestion
 } from "../models/Question";
 import {Schema} from "mongoose";
+import {getEmojis} from "../utils/emojis";
 
 // Timer storage object to track active timers for each game
 export const gameTimers: { [gameCode: string]: NodeJS.Timeout } = {};
@@ -60,7 +62,37 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
             }
         }
         if (gameSettings.gameModes.includes('memory')) {
-            //TODO ADD MEMORY LOGIC
+
+            let pairs: string[] = [];
+
+            for (let i = 0; i < gameSettings.numberOfRounds / 10; i++) {
+                switch (gameSettings.timeLimit) {
+                    case 15:
+                        pairs = getEmojis(4)
+                        break;
+                    case 30:
+                        pairs = getEmojis(6)
+                        break;
+                    case 60:
+                        pairs = getEmojis(6)
+                        break
+                    case 90:
+                        pairs = getEmojis(8)
+                        break;
+                    default:
+                        pairs = getEmojis(6)
+                }
+
+
+                const memory: IMemoryGame = {
+                    type: 'memory',
+                    pairs: pairs
+                }
+                rounds.push({
+                    type: 'mini-game',
+                    data: memory
+                });
+            }
         }
         //....follow schema for other mini games
 
@@ -424,7 +456,7 @@ const calculatePoints = async (gameCode: string): Promise<OperationResult<{
 
         const currentRound: IRound = game.rounds[game.currentRoundIndex];
 
-        //check if round is mini game or question round (is type MiniGameType or QuestionType)
+        //check if round is minigame or question round (is type MiniGameType or QuestionType)
         if (currentRound.type === 'mini-game') {
             return calculatePointsForMiniGames(gameCode);
 
@@ -597,6 +629,12 @@ const calculatePointsForMiniGames = async (gameCode: string): Promise<OperationR
                     punishments
                 } = handleHideAndSeek(answers, multiplier, timerFinishedAt, timeLimit));
                 break;
+            case "memory":
+                ({
+                    answers: updatedAnswers,
+                    punishments
+                } = handleMemory(answers, multiplier));
+                break;
 
             default:
                 return {success: false, error: 'Unknown Question Type'};
@@ -615,6 +653,88 @@ const calculatePointsForMiniGames = async (gameCode: string): Promise<OperationR
 
     }
 }
+
+
+/**
+ * Handle Memory mini game punishment and points calculation
+ */
+const handleMemory = (
+    answers: IAnswer[],
+    multiplier: number,
+): { answers: IAnswer[]; punishments: IPunishment[] } => {
+
+
+    let noAnswerCount = 0;
+    const noAnswerPlayers: IPunishment[] = [];
+    const correctAnswers: Schema.Types.ObjectId[] = [];
+
+
+    answers.forEach((answer) => {
+        answer.pointsAwarded = 0;
+
+        if (!answer.answer || answer.answer === "__NOT_ANSWERED__") {
+            // Player didn't answer
+            noAnswerCount++;
+            answer.pointsAwarded = -300; // Deduct points for not answering
+            noAnswerPlayers.push({
+                playerId: answer.playerId,
+                reasons: [`Didnt solve in time 😢 ${2 * multiplier} sips`],
+                take: 2 * multiplier
+            });
+        } else {
+            answer.pointsAwarded = 100;
+            correctAnswers.push(answer.playerId);
+            if (typeof answer.answer === 'number') {
+                //perfect score = answer === 0
+                if (answer.answer === 0) {
+                    answer.pointsAwarded += 100;
+                }
+                //if answer is smaller than 5
+                if (answer.answer < 5) {
+                    answer.pointsAwarded += 50;
+                }
+                //if answer is more than 10
+                if (answer.answer > 10) {
+                    answer.pointsAwarded -= 50;
+                }
+            }
+        }
+    });
+
+    const punishments = [...noAnswerPlayers];
+
+    //add punishments
+    //if everyone answered correctly
+    if (noAnswerCount === 0) {
+        punishments.push({
+            playerId: correctAnswers[0],
+            reasons: [`You were the fastest ⚡️ Give ${multiplier} sips`],
+            give: multiplier
+        })
+    }
+    if (noAnswerCount === answers.length) {
+        //if no one answered, everyone gets 1 sip
+        answers.forEach((answer) => {
+            punishments.push({
+                playerId: answer.playerId,
+                reasons: [`No one answered 🤷🏻‍♂️ take ${multiplier} sips`],
+                take: multiplier
+            })
+        })
+    }
+    if (correctAnswers.length === 1) {
+        //if only one person answered correctly
+        punishments.push({
+            playerId: correctAnswers[0],
+            reasons: [`You were the only one who solved it 🥳 Give ${2 * multiplier} sips`],
+            give: 2 * multiplier
+        })
+    }
+
+
+    return {answers, punishments};
+}
+
 
 /**
  * Handle Hide-and-Seek mini game punishment and points calculation

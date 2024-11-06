@@ -56,7 +56,6 @@ const HideAndSeek = () => {
 
     const handleAvatarClick = useCallback(async (isPlayer: boolean) => {
         if (isPlayer) {
-            // TODO: SEND ANSWER TO SERVER
             try {
                 // Await the sendAnswer function to properly resolve or reject
                 await toast.promise(sendAnswer(wrongClicks + 1), {

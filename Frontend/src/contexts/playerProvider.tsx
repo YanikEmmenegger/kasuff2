@@ -293,7 +293,12 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
                         ...result.data!,
                         //state: 'waiting',
                     });
-                    navigate(`/game?state=waiting`);
+                    if (game!.rounds[game!.currentRoundIndex].data!.type === 'memory') {
+                        setTimeout(() => navigate(`/game?state=waiting`), 1000);
+                    } else {
+                        navigate(`/game?state=waiting`);
+                    }
+
                 } else {
                     reject(new Error(result.error || 'Failed to submit answer.'));
                 }
