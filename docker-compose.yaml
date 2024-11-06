@@ -1,10 +1,10 @@
+version: '3.8'
+
 services:
   mongodb:
     image: mongo:latest
     container_name: kausuff2_mongo
     # No ports exposed
-    ports:
-      - "27017:27017"
     volumes:
       - ./Database:/data/db
       - ./mongo-init/:/docker-entrypoint-initdb.d
@@ -13,8 +13,31 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
     networks:
       - internal
-      - external
 
+  backend:
+    build:
+      context: .
+      dockerfile: ./Backend/Dockerfile
+    # No ports exposed
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://root:example@mongodb:27017/kasuff2?authSource=admin
+    networks:
+      - internal
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - backend
+    networks:
+      - internal
+      - external
 
 networks:
   internal:
