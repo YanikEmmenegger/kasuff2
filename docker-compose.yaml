@@ -15,30 +15,6 @@ services:
       - internal
       - external
 
-  backend:
-    build:
-      context: .
-      dockerfile: ./Backend/Dockerfile
-    # No ports exposed
-    depends_on:
-      - mongodb
-    environment:
-      - MONGO_URI=mongodb://root:example@mongodb:27017/kasuff2?authSource=admin
-    networks:
-      - internal
-
-  nginx:
-    build: ./nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /etc/letsencrypt:/etc/letsencrypt
-    depends_on:
-      - backend
-    networks:
-      - internal
-      - external
 
 networks:
   internal:

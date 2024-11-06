@@ -583,12 +583,15 @@ const calculatePointsForMiniGames = async (gameCode: string): Promise<OperationR
         const currentMiniGame = game.rounds[game.currentRoundIndex].data as IMiniGame;
 
 
+        const timerFinishedAt = game.timeRemaining
+        const timeLimit = game.settings.timeLimit;
+
         switch (currentMiniGame.type) {
             case "hide-and-seek":
                 ({
                     answers: updatedAnswers,
                     punishments
-                } = handleHideAndSeek(answers, multiplier));
+                } = handleHideAndSeek(answers, multiplier, timerFinishedAt, timeLimit));
                 break;
 
             default:
@@ -603,7 +606,9 @@ const calculatePointsForMiniGames = async (gameCode: string): Promise<OperationR
         };
 
     } catch (e) {
+        console.log(e);
         return {success: false, error: 'Invalid mini game type @calculatePointsForMiniGames'};
+
     }
 }
 
@@ -613,10 +618,17 @@ const calculatePointsForMiniGames = async (gameCode: string): Promise<OperationR
 const handleHideAndSeek = (
     answers: IAnswer[],
     multiplier: number,
+    timerFinishedAt: Date,
+    timeLimit: number
 ): { answers: IAnswer[], punishments: IPunishment[] } => {
 
     const noAnswerPlayers: IPunishment[] = [];
     let punishments: IPunishment[] = [];
+
+    const firstTryPlayers: IPunishment[] = [];
+    const tooManyTriesPlayers: IPunishment[] = [];
+    const fastPlayers: IPunishment[] = [];
+    const slowPlayers: IPunishment[] = [];
 
     // Separate answers into those who answered and those who didn't
     const answeredAnswers = answers.filter(answer => typeof answer.answer === 'number') as Array<IAnswer & {
@@ -634,6 +646,8 @@ const handleHideAndSeek = (
 
     // Assign points based on answer and bonus for early answers
     sortedAnswers.forEach((answer, index) => {
+
+        const timeDifference = ((timerFinishedAt.getTime() - new Date(answer.answeredAt!).getTime()) / 1000 - timeLimit) * -1;
         // Base points
         let points = 100;
 
@@ -642,24 +656,43 @@ const handleHideAndSeek = (
         points += bonusPoints;
 
         // Additional points or penalties based on answer value
-        if (answer.answer === 0) {
-            points += 50;
-            punishments.push({
+        if (answer.answer === 1) {
+            firstTryPlayers.push({
                 playerId: answer.playerId,
-                reasons: [`First Try - give ${2 * multiplier} sips`],
-                give: 2 * multiplier
-            });
+                reasons: []
+            })
+            points += 50;
         }
         if (answer.answer > 15) {
-            points -= 50;
-            punishments.push({
+            tooManyTriesPlayers.push({
                 playerId: answer.playerId,
-                reasons: [`Too many tries - take ${2 * multiplier} sips`],
-                take: 2 * multiplier
-            });
+                reasons: [`You tried too many times! take ${multiplier} sips`],
+                take: multiplier
+            })
+            points -= 50;
         }
         if (answer.answer > 5) {
             points -= 10;
+        }
+
+        if (timeDifference < 3) {
+            fastPlayers.push({
+                playerId: answer.playerId,
+                reasons: []
+            })
+            points += 20;
+        }
+        //if timedifference between 4 and 10 seconds
+        if (timeDifference > 3 && timeDifference < 10) {
+            points += 10;
+        }
+        //if timedifference between 10 and 20 seconds
+        if (timeDifference > 10 && timeDifference < 20) {
+            points -= 10;
+            slowPlayers.push({
+                playerId: answer.playerId,
+                reasons: []
+            })
         }
 
         // Assign calculated points
@@ -671,24 +704,66 @@ const handleHideAndSeek = (
         answer.pointsAwarded = -300;
         noAnswerPlayers.push({
             playerId: answer.playerId,
-            reasons: [`Didn't answer (or too late) – drink ${2 * multiplier} sips`],
-            take: 2 * multiplier
+            reasons: [`Didn't answer (or too late) – drink ${3 * multiplier} sips`],
+            take: 3 * multiplier
         });
     });
-
+    if (firstTryPlayers.length === 1) {
+        // Only one player found the answer on the first try
+        // he can give 2* multiplier
+        firstTryPlayers[0].reasons.push(`Only one on First Try! Give ${2 * multiplier} sips`);
+        firstTryPlayers[0].give = 2 * multiplier;
+    }
+    //if only one player tried too many times
+    if (tooManyTriesPlayers.length === 1 && noAnswerPlayers.length === 0) {
+        tooManyTriesPlayers[0].reasons.push(`Only one tried too many times! Take ${multiplier} sips`);
+        tooManyTriesPlayers[0].take! += multiplier;
+    }
+    //if only one player was fast
+    if (fastPlayers.length === 1) {
+        fastPlayers[0].reasons.push(`You were fast! Give ${multiplier} sips`);
+        fastPlayers[0].give = multiplier;
+    }
+    //if only one player was slow
+    if (slowPlayers.length === 1 && noAnswerPlayers.length === 0) {
+        slowPlayers[0].reasons.push(`You were slow! Take ${multiplier} sips`);
+        slowPlayers[0].take! += multiplier;
+    }
 
     if (noAnswerPlayers.length === 1) {
-        noAnswerPlayers[0].take = 3 * multiplier;
+        noAnswerPlayers[0].take! += 3 * multiplier;
         noAnswerPlayers[0].reasons.push(`Only you didn't finish 🫠 - take ${3 * multiplier} sips`);
     }
-    if (noAnswerPlayers.length === 0) {
-        // add take to last in punishment array
-        punishments[punishments.length - 1].take = multiplier;
-        punishments[punishments.length - 1].reasons.push(`Last to finish 🐢 - take ${multiplier} sips`);
-    }
+
+    // Combine punishments, but make sure only one punishment per player accumulate give and takes and reasons from different array
+    const tPunishments: IPunishment[] = [...noAnswerPlayers, ...firstTryPlayers, ...tooManyTriesPlayers, ...fastPlayers, ...slowPlayers];
+
+
+    tPunishments.map((punishment) => {
+        //check if player has already entry in punishments
+        if (punishments.find(p => p.playerId === punishment.playerId)) {
+            //Player already in punishments, add reasons and give/take
+            const pIndex = punishments.findIndex(p => p.playerId === punishment.playerId);
+            punishments[pIndex].reasons.push(...punishment.reasons);
+            if (punishment.give) {
+                punishments[pIndex].give! += punishment.give;
+            } else {
+                punishments[pIndex].give = punishment.take!;
+            }
+            if (punishment.take) {
+                punishments[pIndex].take! += punishment.take;
+            } else {
+                punishments[pIndex].take = punishment.take!;
+            }
+        } else {
+            punishments.push(punishment);
+        }
+    })
+
+
 
     // Combine punishments
-    punishments = [...punishments, ...noAnswerPlayers];
+    //punishments = [...noAnswerPlayers];
 
     return {answers, punishments};
 }
@@ -704,6 +779,7 @@ const handleRanking = (
 ): { _answers: IAnswer[], _punishments: IPunishment[], finalRanking: string[] } => {
     const noAnswerPlayers: IPunishment[] = [];
     const rankingMap: Map<string, number> = new Map(); // Map to store cumulative rank points for each player
+
 
     // Handle players who didn’t answer
     answers.forEach(answer => {
@@ -1305,3 +1381,4 @@ const handleWhoWouldRather = (
         punishments
     };
 }
+

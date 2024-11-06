@@ -6,7 +6,8 @@ export type QuestionType =
     | 'multiple-choice'
     | 'who-would-rather'
     | 'what-would-you-rather'
-    | 'ranking';
+    | 'ranking'
+    | 'spy';
 
 export type MiniGameType =
     | 'hide-and-seek'

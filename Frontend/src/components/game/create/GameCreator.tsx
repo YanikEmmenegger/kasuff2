@@ -24,6 +24,7 @@ const GameCreator: FC = () => {
             "what-would-you-rather",
             "who-would-rather",
             "ranking",
+            "hide-and-seek"
         ] as GameModeType[],
         timeLimit: 30,
         punishmentMultiplier: 1,

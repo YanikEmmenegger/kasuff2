@@ -5,7 +5,8 @@ import {motion} from "framer-motion";
 import {FaCheckCircle, FaListAlt, FaQuestionCircle, FaSearch, FaSortNumericDown,} from "react-icons/fa";
 import {FaMemory} from "react-icons/fa6"; // Ensure correct import path
 import Button from "../../Button";
-import {GameModeType} from "../../../types"; // Import GameModeType
+import {GameModeType} from "../../../types";
+import {BsSearch} from "react-icons/bs"; // Import GameModeType
 
 interface QuestionTypeSelectorProps {
     selectedTypes: GameModeType[];
@@ -42,12 +43,17 @@ const questionTypes: {
         type: "hide-and-seek",
         label: "Hide and Seek (coming soon)",
         icon: <FaSearch/>,
-        disabled: true,
     },
     {
         type: "memory",
         label: "Memory (coming soon)",
         icon: <FaMemory/>,
+        disabled: true,
+    },
+    {
+        type: "spy",
+        label: "Spy (coming soon)",
+        icon: <BsSearch/>,
         disabled: true,
     },
 ];
