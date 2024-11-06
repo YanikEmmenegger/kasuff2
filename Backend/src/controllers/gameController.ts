@@ -19,6 +19,7 @@ import {
     IRankingQuestion,
     IWhatWouldYouRatherQuestion
 } from "../models/Question";
+import {Schema} from "mongoose";
 
 // Timer storage object to track active timers for each game
 export const gameTimers: { [gameCode: string]: NodeJS.Timeout } = {};
@@ -77,6 +78,9 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
             console.error('[ERROR] Fetching questions:', fetchedQuestions.error);
             return {success: false, error: 'Error fetching questions.'};
         }
+
+        //random sort rounds
+
 
         // Initialize leaderboard with the creator
         const leaderboard: ILeaderboardEntry[] = [{playerId: creator._id, totalPoints: 0}];
@@ -286,7 +290,7 @@ export const startGame = async (gameCode: string, io: any): Promise<OperationRes
         }
 
         //shuffle the rounds
-        //game.rounds = game.rounds.sort(() => Math.random() - 0.5);
+        game.rounds = game.rounds.sort(() => Math.random() - 0.5);
 
         // Set the game state to "waiting"
         game.state = 'waiting';
@@ -620,34 +624,68 @@ const handleHideAndSeek = (
     multiplier: number,
     timerFinishedAt: Date,
     timeLimit: number
-): { answers: IAnswer[], punishments: IPunishment[] } => {
+): { answers: IAnswer[]; punishments: IPunishment[] } => {
+    const punishmentsMap: Map<string, IPunishment> = new Map();
 
-    const noAnswerPlayers: IPunishment[] = [];
-    let punishments: IPunishment[] = [];
-
-    const firstTryPlayers: IPunishment[] = [];
-    const tooManyTriesPlayers: IPunishment[] = [];
-    const fastPlayers: IPunishment[] = [];
-    const slowPlayers: IPunishment[] = [];
+    // Helper function to add or update punishments in the map
+    const addPunishment = (
+        playerId: Schema.Types.ObjectId,
+        newPunishment: Partial<IPunishment>
+    ) => {
+        const key = playerId.toString();
+        if (punishmentsMap.has(key)) {
+            const existingPunishment = punishmentsMap.get(key)!;
+            if (newPunishment.reasons) {
+                existingPunishment.reasons.push(...newPunishment.reasons);
+            }
+            if (typeof newPunishment.give === 'number') {
+                existingPunishment.give = (existingPunishment.give || 0) + newPunishment.give;
+            }
+            if (typeof newPunishment.take === 'number') {
+                existingPunishment.take = (existingPunishment.take || 0) + newPunishment.take;
+            }
+        } else {
+            punishmentsMap.set(key, {
+                playerId,
+                reasons: newPunishment.reasons || [],
+                give: newPunishment.give || 0,
+                take: newPunishment.take || 0,
+            });
+        }
+    };
 
     // Separate answers into those who answered and those who didn't
-    const answeredAnswers = answers.filter(answer => typeof answer.answer === 'number') as Array<IAnswer & {
-        answer: number
-    }>;
-    const notAnswered = answers.filter(answer => answer.answer === '__NOT_ANSWERED__');
+    const answeredAnswers = answers.filter(
+        (answer): answer is IAnswer & { answer: number } =>
+            typeof answer.answer === 'number'
+    );
+    const notAnswered = answers.filter(
+        (answer) => answer.answer === '__NOT_ANSWERED__'
+    );
 
     // Sort answered answers by answeredAt ascending (earlier answers first)
-    const sortedAnswers = answeredAnswers.sort((a, b) => {
-        return new Date(a.answeredAt!).getTime() - new Date(b.answeredAt!).getTime();
-    });
+    const sortedAnswers = answeredAnswers.sort(
+        (a, b) =>
+            new Date(a.answeredAt!).getTime() -
+            new Date(b.answeredAt!).getTime()
+    );
 
-    // Total number of players (assuming all players have answered or not)
     const totalPlayers = answers.length;
 
-    // Assign points based on answer and bonus for early answers
-    sortedAnswers.forEach((answer, index) => {
+    // Arrays to track specific punishment categories
+    const firstTryPlayers: Schema.Types.ObjectId[] = [];
+    const tooManyTriesPlayers: Schema.Types.ObjectId[] = [];
+    const fastPlayers: Schema.Types.ObjectId[] = [];
+    const slowPlayers: Schema.Types.ObjectId[] = [];
+    const noAnswerPlayers: Schema.Types.ObjectId[] = [];
 
-        const timeDifference = ((timerFinishedAt.getTime() - new Date(answer.answeredAt!).getTime()) / 1000 - timeLimit) * -1;
+    // Assign points based on answer and accumulate punishments
+    sortedAnswers.forEach((answer, index) => {
+        const answeredAtTime = new Date(answer.answeredAt!).getTime();
+        const timerFinishedTime = timerFinishedAt.getTime();
+        const timeDifference =
+            ((timerFinishedTime - answeredAtTime) / 1000 - timeLimit) * -1;
+
         // Base points
         let points = 100;
 
@@ -657,18 +695,11 @@ const handleHideAndSeek = (
 
         // Additional points or penalties based on answer value
         if (answer.answer === 1) {
-            firstTryPlayers.push({
-                playerId: answer.playerId,
-                reasons: []
-            })
+            firstTryPlayers.push(answer.playerId);
             points += 50;
         }
         if (answer.answer > 15) {
-            tooManyTriesPlayers.push({
-                playerId: answer.playerId,
-                reasons: [`You tried too many times! take ${multiplier} sips`],
-                take: multiplier
-            })
+            tooManyTriesPlayers.push(answer.playerId);
             points -= 50;
         }
         if (answer.answer > 5) {
@@ -676,23 +707,17 @@ const handleHideAndSeek = (
         }
 
         if (timeDifference < 3) {
-            fastPlayers.push({
-                playerId: answer.playerId,
-                reasons: []
-            })
+            fastPlayers.push(answer.playerId);
             points += 20;
         }
-        //if timedifference between 4 and 10 seconds
-        if (timeDifference > 3 && timeDifference < 10) {
+        // if timeDifference between 3 and 10 seconds
+        if (timeDifference >= 3 && timeDifference < 10) {
             points += 10;
         }
-        //if timedifference between 10 and 20 seconds
-        if (timeDifference > 10 && timeDifference < 20) {
+        // if timeDifference between 10 and 20 seconds
+        if (timeDifference >= 10 && timeDifference < 20) {
+            slowPlayers.push(answer.playerId);
             points -= 10;
-            slowPlayers.push({
-                playerId: answer.playerId,
-                reasons: []
-            })
         }
 
         // Assign calculated points
@@ -700,73 +725,109 @@ const handleHideAndSeek = (
     });
 
     // Handle players who did not answer
-    notAnswered.forEach(answer => {
+    notAnswered.forEach((answer) => {
         answer.pointsAwarded = -300;
-        noAnswerPlayers.push({
-            playerId: answer.playerId,
-            reasons: [`Didn't answer (or too late) – drink ${3 * multiplier} sips`],
-            take: 3 * multiplier
+        noAnswerPlayers.push(answer.playerId);
+    });
+
+    // Apply punishments based on accumulated categories
+
+    // First Try Punishments
+    firstTryPlayers.forEach((playerId) => {
+        addPunishment(playerId, {
+            reasons: [`You got it on the first try!`],
+            give: 0, // Placeholder, actual give handled below
         });
     });
+
+    // Too Many Tries Punishments
+    tooManyTriesPlayers.forEach((playerId) => {
+        addPunishment(playerId, {
+            reasons: [`You tried too many times! Take ${multiplier} sips`],
+            take: multiplier,
+        });
+    });
+
+    // Fast Players Punishments
+    fastPlayers.forEach((playerId) => {
+        addPunishment(playerId, {
+            reasons: [`You were fast! give ${multiplier}`],
+            give: multiplier,
+        });
+    });
+
+    // Slow Players Punishments
+    slowPlayers.forEach((playerId) => {
+        addPunishment(playerId, {
+            reasons: [`You were slow! Take ${multiplier} sips`],
+            take: multiplier,
+        });
+    });
+
+    // No Answer Punishments
+    noAnswerPlayers.forEach((playerId) => {
+        addPunishment(playerId, {
+            reasons: [`Didn't answer (or too late) – drink ${3 * multiplier} sips`],
+            take: 3 * multiplier,
+        });
+    });
+
+    // Apply special rules for unique punishments
+
+    // If only one player got it on the first try
     if (firstTryPlayers.length === 1) {
-        // Only one player found the answer on the first try
-        // he can give 2* multiplier
-        firstTryPlayers[0].reasons.push(`Only one on First Try! Give ${2 * multiplier} sips`);
-        firstTryPlayers[0].give = 2 * multiplier;
+        const playerId = firstTryPlayers[0];
+        addPunishment(playerId, {
+            reasons: [`Only one on First Try! Give ${2 * multiplier} sips`],
+            give: 2 * multiplier,
+        });
     }
-    //if only one player tried too many times
+
+    // If only one player tried too many times and no one didn't answer
     if (tooManyTriesPlayers.length === 1 && noAnswerPlayers.length === 0) {
-        tooManyTriesPlayers[0].reasons.push(`Only one tried too many times! Take ${multiplier} sips`);
-        tooManyTriesPlayers[0].take! += multiplier;
+        const playerId = tooManyTriesPlayers[0];
+        addPunishment(playerId, {
+            reasons: [`Only one tried too many times! Take ${multiplier} sips`],
+            take: multiplier,
+        });
     }
-    //if only one player was fast
+
+    // If only one player was fast
     if (fastPlayers.length === 1) {
-        fastPlayers[0].reasons.push(`You were fast! Give ${multiplier} sips`);
-        fastPlayers[0].give = multiplier;
+        const playerId = fastPlayers[0];
+        addPunishment(playerId, {
+            reasons: [`You were the only fast! Give ${multiplier} sips`],
+            give: multiplier,
+        });
     }
-    //if only one player was slow
+
+    // If only one player was slow and no one didn't answer
     if (slowPlayers.length === 1 && noAnswerPlayers.length === 0) {
-        slowPlayers[0].reasons.push(`You were slow! Take ${multiplier} sips`);
-        slowPlayers[0].take! += multiplier;
+        const playerId = slowPlayers[0];
+        addPunishment(playerId, {
+            reasons: [`You were slow! Take ${multiplier} sips`],
+            take: multiplier,
+        });
     }
 
+    // If only one player did not answer
     if (noAnswerPlayers.length === 1) {
-        noAnswerPlayers[0].take! += 3 * multiplier;
-        noAnswerPlayers[0].reasons.push(`Only you didn't finish 🫠 - take ${3 * multiplier} sips`);
+        const playerId = noAnswerPlayers[0];
+        addPunishment(playerId, {
+            reasons: [`Only you didn't finish 🫠 - take ${3 * multiplier} sips`],
+            take: 3 * multiplier,
+        });
     }
 
-    // Combine punishments, but make sure only one punishment per player accumulate give and takes and reasons from different array
-    const tPunishments: IPunishment[] = [...noAnswerPlayers, ...firstTryPlayers, ...tooManyTriesPlayers, ...fastPlayers, ...slowPlayers];
-
-
-    tPunishments.map((punishment) => {
-        //check if player has already entry in punishments
-        if (punishments.find(p => p.playerId === punishment.playerId)) {
-            //Player already in punishments, add reasons and give/take
-            const pIndex = punishments.findIndex(p => p.playerId === punishment.playerId);
-            punishments[pIndex].reasons.push(...punishment.reasons);
-            if (punishment.give) {
-                punishments[pIndex].give! += punishment.give;
-            } else {
-                punishments[pIndex].give = punishment.take!;
-            }
-            if (punishment.take) {
-                punishments[pIndex].take! += punishment.take;
-            } else {
-                punishments[pIndex].take = punishment.take!;
-            }
-        } else {
-            punishments.push(punishment);
-        }
-    })
-
-
-
-    // Combine punishments
-    //punishments = [...noAnswerPlayers];
+    // Convert the map to an array
+    const punishments = Array.from(punishmentsMap.values()).map((punishment) => ({
+        ...punishment,
+        give: punishment.give || 0,
+        take: punishment.take || 0,
+    }));
 
     return {answers, punishments};
-}
+};
 
 /**
  * Handle ranking question by combining individual rankings into a final ranking,
