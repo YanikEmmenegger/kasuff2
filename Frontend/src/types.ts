@@ -11,7 +11,8 @@ export type QuestionType =
 
 export type MiniGameType =
     | 'hide-and-seek'
-    | 'memory';
+    | 'memory'
+    | 'sequence-memory'; // Added sequence-memory here
 
 export type GameModeType = QuestionType | MiniGameType;
 
@@ -149,6 +150,12 @@ export interface MiniGame {
 export interface MemoryGame extends MiniGame {
     type: 'memory';
     pairs: string[];
+}
+
+export interface SequenceMemoryGame extends MiniGame {
+    type: 'sequence-memory';
+    sequence: number[];
+    lamps: number;
 }
 
 

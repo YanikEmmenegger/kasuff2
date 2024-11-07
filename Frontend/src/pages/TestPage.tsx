@@ -1,9 +1,9 @@
-import Memory from "../components/game/minigames/memory/Memory.tsx";
+import SequenceMemory from "../components/game/minigames/sequence/SequenceMemory.tsx";
 
 const TestPage = () => {
     return (
         <>
-            <Memory/>
+            <SequenceMemory/>
         </>
     );
 }

@@ -13,7 +13,7 @@ export const QUESTION_TYPES = [
 
 export const MINI_GAME_TYPES = [
     'hide-and-seek',
-    'memory'
+    'memory', "sequence-memory", // Added sequence-memory here
 ] as const;
 
 export const GAME_STATES = [
@@ -52,6 +52,12 @@ export interface IMiniGame {
 export interface IMemoryGame extends IMiniGame {
     type: 'memory';
     pairs: String[];
+}
+
+export interface ISequenceMemoryGame extends IMiniGame {
+    type: 'sequence-memory';
+    sequence: number[];
+    lamps: number
 }
 
 export type MiniGame = IMemoryGame;

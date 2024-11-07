@@ -30,7 +30,7 @@ export const defaultAvatarOptions: AvatarOptions = {
     faceShape: 'round',
     eyeType: 'male',
     eyeColor: '#000000',
-    hairType: 'the-swoosh',
+    hairType: 'the-dan',
     hairColor: '#000000',
     beardType: 'none',
     beardColor: '#000000',

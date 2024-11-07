@@ -70,7 +70,7 @@ const GamePage = () => {
             </div>
 
             {/* Leave Button */}
-            {state !== "join" && state !== "create" && state !== "quiz" && state !== 'waiting' && (
+            {state !== "join" && state !== "create" && state !== "quiz" && state !== 'leaderboard' && (
                 <div className="flex flex-row justify-between px-8 pb-4">
                     <LeaveButton/>
                     <NextQuestionButton/>

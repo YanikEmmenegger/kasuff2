@@ -6,7 +6,8 @@ import {FaCheckCircle, FaListAlt, FaQuestionCircle, FaSearch, FaSortNumericDown,
 import {FaMemory} from "react-icons/fa6"; // Ensure correct import path
 import Button from "../../Button";
 import {GameModeType} from "../../../types";
-import {BsSearch} from "react-icons/bs"; // Import GameModeType
+import {BsSearch} from "react-icons/bs";
+import {SlEqualizer} from "react-icons/sl"; // Import GameModeType
 
 interface QuestionTypeSelectorProps {
     selectedTypes: GameModeType[];
@@ -48,6 +49,12 @@ const questionTypes: {
         type: "memory",
         label: "Memory",
         icon: <FaMemory/>,
+    },
+    {
+        type: "sequence-memory",
+        label: "Sequence)",
+        icon: <SlEqualizer/>,
+        disabled: true,
     },
     {
         type: "spy",

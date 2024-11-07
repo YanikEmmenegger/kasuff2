@@ -26,6 +26,7 @@ const GameCreator: FC = () => {
              "ranking",
             "hide-and-seek",
             "memory",
+            "sequence-memory",
         ] as GameModeType[],
         timeLimit: 30,
         punishmentMultiplier: 1,

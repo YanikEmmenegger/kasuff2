@@ -4,7 +4,9 @@ import {
     ICleanedQuestion,
     ICleanRankingQuestion,
     ICleanWhoWouldRatherQuestion,
-    IMultipleChoiceQuestion, IRankingQuestion, IWhatWouldYouRatherQuestion
+    IMultipleChoiceQuestion,
+    IRankingQuestion,
+    IWhatWouldYouRatherQuestion
 } from "../models/Question";
 import {getQuestionById} from "./questionController";
 import {Schema} from "mongoose";
@@ -167,6 +169,12 @@ export const calculatePointsForMiniGames = async (gameCode: string): Promise<Ope
                 } = handleHideAndSeek(answers, multiplier, timerFinishedAt, timeLimit));
                 break;
             case "memory":
+                ({
+                    answers: updatedAnswers,
+                    punishments
+                } = handleMemory(answers, multiplier));
+                break;
+            case "sequence-memory":
                 ({
                     answers: updatedAnswers,
                     punishments

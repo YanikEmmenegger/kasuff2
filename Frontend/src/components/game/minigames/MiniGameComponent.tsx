@@ -3,6 +3,7 @@ import {MiniGame} from "../../../types";
 import HideAndSeek from "../minigames/hideAndSeek/HideAndSeek.tsx";
 import Timer from "../round/Timer.tsx";
 import Memory from "./memory/Memory.tsx";
+import SequenceMemory from "./sequence/SequenceMemory.tsx";
 
 interface QuizProps {
     miniGame: MiniGame;
@@ -15,6 +16,8 @@ const QuizComponent: FC<QuizProps> = ({miniGame}) => {
                 return <HideAndSeek/>
             case "memory":
                 return <Memory/>
+            case "sequence-memory":
+                return <SequenceMemory/>
             default:
                 return <>Unknown Mini Game</>;
         }

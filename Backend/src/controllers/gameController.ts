@@ -6,7 +6,8 @@ import Game, {
     ILeaderboardEntry,
     IMemoryGame,
     IPunishment,
-    IRound
+    IRound,
+    ISequenceMemoryGame
 } from '../models/Game';
 import Player, {IPlayer} from '../models/Player';
 import {OperationResult} from "../types";
@@ -93,7 +94,58 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
                 }
             }
         }
-        //....follow schema for other mini games
+        if (gameSettings.gameModes.includes('sequence-memory')) {
+
+            const createSequence = (lamps: number, length: number) => {
+                //create a sequence of length length with lamps lamps
+                let sequence: number[] = [];
+                for (let i = 0; i < length; i++) {
+                    sequence.push(Math.floor(Math.random() * lamps));
+                }
+                return sequence;
+            }
+
+            let sequence: number[] = [];
+            let lamps: number = 0;
+
+            for (let i = 0; i < gameSettings.numberOfRounds / 5; i++) {
+                switch (gameSettings.timeLimit) {
+                    case 15:
+                        lamps = 6
+                        sequence = createSequence(lamps, 6)
+                        break;
+                    case 30:
+                        lamps = 6
+                        sequence = createSequence(lamps, 6)
+                        break;
+                    case 60:
+                        lamps = 9
+                        sequence = createSequence(lamps, 8)
+                        break
+                    case 90:
+                        lamps = 9
+                        sequence = createSequence(lamps, 10)
+                        break;
+                    default:
+                        lamps = 6
+                }
+
+
+                const sequenceMemory: ISequenceMemoryGame = {
+                    type: 'sequence-memory',
+                    lamps: lamps,
+                    sequence: sequence
+                }
+                //make 50/50 if the round is added or not
+                if (Math.random() > 0.5) {
+
+                    rounds.push({
+                        type: 'mini-game',
+                        data: sequenceMemory
+                    });
+                }
+            }
+        }
 
         console.log(rounds);
 
