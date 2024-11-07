@@ -25,16 +25,17 @@ const PunishmentComponent: React.FC = () => {
         ));
     };
 
-    // Function to format the player's name and highlight the current player
+    // Function to format the player's name
     const formatPlayerName = (punishmentPlayerId: string) => {
         const punishedPlayer = game.players.find(
             (p) => p._id === punishmentPlayerId
         );
         if (!punishedPlayer) return "Unknown";
 
-        return punishedPlayer.name
+        return punishedPlayer.name;
     };
-    //get Avatar
+
+    // Get Avatar
     const getAvatar = (playerId: string) => {
         const player = game.players.find((p) => p._id === playerId);
         if (player) {
@@ -64,32 +65,34 @@ const PunishmentComponent: React.FC = () => {
                 animate={{opacity: 1, y: 0}}
                 exit={{opacity: 0, y: -10}}
                 className={`border border-cyan-700 rounded-md p-4 shadow-md mb-4 ${
-                    punishment.playerId === playerId
-                        ? "bg-cyan-600"
-                        : "bg-cyan-700"
+                    punishment.playerId === playerId ? "bg-cyan-800" : "bg-cyan-600"
                 }`}
             >
                 <div className="flex gap-2 items-center mb-2">
                     <Avatar size={50} options={getAvatar(punishment.playerId)!}/>
-                    <div className="text-lg font-semibold flex-1 text-gray-200">
+                    <div className={"flex-col items-center gap-0 justify-center"}>
+                        <div className="text-lg font-semibold text-gray-200">
                         {formatPlayerName(punishment.playerId)}
                     </div>
                     {punishment.playerId === playerId && (
-                        <span className="text-sm font-medium text-gray-200">
-              (That's you!)
-            </span>
+                        <span className="text-xs font-medium text-gray-200">
+                      (That's you!)
+                    </span>
                     )}
+                    </div>
                 </div>
                 {renderReasons(punishment.reasons)}
                 <div className="mt-2 flex flex-wrap gap-4">
                     {punishment.take && punishment.take > 0 && (
                         <div className="flex items-center text-red-300 font-bold">
-                             🫵🏼 Take {punishment.take} drink{punishment.take > 1 ? "s" : ""}
+                            🫵🏼 Take {punishment.take} drink
+                            {punishment.take > 1 ? "s" : ""}
                         </div>
                     )}
                     {punishment.give && punishment.give > 0 && (
                         <div className="flex items-center text-green-300 font-bold">
-                            🤩 Give {punishment.give} drink{punishment.give > 1 ? "s" : ""}
+                            🤩 Give {punishment.give} drink
+                            {punishment.give > 1 ? "s" : ""}
                         </div>
                     )}
                 </div>
@@ -97,16 +100,23 @@ const PunishmentComponent: React.FC = () => {
         );
     };
 
+    // Sort punishments to place the current player's punishments first
+    const sortedPunishments = punishments
+        .filter((punishment) => punishment.give || punishment.take)
+        .sort((a, b) => {
+            if (a.playerId === playerId && b.playerId !== playerId) return -1;
+            if (a.playerId !== playerId && b.playerId === playerId) return 1;
+            return 0;
+        });
+
     return (
-        <div className="px-8 py-4 w-full  mx-auto bg-cyan-500 h-auto">
+        <div className="px-8 py-4 w-full mx-auto bg-cyan-500 h-auto">
             <h2 className="text-3xl font-bold text-center mb-6 text-gray-200">
                 Punishments
             </h2>
-            {punishments.length > 0  && punishments ? (
+            {sortedPunishments.length > 0 ? (
                 <AnimatePresence>
-                    {punishments
-                        .filter((punishment) => punishment.give || punishment.take)
-                        .map((punishment) => renderPunishment(punishment))}
+                    {sortedPunishments.map((punishment) => renderPunishment(punishment))}
                 </AnimatePresence>
             ) : (
                 <div className="text-center text-gray-200">

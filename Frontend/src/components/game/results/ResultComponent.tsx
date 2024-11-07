@@ -6,6 +6,8 @@ import ResultWhatWouldYouRather from "./ResultWhatWouldYouRather";
 import PunishmentComponent from "./PunishmentComponent";
 import ResultRanking from "./ResultRanking.tsx";
 import ResultHideAndSeek from "./ResultHideAndSeek.tsx";
+import ResultSequenceMemory from "./ResultSequenceMemory.tsx";
+import ResultMemory from "./ResultMemory.tsx";
 
 const ResultComponent: FC = () => {
     const {game} = usePlayer();
@@ -32,9 +34,14 @@ const ResultComponent: FC = () => {
                 return <ResultRanking/>
             case "hide-and-seek":
                 return <ResultHideAndSeek/>;
+            case "sequence-memory":
+                return <ResultSequenceMemory/>;
+            case "memory":
+                return <ResultMemory/>;
+
 
             default:
-                return <div>Unknown question type.</div>;
+                return <div></div>;
         }
     };
 

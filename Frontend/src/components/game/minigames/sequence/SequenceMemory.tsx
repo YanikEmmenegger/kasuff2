@@ -19,7 +19,7 @@ const SequenceMemory = () => {
     const [playerSequence, setPlayerSequence] = useState<number[]>([]);
     const [isDisplayingSequence, setIsDisplayingSequence] = useState(false);
     const [currentStep, setCurrentStep] = useState<number>(-1); // Start with -1
-    const [attempts, setAttempts] = useState(1); // Track failed attempts
+    const [attempts, setAttempts] = useState(0); // Track failed attempts
     const [isGameCompleted, setIsGameCompleted] = useState(false); // New state
 
     const [timer, setTimer] = useState<number>(10); // Timer state
