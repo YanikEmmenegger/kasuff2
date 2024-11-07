@@ -7,7 +7,9 @@ import {FaMemory} from "react-icons/fa6"; // Ensure correct import path
 import Button from "../../Button";
 import {GameModeType} from "../../../types";
 import {BsSearch} from "react-icons/bs";
-import {SlEqualizer} from "react-icons/sl"; // Import GameModeType
+import {SlEqualizer} from "react-icons/sl";
+import {PiPasswordLight} from "react-icons/pi";
+import {CiText} from "react-icons/ci"; // Import GameModeType
 
 interface QuestionTypeSelectorProps {
     selectedTypes: GameModeType[];
@@ -52,9 +54,18 @@ const questionTypes: {
     },
     {
         type: "sequence-memory",
-        label: "Sequence)",
+        label: "Sequence",
         icon: <SlEqualizer/>,
-        disabled: true,
+    },
+    {
+        type: "word-scramble",
+        label: "Word Scramble",
+        icon: <CiText/>,
+    },
+    {
+        type: "code-breaker",
+        label: "Code Breaker",
+        icon: <PiPasswordLight/>,
     },
     {
         type: "spy",

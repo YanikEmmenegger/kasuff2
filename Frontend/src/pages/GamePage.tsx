@@ -12,6 +12,8 @@ import {useEffect} from "react";
 import NextQuestionButton from "../components/game/results/NextQuestionButton.tsx";
 import {MiniGame, Question} from "../types.ts";
 import MiniGameComponent from "../components/game/minigames/MiniGameComponent.tsx";
+import Button from "../components/Button.tsx";
+import {useNavigate} from "react-router";
 
 // Helper function to parse query parameters
 function useQuery() {
@@ -20,6 +22,7 @@ function useQuery() {
 
 const GamePage = () => {
     const query = useQuery();
+    const navigate = useNavigate();
     const state = query.get("state") || "join"; // Default to 'join' if state is not provided
     const code = query.get("code") || "";
 
@@ -74,6 +77,18 @@ const GamePage = () => {
                 <div className="flex flex-row justify-between px-8 pb-4">
                     <LeaveButton/>
                     <NextQuestionButton/>
+                </div>
+            )}
+            {state === "leaderboard" && (
+                <div className="flex flex-row justify-between px-8 pb-4">
+                    <div className="flex space-x-4">
+                        <Button
+                            className="bg-green-500 hover:bg-green-600"
+                            onClick={() => navigate('/')}
+                        >
+                            Return to Start
+                        </Button>
+                    </div>
                 </div>
             )}
         </div>

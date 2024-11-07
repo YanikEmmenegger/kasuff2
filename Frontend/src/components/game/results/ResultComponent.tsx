@@ -8,6 +8,8 @@ import ResultRanking from "./ResultRanking.tsx";
 import ResultHideAndSeek from "./ResultHideAndSeek.tsx";
 import ResultSequenceMemory from "./ResultSequenceMemory.tsx";
 import ResultMemory from "./ResultMemory.tsx";
+import ResultWordScramble from "./ResultWordScramble.tsx";
+import ResultCodeBreaker from "./ResultCodeBreaker.tsx";
 
 const ResultComponent: FC = () => {
     const {game} = usePlayer();
@@ -38,6 +40,10 @@ const ResultComponent: FC = () => {
                 return <ResultSequenceMemory/>;
             case "memory":
                 return <ResultMemory/>;
+            case "word-scramble":
+                return <ResultWordScramble/>;
+            case "code-breaker":
+                return <ResultCodeBreaker/>;
 
 
             default:

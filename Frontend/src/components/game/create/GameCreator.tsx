@@ -9,8 +9,8 @@ import toast from "react-hot-toast";
 import {GameModeType, GameSettings} from "../../../types"; // Ensure GameModeType is imported
 import {usePlayer} from "../../../contexts/playerProvider";
 import Button from "../../Button";
-import LabelWithValue from "../../LabelWithValue";
 import CollapsibleSection from "../../CollapsibleSection.tsx";
+import {FaGamepad} from "react-icons/fa";
 
 const GameCreator: FC = () => {
     const {createGame} = usePlayer(); // Use socket context for game creation
@@ -21,12 +21,14 @@ const GameCreator: FC = () => {
         numberOfRounds: 10,
         gameModes: [
             "multiple-choice",
-             "what-would-you-rather",
-             "who-would-rather",
-             "ranking",
+            "what-would-you-rather",
+            "who-would-rather",
+            "ranking",
             "hide-and-seek",
             "memory",
-            "sequence-memory",
+            "sequence-memory", "word-scramble",
+            //"code-breaker",
+
         ] as GameModeType[],
         timeLimit: 30,
         punishmentMultiplier: 1,
@@ -105,20 +107,16 @@ const GameCreator: FC = () => {
                 className="w-full max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto space-y-8"
                 initial={{opacity: 0, y: 20}}
                 animate={{opacity: 1, y: 0}}
-                transition={{duration: 0.6}}
+                transition={{delay: 0.1}}
             >
+                <CollapsibleSection title={`Numbers of Rounds: ${gameSettings.numberOfRounds}`}>
                 {/* Sliders & Selectors */}
-                <div className="flex flex-col space-y-6 md:space-y-0 md:grid md:grid-cols-2 md:gap-6">
                     <motion.div
-                        className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg shadow-md"
+                        className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg"
                         initial={{opacity: 0, y: 20}}
                         animate={{opacity: 1, y: 0}}
-                        transition={{delay: 0.2}}
+                        transition={{delay: 0.1}}
                     >
-                        <LabelWithValue
-                            text="Number of Rounds"
-                            value={gameSettings.numberOfRounds}
-                        />
                         <Slider
                             min={1}
                             max={50}
@@ -127,17 +125,15 @@ const GameCreator: FC = () => {
                             onChange={handleQuestionsChange}
                         />
                     </motion.div>
+                </CollapsibleSection>
+                <CollapsibleSection title={`Punishment multiplier ${gameSettings.punishmentMultiplier}x`}>
 
                     <motion.div
-                        className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg shadow-md"
+                        className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg"
                         initial={{opacity: 0, y: 20}}
                         animate={{opacity: 1, y: 0}}
-                        transition={{delay: 0.4}}
+                        transition={{delay: 0.1}}
                     >
-                        <LabelWithValue
-                            text="Punishment Multiplier"
-                            value={`${gameSettings.punishmentMultiplier}x`}
-                        />
                         <Slider
                             min={1}
                             max={5}
@@ -147,19 +143,19 @@ const GameCreator: FC = () => {
                             onChange={handleMultiplierChange}
                         />
                     </motion.div>
-                </div>
+                </CollapsibleSection>
 
                 <motion.div
                     initial={{opacity: 0, y: 20}}
                     animate={{opacity: 1, y: 0}}
-                    transition={{delay: 0.8}}
+                    transition={{delay: 0.3}}
                 >
                     <CollapsibleSection title={`Time Limit: ${gameSettings.timeLimit}s`}>
                         <motion.div
                             className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg"
                             initial={{opacity: 0, y: 20}}
                             animate={{opacity: 1, y: 0}}
-                            transition={{delay: 0.6}}
+                            transition={{delay: 0.1}}
                         >
                             <TimerSelector
                                 timeLimit={gameSettings.timeLimit}
@@ -172,7 +168,7 @@ const GameCreator: FC = () => {
                 <motion.div
                     initial={{opacity: 0, y: 20}}
                     animate={{opacity: 1, y: 0}}
-                    transition={{delay: 0.8}}
+                    transition={{delay: 0.4}}
                 >
                     <CollapsibleSection title="Select Game Modes">
                         {/* Game Mode Selector */}
@@ -180,7 +176,7 @@ const GameCreator: FC = () => {
                             className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg"
                             initial={{opacity: 0, y: 20}}
                             animate={{opacity: 1, y: 0}}
-                            transition={{delay: 0.2}}
+                            transition={{delay: 0.1}}
                         >
                             <QuestionTypeSelector
                                 selectedTypes={gameSettings.gameModes}
@@ -195,13 +191,14 @@ const GameCreator: FC = () => {
                     className="flex justify-center mt-8"
                     initial={{opacity: 0, y: 20}}
                     animate={{opacity: 1, y: 0}}
-                    transition={{delay: 1}}
+                    transition={{delay: 0.5}}
                 >
                     <Button
                         onClick={handleSubmit}
-                        className="bg-cyan-700 hover:bg-cyan-800 text-gray-200 px-6 py-3 rounded-lg font-semibold"
+                        className="bg-green-500 hover:bg-green-600 gap-2 text-xl flex items-center space-x-2"
                         disabled={creating}
                     >
+                        <FaGamepad size={24}/>
                         {creating ? "Creating Game..." : "Create Game"}
                     </Button>
                 </motion.div>

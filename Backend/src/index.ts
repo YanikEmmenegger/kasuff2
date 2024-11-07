@@ -6,7 +6,6 @@ import dotenv from 'dotenv';
 import {createGame, joinGame, kickPlayer, leaveGame, loadNextQuestion, startGame} from './controllers/gameController';
 import {
     createPlayer,
-    generateRandomUsername,
     handlePlayerReconnect,
     playerAnswered,
     updatePlayer
@@ -19,6 +18,7 @@ import path from "node:path";
 import {logVisitor} from "./middleware/logVisitors";
 import visitorRoutes from "./routes/visitorRoutes";
 import cookieParser from "cookie-parser";
+import {generateRandomUsername} from "./utils/randomNames";
 
 // Load environment variables
 dotenv.config();

@@ -12,7 +12,9 @@ export type QuestionType =
 export type MiniGameType =
     | 'hide-and-seek'
     | 'memory'
-    | 'sequence-memory'; // Added sequence-memory here
+    | 'sequence-memory'
+    | "word-scramble"
+    | "code-breaker"// Added sequence-memory here
 
 export type GameModeType = QuestionType | MiniGameType;
 
@@ -152,10 +154,21 @@ export interface MemoryGame extends MiniGame {
     pairs: string[];
 }
 
+export interface WordScrambleGame extends MiniGame {
+    type: 'word-scramble';
+    word: string;
+    scrambled: string;
+}
+
 export interface SequenceMemoryGame extends MiniGame {
     type: 'sequence-memory';
     sequence: number[];
     lamps: number;
+}
+
+export interface CodeBreakerGame extends MiniGame {
+    type: 'code-breaker';
+    code: string;
 }
 
 

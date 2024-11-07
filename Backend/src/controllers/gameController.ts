@@ -1,19 +1,22 @@
 import Game, {
     generateUniqueGameCode,
     IAnswer,
+    ICodeBreakerGame,
     IGame,
     IGameSettings,
     ILeaderboardEntry,
     IMemoryGame,
     IPunishment,
     IRound,
-    ISequenceMemoryGame
+    ISequenceMemoryGame,
+    IWordScrambleGame
 } from '../models/Game';
 import Player, {IPlayer} from '../models/Player';
 import {OperationResult} from "../types";
 import {getQuestionById, getQuestions, prepareQuestions} from "./questionController";
 import {getEmojis} from "../utils/emojis";
 import {calculatePointsForMiniGames, calculatePointsForQuestion} from "./calculatePoints";
+import {getScrabbledWord} from "../utils/words/words";
 
 // Timer storage object to track active timers for each game
 export const gameTimers: { [gameCode: string]: NodeJS.Timeout } = {};
@@ -39,7 +42,7 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
         };
         const gameSettings: IGameSettings = settings || defaultSettings;
 
-        const rounds: IRound[] = [];
+        let rounds: IRound[] = [];
 
 
         if (gameSettings.gameModes.includes('hide-and-seek')) {
@@ -109,35 +112,36 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
             let lamps: number = 0;
 
             for (let i = 0; i < gameSettings.numberOfRounds / 5; i++) {
-                switch (gameSettings.timeLimit) {
-                    case 15:
-                        lamps = 6
-                        sequence = createSequence(lamps, 6)
-                        break;
-                    case 30:
-                        lamps = 6
-                        sequence = createSequence(lamps, 6)
-                        break;
-                    case 60:
-                        lamps = 9
-                        sequence = createSequence(lamps, 8)
-                        break
-                    case 90:
-                        lamps = 9
-                        sequence = createSequence(lamps, 10)
-                        break;
-                    default:
-                        lamps = 6
-                }
-
-
-                const sequenceMemory: ISequenceMemoryGame = {
-                    type: 'sequence-memory',
-                    lamps: lamps,
-                    sequence: sequence
-                }
-                //make 50/50 if the round is added or not
                 if (Math.random() > 0.5) {
+
+                    switch (gameSettings.timeLimit) {
+                        case 15:
+                            lamps = 6
+                            sequence = createSequence(lamps, 6)
+                            break;
+                        case 30:
+                            lamps = 6
+                            sequence = createSequence(lamps, 6)
+                            break;
+                        case 60:
+                            lamps = 9
+                            sequence = createSequence(lamps, 8)
+                            break
+                        case 90:
+                            lamps = 9
+                            sequence = createSequence(lamps, 10)
+                            break;
+                        default:
+                            lamps = 6
+                    }
+
+
+                    const sequenceMemory: ISequenceMemoryGame = {
+                        type: 'sequence-memory',
+                        lamps: lamps,
+                        sequence: sequence
+                    }
+                    //make 50/50 if the round is added or not
 
                     rounds.push({
                         type: 'mini-game',
@@ -145,9 +149,70 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
                     });
                 }
             }
+
+        }
+        if (gameSettings.gameModes.includes('word-scramble')) {
+            for (let i = 0; i < gameSettings.numberOfRounds / 5; i++) {
+                //make 50/50 if the round is added or not
+                if (Math.random() > 0.5) {
+
+                    const {word, scrabbledWord} = getScrabbledWord('de');
+
+                    const wordScramble: IWordScrambleGame = {
+                        type: 'word-scramble',
+                        word: word,
+                        scrambled: scrabbledWord
+                    }
+
+                    rounds.push({
+                        type: 'mini-game',
+                        data: wordScramble
+                    });
+                }
+            }
+        }
+        if (gameSettings.gameModes.includes('code-breaker')) {
+            for (let i = 0; i < gameSettings.numberOfRounds / 10; i++) {
+
+                //make 50/50 if the round is added or not
+                if (Math.random() > 0.5) {
+
+                    let length: number = 3;
+                    switch (gameSettings.timeLimit) {
+                        case 15:
+                            length = 3
+                            break;
+                        case 30:
+                            length = 3
+                            break;
+                        case 60:
+                            length = 4
+                            break
+                        case 90:
+                            length = 4
+                            break;
+                    }
+                    let code: string = '';
+                    for (let i = 0; i < length; i++) {
+                        code += Math.floor(Math.random() * 10).toString();
+                    }
+                    const codeBreaker: ICodeBreakerGame = {
+                        type: 'code-breaker',
+                        code: code
+                    }
+                    rounds.push({
+                        type: 'mini-game',
+                        data: codeBreaker
+                    });
+                }
+            }
         }
 
         console.log(rounds);
+        if (rounds.length > gameSettings.numberOfRounds) {
+            //
+            rounds = rounds.slice(0, gameSettings.numberOfRounds)
+        }
 
         // Fetch questions based on game settings
         const filters = {
@@ -155,7 +220,7 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
             limit: gameSettings.numberOfRounds - rounds.length,
         };
 
-        const fetchedQuestions = await getQuestions(filters);
+        const fetchedQuestions = filters.limit > 0 ? await getQuestions(filters) : {success: true, data: []};
 
         if (!fetchedQuestions.success) {
             console.error('[ERROR] Fetching questions:', fetchedQuestions.error);

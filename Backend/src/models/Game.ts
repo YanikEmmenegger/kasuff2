@@ -13,7 +13,10 @@ export const QUESTION_TYPES = [
 
 export const MINI_GAME_TYPES = [
     'hide-and-seek',
-    'memory', "sequence-memory", // Added sequence-memory here
+    'memory',
+    "sequence-memory",
+    "word-scramble",
+    "code-breaker",
 ] as const;
 
 export const GAME_STATES = [
@@ -49,18 +52,39 @@ export interface IMiniGame {
     type: MiniGameType;
 }
 
+/**
+ * Interface for Word Scramble Mini Game.
+ */
+export interface IWordScrambleGame extends IMiniGame {
+    type: 'word-scramble';
+    word: string;
+    scrambled: string;
+}
+
+/**
+ * Interface for Code Breaker Mini Game.
+ */
+export interface ICodeBreakerGame extends IMiniGame {
+    type: 'code-breaker';
+    code: string;
+}
+/**
+ * Interface for Hide and Seek Mini Game.
+ */
 export interface IMemoryGame extends IMiniGame {
     type: 'memory';
     pairs: String[];
 }
 
+/**
+ * Interface for Sequence Memory Mini Game.
+ */
 export interface ISequenceMemoryGame extends IMiniGame {
     type: 'sequence-memory';
     sequence: number[];
     lamps: number
 }
 
-export type MiniGame = IMemoryGame;
 
 /**
  * Interface for Rounds that can either be a question or a mini game.
