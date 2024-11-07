@@ -27,7 +27,7 @@ const GameCreator: FC = () => {
             "hide-and-seek",
             "memory",
             "sequence-memory", "word-scramble",
-            //"code-breaker",
+            "code-breaker",
 
         ] as GameModeType[],
         timeLimit: 30,
