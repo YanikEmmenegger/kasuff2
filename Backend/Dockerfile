@@ -1,7 +1,7 @@
 # Backend/Dockerfile
 
 # Stage 1: Build the frontend
-FROM node:18.16.0-alpine AS frontend-builder
+FROM node:18-alpine AS frontend-builder
 # Use a specific Node.js version based on Alpine for minimal size
 
 # Set the working directory for frontend
@@ -18,7 +18,7 @@ COPY ./Frontend/ .
 RUN npm run build  # This should generate the production-ready frontend in /frontend/dist
 
 # Stage 2: Build the backend
-FROM node:18.16.0-alpine
+FROM node:18-alpine
 # Use the same Node.js version for consistency
 
 # Create a non-root user and group for running the application
@@ -29,8 +29,7 @@ WORKDIR /app
 
 # Copy backend package files and install dependencies
 COPY ./Backend/package*.json ./
-RUN npm install --production  # Install only production dependencies for the backend
-
+RUN npm install
 # Copy the backend source code
 COPY ./Backend/ .
 
