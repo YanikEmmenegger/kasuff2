@@ -24,7 +24,8 @@ dotenv.config();
 // Create an Express application
 const app: Application = express();
 const server = http.createServer(app);
-app.set('trust proxy', true); // Trust the first proxy
+app.set('trust proxy', true);
+app.set('trust proxy', 1); // Trust only one layer of proxy, e.g., Nginx// Trust the first proxy
 
 const io = new SocketIOServer(server, {
     cors: {
