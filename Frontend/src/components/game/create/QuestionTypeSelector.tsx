@@ -69,7 +69,7 @@ const questionTypes: {
     },
     {
         type: "spy",
-        label: "Spy (coming soon)",
+        label: "Spy ",
         icon: <BsSearch/>,
     },
 ];

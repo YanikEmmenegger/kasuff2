@@ -14,6 +14,7 @@ import {MiniGame, Question} from "../types.ts";
 import MiniGameComponent from "../components/game/minigames/MiniGameComponent.tsx";
 import Button from "../components/Button.tsx";
 import {useNavigate} from "react-router";
+import {IoReload} from "react-icons/io5";
 
 // Helper function to parse query parameters
 function useQuery() {
@@ -91,6 +92,13 @@ const GamePage = () => {
                     </div>
                 </div>
             )}
+            <div className={"fixed right-0 top-0"}>
+                <Button className={"text-xs opacity-60 flex items-center justify-center gap-1"}
+                    onClick={() => window.location.reload()}
+                >
+                     <IoReload/>reload (if stuck)
+                </Button>
+            </div>
         </div>
     );
 };

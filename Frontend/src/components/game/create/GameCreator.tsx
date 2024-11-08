@@ -151,7 +151,7 @@ const GameCreator: FC = () => {
                     animate={{opacity: 1, y: 0}}
                     transition={{delay: 0.3}}
                 >
-                    <CollapsibleSection title={`Time Limit: ${gameSettings.timeLimit}s`}>
+                    <CollapsibleSection title={`Time Limit: ${gameSettings.timeLimit}s (Some modes ignore it)`}>
                         <motion.div
                             className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg"
                             initial={{opacity: 0, y: 20}}
