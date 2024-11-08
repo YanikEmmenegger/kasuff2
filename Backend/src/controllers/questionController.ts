@@ -4,11 +4,13 @@ import Question, {
     ICleanMultipleChoiceQuestion,
     ICleanQuestion,
     ICleanRankingQuestion,
+    ICleanSpyQuestion,
     ICleanWhatWouldYouRatherQuestion,
     ICleanWhoWouldRatherQuestion,
     IMultipleChoiceQuestion,
     IQuestion,
     IRankingQuestion,
+    ISpyQuestion,
     IWhatWouldYouRatherQuestion,
     IWhoWouldRatherQuestion
 } from "../models/Question";
@@ -44,6 +46,7 @@ export const createQuestion = async (questionData: any): Promise<OperationResult
 
         // Add type-specific fields using discriminators
         switch (type) {
+
             case 'multiple-choice':
                 const {options, correctOptionIndex} = typeSpecificFields;
                 if (!options || !Array.isArray(options) || options.length < 2) {
@@ -174,6 +177,27 @@ export const prepareQuestions = async (
 ): Promise<OperationResult<ICleanQuestion>> => {
     try {
         switch (question.type) {
+            case 'spy':
+                const spyQuestion = question as ISpyQuestion;
+                const randomSpy = players[Math.floor(Math.random() * players.length)];
+                const startPlayer = players[Math.floor(Math.random() * players.length)];
+                const secret = spyQuestion.options[Math.floor(Math.random() * spyQuestion.options.length)];
+
+                const cleanSpyQuestion: ICleanSpyQuestion = {
+                    question: spyQuestion.question,
+                    _id: spyQuestion._id,
+                    spy: randomSpy._id.toString(),
+                    type: 'spy',
+                    topic: spyQuestion.topic,
+                    secret: secret,
+                    starter: startPlayer.name.toString()
+                }
+
+                return {
+                    success: true,
+                    data: cleanSpyQuestion
+                };
+
             case 'multiple-choice':
                 const multipleChoiceQuestion = question as IMultipleChoiceQuestion;
 

@@ -36,9 +36,10 @@ const io = new SocketIOServer(server, {
 });
 
 
-if (process.env.NODE_ENV !== 'development') {
+if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1); // Trust only one layer of proxy, e.g., Nginx// Trust the first proxy
     const allowedOrigins = ['https://kasuff.com', 'https://www.kasuff.com', 'http://localhost'];
+    console.log('CORS allowed origins:', allowedOrigins);
     app.use(
         cors({
             origin: function (origin, callback) {
@@ -56,15 +57,22 @@ if (process.env.NODE_ENV !== 'development') {
     );
 // Socket.IO Admin UI (for monitoring during development)
 //instrument(io, {auth: false, mode: 'development'});
+    console.log('CORS enabled');
     const limiter = rateLimit({
-        windowMs: 10 * 60 * 1000, // 15 minutes
-        max: 300, // Limit each IP to 100 requests per windowMs
+        windowMs: 10 * 60 * 1000, // 10 minutes
+        max: 300,
         limit: 300,
-        message: 'Too many requests from this IP, please try again after 15 minutes',
-        standardHeaders: true, // Return rate limit info in the RateLimit-* headers
-        legacyHeaders: false, // Disable the X-RateLimit-* headers
+        message: 'Too many requests from this IP, please try again after 10 minutes',
+        standardHeaders: true,
+        legacyHeaders: false,
+        skip: (req) => {
+            // Skip rate limiting if request has a specific header or cookie
+            return req.headers['socket-allowed'] === 'true' || req.cookies['socket-allowed'] === 'true';
+        },
     });
+    console.log('Rate limiter enabled');
     app.use(limiter);
+    console.log('hsts Helmet enabled');
     app.use(
         helmet.hsts({
             maxAge: 63072000, // 2 years in seconds
@@ -72,6 +80,7 @@ if (process.env.NODE_ENV !== 'development') {
             preload: true,
         })
     );
+    console.log('xssFilter Helmet enabled');
     app.use(
         helmet.contentSecurityPolicy({
             directives: {
@@ -368,7 +377,7 @@ io.on('connection', (socket) => {
 const startServer = async () => {
     try {
         //log if dev or prod env
-        console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+        console.log(`Environment: ${process.env.NODE_ENV}`);
 
         console.log('Connecting to MongoDB...');
 

@@ -85,7 +85,9 @@ export type Question =
     | MultipleChoiceQuestion
     | WhoWouldRatherQuestion
     | WhatWouldYouRatherQuestion
-    | RankingQuestion;
+    | RankingQuestion
+    | SpyQuestion;
+
 
 // Represents a base question
 export interface BaseQuestion {
@@ -99,6 +101,13 @@ export interface BaseQuestion {
 export interface MultipleChoiceQuestion extends BaseQuestion {
     type: 'multiple-choice';
     options: string[]; // Array of possible answers
+}
+
+export interface SpyQuestion extends BaseQuestion {
+    topic: string,
+    secret: { option: string, hints?: string[] }
+    spy: string,
+    starter: string
 }
 
 // Represents a "who would rather" question

@@ -3,6 +3,7 @@ import Game, {IAnswer, ICodeBreakerGame, IGame, IMiniGame, IPunishment, IWordScr
 import {
     ICleanedQuestion,
     ICleanRankingQuestion,
+    ICleanSpyQuestion,
     ICleanWhoWouldRatherQuestion,
     IMultipleChoiceQuestion,
     IRankingQuestion,
@@ -106,13 +107,6 @@ export const calculatePointsForQuestion = async (gameCode: string): Promise<Oper
         if (!questionResult.success) return {success: false, error: questionResult.error};
         const currentQuestion = questionResult.data!;
 
-        if (currentQuestion.type === 'multiple-choice') {
-            const currentMPCQuestion = game.rounds[game.currentRoundIndex].data as IMultipleChoiceQuestion;
-            currentMPCQuestion.correctOptionIndex = currentQuestion.correctOptionIndex;
-            game.rounds[game.currentRoundIndex].data = currentMPCQuestion;
-            await game.save();
-        }
-
         let answers: IAnswer[] = game.answers[game.currentRoundIndex] || [];
         answers = includePlayersNotAnswered(game, answers, (game.rounds[game.currentRoundIndex].data as ICleanedQuestion)._id);
 
@@ -146,6 +140,13 @@ export const calculatePointsForQuestion = async (gameCode: string): Promise<Oper
                 game.rounds[game.currentRoundIndex].data = currentRankingQuestion;
                 game.markModified('rounds');
                 await game.save();
+                break;
+            case 'spy':
+                const spyQuestion = game.rounds[game.currentRoundIndex].data! as ICleanSpyQuestion;
+                ({
+                    answers: updatedAnswers,
+                    punishments
+                } = handleSpy(spyQuestion, answers, multiplier));
                 break;
             default:
                 return {success: false, error: 'Unknown Question Type'};
@@ -1204,3 +1205,199 @@ const handleCodeBreaker = (
 
     return {answers, punishments: punishmentManager.getPunishments()};
 }
+
+
+/**
+ * Handle Spy Game point and punishment calculations
+ */
+const handleSpy = (
+    question: ICleanSpyQuestion,
+    answers: IAnswer[],
+    multiplier: number
+): { answers: IAnswer[]; punishments: IPunishment[] } => {
+    const punishmentManager = new PunishmentManager();
+    const spyId = question.spy.toString();
+
+    // Initialize vote counts
+    const voteCounts: { [key: string]: number } = {};
+
+    // Track voters for the spy
+    const voters: string[] = [];
+
+    // Process each answer
+    answers.forEach((answer) => {
+        const playerId = answer.playerId.toString();
+
+        // Initialize vote count if not present
+        if (!voteCounts[playerId]) {
+            voteCounts[playerId] = 0;
+        }
+
+        // Skip the spy's own answer
+        if (playerId === spyId) {
+            return;
+        }
+
+        const guessedId = answer.answer.toString();
+
+        if (guessedId === spyId) {
+            // Correctly identified the spy
+            voteCounts[spyId] += 1;
+            voters.push(playerId);
+            answer.pointsAwarded = 100;
+            // No punishment for correct guess beyond point allocation
+        } else {
+            // Incorrectly identified another player as the spy
+            voteCounts[guessedId] = (voteCounts[guessedId] || 0) + 1;
+            answer.pointsAwarded = -50;
+            // Punishment: Drink 1 × multiplier sips for wrong guess
+            punishmentManager.addPunishment(playerId, {
+                reasons: [`Incorrectly identified the spy – drink ${multiplier} sip(s)`],
+                take: multiplier,
+            });
+        }
+    });
+
+    // Calculate spy's points
+    let spyPoints = 100; // Initial points
+    spyPoints -= voteCounts[spyId] * 25; // Deduct 25 points per vote
+
+    if (voteCounts[spyId] === 0) {
+        spyPoints += 300; // Award 300 extra points if spy gets 0 votes
+    }
+
+    // Update the spy's points in the answers array
+    const spyAnswerIndex = answers.findIndex(
+        (answer) => answer.playerId.toString() === spyId
+    );
+
+    if (spyAnswerIndex !== -1) {
+        answers[spyAnswerIndex].pointsAwarded = spyPoints;
+    } else {
+        // If the spy's answer is not present in the answers array, create a new entry
+        answers.push({
+            playerId: new Schema.Types.ObjectId(spyId),
+            questionId: question._id,
+            answer: "__SPY__",
+            answeredAt: new Date(),
+            pointsAwarded: spyPoints,
+            isCorrect: false,
+        });
+    }
+
+    // Determine if any player has the same or more votes as the spy
+    let anotherPlayerHasSameOrMoreVotes = false;
+
+    Object.keys(voteCounts).forEach((playerId) => {
+        if (playerId === spyId) return;
+        if (voteCounts[playerId] >= voteCounts[spyId]) {
+            anotherPlayerHasSameOrMoreVotes = true;
+        }
+    });
+
+    // Assign special bonuses/penalties
+    if (voteCounts[spyId] > 0) {
+        if (!anotherPlayerHasSameOrMoreVotes) {
+            // Spy has more votes than any other player
+            // Spy is caught
+            // Spy takes 2 × multiplier sips
+            punishmentManager.addPunishment(spyId, {
+                reasons: [`You were identified as the spy – drink ${2 * multiplier} sip(s)`],
+                take: 2 * multiplier,
+            });
+        } else {
+            // Another player has same or more votes than the spy
+            // Spy can give 1 × multiplier sips
+            punishmentManager.addPunishment(spyId, {
+                reasons: [`You were partially identified – give ${multiplier} sip(s)`],
+                give: multiplier,
+            });
+        }
+    } else {
+        // Spy was not caught (0 votes)
+        // All non-spies except spy drink 2 × multiplier sips
+        answers.forEach((answer) => {
+            const playerId = answer.playerId.toString();
+            if (playerId !== spyId) {
+                punishmentManager.addPunishment(playerId, {
+                    reasons: [`Spy was not identified – drink ${2 * multiplier} sip(s)`],
+                    take: 2 * multiplier,
+                });
+            }
+        });
+
+        // Spy can distribute 3 × multiplier sips
+        punishmentManager.addPunishment(spyId, {
+            reasons: [`You successfully remained hidden – give ${3 * multiplier} sip(s)`],
+            give: 3 * multiplier,
+        });
+    }
+
+    // Additional Special Rules
+    if (voteCounts[spyId] === 0) {
+        // Spy did not get any votes
+        // All non-spies drink 2 × multiplier sips (already handled above)
+        // Spy can give 3 × multiplier sips (already handled above)
+    }
+
+    // Check if spy has the most points
+    const allPlayerPoints: { [key: string]: number } = {};
+
+    answers.forEach((answer) => {
+        const pid = answer.playerId.toString();
+        allPlayerPoints[pid] = (allPlayerPoints[pid] || 0) + (answer.pointsAwarded || 0);
+    });
+
+    const spyTotalPoints = allPlayerPoints[spyId] || 0;
+
+    let spyHasMostPoints = true;
+
+    Object.keys(allPlayerPoints).forEach((playerId) => {
+        if (playerId === spyId) return;
+        if (allPlayerPoints[playerId] > spyTotalPoints) {
+            spyHasMostPoints = false;
+        }
+    });
+
+    if (spyHasMostPoints && voteCounts[spyId] > 0) {
+        // All players who voted for the spy receive +50 points each
+        voters.forEach((voterId) => {
+            const voterAnswerIndex = answers.findIndex(
+                (answer) => answer.playerId.toString() === voterId
+            );
+            if (voterAnswerIndex !== -1) {
+                answers[voterAnswerIndex].pointsAwarded! += 50;
+            } else {
+                // If the voter's answer is not present, create a new entry
+                answers.push({
+                    playerId: new Schema.Types.ObjectId(voterId),
+                    questionId: question._id,
+                    answer: spyId,
+                    answeredAt: new Date(),
+                    pointsAwarded: 50,
+                    isCorrect: true,
+                });
+            }
+        });
+    }
+
+    if (anotherPlayerHasSameOrMoreVotes) {
+        // Spy receives +30 points
+        if (spyAnswerIndex !== -1) {
+            answers[spyAnswerIndex].pointsAwarded! += 30;
+        } else {
+            answers.push({
+                playerId: new Schema.Types.ObjectId(spyId),
+                questionId: question._id,
+                answer: "__SPY__",
+                answeredAt: new Date(),
+                pointsAwarded: 30,
+                isCorrect: false,
+            });
+        }
+    }
+
+    return {answers, punishments: punishmentManager.getPunishments()};
+};
+
+export default handleSpy;

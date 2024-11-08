@@ -21,6 +21,16 @@ export interface ICleanedQuestion {
 }
 
 /**
+ * Interface representing a Cleaned Spy Question.
+ */
+export interface ICleanSpyQuestion extends ICleanedQuestion {
+    topic: string,
+    secret: { option: string, hints?: string[] }
+    spy: string
+    starter: string,
+}
+
+/**
  * Interface representing a Cleaned Multiple Choice Question.
  */
 export interface ICleanMultipleChoiceQuestion extends ICleanedQuestion {
@@ -81,6 +91,15 @@ export interface IMultipleChoiceQuestion extends IBaseQuestion {
     type: 'multiple-choice';
     options: string[]; // Array of possible answers
     correctOptionIndex: number; // Index of the correct answer in the options array
+}
+
+/**
+ * Interface representing a Spy Question.
+ */
+export interface ISpyQuestion extends IBaseQuestion {
+    type: 'spy';
+    options: { option: string, hints?: string[] }[];
+    topic: string;
 }
 
 /**
@@ -181,6 +200,16 @@ const RankingQuestionSchema = new Schema<IRankingQuestion>(
     },
     {_id: false}
 );
+/**
+ * Mongoose Schema for Spy Question.
+ */
+const SpyQuestionSchema = new Schema<ISpyQuestion>(
+    {
+        options: {type: [{option: String, hints: [String]}], required: true}, // Array of players
+        topic: {type: String, required: true},
+    },
+    {_id: false}
+);
 
 /**
  * Discriminator for Ranking Question.
@@ -207,7 +236,7 @@ export type IQuestion =
     | IMultipleChoiceQuestion
     | IWhoWouldRatherQuestion
     | IWhatWouldYouRatherQuestion
-    | IRankingQuestion;
+    | IRankingQuestion | ISpyQuestion;
 
 /**
  * Union type representing any cleaned question type.
@@ -216,7 +245,7 @@ export type ICleanQuestion =
     | ICleanMultipleChoiceQuestion
     | ICleanWhoWouldRatherQuestion
     | ICleanWhatWouldYouRatherQuestion
-    | ICleanRankingQuestion;
+    | ICleanRankingQuestion | ICleanSpyQuestion;
 
 /**
  * Export BaseQuestion as the default export.

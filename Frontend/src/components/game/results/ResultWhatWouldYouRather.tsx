@@ -3,7 +3,7 @@ import {usePlayer} from "../../../contexts/playerProvider";
 import AnswerOption from "./AnswerOption";
 import PlayersNotAnswered from "./PlayersNotAnswered";
 import CollapsibleSection from "../../CollapsibleSection";
-import {WhatWouldYouRatherQuestion} from "../../../types.ts";
+import {Question, WhatWouldYouRatherQuestion} from "../../../types.ts";
 
 const ResultWhatWouldYouRather: React.FC = () => {
     const {game} = usePlayer();
@@ -50,6 +50,7 @@ const ResultWhatWouldYouRather: React.FC = () => {
     return (
         <div className="w-full flex flex-col text-gray-200 p-8">
             <CollapsibleSection title="Show Answers">
+                <h2 className="text-lg font-bold mb-4">{(game.rounds[game.currentRoundIndex].data! as Question).question}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {groupedPlayersByOption.map((optionGroup, index) => (
                         <AnswerOption key={index} {...optionGroup} />

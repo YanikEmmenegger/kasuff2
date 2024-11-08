@@ -9,6 +9,7 @@ export const QUESTION_TYPES = [
     'who-would-rather',
     'what-would-you-rather',
     'ranking',
+    'spy',
 ] as const;
 
 export const MINI_GAME_TYPES = [

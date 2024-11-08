@@ -5,7 +5,7 @@ import {usePlayer} from '../../../contexts/playerProvider';
 import CollapsibleSection from '../../CollapsibleSection';
 import PlayersNotAnswered from './PlayersNotAnswered';
 import AnswerRanking from './AnswerRanking';
-import {RankingAnswer, RankingQuestion} from '../../../types';
+import {Question, RankingAnswer, RankingQuestion} from '../../../types';
 
 const ResultRanking: React.FC = () => {
     const {game} = usePlayer();
@@ -55,6 +55,7 @@ const ResultRanking: React.FC = () => {
         <div className="w-full flex flex-col text-gray-200 p-8">
             <CollapsibleSection title="Show Results">
                 {/* Display the Final Ranking as a card */}
+                <h2 className="text-lg font-bold mb-4">{(game.rounds[game.currentRoundIndex].data! as Question).question}</h2>
                 <div className="mb-6">
                     <div className="p-4 rounded-lg border-2 shadow-md bg-green-700 border-green-700">
                         <h3 className="text-xl font-bold mb-2 text-green-200">Final Ranking</h3>

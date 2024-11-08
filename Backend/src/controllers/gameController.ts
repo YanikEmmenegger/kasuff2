@@ -17,6 +17,7 @@ import {getQuestionById, getQuestions, prepareQuestions} from "./questionControl
 import {getEmojis} from "../utils/emojis";
 import {calculatePointsForMiniGames, calculatePointsForQuestion} from "./calculatePoints";
 import {getScrabbledWord} from "../utils/words/words";
+import {ICleanMultipleChoiceQuestion, IMultipleChoiceQuestion, IQuestion} from "../models/Question";
 
 // Timer storage object to track active timers for each game
 export const gameTimers: { [gameCode: string]: NodeJS.Timeout } = {};
@@ -479,9 +480,15 @@ export const loadNextQuestion = async (gameCode: string, io: any) => {
     // Set game state to "quiz" and emit the question to players
     game.state = 'round';
 
-    // Set question time limit +1 extra second for better timing
-    game.timeRemaining = new Date(Date.now() + (game.settings.timeLimit + 1) * 1000);
 
+    if (game.rounds[game.currentRoundIndex].data!.type === 'spy') {
+        //if the round is a spy round, set the timeRemaining to 10 Minutes
+        game.timeRemaining = new Date(Date.now() + 600000);
+        //game.timeRemaining = new Date(Date.now() + (game.settings.timeLimit + 1) * 1000);
+
+    } else {
+        game.timeRemaining = new Date(Date.now() + (game.settings.timeLimit + 1) * 1000);
+    }
     // Reset playersAnswered for the new question
     game.playersAnswered = [];
     await game.save();
@@ -542,6 +549,7 @@ export const handleResults = async (gameCode: string, io: any) => {
     updatedGame!.punishments[updatedGame!.currentRoundIndex] = punishments; // Save punishment string
     updatedGame!.answers[updatedGame!.currentRoundIndex] = answers; // Save calculated answers
 
+
     answers.forEach(answer => {
         const leaderboardEntry = updatedGame!.leaderboard.find(entry => entry.playerId.toString() === answer.playerId.toString());
         if (leaderboardEntry) {
@@ -549,9 +557,20 @@ export const handleResults = async (gameCode: string, io: any) => {
         }
     });
 
+    //if current qround is multiple choice, set the correct answer
+    const currentRound = updatedGame!.rounds[updatedGame!.currentRoundIndex];
+    if (currentRound.data!.type === 'multiple-choice') {
+        const res: OperationResult<IQuestion> = await getQuestionById(currentRound.data!._id.toString());
+        if (res.success) {
+            (currentRound.data! as ICleanMultipleChoiceQuestion).correctOptionIndex = (res.data! as IMultipleChoiceQuestion).correctOptionIndex;
+            updatedGame!.rounds[updatedGame!.currentRoundIndex] = currentRound;
+        }
+    }
+
     updatedGame!.leaderboard.sort((a, b) => b.totalPoints - a.totalPoints); // Sort leaderboard by points
     updatedGame!.state = 'results';
     await updatedGame!.save();
+    console.log(`[GAME] Results calculated for game ${gameCode}`);
 
     io.to(game.code).emit('game:state', {game: updatedGame});
 };

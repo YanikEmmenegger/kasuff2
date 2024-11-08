@@ -38,7 +38,17 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
 
     // Initialize Socket.IO connection and load player from localStorage
     useEffect(() => {
-        const newSocket = io(import.meta.env.DEV ? "http://localhost:2608" : window.location.host);
+        const newSocket = io(import.meta.env.DEV ? "http://localhost:2608" : window.location.host, {
+            transportOptions: {
+                polling: {
+                    extraHeaders: {
+                        'Socket-Allowed': 'true', // Header to bypass rate limiting
+                    },
+                },
+            },
+        });
+
+        // Set the socket state
         setSocket(newSocket);
 
         newSocket.on('connect', () => {

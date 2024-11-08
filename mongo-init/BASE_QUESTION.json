@@ -12932,6 +12932,3165 @@
       "Gravitationskollaps-Theorie"
     ],
     "correctOptionIndex": 2
+  },
+  {
+    "type": "spy",
+    "category": "General",
+    "question": "Welcher Fußballspieler ist der Spion?",
+    "options": [
+      {
+        "option": "Cristiano Ronaldo 🇵🇹",
+        "hints": [
+          "Goals",
+          "Juventus",
+          "Portugal"
+        ]
+      },
+      {
+        "option": "Neymar 🇧🇷",
+        "hints": [
+          "Paris",
+          "Brazil",
+          "Skills"
+        ]
+      },
+      {
+        "option": "James Rodríguez 🇨🇴",
+        "hints": [
+          "Playmaker",
+          "Chelsea",
+          "Colombia"
+        ]
+      },
+      {
+        "option": "Karim Benzema 🇫🇷",
+        "hints": [
+          "Real",
+          "Goals",
+          "France"
+        ]
+      },
+      {
+        "option": "Paul Pogba 🇫🇷",
+        "hints": [
+          "Juventus",
+          "Midfielder",
+          "France"
+        ]
+      },
+      {
+        "option": "Mohamed Salah 🇪🇬",
+        "hints": [
+          "Liverpool",
+          "Egypt",
+          "Speed"
+        ]
+      },
+      {
+        "option": "Antoine Griezmann 🇫🇷",
+        "hints": [
+          "Atletico",
+          "France",
+          "Forward"
+        ]
+      },
+      {
+        "option": "Paulo Dybala 🇦🇷",
+        "hints": [
+          "Roma",
+          "Argentina",
+          "Playmaker"
+        ]
+      },
+      {
+        "option": "David De Gea 🇪🇸",
+        "hints": [
+          "Manchester",
+          "Goalkeeper",
+          "Spain"
+        ]
+      },
+      {
+        "option": "Kylian Mbappé 🇫🇷",
+        "hints": [
+          "PSG",
+          "France",
+          "Speed"
+        ]
+      },
+      {
+        "option": "Robert Lewandowski 🇵🇱",
+        "hints": [
+          "Bayern",
+          "Poland",
+          "Goals"
+        ]
+      },
+      {
+        "option": "Isco 🇪🇸",
+        "hints": [
+          "Real",
+          "Spain",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Luka Modrić 🇭🇷",
+        "hints": [
+          "Real",
+          "Croatia",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Mario Götze 🇩🇪",
+        "hints": [
+          "Bayern",
+          "Germany",
+          "Goals"
+        ]
+      },
+      {
+        "option": "Manuel Neuer 🇩🇪",
+        "hints": [
+          "Bayern",
+          "Germany",
+          "Goalkeeper"
+        ]
+      },
+      {
+        "option": "Juan Mata 🇪🇸",
+        "hints": [
+          "Manchester",
+          "Spain",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Mario Balotelli 🇮🇹",
+        "hints": [
+          "Milan",
+          "Italy",
+          "Striker"
+        ]
+      },
+      {
+        "option": "Álvaro Morata 🇪🇸",
+        "hints": [
+          "Chelsea",
+          "Spain",
+          "Forward"
+        ]
+      },
+      {
+        "option": "Ivan Rakitić 🇭🇷",
+        "hints": [
+          "Sevilla",
+          "Croatia",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Thomas Müller 🇩🇪",
+        "hints": [
+          "Bayern",
+          "Germany",
+          "Forward"
+        ]
+      },
+      {
+        "option": "Chicharito 🇲🇽",
+        "hints": [
+          "Bayern",
+          "Mexico",
+          "Striker"
+        ]
+      },
+      {
+        "option": "Harry Kane 🇬🇧",
+        "hints": [
+          "Tottenham",
+          "England",
+          "Striker"
+        ]
+      },
+      {
+        "option": "Marc Bartra 🇪🇸",
+        "hints": [
+          "Barcelona",
+          "Spain",
+          "Defender"
+        ]
+      },
+      {
+        "option": "Gabriel Jesus 🇧🇷",
+        "hints": [
+          "Manchester",
+          "Brazil",
+          "Forward"
+        ]
+      },
+      {
+        "option": "Nani 🇵🇹",
+        "hints": [
+          "Atlético",
+          "Portugal",
+          "Winger"
+        ]
+      },
+      {
+        "option": "Ángel Di María 🇦🇷",
+        "hints": [
+          "Paris",
+          "Argentina",
+          "Winger"
+        ]
+      },
+      {
+        "option": "Lucas Vázquez 🇪🇸",
+        "hints": [
+          "Real",
+          "Spain",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Jérôme Boateng 🇩🇪",
+        "hints": [
+          "Bayern",
+          "Germany",
+          "Defender"
+        ]
+      },
+      {
+        "option": "Marc-André ter Stegen 🇩🇪",
+        "hints": [
+          "Barcelona",
+          "Germany",
+          "Goalkeeper"
+        ]
+      },
+      {
+        "option": "Aaron Ramsey 🇬🇧",
+        "hints": [
+          "Juventus",
+          "Wales",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Raheem Sterling 🇬🇧",
+        "hints": [
+          "Manchester",
+          "England",
+          "Winger"
+        ]
+      },
+      {
+        "option": "Carlo Ancelotti 🇮🇹",
+        "hints": [
+          "Manager",
+          "Italy",
+          "Coach"
+        ]
+      },
+      {
+        "option": "Marco Verratti 🇮🇹",
+        "hints": [
+          "PSG",
+          "Italy",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Stephan El Shaarawy 🇮🇹",
+        "hints": [
+          "AS Roma",
+          "Italy",
+          "Winger"
+        ]
+      },
+      {
+        "option": "Roberto Firmino 🇧🇷",
+        "hints": [
+          "Liverpool",
+          "Brazil",
+          "Forward"
+        ]
+      },
+      {
+        "option": "Romelu Lukaku 🇧🇪",
+        "hints": [
+          "Chelsea",
+          "Belgium",
+          "Striker"
+        ]
+      },
+      {
+        "option": "Oscar 🇧🇷",
+        "hints": [
+          "Chelsea",
+          "Brazil",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Mohamed Elneny 🇪🇬",
+        "hints": [
+          "Arsenal",
+          "Egypt",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Ousmane Dembélé 🇫🇷",
+        "hints": [
+          "Barcelona",
+          "France",
+          "Winger"
+        ]
+      },
+      {
+        "option": "Casemiro 🇧🇷",
+        "hints": [
+          "Real",
+          "Brazil",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Virgil van Dijk 🇳🇱",
+        "hints": [
+          "Liverpool",
+          "Netherlands",
+          "Defender"
+        ]
+      },
+      {
+        "option": "Sadio Mané 🇸🇳",
+        "hints": [
+          "Liverpool",
+          "Senegal",
+          "Winger"
+        ]
+      },
+      {
+        "option": "Luka Jović 🇷🇸",
+        "hints": [
+          "AC Milan",
+          "Serbia",
+          "Striker"
+        ]
+      },
+      {
+        "option": "Sergio Agüero 🇦🇷",
+        "hints": [
+          "Manchester",
+          "Argentina",
+          "Striker"
+        ]
+      },
+      {
+        "option": "Eden Hazard 🇧🇪",
+        "hints": [
+          "Real Madrid",
+          "Belgium",
+          "Winger"
+        ]
+      },
+      {
+        "option": "Frenkie de Jong 🇳🇱",
+        "hints": [
+          "Barcelona",
+          "Netherlands",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Bernardo Silva 🇵🇹",
+        "hints": [
+          "Manchester",
+          "Portugal",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Heung-Min Son 🇰🇷",
+        "hints": [
+          "Tottenham",
+          "South Korea",
+          "Winger"
+        ]
+      },
+      {
+        "option": "Riyad Mahrez 🇦🇪",
+        "hints": [
+          "Manchester",
+          "Algeria",
+          "Winger"
+        ]
+      },
+      {
+        "option": "Erling Haaland 🇳🇴",
+        "hints": [
+          "Manchester",
+          "Norway",
+          "Striker"
+        ]
+      },
+      {
+        "option": "Pedri 🇪🇸",
+        "hints": [
+          "Barcelona",
+          "Spain",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Vinícius Júnior 🇧🇷",
+        "hints": [
+          "Real",
+          "Brazil",
+          "Winger"
+        ]
+      },
+      {
+        "option": "Gavi 🇪🇸",
+        "hints": [
+          "Barcelona",
+          "Spain",
+          "Midfielder"
+        ]
+      },
+      {
+        "option": "Jadon Sancho 🇬🇧",
+        "hints": [
+          "Manchester",
+          "England",
+          "Winger"
+        ]
+      },
+      {
+        "option": "Phil Foden 🇬🇧",
+        "hints": [
+          "Manchester",
+          "England",
+          "Midfielder"
+        ]
+      }
+    ],
+    "topic": "Top Fußballspieler"
+  },
+  {
+    "type": "spy",
+    "category": "General",
+    "question": "Welche Comic-Figur ist der Spion?",
+    "options": [
+      {
+        "option": "Batman 🦇",
+        "hints": [
+          "Gotham",
+          "Bruce",
+          "Batarang"
+        ]
+      },
+      {
+        "option": "Superman 🦸‍♂️",
+        "hints": [
+          "Krypton",
+          "Clark",
+          "Lasso"
+        ]
+      },
+      {
+        "option": "Spider-Man 🕷️",
+        "hints": [
+          "Queens",
+          "Web",
+          "Peter"
+        ]
+      },
+      {
+        "option": "Wonder Woman 🦸‍♀️",
+        "hints": [
+          "Amazone",
+          "Diana",
+          "Lasso"
+        ]
+      },
+      {
+        "option": "Iron Man 🤖",
+        "hints": [
+          "Tony",
+          "Suit",
+          "Arc Reactor"
+        ]
+      },
+      {
+        "option": "Flash ⚡",
+        "hints": [
+          "Barry",
+          "Speed",
+          "Central"
+        ]
+      },
+      {
+        "option": "Green Lantern 🟢",
+        "hints": [
+          "Ring",
+          "Hal",
+          "Willis"
+        ]
+      },
+      {
+        "option": "Hulk 💪",
+        "hints": [
+          "Bruce",
+          "Gamma",
+          "Smash"
+        ]
+      },
+      {
+        "option": "Thor ⚡",
+        "hints": [
+          "Asgard",
+          "Mjölnir",
+          "Lightning"
+        ]
+      },
+      {
+        "option": "Captain America 🇺🇸",
+        "hints": [
+          "Shield",
+          "Steve",
+          "Winter"
+        ]
+      },
+      {
+        "option": "Black Widow 🕵️‍♀️",
+        "hints": [
+          "Natasha",
+          "Spy",
+          "Marvel"
+        ]
+      },
+      {
+        "option": "Aquaman 🌊",
+        "hints": [
+          "Atlantis",
+          "Trident",
+          "Ocean"
+        ]
+      },
+      {
+        "option": "Black Panther 🐾",
+        "hints": [
+          "Wakanda",
+          "T'Challa",
+          "Vibranium"
+        ]
+      },
+      {
+        "option": "Doctor Strange 🔮",
+        "hints": [
+          "Magic",
+          "Sanctum",
+          "Mystic"
+        ]
+      },
+      {
+        "option": "Green Arrow 🏹",
+        "hints": [
+          "Oliver",
+          "Archery",
+          "Star City"
+        ]
+      },
+      {
+        "option": "Deadpool 🩸",
+        "hints": [
+          "Mercenary",
+          "Regeneration",
+          "Wade"
+        ]
+      },
+      {
+        "option": "Daredevil 🥋",
+        "hints": [
+          "Blind",
+          "Hell's Kitchen",
+          "Matt"
+        ]
+      },
+      {
+        "option": "Ant-Man 🐜",
+        "hints": [
+          "Scott",
+          "Shrink",
+          "Quantum"
+        ]
+      },
+      {
+        "option": "Wolverine 🐺",
+        "hints": [
+          "Logan",
+          "Claws",
+          "X-Men"
+        ]
+      },
+      {
+        "option": "Storm 🌩️",
+        "hints": [
+          "Ororo",
+          "Weather",
+          "X-Men"
+        ]
+      },
+      {
+        "option": "Cyclops 👁️",
+        "hints": [
+          "Scott Summers",
+          "Optic",
+          "X-Men"
+        ]
+      },
+      {
+        "option": "Rogue 🦅",
+        "hints": [
+          "Ms. Marvel",
+          "Power",
+          "X-Men"
+        ]
+      },
+      {
+        "option": "Jean Grey 🌌",
+        "hints": [
+          "Phoenix",
+          "Telepathy",
+          "X-Men"
+        ]
+      },
+      {
+        "option": "Nightcrawler 👹",
+        "hints": [
+          "Kurt",
+          "Teleport",
+          "X-Men"
+        ]
+      },
+      {
+        "option": "Professor X 🧠",
+        "hints": [
+          "Charles",
+          "Telepathy",
+          "X-Men"
+        ]
+      },
+      {
+        "option": "Mystique 🐉",
+        "hints": [
+          "Raven Darkholme",
+          "Shape-shifter",
+          "X-Men"
+        ]
+      },
+      {
+        "option": "Deadshot 🎯",
+        "hints": [
+          "Floyd",
+          "Sniper",
+          "Suicide Squad"
+        ]
+      },
+      {
+        "option": "Harley Quinn 🎭",
+        "hints": [
+          "Joker",
+          "Crazy",
+          "DC"
+        ]
+      },
+      {
+        "option": "Lex Luthor 🦹‍♂️",
+        "hints": [
+          "Superman",
+          "Genius",
+          "Villain"
+        ]
+      },
+      {
+        "option": "The Joker 🤡",
+        "hints": [
+          "Clown",
+          "Chaos",
+          "Batman"
+        ]
+      },
+      {
+        "option": "Green Goblin 🎃",
+        "hints": [
+          "Norman Osborn",
+          "Spider-Man",
+          "Goblin"
+        ]
+      }
+    ],
+    "topic": "Comic Figuren"
+  },
+  {
+    "type": "spy",
+    "category": "General",
+    "question": "Welcher Hollywoodstar ist der Spion?",
+    "options": [
+      {
+        "option": "Leonardo DiCaprio 🎬",
+        "hints": [
+          "Titanic",
+          "Inception",
+          "Oscar"
+        ]
+      },
+      {
+        "option": "Meryl Streep 🎥",
+        "hints": [
+          "Mamma Mia",
+          "Oscar",
+          "Sophie"
+        ]
+      },
+      {
+        "option": "Brad Pitt 🌟",
+        "hints": [
+          "Fight Club",
+          "Once Upon",
+          "Oscar"
+        ]
+      },
+      {
+        "option": "Jennifer Lawrence 🏆",
+        "hints": [
+          "Hunger Games",
+          "Silver Linings",
+          "Oscar"
+        ]
+      },
+      {
+        "option": "Tom Hanks 🎭",
+        "hints": [
+          "Forrest Gump",
+          "Cast Away",
+          "Oscar"
+        ]
+      },
+      {
+        "option": "Scarlett Johansson 🎬",
+        "hints": [
+          "Black Widow",
+          "Avengers",
+          "Actress"
+        ]
+      },
+      {
+        "option": "Robert Downey Jr. 🦸‍♂️",
+        "hints": [
+          "Iron Man",
+          "Avengers",
+          "Tony"
+        ]
+      },
+      {
+        "option": "Angelina Jolie 🌟",
+        "hints": [
+          "Maleficent",
+          "Tomb Raider",
+          "Oscar"
+        ]
+      },
+      {
+        "option": "Denzel Washington 🎥",
+        "hints": [
+          "Training Day",
+          "Glory",
+          "Oscar"
+        ]
+      },
+      {
+        "option": "Natalie Portman 🎬",
+        "hints": [
+          "Black Swan",
+          "V for Vendetta",
+          "Oscar"
+        ]
+      },
+      {
+        "option": "Will Smith 🎤",
+        "hints": [
+          "Men in Black",
+          "Fresh Prince",
+          "Box Office"
+        ]
+      },
+      {
+        "option": "Emma Stone 🎬",
+        "hints": [
+          "La La Land",
+          "Easy A",
+          "Oscar"
+        ]
+      },
+      {
+        "option": "Tom Cruise 🚀",
+        "hints": [
+          "Mission Impossible",
+          "Top Gun",
+          "Action"
+        ]
+      },
+      {
+        "option": "Charlize Theron 🎥",
+        "hints": [
+          "Mad Max",
+          "Atomic Blonde",
+          "Oscar"
+        ]
+      },
+      {
+        "option": "Johnny Depp 🎬",
+        "hints": [
+          "Pirates",
+          "Edward",
+          "Versatile"
+        ]
+      },
+      {
+        "option": "Kate Winslet 🎥",
+        "hints": [
+          "Titanic",
+          "Eternal Sunshine",
+          "Oscar"
+        ]
+      },
+      {
+        "option": "Morgan Freeman 🎬",
+        "hints": [
+          "Shawshank",
+          "Narrator",
+          "Oscar"
+        ]
+      },
+      {
+        "option": "Julia Roberts 🌟",
+        "hints": [
+          "Pretty Woman",
+          "Erin Brockovich",
+          "Smile"
+        ]
+      },
+      {
+        "option": "George Clooney 🍸",
+        "hints": [
+          "Ocean's",
+          "Coffee",
+          "Director"
+        ]
+      },
+      {
+        "option": "Cate Blanchett 🎭",
+        "hints": [
+          "Blue Jasmine",
+          "Elizabeth",
+          "Oscar"
+        ]
+      },
+      {
+        "option": "Will Ferrell 🤡",
+        "hints": [
+          "Comedy",
+          "Anchorman",
+          "SNL"
+        ]
+      },
+      {
+        "option": "Anne Hathaway 🎬",
+        "hints": [
+          "Les Misérables",
+          "The Devil Wears Prada",
+          "Oscar"
+        ]
+      },
+      {
+        "option": "Ryan Reynolds 🎥",
+        "hints": [
+          "Deadpool",
+          "Action",
+          "Comedic"
+        ]
+      },
+      {
+        "option": "Nicole Kidman 🌟",
+        "hints": [
+          "Moulin Rouge",
+          "Oscar",
+          "Actress"
+        ]
+      },
+      {
+        "option": "Chris Hemsworth 🛡️",
+        "hints": [
+          "Thor",
+          "Marvel",
+          "Hammer"
+        ]
+      },
+      {
+        "option": "Emma Watson 📚",
+        "hints": [
+          "Harry Potter",
+          "Activist",
+          "Actress"
+        ]
+      },
+      {
+        "option": "Dwayne Johnson 🏋️‍♂️",
+        "hints": [
+          "The Rock",
+          "Action",
+          "Wrestler"
+        ]
+      },
+      {
+        "option": "Gal Gadot ⚔️",
+        "hints": [
+          "Wonder Woman",
+          "Israel",
+          "Model"
+        ]
+      },
+      {
+        "option": "Chris Evans 🦸‍♂️",
+        "hints": [
+          "Captain America",
+          "Marvel",
+          "Actor"
+        ]
+      },
+      {
+        "option": "Sandra Bullock 🎬",
+        "hints": [
+          "Gravity",
+          "Speed",
+          "Blind Side"
+        ]
+      }
+    ],
+    "topic": "Bekannteste Hollywoodstars"
+  },
+  {
+    "type": "spy",
+    "category": "General",
+    "question": "Welche Stadt ist der Spion?",
+    "options": [
+      {
+        "option": "New York City 🗽",
+        "hints": [
+          "Times Square",
+          "Statue",
+          "Broadway"
+        ]
+      },
+      {
+        "option": "Paris 🗼",
+        "hints": [
+          "Eiffelturm",
+          "Louvre",
+          "Seine"
+        ]
+      },
+      {
+        "option": "Tokyo 🗾",
+        "hints": [
+          "Shibuya",
+          "Sushi",
+          "Mount Fuji"
+        ]
+      },
+      {
+        "option": "Sydney 🦘",
+        "hints": [
+          "Opera House",
+          "Harbour",
+          "Beaches"
+        ]
+      },
+      {
+        "option": "London 🎡",
+        "hints": [
+          "Big Ben",
+          "London Eye",
+          "Buckingham"
+        ]
+      },
+      {
+        "option": "Berlin 🏰",
+        "hints": [
+          "Brandenburg",
+          "Mauer",
+          "Reichstag"
+        ]
+      },
+      {
+        "option": "Rome 🏛️",
+        "hints": [
+          "Colosseum",
+          "Vatican",
+          "Tiber"
+        ]
+      },
+      {
+        "option": "Moscow 🏯",
+        "hints": [
+          "Kreml",
+          "Red Square",
+          "Trans-Siberian"
+        ]
+      },
+      {
+        "option": "Dubai 🏙️",
+        "hints": [
+          "Burj Khalifa",
+          "Desert",
+          "Luxury"
+        ]
+      },
+      {
+        "option": "Singapore 🏝️",
+        "hints": [
+          "Marina Bay",
+          "Merlion",
+          "Changi"
+        ]
+      },
+      {
+        "option": "Barcelona 🏟️",
+        "hints": [
+          "Gaudí",
+          "La Rambla",
+          "Beach"
+        ]
+      },
+      {
+        "option": "Los Angeles 🌴",
+        "hints": [
+          "Hollywood",
+          "Venice",
+          "Sunshine"
+        ]
+      },
+      {
+        "option": "Chicago 🌆",
+        "hints": [
+          "Windy",
+          "Lake",
+          "Skyline"
+        ]
+      },
+      {
+        "option": "Istanbul 🕌",
+        "hints": [
+          "Bosphorus",
+          "Hagia Sophia",
+          "Markets"
+        ]
+      },
+      {
+        "option": "Hong Kong 🏯",
+        "hints": [
+          "Victoria Peak",
+          "Harbour",
+          "Skyscrapers"
+        ]
+      },
+      {
+        "option": "Amsterdam 🚲",
+        "hints": [
+          "Canals",
+          "Tulips",
+          "Bicycles"
+        ]
+      },
+      {
+        "option": "Toronto 🍁",
+        "hints": [
+          "CN Tower",
+          "Multicultural",
+          "Lake"
+        ]
+      },
+      {
+        "option": "Madrid 🏟️",
+        "hints": [
+          "Prado",
+          "Plaza Mayor",
+          "Football"
+        ]
+      },
+      {
+        "option": "Beijing 🏯",
+        "hints": [
+          "Great Wall",
+          "Forbidden",
+          "Temple"
+        ]
+      },
+      {
+        "option": "San Francisco 🌉",
+        "hints": [
+          "Golden Gate",
+          "Alcatraz",
+          "Hills"
+        ]
+      },
+      {
+        "option": "Mumbai 🌆",
+        "hints": [
+          "Bollywood",
+          "Gateway",
+          "Marine Drive"
+        ]
+      },
+      {
+        "option": "Vienna 🏰",
+        "hints": [
+          "Music",
+          "Palaces",
+          "Coffee"
+        ]
+      },
+      {
+        "option": "Seoul 🏯",
+        "hints": [
+          "Han River",
+          "Palaces",
+          "Technology"
+        ]
+      },
+      {
+        "option": "Buenos Aires 🇦🇷",
+        "hints": [
+          "Tango",
+          "Obelisk",
+          "Palermo"
+        ]
+      },
+      {
+        "option": "Cape Town 🏞️",
+        "hints": [
+          "Table Mountain",
+          "Robben Island",
+          "Beaches"
+        ]
+      },
+      {
+        "option": "Bangkok 🏯",
+        "hints": [
+          "Temples",
+          "Chao Phraya",
+          "Markets"
+        ]
+      },
+      {
+        "option": "Lisbon 🏰",
+        "hints": [
+          "Trams",
+          "Belem",
+          "Fado"
+        ]
+      },
+      {
+        "option": "Prague 🏰",
+        "hints": [
+          "Charles Bridge",
+          "Old Town",
+          "Castles"
+        ]
+      },
+      {
+        "option": "Budapest 🏰",
+        "hints": [
+          "Danube",
+          "Thermal",
+          "Buda"
+        ]
+      },
+      {
+        "option": "Cairo 🕌",
+        "hints": [
+          "Pyramids",
+          "Nile",
+          "Kairo"
+        ]
+      },
+      {
+        "option": "Kuala Lumpur 🏙️",
+        "hints": [
+          "Petronas",
+          "Twin Towers",
+          "Malaysia"
+        ]
+      }
+    ],
+    "topic": "Bekannteste Städte"
+  },
+  {
+    "type": "spy",
+    "category": "General",
+    "question": "Welcher Film ist der Spion?",
+    "options": [
+      {
+        "option": "Titanic 🚢",
+        "hints": [
+          "Ship",
+          "Jack",
+          "Rose"
+        ]
+      },
+      {
+        "option": "Star Wars 🌟",
+        "hints": [
+          "Jedi",
+          "Lightsaber",
+          "Skywalker"
+        ]
+      },
+      {
+        "option": "The Godfather 🐴",
+        "hints": [
+          "Corleone",
+          "Mafia",
+          "Don"
+        ]
+      },
+      {
+        "option": "Inception 🌀",
+        "hints": [
+          "Dream",
+          "Cobb",
+          "Mind"
+        ]
+      },
+      {
+        "option": "The Dark Knight 🦇",
+        "hints": [
+          "Batman",
+          "Joker",
+          "Gotham"
+        ]
+      },
+      {
+        "option": "Forrest Gump 🏃‍♂️",
+        "hints": [
+          "Run",
+          "Bubba",
+          "Shrimp"
+        ]
+      },
+      {
+        "option": "Pulp Fiction 🍔",
+        "hints": [
+          "Vince",
+          "Marsellus",
+          "Bonnie"
+        ]
+      },
+      {
+        "option": "The Matrix 🕶️",
+        "hints": [
+          "Neo",
+          "Red Pill",
+          "Morpheus"
+        ]
+      },
+      {
+        "option": "Gladiator 🏛️",
+        "hints": [
+          "Maximus",
+          "Rome",
+          "Colosseum"
+        ]
+      },
+      {
+        "option": "Avatar 🌍",
+        "hints": [
+          "Pandora",
+          "Na'vi",
+          "James"
+        ]
+      },
+      {
+        "option": "The Shawshank Redemption 🏢",
+        "hints": [
+          "Andy",
+          "Prison",
+          "Hope"
+        ]
+      },
+      {
+        "option": "Jurassic Park 🦖",
+        "hints": [
+          "Dinosaurs",
+          "Isla Nublar",
+          "Chaos Theory"
+        ]
+      },
+      {
+        "option": "The Lion King 🦁",
+        "hints": [
+          "Simba",
+          "Pride Rock",
+          "Hakuna Matata"
+        ]
+      },
+      {
+        "option": "Frozen ❄️",
+        "hints": [
+          "Elsa",
+          "Anna",
+          "Snow"
+        ]
+      },
+      {
+        "option": "The Silence of the Lambs 🐑",
+        "hints": [
+          "Hannibal",
+          "Buffalo",
+          "Clarice"
+        ]
+      },
+      {
+        "option": "Pirates of the Caribbean 🏴‍☠️",
+        "hints": [
+          "Jack Sparrow",
+          "Sea",
+          "Treasure"
+        ]
+      },
+      {
+        "option": "Interstellar 🌌",
+        "hints": [
+          "Space",
+          "Time",
+          "Love"
+        ]
+      },
+      {
+        "option": "Mad Max: Fury Road 🏎️",
+        "hints": [
+          "Desert",
+          "Mad Max",
+          "Fury"
+        ]
+      },
+      {
+        "option": "The Terminator 🤖",
+        "hints": [
+          "Skynet",
+          "T-800",
+          "Time Travel"
+        ]
+      },
+      {
+        "option": "E.T. the Extra-Terrestrial 👽",
+        "hints": [
+          "Alien",
+          "Bicycle",
+          "Home"
+        ]
+      },
+      {
+        "option": "Finding Nemo 🐠",
+        "hints": [
+          "Fish",
+          "Ocean",
+          "Dad"
+        ]
+      },
+      {
+        "option": "Beauty and the Beast 🦁",
+        "hints": [
+          "Belle",
+          "Rose",
+          "Beast"
+        ]
+      },
+      {
+        "option": "The Revenant 🐻",
+        "hints": [
+          "Survival",
+          "Bear",
+          "Hugh"
+        ]
+      },
+      {
+        "option": "Avengers: Endgame 🦸‍♂️",
+        "hints": [
+          "Thanos",
+          "Infinity",
+          "Avengers"
+        ]
+      },
+      {
+        "option": "Batman v Superman 🦇🦸‍♂️",
+        "hints": [
+          "Clash",
+          "DC",
+          "Heroes"
+        ]
+      },
+      {
+        "option": "Guardians of the Galaxy 🌌",
+        "hints": [
+          "Star-Lord",
+          "Gamora",
+          "Rocket"
+        ]
+      },
+      {
+        "option": "The Avengers 🦸‍♂️",
+        "hints": [
+          "Assemble",
+          "Heroes",
+          "Infinity"
+        ]
+      }
+    ],
+    "topic": "Bekannteste Filme"
+  },
+  {
+    "type": "spy",
+    "category": "General",
+    "question": "Welcher TV-Charakter ist der Spion?",
+    "options": [
+      {
+        "option": "Walter White 🧪",
+        "hints": [
+          "Heisenberg",
+          "Chemistry",
+          "Breaking"
+        ]
+      },
+      {
+        "option": "Daenerys Targaryen 🐉",
+        "hints": [
+          "Dragons",
+          "Khaleesi",
+          "Thrones"
+        ]
+      },
+      {
+        "option": "Eleven 👧",
+        "hints": [
+          "Telekinesis",
+          "Hawkins",
+          "Stranger"
+        ]
+      },
+      {
+        "option": "Tony Soprano 🕴️",
+        "hints": [
+          "Mafia",
+          "Bada Bing",
+          "Boss"
+        ]
+      },
+      {
+        "option": "Sheldon Cooper 🧠",
+        "hints": [
+          "Physics",
+          "Roommate",
+          "Bazinga"
+        ]
+      },
+      {
+        "option": "Jon Snow 🏰",
+        "hints": [
+          "Stark",
+          "Night's Watch",
+          "Thrones"
+        ]
+      },
+      {
+        "option": "Rick Grimes 🧟",
+        "hints": [
+          "Walking Dead",
+          "Zombie",
+          "Sheriff"
+        ]
+      },
+      {
+        "option": "Olivia Benson 👮",
+        "hints": [
+          "SVU",
+          "Detective",
+          "Law"
+        ]
+      },
+      {
+        "option": "Michael Scott 🏢",
+        "hints": [
+          "Office",
+          "Regional Manager",
+          "Dunder"
+        ]
+      },
+      {
+        "option": "Dexter Morgan 🩸",
+        "hints": [
+          "Forensic",
+          "Serial",
+          "Blood"
+        ]
+      },
+      {
+        "option": "Tyrion Lannister 🍷",
+        "hints": [
+          "Thrones",
+          "Cunning",
+          "Imprisoned"
+        ]
+      },
+      {
+        "option": "Jim Halpert 📞",
+        "hints": [
+          "Office",
+          "Pranks",
+          "Pam"
+        ]
+      },
+      {
+        "option": "Rachel Green 👗",
+        "hints": [
+          "Friends",
+          "Fashion",
+          "Central Perk"
+        ]
+      },
+      {
+        "option": "Ross Geller 🦕",
+        "hints": [
+          "Dinosaur",
+          "Friends",
+          "Paleontologist"
+        ]
+      },
+      {
+        "option": "Phoebe Buffay 🎸",
+        "hints": [
+          "Friends",
+          "Guitar",
+          "Smelly Cat"
+        ]
+      },
+      {
+        "option": "Monica Geller 🍽️",
+        "hints": [
+          "Friends",
+          "Chef",
+          "Organized"
+        ]
+      },
+      {
+        "option": "Chandler Bing 📱",
+        "hints": [
+          "Friends",
+          "Sarcasm",
+          "Office"
+        ]
+      },
+      {
+        "option": "Carrie Bradshaw 👜",
+        "hints": [
+          "Sex and the City",
+          "Writer",
+          "Manhattan"
+        ]
+      },
+      {
+        "option": "Sherlock Holmes 🔍",
+        "hints": [
+          "Detective",
+          "London",
+          "Baker Street"
+        ]
+      },
+      {
+        "option": "Daryl Dixon 🏹",
+        "hints": [
+          "Walking Dead",
+          "Hunter",
+          "Crossbow"
+        ]
+      },
+      {
+        "option": "Sansa Stark 👸",
+        "hints": [
+          "Thrones",
+          "North",
+          "Resilient"
+        ]
+      },
+      {
+        "option": "Arya Stark ⚔️",
+        "hints": [
+          "Thrones",
+          "Assassin",
+          "Needle"
+        ]
+      },
+      {
+        "option": "Jesse Pinkman 💊",
+        "hints": [
+          "Breaking Bad",
+          "Meth",
+          "Partner"
+        ]
+      },
+      {
+        "option": "Kramer 🚪",
+        "hints": [
+          "Seinfeld",
+          "Neighbors",
+          "Eccentric"
+        ]
+      },
+      {
+        "option": "George Costanza 🕴️",
+        "hints": [
+          "Seinfeld",
+          "Comedian",
+          "Anxious"
+        ]
+      },
+      {
+        "option": "Jerry Seinfeld 😂",
+        "hints": [
+          "Seinfeld",
+          "Comedian",
+          "Observant"
+        ]
+      },
+      {
+        "option": "Elaine Benes 🏃‍♀️",
+        "hints": [
+          "Seinfeld",
+          "Dancer",
+          "Assertive"
+        ]
+      },
+      {
+        "option": "Piper Chapman 🔒",
+        "hints": [
+          "Orange is the New Black",
+          "Prison",
+          "Journey"
+        ]
+      },
+      {
+        "option": "Ned Stark 🏰",
+        "hints": [
+          "Thrones",
+          "Honor",
+          "Winterfell"
+        ]
+      },
+      {
+        "option": "The Doctor 🕰️",
+        "hints": [
+          "Time Travel",
+          "Regeneration",
+          "Who"
+        ]
+      },
+      {
+        "option": "Bugs Bunny 🐰",
+        "hints": [
+          "Looney",
+          "Carrot",
+          "Tricks"
+        ]
+      },
+      {
+        "option": "Batman 🦇",
+        "hints": [
+          "Gotham",
+          "Bruce",
+          "Justice"
+        ]
+      },
+      {
+        "option": "Spider-Man 🕷️",
+        "hints": [
+          "Queens",
+          "Web",
+          "Peter"
+        ]
+      }
+    ],
+    "topic": "Bekannteste TV Charaktere"
+  },
+  {
+    "type": "spy",
+    "category": "General",
+    "question": "Welche historische Persönlichkeit ist der Spion?",
+    "options": [
+      {
+        "option": "Julius Caesar 🇮🇹",
+        "hints": [
+          "Römisch",
+          "General",
+          "Diktator"
+        ]
+      },
+      {
+        "option": "Cleopatra 🇪🇬",
+        "hints": [
+          "Ägypten",
+          "Pharao",
+          "Mark Antony"
+        ]
+      },
+      {
+        "option": "Abraham Lincoln 🇺🇸",
+        "hints": [
+          "President",
+          "Emancipation",
+          "Civil War"
+        ]
+      },
+      {
+        "option": "Mahatma Gandhi 🇮🇳",
+        "hints": [
+          "Nonviolence",
+          "India",
+          "Independence"
+        ]
+      },
+      {
+        "option": "Winston Churchill 🇬🇧",
+        "hints": [
+          "Britain",
+          "WWII",
+          "Prime Minister"
+        ]
+      },
+      {
+        "option": "Albert Einstein 🇩🇪",
+        "hints": [
+          "Relativity",
+          "Physics",
+          "Nobel"
+        ]
+      },
+      {
+        "option": "Nelson Mandela 🇿🇦",
+        "hints": [
+          "Apartheid",
+          "South Africa",
+          "President"
+        ]
+      },
+      {
+        "option": "Martin Luther King Jr. 🇺🇸",
+        "hints": [
+          "Civil Rights",
+          "Dream",
+          "Montgomery"
+        ]
+      },
+      {
+        "option": "Marie Curie 🇵🇱",
+        "hints": [
+          "Radioactivity",
+          "Nobel",
+          "Poland"
+        ]
+      },
+      {
+        "option": "Leonardo da Vinci 🇮🇹",
+        "hints": [
+          "Renaissance",
+          "Artist",
+          "Inventor"
+        ]
+      },
+      {
+        "option": "Alexander der Große 🇬🇷",
+        "hints": [
+          "Mazedonien",
+          "Empire",
+          "Conqueror"
+        ]
+      },
+      {
+        "option": "George Washington 🇺🇸",
+        "hints": [
+          "President",
+          "Revolution",
+          "Founding Father"
+        ]
+      },
+      {
+        "option": "Joan of Arc 🇫🇷",
+        "hints": [
+          "France",
+          "Heroine",
+          "Martyr"
+        ]
+      },
+      {
+        "option": "Napoleon Bonaparte 🇫🇷",
+        "hints": [
+          "Emperor",
+          "Conqueror",
+          "Waterloo"
+        ]
+      },
+      {
+        "option": "Isaac Newton 🇬🇧",
+        "hints": [
+          "Gravity",
+          "Laws",
+          "Physics"
+        ]
+      },
+      {
+        "option": "Sokrates 🇬🇷",
+        "hints": [
+          "Philosopher",
+          "Athens",
+          "Dialogues"
+        ]
+      },
+      {
+        "option": "Siddhartha Gautama 🇮🇳",
+        "hints": [
+          "Buddha",
+          "Enlightenment",
+          "Meditation"
+        ]
+      },
+      {
+        "option": "Galileo Galilei 🇮🇹",
+        "hints": [
+          "Telescope",
+          "Astronomy",
+          "Heliocentric"
+        ]
+      },
+      {
+        "option": "Karl Marx 🇩🇪",
+        "hints": [
+          "Communism",
+          "Das Kapital",
+          "Theory"
+        ]
+      },
+      {
+        "option": "Vincent van Gogh 🇳🇱",
+        "hints": [
+          "Starry Night",
+          "Painter",
+          "Post-Impressionist"
+        ]
+      },
+      {
+        "option": "Catherine die Große 🇷🇺",
+        "hints": [
+          "Empress",
+          "Russia",
+          "Expansion"
+        ]
+      },
+      {
+        "option": "Genghis Khan 🇲🇳",
+        "hints": [
+          "Mongol",
+          "Empire",
+          "Conqueror"
+        ]
+      },
+      {
+        "option": "Queen Victoria 🇬🇧",
+        "hints": [
+          "Victorian Era",
+          "Empire",
+          "Monarch"
+        ]
+      },
+      {
+        "option": "Sigmund Freud 🇦🇹",
+        "hints": [
+          "Psychoanalysis",
+          "Mind",
+          "Unconscious"
+        ]
+      },
+      {
+        "option": "Charles Darwin 🇬🇧",
+        "hints": [
+          "Evolution",
+          "Species",
+          "Natural Selection"
+        ]
+      },
+      {
+        "option": "Leon Trotsky 🇷🇺",
+        "hints": [
+          "Revolution",
+          "Exile",
+          "Communism"
+        ]
+      },
+      {
+        "option": "Frida Kahlo 🇲🇽",
+        "hints": [
+          "Artist",
+          "Mexico",
+          "Self-Portraits"
+        ]
+      },
+      {
+        "option": "Thomas Jefferson 🇺🇸",
+        "hints": [
+          "Declaration",
+          "President",
+          "Monticello"
+        ]
+      },
+      {
+        "option": "Pablo Picasso 🇪🇸",
+        "hints": [
+          "Cubism",
+          "Artist",
+          "Blue Period"
+        ]
+      },
+      {
+        "option": "Rosa Parks 🇺🇸",
+        "hints": [
+          "Civil Rights",
+          "Bus",
+          "Montgomery"
+        ]
+      },
+      {
+        "option": "Che Guevara 🇨🇴",
+        "hints": [
+          "Revolutionary",
+          "Cuba",
+          "Icon"
+        ]
+      },
+      {
+        "option": "Suleiman der Prächtige 🇹🇷",
+        "hints": [
+          "Ottoman",
+          "Emperor",
+          "Lawgiver"
+        ]
+      },
+      {
+        "option": "William Shakespeare 🇬🇧",
+        "hints": [
+          "Playwright",
+          "Romeo",
+          "Hamlet"
+        ]
+      },
+      {
+        "option": "Benito Mussolini 🇮🇹",
+        "hints": [
+          "Fascism",
+          "Italy",
+          "Dictator"
+        ]
+      },
+      {
+        "option": "Margaret Thatcher 🇬🇧",
+        "hints": [
+          "Prime Minister",
+          "Iron Lady",
+          "Conservative"
+        ]
+      },
+      {
+        "option": "Mao Zedong 🇨🇳",
+        "hints": [
+          "Communism",
+          "China",
+          "Revolution"
+        ]
+      },
+      {
+        "option": "Julius Nyerere 🇹🇿",
+        "hints": [
+          "Tanzania",
+          "Socialism",
+          "President"
+        ]
+      },
+      {
+        "option": "Eleanor Roosevelt 🇺🇸",
+        "hints": [
+          "UN",
+          "Human Rights",
+          "First Lady"
+        ]
+      },
+      {
+        "option": "Emmeline Pankhurst 🇬🇧",
+        "hints": [
+          "Suffrage",
+          "Votes",
+          "Activist"
+        ]
+      },
+      {
+        "option": "Simón Bolívar 🇻🇪",
+        "hints": [
+          "Liberation",
+          "South America",
+          "El Libertador"
+        ]
+      },
+      {
+        "option": "Harriet Tubman 🇺🇸",
+        "hints": [
+          "Underground Railroad",
+          "Freedom",
+          "Abolitionist"
+        ]
+      },
+      {
+        "option": "J.R.R. Tolkien 🇬🇧",
+        "hints": [
+          "Lord of the Rings",
+          "Middle-earth",
+          "Author"
+        ]
+      },
+      {
+        "option": "Ada Lovelace 🇬🇧",
+        "hints": [
+          "Computer",
+          "Analytical Engine",
+          "Mathematician"
+        ]
+      },
+      {
+        "option": "Florence Nightingale 🇬🇧",
+        "hints": [
+          "Nursing",
+          "Crimean War",
+          "Reform"
+        ]
+      },
+      {
+        "option": "Ramses II 🇪🇬",
+        "hints": [
+          "Pharaoh",
+          "Egypt",
+          "Monuments"
+        ]
+      }
+    ],
+    "topic": "Historische Persönlichkeiten"
+  },
+  {
+    "type": "spy",
+    "category": "General",
+    "question": "Welche Marke ist der Spion?",
+    "options": [
+      {
+        "option": "Apple 🍎",
+        "hints": [
+          "iPhone",
+          "Mac",
+          "Innovation"
+        ]
+      },
+      {
+        "option": "Nike 👟",
+        "hints": [
+          "Swoosh",
+          "Shoes",
+          "Athletics"
+        ]
+      },
+      {
+        "option": "Coca-Cola 🥤",
+        "hints": [
+          "Softdrink",
+          "Red",
+          "Beverage"
+        ]
+      },
+      {
+        "option": "Samsung 📱",
+        "hints": [
+          "Electronics",
+          "Galaxy",
+          "Korea"
+        ]
+      },
+      {
+        "option": "Toyota 🚗",
+        "hints": [
+          "Cars",
+          "Japan",
+          "Reliability"
+        ]
+      },
+      {
+        "option": "Microsoft 💻",
+        "hints": [
+          "Windows",
+          "Office",
+          "Software"
+        ]
+      },
+      {
+        "option": "Google 🌐",
+        "hints": [
+          "Search",
+          "Android",
+          "Alphabet"
+        ]
+      },
+      {
+        "option": "Amazon 📦",
+        "hints": [
+          "E-commerce",
+          "Prime",
+          "Cloud"
+        ]
+      },
+      {
+        "option": "Adidas 👕",
+        "hints": [
+          "Three Stripes",
+          "Shoes",
+          "Sportswear"
+        ]
+      },
+      {
+        "option": "Sony 🎮",
+        "hints": [
+          "PlayStation",
+          "Electronics",
+          "Entertainment"
+        ]
+      },
+      {
+        "option": "Mercedes-Benz 🚙",
+        "hints": [
+          "Luxury",
+          "Cars",
+          "Germany"
+        ]
+      },
+      {
+        "option": "Pepsi 🥤",
+        "hints": [
+          "Softdrink",
+          "Blue",
+          "Beverage"
+        ]
+      },
+      {
+        "option": "Intel 🖥️",
+        "hints": [
+          "Processors",
+          "CPU",
+          "Technology"
+        ]
+      },
+      {
+        "option": "BMW 🚘",
+        "hints": [
+          "Luxury",
+          "Cars",
+          "Germany"
+        ]
+      },
+      {
+        "option": "Facebook 📘",
+        "hints": [
+          "Social Media",
+          "Mark Zuckerberg",
+          "Meta"
+        ]
+      },
+      {
+        "option": "Starbucks ☕",
+        "hints": [
+          "Coffee",
+          "Frappuccino",
+          "Seattle"
+        ]
+      },
+      {
+        "option": "Honda 🏍️",
+        "hints": [
+          "Motorcycles",
+          "Cars",
+          "Japan"
+        ]
+      },
+      {
+        "option": "Visa 💳",
+        "hints": [
+          "Payment",
+          "Cards",
+          "Finance"
+        ]
+      },
+      {
+        "option": "McDonald's 🍔",
+        "hints": [
+          "Fast Food",
+          "Burgers",
+          "Golden Arches"
+        ]
+      },
+      {
+        "option": "IBM 🖥️",
+        "hints": [
+          "Technology",
+          "Computers",
+          "Innovation"
+        ]
+      },
+      {
+        "option": "L'Oréal 💄",
+        "hints": [
+          "Cosmetics",
+          "Beauty",
+          "France"
+        ]
+      },
+      {
+        "option": "Tesla 🚀",
+        "hints": [
+          "Electric",
+          "Cars",
+          "Elon"
+        ]
+      },
+      {
+        "option": "HP 🖨️",
+        "hints": [
+          "Printers",
+          "Computers",
+          "Electronics"
+        ]
+      },
+      {
+        "option": "Louis Vuitton 👜",
+        "hints": [
+          "Luxury",
+          "Fashion",
+          "Monogram"
+        ]
+      },
+      {
+        "option": "KFC 🍗",
+        "hints": [
+          "Fried Chicken",
+          "Colonel",
+          "Fast Food"
+        ]
+      },
+      {
+        "option": "Audi 🚗",
+        "hints": [
+          "Four Rings",
+          "Cars",
+          "Germany"
+        ]
+      },
+      {
+        "option": "Dell 💻",
+        "hints": [
+          "Computers",
+          "Technology",
+          "Laptops"
+        ]
+      },
+      {
+        "option": "Puma 👟",
+        "hints": [
+          "Sportswear",
+          "Shoes",
+          "Sprint"
+        ]
+      },
+      {
+        "option": "LG 🇰🇷",
+        "hints": [
+          "Electronics",
+          "Korea",
+          "Home Appliances"
+        ]
+      },
+      {
+        "option": "Canon 📷",
+        "hints": [
+          "Cameras",
+          "Imaging",
+          "Photography"
+        ]
+      },
+      {
+        "option": "Nintendo 🎮",
+        "hints": [
+          "Gaming",
+          "Switch",
+          "Mario"
+        ]
+      },
+      {
+        "option": "H&M 👗",
+        "hints": [
+          "Fashion",
+          "Clothing",
+          "Retail"
+        ]
+      },
+      {
+        "option": "Rolex ⌚",
+        "hints": [
+          "Luxury",
+          "Watches",
+          "Switzerland"
+        ]
+      },
+      {
+        "option": "Panasonic 📺",
+        "hints": [
+          "Electronics",
+          "Japan",
+          "Home Appliances"
+        ]
+      },
+      {
+        "option": "IKEA 🛋️",
+        "hints": [
+          "Furniture",
+          "Sweden",
+          "Flatpack"
+        ]
+      },
+      {
+        "option": "Nestlé 🍫",
+        "hints": [
+          "Food",
+          "Beverages",
+          "Switzerland"
+        ]
+      },
+      {
+        "option": "Siemens ⚙️",
+        "hints": [
+          "Engineering",
+          "Technology",
+          "Germany"
+        ]
+      },
+      {
+        "option": "Heinz 🍅",
+        "hints": [
+          "Ketchup",
+          "Food",
+          "Tomato"
+        ]
+      },
+      {
+        "option": "FedEx 📦",
+        "hints": [
+          "Delivery",
+          "Logistics",
+          "Packages"
+        ]
+      },
+      {
+        "option": "Under Armour 👕",
+        "hints": [
+          "Sportswear",
+          "Apparel",
+          "Fitness"
+        ]
+      },
+      {
+        "option": "TikTok 🎵",
+        "hints": [
+          "Social Media",
+          "Short Videos",
+          "Dance"
+        ]
+      },
+      {
+        "option": "Red Bull 🥤",
+        "hints": [
+          "Energy Drink",
+          "Wings",
+          "Caffeine"
+        ]
+      },
+      {
+        "option": "Zara 👗",
+        "hints": [
+          "Fashion",
+          "Fast Fashion",
+          "Spain"
+        ]
+      },
+      {
+        "option": "Patagonia 🧥",
+        "hints": [
+          "Outdoor",
+          "Clothing",
+          "Sustainability"
+        ]
+      },
+      {
+        "option": "Snapchat 👻",
+        "hints": [
+          "Social Media",
+          "Filters",
+          "Messages"
+        ]
+      },
+      {
+        "option": "Spotify 🎧",
+        "hints": [
+          "Music",
+          "Streaming",
+          "Playlists"
+        ]
+      },
+      {
+        "option": "Alibaba 🛒",
+        "hints": [
+          "E-commerce",
+          "China",
+          "Retail"
+        ]
+      }
+    ],
+    "topic": "Marken und Unternehmen"
+  },
+  {
+    "type": "spy",
+    "category": "General",
+    "question": "Welches Wahrzeichen ist der Spion?",
+    "options": [
+      {
+        "option": "Eiffelturm 🇫🇷",
+        "hints": [
+          "Paris",
+          "Iron",
+          "Tourism"
+        ]
+      },
+      {
+        "option": "Freiheitsstatue 🇺🇸",
+        "hints": [
+          "New York",
+          "Freedom",
+          "Torch"
+        ]
+      },
+      {
+        "option": "Taj Mahal 🇮🇳",
+        "hints": [
+          "Agra",
+          "Mausoleum",
+          "Love"
+        ]
+      },
+      {
+        "option": "Große Mauer 🇨🇳",
+        "hints": [
+          "China",
+          "Fortress",
+          "History"
+        ]
+      },
+      {
+        "option": "Pyramiden von Gizeh 🇪🇬",
+        "hints": [
+          "Egypt",
+          "Pharaohs",
+          "Sphinx"
+        ]
+      },
+      {
+        "option": "Big Ben 🇬🇧",
+        "hints": [
+          "London",
+          "Clock",
+          "Tower"
+        ]
+      },
+      {
+        "option": "Sydney Opera House 🇦🇺",
+        "hints": [
+          "Sydney",
+          "Architecture",
+          "Performance"
+        ]
+      },
+      {
+        "option": "Christus der Erlöser 🇧🇷",
+        "hints": [
+          "Rio",
+          "Statue",
+          "Jesus"
+        ]
+      },
+      {
+        "option": "Mount Rushmore 🇺🇸",
+        "hints": [
+          "South Dakota",
+          "Presidents",
+          "Granite"
+        ]
+      },
+      {
+        "option": "Stonehenge 🇬🇧",
+        "hints": [
+          "England",
+          "Monoliths",
+          "Mystery"
+        ]
+      },
+      {
+        "option": "Statue of Liberty 🇺🇸",
+        "hints": [
+          "New York",
+          "Gift",
+          "Freedom"
+        ]
+      },
+      {
+        "option": "Leaning Tower of Pisa 🇮🇹",
+        "hints": [
+          "Pisa",
+          "Tilted",
+          "Italy"
+        ]
+      },
+      {
+        "option": "Easter Island Moai 🇨🇱",
+        "hints": [
+          "Chile",
+          "Statues",
+          "Pacific"
+        ]
+      },
+      {
+        "option": "Petronas Towers 🇲🇾",
+        "hints": [
+          "Kuala Lumpur",
+          "Twin",
+          "Skyscrapers"
+        ]
+      },
+      {
+        "option": "Opera House 🇦🇺",
+        "hints": [
+          "Sydney",
+          "Architecture",
+          "Performances"
+        ]
+      },
+      {
+        "option": "Versailles Palace 🇫🇷",
+        "hints": [
+          "France",
+          "Palace",
+          "Gardens"
+        ]
+      },
+      {
+        "option": "Forbidden City 🇨🇳",
+        "hints": [
+          "Beijing",
+          "Imperial",
+          "Palace"
+        ]
+      },
+      {
+        "option": "Niagara Falls 🇨🇦🇺🇸",
+        "hints": [
+          "Waterfall",
+          "Border",
+          "Tourism"
+        ]
+      },
+      {
+        "option": "Hagia Sophia 🇹🇷",
+        "hints": [
+          "Istanbul",
+          "Mosque",
+          "Museum"
+        ]
+      },
+      {
+        "option": "Gateway Arch 🇺🇸",
+        "hints": [
+          "St. Louis",
+          "Missouri",
+          "Arch"
+        ]
+      },
+      {
+        "option": "Lotus Temple 🇮🇳",
+        "hints": [
+          "Delhi",
+          "Baha'i",
+          "Architecture"
+        ]
+      },
+      {
+        "option": "Uluru 🇦🇺",
+        "hints": [
+          "Ayers Rock",
+          "Australia",
+          "Monolith"
+        ]
+      },
+      {
+        "option": "Louvre Pyramid 🇫🇷",
+        "hints": [
+          "Paris",
+          "Glass",
+          "Museum"
+        ]
+      },
+      {
+        "option": "Space Needle 🇺🇸",
+        "hints": [
+          "Seattle",
+          "Observation",
+          "Tower"
+        ]
+      },
+      {
+        "option": "Grand Canyon 🇺🇸",
+        "hints": [
+          "Arizona",
+          "Natural",
+          "Chasm"
+        ]
+      },
+      {
+        "option": "Yellowstone National Park 🇺🇸",
+        "hints": [
+          "Geothermal",
+          "Park",
+          "USA"
+        ]
+      },
+      {
+        "option": "Sistine Chapel 🇮🇹",
+        "hints": [
+          "Vatican",
+          "Art",
+          "Michelangelo"
+        ]
+      },
+      {
+        "option": "Blue Mosque 🇹🇷",
+        "hints": [
+          "Istanbul",
+          "Islamic",
+          "Architecture"
+        ]
+      },
+      {
+        "option": "Mount Fuji 🇯🇵",
+        "hints": [
+          "Japan",
+          "Volcano",
+          "Symbol"
+        ]
+      }
+    ],
+    "topic": "Bekannteste Wahrzeichen der Welt"
+  },
+  {
+    "type": "spy",
+    "category": "General",
+    "question": "Welches Landtier ist der Spion?",
+    "options": [
+      {
+        "option": "Elefant 🐘",
+        "hints": [
+          "Africa",
+          "Trunk",
+          "Herbivore"
+        ]
+      },
+      {
+        "option": "Löwe 🦁",
+        "hints": [
+          "King",
+          "Savannah",
+          "Mane"
+        ]
+      },
+      {
+        "option": "Giraffe 🦒",
+        "hints": [
+          "Neck",
+          "Tall",
+          "Spot"
+        ]
+      },
+      {
+        "option": "Tiger 🐅",
+        "hints": [
+          "Stripes",
+          "Asia",
+          "Carnivore"
+        ]
+      },
+      {
+        "option": "Pinguin 🐧",
+        "hints": [
+          "Antarctica",
+          "Flightless",
+          "Black-and-white"
+        ]
+      },
+      {
+        "option": "Känguru 🦘",
+        "hints": [
+          "Australia",
+          "Pouch",
+          "Jump"
+        ]
+      },
+      {
+        "option": "Panda 🐼",
+        "hints": [
+          "China",
+          "Bamboo",
+          "Black-and-white"
+        ]
+      },
+      {
+        "option": "Krokodil 🐊",
+        "hints": [
+          "Reptile",
+          "Water",
+          "Dangerous"
+        ]
+      },
+      {
+        "option": "Bär 🐻",
+        "hints": [
+          "Forest",
+          "Hibernate",
+          "Claws"
+        ]
+      },
+      {
+        "option": "Fuchs 🦊",
+        "hints": [
+          "Cunning",
+          "Red",
+          "Wildlife"
+        ]
+      },
+      {
+        "option": "Gorilla 🦍",
+        "hints": [
+          "Primates",
+          "Strength",
+          "Africa"
+        ]
+      },
+      {
+        "option": "Känguru 🦘",
+        "hints": [
+          "Australia",
+          "Marsupial",
+          "Jump"
+        ]
+      },
+      {
+        "option": "Orang-Utan 🦧",
+        "hints": [
+          "Forest",
+          "Intelligent",
+          "Primates"
+        ]
+      },
+      {
+        "option": "Nashorn 🦏",
+        "hints": [
+          "Horn",
+          "Africa",
+          "Endangered"
+        ]
+      },
+      {
+        "option": "Wolf 🐺",
+        "hints": [
+          "Pack",
+          "Howl",
+          "Forest"
+        ]
+      },
+      {
+        "option": "Schwertwal 🐋",
+        "hints": [
+          "Orca",
+          "Ocean",
+          "Predator"
+        ]
+      },
+      {
+        "option": "Flamingo 🦩",
+        "hints": [
+          "Pink",
+          "Wading",
+          "Bird"
+        ]
+      },
+      {
+        "option": "Jaguar 🐆",
+        "hints": [
+          "Rainforest",
+          "Spot",
+          "Panther"
+        ]
+      },
+      {
+        "option": "Seelöwe 🦭",
+        "hints": [
+          "Marine",
+          "Flippers",
+          "California"
+        ]
+      },
+      {
+        "option": "Nilpferd 🦛",
+        "hints": [
+          "Africa",
+          "River",
+          "Amphibious"
+        ]
+      },
+      {
+        "option": "Chamäleon 🦎",
+        "hints": [
+          "Color",
+          "Tail",
+          "Reptile"
+        ]
+      },
+      {
+        "option": "Koala 🐨",
+        "hints": [
+          "Australia",
+          "Eucalyptus",
+          "Marsupial"
+        ]
+      },
+      {
+        "option": "Oktopus 🐙",
+        "hints": [
+          "Eight",
+          "Tentacles",
+          "Ocean"
+        ]
+      },
+      {
+        "option": "Nashornfisch 🐟",
+        "hints": [
+          "Bright",
+          "Reef",
+          "Clownfish"
+        ]
+      },
+      {
+        "option": "Austernfischer 🐟",
+        "hints": [
+          "Pearl",
+          "Shell",
+          "Dive"
+        ]
+      },
+      {
+        "option": "Seestern ⭐",
+        "hints": [
+          "Regeneration",
+          "Starfish",
+          "Ocean"
+        ]
+      },
+      {
+        "option": "Robbe 🦭",
+        "hints": [
+          "Fur",
+          "Climbing",
+          "Cold"
+        ]
+      },
+      {
+        "option": "Salamander 🦎",
+        "hints": [
+          "Amphibian",
+          "Lizard",
+          "Regeneration"
+        ]
+      }
+    ],
+    "topic": "Bekannteste Landtiere"
+  },
+  {
+    "type": "spy",
+    "category": "General",
+    "question": "Welches Unterwassertier ist der Spion?",
+    "options": [
+      {
+        "option": "Hai 🦈",
+        "hints": [
+          "Predator",
+          "Teeth",
+          "Ocean"
+        ]
+      },
+      {
+        "option": "Delfin 🐬",
+        "hints": [
+          "Intelligent",
+          "Playful",
+          "Pods"
+        ]
+      },
+      {
+        "option": "Tintenfisch 🦑",
+        "hints": [
+          "Ink",
+          "Tentacles",
+          "Camouflage"
+        ]
+      },
+      {
+        "option": "Qualle 🦠",
+        "hints": [
+          "Sting",
+          "Gelatinous",
+          "Tentacles"
+        ]
+      },
+      {
+        "option": "Seepferdchen 🐴",
+        "hints": [
+          "Male Pregnancy",
+          "Tiny",
+          "Marine"
+        ]
+      },
+      {
+        "option": "Wal 🐋",
+        "hints": [
+          "Baleen",
+          "Songs",
+          "Massive"
+        ]
+      },
+      {
+        "option": "Seestern ⭐",
+        "hints": [
+          "Regeneration",
+          "Starfish",
+          "Ocean"
+        ]
+      },
+      {
+        "option": "Robbe 🦭",
+        "hints": [
+          "Fur",
+          "Climbing",
+          "Cold"
+        ]
+      },
+      {
+        "option": "Nashornfisch 🐟",
+        "hints": [
+          "Bright",
+          "Reef",
+          "Clownfish"
+        ]
+      },
+      {
+        "option": "Austernfischer 🐟",
+        "hints": [
+          "Pearl",
+          "Shell",
+          "Dive"
+        ]
+      },
+      {
+        "option": "Seepferdchen 🐴",
+        "hints": [
+          "Male Pregnancy",
+          "Tiny",
+          "Marine"
+        ]
+      },
+      {
+        "option": "Manta 🦈",
+        "hints": [
+          "Giant",
+          "Graceful",
+          "Ocean"
+        ]
+      },
+      {
+        "option": "Kaiserfisch 🐠",
+        "hints": [
+          "Reef",
+          "Colorful",
+          "Fish"
+        ]
+      },
+      {
+        "option": "Seepferdchen 🐴",
+        "hints": [
+          "Male Pregnancy",
+          "Tiny",
+          "Marine"
+        ]
+      },
+      {
+        "option": "Plastikfisch 🐠",
+        "hints": [
+          "Pollution",
+          "Ocean",
+          "Fake"
+        ]
+      },
+      {
+        "option": "Seelöwe 🦭",
+        "hints": [
+          "Marine",
+          "Flippers",
+          "California"
+        ]
+      },
+      {
+        "option": "Walhai 🦈",
+        "hints": [
+          "Largest",
+          "Filter",
+          "Gentle"
+        ]
+      },
+      {
+        "option": "Seepferdchen 🐴",
+        "hints": [
+          "Male Pregnancy",
+          "Tiny",
+          "Marine"
+        ]
+      },
+      {
+        "option": "Korallen 🪸",
+        "hints": [
+          "Reef",
+          "Colorful",
+          "Marine"
+        ]
+      },
+      {
+        "option": "Tintenfisch 🦑",
+        "hints": [
+          "Ink",
+          "Tentacles",
+          "Camouflage"
+        ]
+      },
+      {
+        "option": "Hummer 🦞",
+        "hints": [
+          "Crustacean",
+          "Ocean",
+          "Claws"
+        ]
+      },
+      {
+        "option": "Seepferdchen 🐴",
+        "hints": [
+          "Male Pregnancy",
+          "Tiny",
+          "Marine"
+        ]
+      },
+      {
+        "option": "Seestern ⭐",
+        "hints": [
+          "Regeneration",
+          "Starfish",
+          "Ocean"
+        ]
+      },
+      {
+        "option": "Seepferdchen 🐴",
+        "hints": [
+          "Male Pregnancy",
+          "Tiny",
+          "Marine"
+        ]
+      },
+      {
+        "option": "Seepferdchen 🐴",
+        "hints": [
+          "Male Pregnancy",
+          "Tiny",
+          "Marine"
+        ]
+      },
+      {
+        "option": "Seepferdchen 🐴",
+        "hints": [
+          "Male Pregnancy",
+          "Tiny",
+          "Marine"
+        ]
+      },
+      {
+        "option": "Seepferdchen 🐴",
+        "hints": [
+          "Male Pregnancy",
+          "Tiny",
+          "Marine"
+        ]
+      },
+      {
+        "option": "Seepferdchen 🐴",
+        "hints": [
+          "Male Pregnancy",
+          "Tiny",
+          "Marine"
+        ]
+      }
+    ],
+    "topic": "Bekannteste Unterwasser Tiere"
   }
 ]
-

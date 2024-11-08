@@ -23,6 +23,7 @@ services:
       - mongodb
     environment:
       - MONGO_URI=${MONGO_URI}
+      - NODE_ENV=production
       - JWT_SECRET=${JWT_SECRET}
     networks:
       - internal
