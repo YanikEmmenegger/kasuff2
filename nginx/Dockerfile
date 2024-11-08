@@ -1,7 +1,7 @@
 # /nginx/Dockerfile
 
 # Use the official Nginx image based on Alpine for a lightweight footprint
-FROM nginx:5.0.14-alpine
+FROM  nginx:alpine
 
 # Remove the default Nginx configuration to prevent unintended behavior
 RUN rm /etc/nginx/conf.d/default.conf
