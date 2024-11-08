@@ -29,11 +29,11 @@ app.set('trust proxy', 1); // Trust only one layer of proxy, e.g., Nginx// Trust
 
 const io = new SocketIOServer(server, {
     cors: {
-        origin: ['https://kasuff.com'],
+        origin: ['https://kasuff.com'], // Allowed origins
         methods: ['GET', 'POST'],
         credentials: true,
     },
-    transports: ['websocket'],
+    transports: ['websocket', 'polling'], // Allow both websocket and polling as transports
 });
 
 const allowedOrigins = ['https://kasuff.com', 'https://www.kasuff.com'];
@@ -79,16 +79,8 @@ app.use(
     helmet.contentSecurityPolicy({
         directives: {
             defaultSrc: ["'self'"],
-            scriptSrc: [
-                "'self'",
-                "'unsafe-inline'",      // Allows inline scripts (use if necessary)
-                "blob:",                // Allows blob URLs
-            ],
-            connectSrc: [
-                "'self'",
-                "https://kasuff.com",
-                "wss://kasuff.com",     // Allows WebSocket connections
-            ],
+            scriptSrc: ["'self'", "'unsafe-inline'", "blob:"],
+            connectSrc: ["'self'", "https://kasuff.com", "wss://kasuff.com"], // Allow WebSocket connections
             objectSrc: ["'none'"],
             upgradeInsecureRequests: [],
         },
