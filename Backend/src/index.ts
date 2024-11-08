@@ -4,21 +4,19 @@ import {Server as SocketIOServer} from 'socket.io';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import {createGame, joinGame, kickPlayer, leaveGame, loadNextQuestion, startGame} from './controllers/gameController';
-import {
-    createPlayer,
-    handlePlayerReconnect,
-    playerAnswered,
-    updatePlayer
-} from './controllers/playerController';
+import {createPlayer, handlePlayerReconnect, playerAnswered, updatePlayer} from './controllers/playerController';
 import {OperationResult} from './types';
 import {IPlayer} from './models/Player';
 import Game, {IAnswer, IGame, IGameSettings} from './models/Game';
-import {instrument} from "@socket.io/admin-ui";
 import path from "node:path";
 import {logVisitor} from "./middleware/logVisitors";
 import visitorRoutes from "./routes/visitorRoutes";
 import cookieParser from "cookie-parser";
 import {generateRandomUsername} from "./utils/randomNames";
+import rateLimit from "express-rate-limit";
+import helmet from "helmet";
+import cors from 'cors';
+
 
 // Load environment variables
 dotenv.config();
@@ -27,17 +25,64 @@ dotenv.config();
 const app: Application = express();
 const server = http.createServer(app);
 
-// Initialize Socket.IO with CORS
 const io = new SocketIOServer(server, {
     cors: {
-        origin: '*',
-        methods: ['GET', 'POST']
-    }
+        origin: ['https://kasuff.com'], // Specify allowed origins
+        methods: ['GET', 'POST'],
+        credentials: true,
+    },
+    transports: ['websocket'],
 });
 
-// Socket.IO Admin UI (for monitoring during development)
-instrument(io, {auth: false, mode: 'development'});
+const allowedOrigins = ['https://kasuff.com', 'https://www.kasuff.com'];
 
+app.use(
+    cors({
+        origin: function (origin, callback) {
+            // Allow requests with no origin (like mobile apps or curl requests)
+            if (!origin) return callback(null, true);
+            if (allowedOrigins.indexOf(origin) === -1) {
+                const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+                return callback(new Error(msg), false);
+            }
+            return callback(null, true);
+        },
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        credentials: true,
+    })
+);
+
+// Socket.IO Admin UI (for monitoring during development)
+//instrument(io, {auth: false, mode: 'development'});
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // Limit each IP to 100 requests per windowMs
+    message: 'Too many requests from this IP, please try again after 15 minutes',
+    standardHeaders: true, // Return rate limit info in the RateLimit-* headers
+    legacyHeaders: false, // Disable the X-RateLimit-* headers
+});
+
+app.use(limiter);
+
+app.use(
+    helmet.hsts({
+        maxAge: 63072000, // 2 years in seconds
+        includeSubDomains: true,
+        preload: true,
+    })
+);
+
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", 'trusted-scripts.com'],
+            objectSrc: ["'none'"],
+            upgradeInsecureRequests: [],
+        },
+    })
+);
 
 
 app.use(cookieParser()); // Use cookie-parser middleware
