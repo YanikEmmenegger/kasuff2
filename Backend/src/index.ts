@@ -12,10 +12,10 @@ import path from "node:path";
 import {logVisitor} from "./middleware/logVisitors";
 import visitorRoutes from "./routes/visitorRoutes";
 import cookieParser from "cookie-parser";
+import helmet from "helmet";
+import cors from "cors";
 import {generateRandomUsername} from "./utils/randomNames";
 import rateLimit from "express-rate-limit";
-import helmet from "helmet";
-import cors from 'cors';
 
 
 // Load environment variables
@@ -24,69 +24,66 @@ dotenv.config();
 // Create an Express application
 const app: Application = express();
 const server = http.createServer(app);
-app.set('trust proxy', 1); // Trust only one layer of proxy, e.g., Nginx// Trust the first proxy
 
 
 const io = new SocketIOServer(server, {
     cors: {
-        origin: ['https://kasuff.com'], // Allowed origins
+        origin: ['https://kasuff.com', 'http://localhost:5173', "http://localhost:2608"], // Allowed origins
         methods: ['GET', 'POST'],
-        credentials: true,
+        credentials: false,
     },
     transports: ['websocket', 'polling'], // Allow both websocket and polling as transports
 });
 
-const allowedOrigins = ['https://kasuff.com', 'https://www.kasuff.com'];
 
-app.use(
-    cors({
-        origin: function (origin, callback) {
-            // Allow requests with no origin (like mobile apps or curl requests)
-            if (!origin) return callback(null, true);
-            if (allowedOrigins.indexOf(origin) === -1) {
-                const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-                return callback(new Error(msg), false);
-            }
-            return callback(null, true);
-        },
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        credentials: true,
-    })
-);
-
+if (process.env.NODE_ENV !== 'development') {
+    app.set('trust proxy', 1); // Trust only one layer of proxy, e.g., Nginx// Trust the first proxy
+    const allowedOrigins = ['https://kasuff.com', 'https://www.kasuff.com', 'http://localhost'];
+    app.use(
+        cors({
+            origin: function (origin, callback) {
+                // Allow requests with no origin (like mobile apps or curl requests)
+                if (!origin) return callback(null, true);
+                if (allowedOrigins.indexOf(origin) === -1) {
+                    const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+                    return callback(new Error(msg), false);
+                }
+                return callback(null, true);
+            },
+            methods: ['GET', 'POST', 'PUT', 'DELETE'],
+            credentials: true,
+        })
+    );
 // Socket.IO Admin UI (for monitoring during development)
 //instrument(io, {auth: false, mode: 'development'});
-
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // Limit each IP to 100 requests per windowMs
-    message: 'Too many requests from this IP, please try again after 15 minutes',
-    standardHeaders: true, // Return rate limit info in the RateLimit-* headers
-    legacyHeaders: false, // Disable the X-RateLimit-* headers
-});
-
-app.use(limiter);
-
-app.use(
-    helmet.hsts({
-        maxAge: 63072000, // 2 years in seconds
-        includeSubDomains: true,
-        preload: true,
-    })
-);
-
-app.use(
-    helmet.contentSecurityPolicy({
-        directives: {
-            defaultSrc: ["'self'"],
-            scriptSrc: ["'self'", "'unsafe-inline'", "blob:"],
-            connectSrc: ["'self'", "https://kasuff.com", "wss://kasuff.com"], // Allow WebSocket connections
-            objectSrc: ["'none'"],
-            upgradeInsecureRequests: [],
-        },
-    })
-);
-
+    const limiter = rateLimit({
+        windowMs: 10 * 60 * 1000, // 15 minutes
+        max: 300, // Limit each IP to 100 requests per windowMs
+        limit: 300,
+        message: 'Too many requests from this IP, please try again after 15 minutes',
+        standardHeaders: true, // Return rate limit info in the RateLimit-* headers
+        legacyHeaders: false, // Disable the X-RateLimit-* headers
+    });
+    app.use(limiter);
+    app.use(
+        helmet.hsts({
+            maxAge: 63072000, // 2 years in seconds
+            includeSubDomains: true,
+            preload: true,
+        })
+    );
+    app.use(
+        helmet.contentSecurityPolicy({
+            directives: {
+                defaultSrc: ["'self'"],
+                scriptSrc: ["'self'", "'unsafe-inline'", "blob:"],
+                connectSrc: ["'self'", "https://kasuff.com", "wss://kasuff.com"], // Allow WebSocket connections
+                objectSrc: ["'none'"],
+                upgradeInsecureRequests: [],
+            },
+        })
+    );
+}
 
 app.use(cookieParser()); // Use cookie-parser middleware
 
@@ -370,6 +367,11 @@ io.on('connection', (socket) => {
 // Start the server and connect to MongoDB
 const startServer = async () => {
     try {
+        //log if dev or prod env
+        console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+
+        console.log('Connecting to MongoDB...');
+
         const mongoURI = process.env.MONGO_URI || 'mongodb://root:example@localhost:27017/kasuff2?authSource=admin';
         await mongoose.connect(mongoURI);
         console.log('Connected to MongoDB');
