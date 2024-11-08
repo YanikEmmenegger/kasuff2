@@ -1,149 +1,44 @@
-version: '3.8'  # Specify the Docker Compose version
-
 services:
   mongodb:
-    image: mongo:5.0.14  # Use a specific MongoDB version instead of 'latest' for stability
-    container_name: kausuff2_mongo  # Name of the MongoDB container
+    image: mongo:latest
+    container_name: kausuff2_mongo
+    # No ports exposed
     volumes:
-      - mongo_data:/data/db  # Named volume for MongoDB data persistence
-      - mongo_init:/docker-entrypoint-initdb.d  # Volume for initialization scripts
+      - ./Database:/data/db
+      - ./mongo-init/:/docker-entrypoint-initdb.d
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}  # MongoDB root username from .env
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}  # MongoDB root password from .env
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
     networks:
-      - internal  # Connect to the internal network for service isolation
-    restart: unless-stopped  # Automatically restart unless the container is explicitly stopped
-    security_opt:
-      - no-new-privileges:true  # Prevent the container from gaining new privileges
-    read_only: true  # Mount the filesystem as read-only for enhanced security
-    tmpfs:
-      - /tmp  # Mount /tmp as a temporary filesystem
-    cap_drop:
-      - ALL  # Drop all Linux capabilities for minimal privileges
-    cap_add:
-      - CHOWN  # Add only necessary capabilities
-      - DAC_OVERRIDE
-      - FOWNER
-      - SETGID
-      - SETUID
-    healthcheck:
-      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]  # Command to check MongoDB health
-      interval: 30s  # Time between running the check
-      timeout: 10s  # Time to wait for the check to succeed
-      retries: 5  # Number of retries before marking as unhealthy
-    logging:
-      driver: "json-file"  # Use the JSON file logging driver
-      options:
-        max-size: "10m"  # Maximum size of a log file before rotation
-        max-file: "3"  # Maximum number of log files to keep
+      - internal
 
   backend:
     build:
-      context: .  # Build context set to the current directory
-      dockerfile: ./Backend/Dockerfile  # Path to the Backend Dockerfile
-    container_name: kausuff2_backend  # Name of the Backend container
+      context: .
+      dockerfile: ./Backend/Dockerfile
+    # No ports exposed
     depends_on:
-      - mongodb  # Ensure MongoDB starts before the backend
+      - mongodb
     environment:
-      - MONGO_URI=${MONGO_URI}  # MongoDB connection URI from .env
-      - JWT_SECRET=${JWT_SECRET}  # JWT secret from .env
+      - MONGO_URI=mongodb://root:example@mongodb:27017/kasuff2?authSource=admin
     networks:
-      - internal  # Connect to the internal network for service isolation
-    restart: unless-stopped  # Automatically restart unless the container is explicitly stopped
-    security_opt:
-      - no-new-privileges:true  # Prevent the container from gaining new privileges
-    #read_only: true  # Mount the filesystem as read-only for enhanced security
-    tmpfs:
-      - /tmp  # Mount /tmp as a temporary filesystem
-    cap_drop:
-      - ALL  # Drop all Linux capabilities for minimal privileges
-    cap_add:
-      - CHOWN  # Add only necessary capabilities
-      - DAC_OVERRIDE
-      - FOWNER
-      - SETGID
-      - SETUID
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'  # Limit the container to 0.5 CPU units
-          memory: '512M'  # Limit the container to 512MB RAM
-        reservations:
-          cpus: '0.25'  # Reserve 0.25 CPU units
-          memory: '256M'  # Reserve 256MB RAM
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:2608/" ]  # Command to check Backend health
-      interval: 30s  # Time between running the check
-      timeout: 10s  # Time to wait for the check to succeed
-      retries: 5  # Number of retries before marking as unhealthy
-    logging:
-      driver: "json-file"  # Use the JSON file logging driver
-      options:
-        max-size: "10m"  # Maximum size of a log file before rotation
-        max-file: "3"  # Maximum number of log files to keep
-    volumes:
-      - backend_logs:/app/logs  # Named volume for Backend logs (if needed)
+      - internal
 
   nginx:
-    build: ./nginx  # Path to the Nginx Dockerfile directory
-    container_name: kausuff2_nginx  # Name of the Nginx container
+    build: ./nginx
     ports:
-      - "80:80"  # Map host port 80 to container port 80 for HTTP
-      - "443:443"  # Map host port 443 to container port 443 for HTTPS
+      - "80:80"
+      - "443:443"
     volumes:
-      - /etc/letsencrypt:/etc/letsencrypt:ro  # Mount SSL certificates as read-only
-      - ./nginx/conf.d:/etc/nginx/conf.d:ro  # Mount custom Nginx configurations as read-only
-      - nginx_logs:/var/log/nginx  # Named volume for Nginx logs
+      - /etc/letsencrypt:/etc/letsencrypt
     depends_on:
-      - backend  # Ensure Backend starts before Nginx
+      - backend
     networks:
-      - internal  # Connect to the internal network for service communication
-      - external  # Connect to the external network to accept incoming traffic
-    restart: unless-stopped  # Automatically restart unless the container is explicitly stopped
-    security_opt:
-      - no-new-privileges:true  # Prevent the container from gaining new privileges
-    read_only: true  # Mount the filesystem as read-only for enhanced security
-    tmpfs:
-      - /tmp  # Mount /tmp as a temporary filesystem
-    cap_drop:
-      - ALL  # Drop all Linux capabilities for minimal privileges
-    cap_add:
-      - CHOWN  # Add only necessary capabilities
-      - DAC_OVERRIDE
-      - FOWNER
-      - SETGID
-      - SETUID
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'  # Limit the container to 0.5 CPU units
-          memory: '256M'  # Limit the container to 256MB RAM
-        reservations:
-          cpus: '0.25'  # Reserve 0.25 CPU units
-          memory: '128M'  # Reserve 128MB RAM
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "https://localhost" ]  # Command to check Nginx health
-      interval: 30s  # Time between running the check
-      timeout: 10s  # Time to wait for the check to succeed
-      retries: 5  # Number of retries before marking as unhealthy
-    logging:
-      driver: "json-file"  # Use the JSON file logging driver
-      options:
-        max-size: "10m"  # Maximum size of a log file before rotation
-        max-file: "3"  # Maximum number of log files to keep
+      - internal
+      - external
 
 networks:
   internal:
-    internal: true  # Internal network, not accessible from the host
+    internal: true
   external:
-    external: false  # Default bridge network, accessible from the host
-
-volumes:
-  mongo_data:
-    driver: local  # Use the local driver for MongoDB data
-  mongo_init:
-    driver: local  # Use the local driver for MongoDB initialization scripts
-  backend_logs:
-    driver: local  # Use the local driver for Backend logs
-  nginx_logs:
-    driver: local  # Use the local driver for Nginx logs
+    external: false
