@@ -24,12 +24,12 @@ dotenv.config();
 // Create an Express application
 const app: Application = express();
 const server = http.createServer(app);
-app.set('trust proxy', true);
 app.set('trust proxy', 1); // Trust only one layer of proxy, e.g., Nginx// Trust the first proxy
+
 
 const io = new SocketIOServer(server, {
     cors: {
-        origin: ['https://kasuff.com'], // Specify allowed origins
+        origin: ['https://kasuff.com'],
         methods: ['GET', 'POST'],
         credentials: true,
     },
@@ -81,12 +81,12 @@ app.use(
             defaultSrc: ["'self'"],
             scriptSrc: [
                 "'self'",
-                'trusted-scripts.com',  // Adjust for trusted external sources
-                "'unsafe-inline'",      // Allows inline scripts (use only if necessary)
+                "'unsafe-inline'",      // Allows inline scripts (use if necessary)
                 "blob:",                // Allows blob URLs
             ],
             connectSrc: [
                 "'self'",
+                "https://kasuff.com",
                 "wss://kasuff.com",     // Allows WebSocket connections
             ],
             objectSrc: ["'none'"],
