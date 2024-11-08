@@ -52,7 +52,7 @@ services:
     restart: unless-stopped  # Automatically restart unless the container is explicitly stopped
     security_opt:
       - no-new-privileges:true  # Prevent the container from gaining new privileges
-    read_only: true  # Mount the filesystem as read-only for enhanced security
+    #read_only: true  # Mount the filesystem as read-only for enhanced security
     tmpfs:
       - /tmp  # Mount /tmp as a temporary filesystem
     cap_drop:
@@ -72,7 +72,7 @@ services:
           cpus: '0.25'  # Reserve 0.25 CPU units
           memory: '256M'  # Reserve 256MB RAM
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:2608/health" ]  # Command to check Backend health
+      test: [ "CMD", "curl", "-f", "http://localhost:2608/" ]  # Command to check Backend health
       interval: 30s  # Time between running the check
       timeout: 10s  # Time to wait for the check to succeed
       retries: 5  # Number of retries before marking as unhealthy

@@ -9,7 +9,7 @@ WORKDIR /frontend
 
 # Copy frontend package files and install dependencies
 COPY ./Frontend/package*.json ./
-RUN npm install --production  # Install only production dependencies for the frontend
+RUN npm install  # Install only production dependencies for the frontend
 
 # Copy the frontend source code
 COPY ./Frontend/ .
