@@ -79,7 +79,16 @@ app.use(
     helmet.contentSecurityPolicy({
         directives: {
             defaultSrc: ["'self'"],
-            scriptSrc: ["'self'", 'trusted-scripts.com'],
+            scriptSrc: [
+                "'self'",
+                'trusted-scripts.com',  // Adjust for trusted external sources
+                "'unsafe-inline'",      // Allows inline scripts (use only if necessary)
+                "blob:",                // Allows blob URLs
+            ],
+            connectSrc: [
+                "'self'",
+                "wss://kasuff.com",     // Allows WebSocket connections
+            ],
             objectSrc: ["'none'"],
             upgradeInsecureRequests: [],
         },
