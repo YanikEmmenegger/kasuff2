@@ -65,10 +65,6 @@ if (process.env.NODE_ENV === 'production') {
         message: 'Too many requests from this IP, please try again after 10 minutes',
         standardHeaders: true,
         legacyHeaders: false,
-        skip: (req) => {
-            // Skip rate limiting if request has a specific header or cookie
-            return req.headers['socket-allowed'] === 'true' || req.cookies['socket-allowed'] === 'true';
-        },
     });
     console.log('Rate limiter enabled');
     app.use(limiter);

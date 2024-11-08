@@ -20,14 +20,14 @@ const GameCreator: FC = () => {
     const [gameSettings, setGameSettings] = useState<GameSettings>({
         numberOfRounds: 10,
         gameModes: [
-            /*"multiple-choice",
+            "multiple-choice",
             "what-would-you-rather",
             "who-would-rather",
             "ranking",
             "hide-and-seek",
             "memory",
             "sequence-memory", "word-scramble",
-            "code-breaker",*/
+            "code-breaker",
             "spy"
 
         ] as GameModeType[],

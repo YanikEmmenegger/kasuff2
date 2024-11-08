@@ -71,7 +71,6 @@ const questionTypes: {
         type: "spy",
         label: "Spy (coming soon)",
         icon: <BsSearch/>,
-        disabled: true,
     },
 ];
 
