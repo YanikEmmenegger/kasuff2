@@ -522,6 +522,16 @@ const startQuestionTimer = (game: IGame, io: any) => {
 };
 
 /**
+ * Handle Force End Round
+ * **/
+export const forceEndRound = async (gameCode: string, io: any) => {
+    const game = await Game.findOne({code: gameCode, isActive: true})
+    if (!game || game.state !== 'round') return false;
+    await handleResults(gameCode, io);
+    return true;
+}
+
+/**
  * Handle results after the timer for the question ends.
  */
 export const handleResults = async (gameCode: string, io: any) => {

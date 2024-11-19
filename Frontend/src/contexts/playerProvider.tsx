@@ -25,6 +25,7 @@ interface PlayerContextType {
     sendAnswer: (answer: string | string[] | number) => Promise<boolean>;
     nextQuestion: () => Promise<boolean>;
     sendMessage: (message: string) => Promise<boolean>;
+    forceEndRound: () => Promise<boolean>;
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
@@ -209,6 +210,20 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
         });
     };
 
+    const forceEndRound = () => {
+        return new Promise<boolean>((resolve, reject) => {
+            if (!player || !socket || !game) return reject(new Error('Player, socket, or game not available'));
+
+            socket.emit('game:forceEndRound', {gameCode: game.code}, (result: OperationResult<Game>) => {
+                if (result.success) {
+                    resolve(true);
+                } else {
+                    reject(new Error(result.error || 'Failed to end round.'));
+                }
+            });
+        });
+    }
+
     // Create a new game
     const createGame = (settings: GameSettings) => {
         return new Promise<OperationResult<Game>>((resolve, reject) => {
@@ -364,6 +379,7 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
                 startGame,
                 nextQuestion,
                 sendAnswer,
+                forceEndRound,
                 sendMessage
             }}
         >

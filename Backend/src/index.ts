@@ -3,7 +3,15 @@ import http from 'http';
 import {Server as SocketIOServer} from 'socket.io';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import {createGame, joinGame, kickPlayer, leaveGame, loadNextQuestion, startGame} from './controllers/gameController';
+import {
+    createGame,
+    forceEndRound,
+    joinGame,
+    kickPlayer,
+    leaveGame,
+    loadNextQuestion,
+    startGame
+} from './controllers/gameController';
 import {createPlayer, handlePlayerReconnect, playerAnswered, updatePlayer} from './controllers/playerController';
 import {OperationResult} from './types';
 import {IPlayer} from './models/Player';
@@ -213,6 +221,30 @@ io.on('connection', (socket) => {
         } catch (error) {
             console.error('Error creating game:', error);
             callback({success: false, error: 'Internal server error.'});
+        }
+    });
+
+    // Game creation handler
+    socket.on('game:forceEndRound', async (data: {
+        gameCode: string,
+    }, callback: (result: OperationResult<boolean>) => void) => {
+        try {
+            const res = await forceEndRound(data.gameCode, io);
+
+            if (!res) {
+                return callback({
+                    success: false,
+                });
+            }
+
+            return callback({
+                success: true,
+                data: true
+            });
+        } catch (e) {
+            return callback({
+                success: false,
+            });
         }
     });
 
