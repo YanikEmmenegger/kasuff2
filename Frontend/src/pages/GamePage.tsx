@@ -8,13 +8,14 @@ import {usePlayer} from "../contexts/playerProvider.tsx";
 import QuizComponent from "../components/game/round/QuizComponent.tsx";
 import ResultComponent from "../components/game/results/ResultComponent.tsx";
 import LeaderboardComponent from "../components/game/leaderboard/LeaderboardComponent.tsx";
-import {useEffect} from "react";
+import  {useEffect} from "react";
 import NextQuestionButton from "../components/game/results/NextQuestionButton.tsx";
 import {MiniGame, Question} from "../types.ts";
 import MiniGameComponent from "../components/game/minigames/MiniGameComponent.tsx";
 import Button from "../components/Button.tsx";
 import {useNavigate} from "react-router";
 import {IoReload} from "react-icons/io5";
+import BubbleMessenger from "../components/game/lobby/BubbleMessenger.tsx";
 
 // Helper function to parse query parameters
 function useQuery() {
@@ -27,7 +28,7 @@ const GamePage = () => {
     const state = query.get("state") || "join"; // Default to 'join' if state is not provided
     const code = query.get("code") || "";
 
-    const {game} = usePlayer();
+    const {game, socket} = usePlayer();
 
     useEffect(() => {
         // when no game is available and state isn't join, create or lobby, redirect to join
@@ -68,6 +69,9 @@ const GamePage = () => {
 
     return (
         <div className="w-screen min-h-screen justify-between flex flex-col">
+            {
+                socket && game && <BubbleMessenger socket={socket}/>
+            }
             {/* Content Section - expands to take up remaining space */}
             <div className="flex-1 flex justify-center">
                 {renderComponent()}

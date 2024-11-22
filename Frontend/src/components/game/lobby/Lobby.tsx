@@ -21,11 +21,6 @@ const Lobby: React.FC = () => {
         if (!game) navigate("/game?state=join");
     }, [game, navigate]);
 
-    useEffect(() => {
-        setInterval(() => {
-
-        }, 15000)
-    }, []);
 
 
     const handleStartGame = async () => {
@@ -151,6 +146,7 @@ const Lobby: React.FC = () => {
 
 
             </motion.div>
+
             <motion.div
                 initial={{opacity: 0, y: 20}}
                 animate={{opacity: 1, y: 0}}

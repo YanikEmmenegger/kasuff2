@@ -137,10 +137,10 @@ export const PlayerProvider: React.FC<{ children: React.ReactNode }> = ({childre
             navigate(`/game?state=lobby&code=${game.code}`);
         });
 
-        socket.on('player:message', (message) => {
+/*        socket.on('player:message', (message) => {
             console.log(message)
             toast(`${message.playerName}: ${message.message}`, {icon: '📧', position: 'bottom-right'});
-        });
+        });*/
 
         socket.on('player:joined', (game: Game) => {
             setGame(game);
