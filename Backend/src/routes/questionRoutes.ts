@@ -23,7 +23,10 @@ router.get('/questions', async (req: Request, res: Response) => {
 
 
         const questions = await Question.find(query);
-        res.json(questions);
+        res.json({
+            count: questions.length,
+            questions: questions
+        });
     } catch (error) {
         res.status(500).json({message: 'Error fetching visitors', error});
     }

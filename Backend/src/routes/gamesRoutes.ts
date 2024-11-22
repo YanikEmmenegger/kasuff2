@@ -30,7 +30,10 @@ router.get('/games', async (req: Request, res: Response) => {
 
         const games = await Game.find(query).populate('players');
 
-        res.json(games);
+        res.json({
+            count: games.length,
+            games: games
+        });
     } catch (error) {
         res.status(500).json({message: 'Error fetching visitors', error});
     }

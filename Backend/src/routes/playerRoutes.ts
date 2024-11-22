@@ -22,7 +22,10 @@ router.get('/players', async (req: Request, res: Response) => {
         //find players with query
         const players = await Player.find(query);
 
-        res.json(players);
+        res.json({
+            count: players.length,
+            players: players
+        });
     } catch (error) {
         res.status(500).json({message: 'Error fetching visitors', error});
     }
