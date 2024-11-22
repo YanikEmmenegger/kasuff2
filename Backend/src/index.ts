@@ -24,6 +24,7 @@ import helmet from "helmet";
 import cors from "cors";
 import {generateRandomUsername} from "./utils/randomNames";
 import rateLimit from "express-rate-limit";
+import showPlayers from "./routes/showPlayers";
 
 
 // Load environment variables
@@ -103,6 +104,7 @@ app.use(cookieParser()); // Use cookie-parser middleware
 app.use(logVisitor);
 
 app.use('/api', visitorRoutes);
+app.use('/api', showPlayers);
 
 // Define the port (default to 5000 if not in environment)
 const PORT: number =  2608;
