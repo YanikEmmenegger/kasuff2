@@ -93,7 +93,7 @@ const GameCreator: FC = () => {
             case 5:
                 return "💀";
             default:
-                return "";
+                return "🖕🏼";
         }
     };
 
@@ -152,6 +152,9 @@ const GameCreator: FC = () => {
                     transition={{delay: 0.3}}
                 >
                     <CollapsibleSection title={`Time Limit: ${gameSettings.timeLimit}s `}>
+                        <p>
+                            Some game modes dont require a time limit (e.g. Spy), but you can change it for the others.
+                        </p>
                         <motion.div
                             className="flex flex-col justify-center items-center bg-cyan-600 p-4 rounded-lg"
                             initial={{opacity: 0, y: 20}}
