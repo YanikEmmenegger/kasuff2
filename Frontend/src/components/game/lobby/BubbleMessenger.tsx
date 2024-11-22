@@ -37,7 +37,7 @@ const BubbleMessenger: React.FC<BubbleMessengerProps> = ({socket}) => {
             x: Math.random() * (window.innerWidth - 300),
             y: Math.random() * (window.innerHeight - 50),
         };
-        const expiry = Date.now() + 50000; // Bubble should expire in 5 seconds
+        const expiry = Date.now() + 5000; // Bubble should expire in 5 seconds
         setBubbles((prev) => [...prev, {id, sender, message, position, expiry}]);
     };
 

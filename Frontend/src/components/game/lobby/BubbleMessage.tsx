@@ -95,7 +95,7 @@ const BubbleMessage: React.FC<BubbleProps> = ({id, sender, message, position, ex
         >
             {/* Message Content */}
             {!isExploding && (
-                <div className="flex flex-col items-start">
+                <div className="flex min-w-36 flex-col items-start">
                     <div className={"font-bold font-lg"}>{message}</div>
                     <div className={"text-xs"}>{sender}</div>
                 </div>
