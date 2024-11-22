@@ -71,7 +71,7 @@ const BaseQuestionSchema: Schema = new Schema(
         type: {
             type: String,
             required: true,
-            enum: ['multiple-choice', 'who-would-rather', 'what-would-you-rather', 'ranking'],
+            enum: ['multiple-choice', 'who-would-rather', 'what-would-you-rather', 'ranking', 'spy'],
         },
         question: {type: String, required: true},
         category: {type: String, required: true},

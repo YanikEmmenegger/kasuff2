@@ -1,10 +1,11 @@
 // src/routes/playerRoutes.ts
 import {Request, Response, Router} from 'express';
 import Player from "../models/Player";
+import {isAdmin} from "./middleware";
 
 const router = Router();
 
-router.get('/players', async (req: Request, res: Response) => {
+router.get('/players', isAdmin, async (req: Request, res: Response) => {
 
     try {
 

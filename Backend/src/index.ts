@@ -104,6 +104,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use(cookieParser()); // Use cookie-parser middleware
 
 app.use(logVisitor);
+app.use(express.json()); // Parse JSON bodies
 
 app.use('/api', visitorRoutes);
 app.use('/api', playerRoutes);
@@ -113,7 +114,6 @@ app.use('/api', questionRoutes);
 // Define the port (default to 5000 if not in environment)
 const PORT: number =  2608;
 
-app.use(express.json()); // Parse JSON bodies
 
 // Serve static files from the Vite-built frontend
 app.use(express.static(path.join(__dirname, '../public/')));
