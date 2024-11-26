@@ -173,7 +173,7 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
             }
         }
         if (gameSettings.gameModes.includes('code-breaker')) {
-            for (let i = 0; i < gameSettings.numberOfRounds / 10; i++) {
+            for (let i = 0; i < gameSettings.numberOfRounds / 5; i++) {
 
                 //make 50/50 if the round is added or not
                 if (Math.random() > 0.5) {

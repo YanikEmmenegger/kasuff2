@@ -26,7 +26,8 @@ const GameCreator: FC = () => {
             "ranking",
             "hide-and-seek",
             "memory",
-            "sequence-memory", "word-scramble",
+            //"sequence-memory",
+            "word-scramble",
             "code-breaker",
             "spy"
 
