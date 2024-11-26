@@ -5,6 +5,9 @@ import {isAdmin} from "./middleware";
 
 const router = Router();
 
+//if request is not get or post
+
+
 
 router.get('/questions', isAdmin, async (req: Request, res: Response): Promise<void> => {
     try {
