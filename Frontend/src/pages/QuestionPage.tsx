@@ -49,7 +49,7 @@ const QuestionPage: React.FC = () => {
     const handleNextStep = async () => {
         if (question) {
 
-            const url = import.meta.env.DEV ? "http://localhost:2608" : window.location.host
+            const url = import.meta.env.DEV ? "http://localhost:2608" : ""
             console.log(url)
 
             const additionalHeaders = {
