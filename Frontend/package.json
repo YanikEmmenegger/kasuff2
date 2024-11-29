@@ -13,7 +13,7 @@
     "@hello-pangea/dnd": "^17.0.0",
     "@tsparticles/engine": "^3.5.0",
     "@types/uuid": "^10.0.0",
-    "axios": "^1.7.7",
+    "axios": "^1.7.8",
     "canvas-confetti": "^1.9.3",
     "framer-motion": "^11.11.10",
     "react": "^18.3.1",

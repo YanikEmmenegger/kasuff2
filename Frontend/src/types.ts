@@ -121,6 +121,8 @@ export interface WhoWouldRatherQuestion extends BaseQuestion {
 export interface WhatWouldYouRatherQuestion extends BaseQuestion {
     type: 'what-would-you-rather';
     options: string[]; // Array of possible answers
+    goodOrBad?: 'good' | 'bad'; // Determines the type of punishment
+
 }
 
 // Represents a ranking question

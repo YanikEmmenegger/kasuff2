@@ -56,7 +56,7 @@ const questionTypes: {
         type: "sequence-memory",
         label: "Sequence",
         icon: <SlEqualizer/>,
-        disabled: true,
+        disabled: false,
     },
     {
         type: "word-scramble",

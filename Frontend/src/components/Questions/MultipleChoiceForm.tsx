@@ -1,145 +1,167 @@
-// src/components/QuestionPage/MultipleChoiceForm.tsx
+// src/components/Questions/MultipleChoiceForm.tsx
 
-import React, { useState } from 'react';
-import Button from '../Button'; // Adjust the import path as necessary
-import toast from 'react-hot-toast';
-import axios from 'axios';
-import { MultipleChoiceQuestion } from '../../types'; // Adjust the import path
+import React, {FC, useEffect, useState} from "react";
+import {MultipleChoiceQuestion} from "../../types";
+import Input from "../Input.tsx";
+import Button from "../Button.tsx";
+
 
 interface MultipleChoiceFormProps {
-    onSuccess: () => void;
+    setQuestion: (question: MultipleChoiceQuestion | null) => void;
 }
 
-const MultipleChoiceForm: React.FC<MultipleChoiceFormProps> = ({ onSuccess }) => {
-    const [questionText, setQuestionText] = useState('');
-    const [options, setOptions] = useState<string[]>(['', '']);
+const MultipleChoiceForm: FC<MultipleChoiceFormProps> = ({setQuestion}) => {
+    // Local state for question and options
+    const [questionText, setQuestionText] = useState<string>("");
+    const [options, setOptions] = useState<string[]>(["", ""]); // Start with 2 empty options
     const [correctOptionIndex, setCorrectOptionIndex] = useState<number | null>(null);
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
+    // Update parent state whenever local state changes and is valid
+    useEffect(() => {
+        if (questionText.trim() && options.filter(opt => opt.trim()).length >= 2 && correctOptionIndex !== null) {
+            const question: MultipleChoiceQuestion = {
+                _id: generateUniqueId(), // Implement a unique ID generator or use a library like uuid
+                type: 'multiple-choice',
+                question: questionText.trim(),
+                options: options.map(opt => opt.trim()),
+                correctOptionIndex: correctOptionIndex,
+            };
+            setQuestion(question);
+        } else {
+            setQuestion(null);
+        }
+    }, [questionText, options, correctOptionIndex, setQuestion]);
+
+    // Handler for changing question text
+    const handleQuestionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setQuestionText(e.target.value);
+    };
+
+    // Handler for changing an option
     const handleOptionChange = (index: number, value: string) => {
         const newOptions = [...options];
         newOptions[index] = value;
         setOptions(newOptions);
     };
 
-    const addOption = () => {
-        setOptions([...options, '']);
-    };
-
-    const removeOption = (index: number) => {
-        const newOptions = options.filter((_, i) => i !== index);
-        setOptions(newOptions);
-        if (correctOptionIndex === index) {
-            setCorrectOptionIndex(null);
-        } else if (correctOptionIndex && index < correctOptionIndex) {
-            setCorrectOptionIndex(correctOptionIndex - 1);
+    // Handler for adding a new option
+    const handleAddOption = () => {
+        if (options.length < 6) {
+            setOptions([...options, ""]);
         }
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
-        // Validation
-        if (!questionText.trim()) {
-            toast.error('Question text cannot be empty.');
-            return;
-        }
-
-        if (options.length < 2) {
-            toast.error('At least two options are required.');
-            return;
-        }
-
-        for (let option of options) {
-            if (!option.trim()) {
-                toast.error('Options cannot be empty.');
-                return;
+    // Handler for removing an option
+    const handleRemoveOption = (index: number) => {
+        if (options.length > 2) {
+            const newOptions = options.filter((_, i) => i !== index);
+            setOptions(newOptions);
+            // If the removed option was the correct one, reset correctOptionIndex
+            if (correctOptionIndex === index) {
+                setCorrectOptionIndex(null);
+            } else if (correctOptionIndex !== null && index < correctOptionIndex) {
+                // Adjust the correctOptionIndex if necessary
+                setCorrectOptionIndex(correctOptionIndex - 1);
             }
         }
+    };
 
-        if (correctOptionIndex === null || correctOptionIndex >= options.length) {
-            toast.error('Please select a correct option.');
-            return;
-        }
+    // Handler for selecting the correct option
+    const handleCorrectOptionChange = (index: number) => {
+        setCorrectOptionIndex(index);
+    };
 
-        const newQuestion: MultipleChoiceQuestion = {
-            _id: '', // Backend will assign the ID
-            type: 'multiple-choice',
-            question: questionText,
-            options,
-            correctOptionIndex,
-        };
-
-        try {
-            setIsSubmitting(true);
-            const response = await axios.post('/questions', { question: newQuestion });
-
-            console.log('Question created:', response.data.question);
-            toast.success('Multiple Choice Question created successfully!');
-            // Reset form
-            setQuestionText('');
-            setOptions(['', '']);
-            setCorrectOptionIndex(null);
-            onSuccess();
-        } catch (error: any) {
-            toast.error(error.response?.data?.message || 'Failed to create question.');
-        } finally {
-            setIsSubmitting(false);
-        }
+    // Utility function to generate unique IDs (simple version)
+    const generateUniqueId = (): string => {
+        return Math.random().toString(36).substr(2, 9);
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-                <label className="block text-gray-700">Question Text:</label>
-                <textarea
+        <div className="w-full max-w-md bg-cyan-600 p-6 rounded-md shadow-md">
+            <h2 className="text-2xl font-semibold mb-4">Multiple Choice Question</h2>
+
+            {/* Question Input */}
+            <div className="mb-4">
+                <label className="block mb-2">Question:</label>
+                <Input
+                    className={"bg-cyan-500 text-white placeholder-neutral-300 placeholder-opacity-85"}
+                    type="text"
                     value={questionText}
-                    onChange={(e) => setQuestionText(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded"
+                    onChange={handleQuestionChange}
+                    placeholder="Enter your question here"
                     required
                 />
             </div>
 
-            <div>
-                <label className="block text-gray-700">Options:</label>
+            {/* Options Inputs */}
+            <div className="mb-4">
+                <label className="block  mb-2">Answer Options:</label>
                 {options.map((option, index) => (
                     <div key={index} className="flex items-center mb-2">
-                        <input
-                            type="text"
-                            value={option}
-                            onChange={(e) => handleOptionChange(index, e.target.value)}
-                            className="flex-1 p-2 border border-gray-300 rounded"
-                            required
-                        />
                         <input
                             type="radio"
                             name="correctOption"
                             checked={correctOptionIndex === index}
-                            onChange={() => setCorrectOptionIndex(index)}
-                            className="ml-2"
+                            onChange={() => handleCorrectOptionChange(index)}
+                            className="mr-2 bg-cyan-500"
+                        />
+                        <Input
+                            type="text"
+                            className={"bg-cyan-500 text-white placeholder-neutral-300 placeholder-opacity-85"}
+                            value={option}
+                            onChange={(e) => handleOptionChange(index, e.target.value)}
+                            placeholder={`Option ${index + 1}`}
                             required
                         />
-                        <button
-                            type="button"
-                            onClick={() => removeOption(index)}
-                            className="ml-2 text-red-500 hover:text-red-700"
-                            disabled={options.length <= 2}
-                        >
-                            Remove
-                        </button>
+                        {options.length > 2 && (
+                            <Button
+                                type="button"
+                                onClick={() => handleRemoveOption(index)}
+                                className="ml-2 bg-red-500 text-white px-3 py-1 rounded"
+                            >
+                                Remove
+                            </Button>
+                        )}
                     </div>
                 ))}
-                <Button type="button" onClick={addOption} className="mt-2">
-                    Add Option
-                </Button>
+
+                {/* Add Option Button */}
+                {options.length < 6 && (
+                    <Button
+                        type="button"
+                        onClick={handleAddOption}
+                        className="mt-2 bg-green-500 text-white px-4 py-2 rounded"
+                    >
+                        Add Option
+                    </Button>
+                )}
             </div>
 
-            <div>
-                <Button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? 'Submitting...' : 'Create Multiple Choice Question'}
-                </Button>
+            {/* Display validation messages if any */}
+            <div className="mb-4">
+                {options.filter(opt => opt.trim()).length < 2 && (
+                    <p className="text-red-500">At least 2 options are required.</p>
+                )}
+                {correctOptionIndex === null && (
+                    <p className="text-red-500">Please select the correct option.</p>
+                )}
+                {options.length > 6 && (
+                    <p className="text-red-500">You can add up to 6 options only.</p>
+                )}
             </div>
-        </form>
+
+            {/* Optional: Next or Save Button */}
+            {/*
+            <Button
+                type="button"
+                onClick={handleNextStep}
+                disabled={!isFormValid}
+                className={`w-full ${isFormValid ? 'bg-blue-500' : 'bg-gray-400'} text-white px-4 py-2 rounded`}
+            >
+                Next
+            </Button>
+            */}
+        </div>
     );
 };
 

@@ -33,7 +33,14 @@ router.get('/questions', isAdmin, async (req: Request, res: Response): Promise<v
 
 // Apply isAdmin middleware to the POST /questions route
 router.post('/questions', isAdmin, async (req: Request, res: Response): Promise<void> => {
+
     try {
+
+        //Question comes with _id, delete this
+        delete req.body.question._id;
+        // add category to question
+        req.body.question.category = 'General';
+
         // Validate request body
 
         // check if the request body is empty
@@ -72,6 +79,7 @@ router.post('/questions', isAdmin, async (req: Request, res: Response): Promise<
 
 
     } catch (error) {
+        console.log('Error creating question', error);
         res.status(500).json({message: 'Error creating question', error});
     }
 });

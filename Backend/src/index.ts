@@ -39,7 +39,7 @@ const server = http.createServer(app);
 
 const io = new SocketIOServer(server, {
     cors: {
-        origin: ['https://kasuff.com', 'http://localhost:5173', "http://localhost:2608"], // Allowed origins
+        origin: ['https://kasuff.com', 'http://localhost:5173', "http://localhost:2608", "http://localhost:5173"], // Allowed origins
         methods: ['GET', 'POST'],
         credentials: false,
     },
@@ -49,7 +49,7 @@ const io = new SocketIOServer(server, {
 
 if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1); // Trust only one layer of proxy, e.g., Nginx// Trust the first proxy
-    const allowedOrigins = ['https://kasuff.com', 'https://www.kasuff.com', 'http://localhost'];
+    const allowedOrigins = ['https://kasuff.com', 'https://www.kasuff.com', 'http://localhost', "http://localhost:5173"];
     console.log('CORS allowed origins:', allowedOrigins);
     app.use(
         cors({
@@ -99,6 +99,14 @@ if (process.env.NODE_ENV === 'production') {
             },
         })
     );
+} else {
+    //set cors open for all
+    app.use(cors(
+        {
+            origin: "*",
+            methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        }
+    ));
 }
 
 app.use(cookieParser()); // Use cookie-parser middleware
