@@ -50,6 +50,7 @@ const QuestionPage: React.FC = () => {
         if (question) {
 
             const url = import.meta.env.DEV ? "http://localhost:2608" : window.location.host
+            console.log(url)
 
             const additionalHeaders = {
                 "only-admin": true
