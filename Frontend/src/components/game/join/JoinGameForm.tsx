@@ -32,7 +32,10 @@ const JoinGameForm: FC<JoinGameFormProps> = ({_gameCode}) => {
                 success: 'Successfully joined game!',
                 error: 'Failed to join game, check the code and try again.',
             }
-        );
+        ).then(
+           //reload the page
+            ()=> window.location.reload()
+        )
     };
 
     // Handler to ensure input is always uppercase

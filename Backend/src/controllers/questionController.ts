@@ -181,7 +181,9 @@ export const prepareQuestions = async (
                 const spyQuestion = question as ISpyQuestion;
                 const randomSpy = players[Math.floor(Math.random() * players.length)];
                 const startPlayer = players[Math.floor(Math.random() * players.length)];
-                const secret = spyQuestion.options[Math.floor(Math.random() * spyQuestion.options.length)];
+               // const secret = spyQuestion.options[];
+
+                console.log('Spy question:', spyQuestion);
 
                 const cleanSpyQuestion: ICleanSpyQuestion = {
                     question: spyQuestion.question,
@@ -189,7 +191,7 @@ export const prepareQuestions = async (
                     spy: randomSpy._id.toString(),
                     type: 'spy',
                     topic: spyQuestion.topic,
-                    secret: secret,
+                    secret: spyQuestion.options[0],
                     starter: startPlayer.name.toString()
                 }
 
@@ -263,6 +265,7 @@ export const prepareQuestions = async (
                 return {success: false, error: 'Invalid question type'};
         }
     } catch (error) {
+        console.log('Error preparing question:', error);
         return {success: false, error: 'Error preparing question'};
     }
 };

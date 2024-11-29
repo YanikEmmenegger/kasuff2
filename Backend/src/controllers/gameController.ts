@@ -228,9 +228,6 @@ export const createGame = async (creatorId: string, settings?: any): Promise<Ope
             return {success: false, error: 'Error fetching questions.'};
         }
 
-        //random sort rounds
-
-
         // Initialize leaderboard with the creator
         const leaderboard: ILeaderboardEntry[] = [{playerId: creator._id, totalPoints: 0}];
         // Create a new game object
@@ -420,6 +417,8 @@ export const startGame = async (gameCode: string, io: any): Promise<OperationRes
                 console.error('Error fetching full question:', fullQuestions.error);
                 return {success: false, error: 'Error fetching full questions'};
             }
+
+            console.log('fullQuestions:', fullQuestions.data);
 
             // Prepare questions and ensure correctOptionIndex is set for multiple-choice
             const preparedQuestionResult = await prepareQuestions(fullQuestions.data!, (game.players as unknown as IPlayer[]));
