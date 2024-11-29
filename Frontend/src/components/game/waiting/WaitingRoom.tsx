@@ -68,7 +68,7 @@ const WaitingRoom: FC = () => {
             {/* Animated Dots */}
             <LoadingDots/>
             {
-                player?._id === game!.creatorId && <Button onClick={handleEndRound}
+                player?._id === game?.creatorId && <Button onClick={handleEndRound}
                                                            className={"disabled:cursor-not-allowed mt-10 bg-red-500 hover:bg-red-600"}>
                     Force end round
                 </Button>

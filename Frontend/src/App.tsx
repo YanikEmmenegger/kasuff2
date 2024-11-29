@@ -7,6 +7,7 @@ import ToastProvider from "./components/ToastProvider.tsx";
 import GamePage from "./pages/GamePage.tsx";
 import ColoredBackground from "./components/ColoredBackground.tsx";
 import TestPage from "./pages/TestPage.tsx";
+import QuestionPage from "./pages/QuestionPage.tsx";
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                                 <Route path="/profile" element={<PlayerSetting/>}/>
                                 <Route path="/game" element={<GamePage/>}/> {/* Add the lobby route */}
                                 <Route path="/test" element={<TestPage/>}/> {/* Add the lobby route */}
+                                <Route path="/question" element={<QuestionPage/>}/> {/* Add the lobby route */}
                             </Routes>
                     </PlayerProvider>
                 </Router>

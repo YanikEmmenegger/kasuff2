@@ -189,6 +189,8 @@ export const calculatePointsForMiniGames = async (gameCode: string): Promise<Ope
                 } = handleHideAndSeek(answers, multiplier, timerFinishedAt, timeLimit));
                 break;
             case "memory":
+                ({answers: updatedAnswers, punishments} = handleMemory(answers, multiplier));
+                break;
             case "sequence-memory":
                 ({answers: updatedAnswers, punishments} = handleMemory(answers, multiplier));
                 break;
@@ -224,6 +226,10 @@ const handleMemory = (
     answers: IAnswer[],
     multiplier: number,
 ): { answers: IAnswer[]; punishments: IPunishment[] } => {
+
+    console.log(answers);
+
+
     const punishmentManager = new PunishmentManager();
     let noAnswerCount = 0;
     const correctAnswers: Schema.Types.ObjectId[] = [];
@@ -231,7 +237,7 @@ const handleMemory = (
     answers.forEach((answer) => {
         answer.pointsAwarded = 0;
 
-        if (!answer.answer || answer.answer === "__NOT_ANSWERED__") {
+        if (answer.answer === "__NOT_ANSWERED__") {
             noAnswerCount++;
             answer.pointsAwarded = -300;
             punishmentManager.addPunishment(answer.playerId, {

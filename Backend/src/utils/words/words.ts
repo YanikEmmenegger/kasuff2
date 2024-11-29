@@ -115,5 +115,5 @@ export const words_de = [
     "Lehrer",
     "Zauber",
     "Äpfel",
-    "Ärztin"
+    "Ärztin", "Baum", "Penis", "Farbe", "Arsch", "loch", ""
 ];
